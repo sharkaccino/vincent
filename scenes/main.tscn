@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=7 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scenes/main.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scenes/file_menu_button.gd" id="2_0wfyh"]
+[ext_resource type="LabelSettings" uid="uid://c8wamlmx6dv1" path="res://scenes/SmallLabelSettings.tres" id="3_sugp2"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://cvpaakfwqtouv" path="res://scenes/help_menu_button.gd" id="4_tefeu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_o5qli"]
 
@@ -11,6 +15,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_tbgi4")
 script = ExtResource("1_0wfyh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -21,18 +28,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="MainToolBar" type="VBoxContainer" parent="VBoxContainer/TopBar"]
+[node name="MainToolBar" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
 layout_mode = 2
 
-[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer/TopBar/MainToolBar"]
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "File"
+flat = false
 switch_on_hover = true
 item_count = 6
 popup/item_0/text = "New..."
@@ -47,11 +66,36 @@ popup/item_4/text = "Save As..."
 popup/item_4/id = 4
 popup/item_5/text = "Exit"
 popup/item_5/id = 5
+script = ExtResource("2_0wfyh")
 
-[node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="OpenDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+title = "Open a File"
+theme = ExtResource("4_tbgi4")
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif")
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+auto_translate_mode = 1
+theme = ExtResource("4_tbgi4")
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif")
+use_native_dialog = true
+
+[node name="PopupMenuTest" type="PopupMenu" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+size = Vector2i(718, 100)
+theme = ExtResource("4_tbgi4")
+item_count = 1
+item_0/text = "test"
+item_0/id = 0
+
+[node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "Edit
 "
+flat = false
 switch_on_hover = true
 item_count = 3
 popup/item_0/text = "Undo"
@@ -61,68 +105,98 @@ popup/item_1/id = 1
 popup/item_2/text = "Options"
 popup/item_2/id = 2
 
-[node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "View"
+flat = false
 switch_on_hover = true
 
-[node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "Image"
+flat = false
 switch_on_hover = true
 
-[node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "Layers"
+flat = false
 switch_on_hover = true
 
-[node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "Effects"
+flat = false
 switch_on_hover = true
 
-[node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/TopBar/MainToolBar/MenuBar"]
+[node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
+button_mask = 3
 text = "Help"
+flat = false
 switch_on_hover = true
 item_count = 1
 popup/item_0/text = "GitHub"
 popup/item_0/id = 0
+script = ExtResource("4_tefeu")
 
-[node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/TopBar/MainToolBar"]
+[node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/TopBar"]
+[node name="ProjectTabButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
+theme = ExtResource("4_tbgi4")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/TopBar/Button"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/TopBar/Button/HFlowContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
 layout_mode = 2
-stretch_mode = 1
-alignment_horizontal = 0
-alignment_vertical = 0
+size_flags_horizontal = 3
 
-[node name="ProjectThumbnail" type="TextureRect" parent="VBoxContainer/TopBar/Button/HFlowContainer/AspectRatioContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TopBar/Button/HFlowContainer"]
+[node name="ProjectThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/AspectRatioContainer"]
 layout_mode = 2
 
-[node name="ProjectName" type="Label" parent="VBoxContainer/TopBar/Button/HFlowContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer"]
 layout_mode = 2
 text = "Untitled Project"
 
-[node name="ProjectResolution" type="Label" parent="VBoxContainer/TopBar/Button/HFlowContainer/VBoxContainer"]
+[node name="ProjectResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer"]
 layout_mode = 2
 text = "800 x 600"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_tbgi4")
+text = "X"
 
 [node name="MainContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -153,14 +227,23 @@ layout_mode = 2
 layout_mode = 2
 text = "tool column R"
 
-[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="InfoText" type="Label" parent="VBoxContainer/StatusBar"]
+[node name="InfoText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+label_settings = ExtResource("3_sugp2")
 
-[node name="AppVersionText" type="Label" parent="VBoxContainer/StatusBar"]
+[node name="AppVersionText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
 layout_mode = 2
 text = "Vincent 0.0.1-prealpha"
+label_settings = ExtResource("3_sugp2")
