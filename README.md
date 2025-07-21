@@ -1,16 +1,15 @@
 # Vincent
 
-<img src="https://raw.githubusercontent.com/JackDotJS/vincent/main/resources/icon.png" align="right" height="150px">
+<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/icon.png" align="right" height="150px">
 
 A simple, modern, cross-platform image editor.
 
 <a href="https://godotengine.org/"><img src="https://img.shields.io/badge/Godot_Engine-000?style=for-the-badge&logoColor=478CBF&logo=godotengine&color=eff1f5" alt="Godot Engine" /></a>
 
-<a href="../../releases"><img src="https://img.shields.io/github/downloads/JackDotJS/vincent/total?style=for-the-badge" alt="Downloads" /></a>
-<a href="../../actions/workflows/dist-snapshot.yml"><img src="https://img.shields.io/github/actions/workflow/status/JackDotJS/vincent/dist-snapshot.yml?branch=main&label=SNAPSHOT%20BUILDS&style=for-the-badge" alt="Snapshots" /></a>
+<a href="../../releases"><img src="https://img.shields.io/github/downloads/sharkaccino/vincent/total?style=for-the-badge" alt="Downloads" /></a>
+<a href="../../actions/workflows/dist-snapshot.yml"><img src="https://img.shields.io/github/actions/workflow/status/sharkaccino/vincent/dist-snapshot.yml?branch=main&label=SNAPSHOT%20BUILDS&style=for-the-badge" alt="Snapshots" /></a>
 
-<a href="https://discord.gg/s5nQBxFPp2"><img src="https://img.shields.io/discord/803584639541313577?label=Chat&color=5865F2&logo=discord&logoColor=ffffff&style=for-the-badge" alt="Discord" /></a>
-<a href="../../discussions"><img src="https://img.shields.io/github/discussions/JackDotJS/vincent?label=Discussions&color=1B1F24&logo=github&logoColor=ffffff&style=for-the-badge" alt="GitHub Discussions" /></a>
+<a href="../../discussions"><img src="https://img.shields.io/github/discussions/sharkaccino/vincent?label=Discussions&color=1B1F24&logo=github&logoColor=ffffff&style=for-the-badge" alt="GitHub Discussions" /></a>
 
 ## Development Status
 

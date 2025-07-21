@@ -1,9 +1,4 @@
-# Information for Contributors
-
-Thank you so much for taking the time to contribute! Together, we can make something awesome out of this project. If you need help with anything, feel free to hit me up through [my Discord server](https://discord.gg/s5nQBxFPp2) or the [Discussions page](../../discussions) on this repository.
-
-
-## Contributing Guidelines
+# Contributing Guidelines
 
 <ol>
   <li>
@@ -46,7 +41,7 @@ Thank you so much for taking the time to contribute! Together, we can make somet
         Does the dependency provide functionality for more than one or two parts of our code?
       </li>
       <li>
-        Can vanilla JS/TS features provide similar functionality?
+        Can vanilla Godot features provide similar functionality?
       </li>
     </ul>
     <br>
