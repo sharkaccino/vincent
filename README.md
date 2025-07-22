@@ -34,10 +34,8 @@ A simple, modern, cross-platform image editor.
 - 🟡 = On hold
 - 🟢 = Complete
 
-## Suggestions & Contributions
-
-**Suggestions are always welcome!** Even if you aren't really a developer, feel free to use the [discussions page](../../discussions) to submit your ideas and any other feedback you might have.
+## Bug Reports & Code Contributions
 
 If you're here to submit a bug report, please use the [issues page](../../issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
 
-Finally, for those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
+For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
