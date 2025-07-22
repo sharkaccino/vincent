@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=9 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scenes/file_menu_button.gd" id="2_0wfyh"]
 [ext_resource type="LabelSettings" uid="uid://c8wamlmx6dv1" path="res://scenes/SmallLabelSettings.tres" id="3_sugp2"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://cvpaakfwqtouv" path="res://scenes/help_menu_button.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://ctbulxiamq28j" path="res://scenes/editor_viewport.gd" id="5_o6xl0"]
+[ext_resource type="Script" uid="uid://c8b4qcrfokpwa" path="res://scenes/canvas_margin.gd" id="5_tefeu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_o5qli"]
 
@@ -209,13 +211,20 @@ layout_mode = 2
 layout_mode = 2
 text = "tool column L"
 
-[node name="Viewport" type="ScrollContainer" parent="VBoxContainer/MainContainer"]
+[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
+script = ExtResource("5_o6xl0")
 
-[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/Viewport"]
+[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/EditorViewport"]
+layout_mode = 2
+theme_override_constants/margin_left = 475
+theme_override_constants/margin_top = 265
+script = ExtResource("5_tefeu")
+
+[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
 custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
 texture = SubResource("CanvasTexture_o5qli")
@@ -247,3 +256,5 @@ label_settings = ExtResource("3_sugp2")
 layout_mode = 2
 text = "Vincent 0.0.1-prealpha"
 label_settings = ExtResource("3_sugp2")
+
+[connection signal="resized" from="VBoxContainer/MainContainer/EditorViewport" to="VBoxContainer/MainContainer/EditorViewport/CanvasMargin" method="_on_viewport_resized"]
