@@ -23,10 +23,10 @@ A simple, modern, cross-platform image editor.
 | Basic flood tools | 🔴 |
 | Basic configuration/options menu | 🔴 |
 | Sidebars and UI panels | 🔴 |
-| Multi-project state management | 🔴 |
+| Multi-project state management | 🔵 |
 | Image layers | 🔴 |
 | Infinite undo/redo history | 🔴 |
-| Save/load project files | 🔴 |
+| Save/load project files | 🔵 |
 | Image layer modifiers | 🔴 |
 
 - 🔴 = Not started
