@@ -1,14 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=13 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scenes/file_menu_button.gd" id="2_0wfyh"]
 [ext_resource type="LabelSettings" uid="uid://c8wamlmx6dv1" path="res://scenes/SmallLabelSettings.tres" id="3_sugp2"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://cvpaakfwqtouv" path="res://scenes/help_menu_button.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://duaiqk3luk2rp" path="res://scenes/open_file_dialog.gd" id="4_tipki"]
 [ext_resource type="Script" uid="uid://ctbulxiamq28j" path="res://scenes/editor_viewport.gd" id="5_o6xl0"]
-[ext_resource type="Script" uid="uid://c8b4qcrfokpwa" path="res://scenes/canvas_margin.gd" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://cnhq77r5nch7u" path="res://scenes/project_tab_carousel.gd" id="6_85g3d"]
+[ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scenes/canvas.gd" id="9_choun"]
+[ext_resource type="Shader" uid="uid://lybc8kl440kd" path="res://scenes/main.tres" id="9_ya4ey"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_o5qli"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+shader = ExtResource("9_ya4ey")
+shader_parameter/Checkerboard_Lightness = 0.75
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_choun"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -70,18 +77,21 @@ popup/item_5/text = "Exit"
 popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
-[node name="OpenDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
 title = "Open a File"
 theme = ExtResource("4_tbgi4")
 ok_button_text = "Open"
 file_mode = 0
-filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif")
+access = 2
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
+script = ExtResource("4_tipki")
 
-[node name="SaveDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
 auto_translate_mode = 1
 theme = ExtResource("4_tbgi4")
-filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif")
+access = 2
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
 
 [node name="PopupMenuTest" type="PopupMenu" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
@@ -154,12 +164,23 @@ script = ExtResource("4_tefeu")
 [node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
 layout_mode = 2
 
-[node name="ProjectTabButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="ProjectTabCarousel" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+script = ExtResource("6_85g3d")
+
+[node name="ProjectTabTemplate" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 theme = ExtResource("4_tbgi4")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -171,31 +192,31 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/AspectRatioContainer"]
+[node name="ProjectThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer/AspectRatioContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer"]
+[node name="ProjectName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer/VBoxContainer"]
 layout_mode = 2
 text = "Untitled Project"
 
-[node name="ProjectResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer"]
+[node name="ProjectResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer/VBoxContainer"]
 layout_mode = 2
 text = "800 x 600"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabButton/HFlowContainer/VBoxContainer2"]
+[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ScrollContainer/ProjectTabCarousel/ProjectTabTemplate/HFlowContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("4_tbgi4")
 text = "X"
@@ -220,14 +241,17 @@ script = ExtResource("5_o6xl0")
 
 [node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/EditorViewport"]
 layout_mode = 2
-theme_override_constants/margin_left = 475
-theme_override_constants/margin_top = 265
-script = ExtResource("5_tefeu")
+
+[node name="CanvasBG" type="TextureRect" parent="VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
+material = SubResource("ShaderMaterial_eb6dy")
+layout_mode = 2
+texture = SubResource("Texture2DRD_choun")
+stretch_mode = 1
 
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
-custom_minimum_size = Vector2(800, 600)
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
-texture = SubResource("CanvasTexture_o5qli")
+script = ExtResource("9_choun")
 
 [node name="RightToolColumn" type="CenterContainer" parent="VBoxContainer/MainContainer"]
 layout_mode = 2
@@ -257,4 +281,6 @@ layout_mode = 2
 text = "Vincent 0.0.1-prealpha"
 label_settings = ExtResource("3_sugp2")
 
-[connection signal="resized" from="VBoxContainer/MainContainer/EditorViewport" to="VBoxContainer/MainContainer/EditorViewport/CanvasMargin" method="_on_viewport_resized"]
+[connection signal="resized" from="VBoxContainer/MainContainer/EditorViewport" to="VBoxContainer/MainContainer/EditorViewport/CanvasMargin" method="_on_editor_viewport_resized"]
+[connection signal="resized" from="VBoxContainer/MainContainer/EditorViewport/CanvasMargin" to="VBoxContainer/MainContainer/EditorViewport" method="_on_canvas_margin_resized"]
+[connection signal="resized" from="VBoxContainer/MainContainer/EditorViewport/CanvasMargin/Canvas" to="VBoxContainer/MainContainer/EditorViewport" method="_on_canvas_resized"]

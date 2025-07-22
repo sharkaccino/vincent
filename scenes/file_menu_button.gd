@@ -2,9 +2,9 @@ extends MenuButton
 
 func _on_id_pressed(id) -> void:
 	print(id)
-	if (id == 1): $OpenDialog.visible = true
+	if (id == 1): $OpenFileDialog.visible = true
 	# TODO: only use 3rd option when file location is NOT set
-	if (id == 3 || id == 4): $SaveDialog.visible = true
+	if (id == 3 || id == 4): $SaveFileDialog.visible = true
 	if (id == 5): get_tree().quit()
 
 func _ready() -> void:

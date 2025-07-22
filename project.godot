@@ -24,6 +24,10 @@ boot_splash/minimum_display_time=500
 
 driver/driver="Dummy"
 
+[autoload]
+
+StateManager="*res://state_manager.gd"
+
 [display]
 
 window/energy_saving/keep_screen_on=false
