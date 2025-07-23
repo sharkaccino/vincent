@@ -22,8 +22,8 @@ jobs:
 
       - name: Get Revision Hash
         run: 
-          REVISION=$(git rev-parse --short HEAD)
-          echo "SHA_SHORT=$REVISION" >> $GITHUB_ENV
+          REVISION=$(git rev-parse --short HEAD) &&
+          echo "SHA_SHORT=$REVISION" >> $GITHUB_ENV &&
           echo "$REVISION" > ./commit.txt
       
       - name: Set Up Godot
