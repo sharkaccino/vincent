@@ -54,7 +54,7 @@ func remove_project(target_project_id: int) -> void:
 		if project.id == target_project_id:
 			projects.remove_at(i)
 			projects_changed.emit()
-			project_removed.emit(i)
+			project_removed.emit(project.id)
 			
 			if i == projects.size() && last_project_id != 0:
 				set_active_project(last_project_id)
