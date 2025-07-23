@@ -318,7 +318,7 @@ label_settings = SubResource("LabelSettings_jkv2x")
 layout_mode = 2
 theme = ExtResource("4_tbgi4")
 theme_type_variation = &"AppVersionLabel"
-text = "Vincent 0.0.1-prealpha"
+text = "app_version_text"
 script = ExtResource("16_jbj1t")
 
 [connection signal="resized" from="MarginContainer/VBoxContainer/MainContainer/EditorViewport" to="MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin" method="_on_editor_viewport_resized"]
