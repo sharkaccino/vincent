@@ -5,13 +5,12 @@ extends HBoxContainer
 func updateTabs() -> void:
 	for oldTab in get_children():
 		if oldTab != template:
-			oldTab.free()
+			oldTab.queue_free()
 	
 	for newTabData in StateManager.projects:
 		var newTab = template.duplicate()
 		newTab.name = "ProjectTab"
-		newTab.get_node("HFlowContainer/VBoxContainer/ProjectName").text = newTabData.name
-		newTab.get_node("HFlowContainer/VBoxContainer/ProjectResolution").text = str(newTabData.canvas_size.x) + " x " + str(newTabData.canvas_size.y)
+		newTab.set_meta("project_id", newTabData.id)
 		newTab.visible = true
 		
 		add_child(newTab)

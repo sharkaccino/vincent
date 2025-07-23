@@ -79,6 +79,9 @@ border_color = Color(0.2, 0.2, 0.2, 1)
 corner_detail = 1
 
 [resource]
+default_font_size = 12
+AppVersionLabel/base_type = &"Label"
+AppVersionLabel/colors/font_color = Color(1, 1, 1, 0.501961)
 Button/styles/focus = SubResource("StyleBoxFlat_686jy")
 Button/styles/hover = SubResource("StyleBoxFlat_lx1ce")
 Button/styles/normal = SubResource("StyleBoxFlat_f7gwj")
