@@ -1,6 +1,6 @@
 # Vincent
 
-<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/icon.png" align="right" height="150px">
+<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/vincent/icon.png" align="right" height="150px">
 
 A simple, modern, cross-platform image editor.
 
@@ -39,3 +39,6 @@ A simple, modern, cross-platform image editor.
 If you're here to submit a bug report, please use the [issues page](../../issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
 
 For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
+
+## License
+Vincent is an [MIT licensed](LICENSE) open-source project. The only exceptions are the project's branding assets and logos, which are located at [`/resources/vincent`](./resources/vincent). These files are licensed as All Rights Reserved, and are included for reference only.

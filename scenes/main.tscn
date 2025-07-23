@@ -285,7 +285,7 @@ custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
 
-[node name="CanvasBG" type="TextureRect" parent="MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
+[node name="CanvasBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
 z_index = -1
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 2

@@ -18,7 +18,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=120
 run/low_processor_mode=true
 boot_splash/show_image=false
-config/icon="uid://bdq1iw62lrfk8"
+config/icon="uid://tsr3qvb2uqet"
 boot_splash/minimum_display_time=500
 
 [audio]

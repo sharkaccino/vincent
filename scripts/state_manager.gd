@@ -13,7 +13,6 @@ func get_new_project_id() -> int:
 	session_projects += 1
 	return session_projects
 
-# ASDF
 func get_project_data(target_project_id):
 	for i in projects.size():
 		var project = projects[i]
