@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://c05pkvbgupg1s" path="res://scripts/ui/project_tab_name.gd" id="9_muem4"]
 [ext_resource type="Shader" uid="uid://lybc8kl440kd" path="res://shaders/checkerboard.tres" id="9_ya4ey"]
 [ext_resource type="Script" uid="uid://dcxiqumwjdw47" path="res://scripts/ui/project_tab_resolution.gd" id="10_dp3eg"]
-[ext_resource type="Script" uid="uid://gp1rec5y5rgm" path="res://scenes/canvas_margin.gd" id="13_muem4"]
+[ext_resource type="Script" uid="uid://gp1rec5y5rgm" path="res://scripts/ui/canvas_margin.gd" id="13_muem4"]
 [ext_resource type="Script" uid="uid://c52jo6ikpq7n6" path="res://scripts/ui/app_version_text.gd" id="16_jbj1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
