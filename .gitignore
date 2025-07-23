@@ -8,3 +8,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Auto-generated files
+commit.txt

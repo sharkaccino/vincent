@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Vincent"
 config/description="Simple, modern, cross-platform image editor."
-config/version="0.0.1-prealpha"
+config/version="0.1.0_prealpha"
 run/main_scene="uid://qubiww5n0s3j"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=120

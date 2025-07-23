@@ -21,7 +21,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get Revision Hash
-        run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        run: 
+          REVISION=$(git rev-parse --short HEAD)
+          echo "SHA_SHORT=$REVISION" >> $GITHUB_ENV
+          echo "$REVISION" > ./commit.txt
       
       - name: Set Up Godot
         uses: chickensoft-games/setup-godot@v2.1.1
