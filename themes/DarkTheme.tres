@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://n486m4af3wkh"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://n486m4af3wkh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_686jy"]
 content_margin_left = 4.0
@@ -62,6 +62,9 @@ border_width_right = 8
 border_width_bottom = 4
 border_color = Color(0.2, 0.2, 0.2, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8p2j"]
+bg_color = Color(0.3, 0.3, 0.3, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxdt4"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 
@@ -89,6 +92,7 @@ MenuButton/font_sizes/font_size = 14
 MenuButton/styles/hover = SubResource("StyleBoxFlat_h8gcx")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_rfmka")
 MenuButton/styles/pressed = SubResource("StyleBoxFlat_ituia")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_f8p2j")
 PopupMenu/constants/item_end_padding = 15
 PopupMenu/constants/item_start_padding = 15
 PopupMenu/constants/v_separation = 10

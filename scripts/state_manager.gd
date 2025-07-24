@@ -32,13 +32,23 @@ func set_active_project(project_id: int) -> void:
 	active_project_id = project_id
 	active_project_changed.emit(project_id)
 
-func create_project(projectName: String, size: Vector2i, image: Image) -> void:
+func create_project(
+	projectName: String = "Untitled Project", 
+	base_image: Image = Image.create_empty(800, 600, false, Image.FORMAT_RGBAF)
+	) -> void:
 	var new_project_id = get_new_project_id()
 	projects.append({
 		"id": new_project_id,
 		"name": projectName,
-		"canvas_size": size,
-		"test_image_data": image
+		"canvas_size": base_image.get_size(),
+		"test_image_data": base_image,
+		"scroll_pos": Vector2(0, 0),
+		"autocenter": true,
+		"layers": [
+			{
+				"name": "Layer 1"
+			}
+		]
 	})
 	
 	set_active_project(new_project_id)
@@ -65,4 +75,22 @@ func load_project_file(path: String) -> void:
 	# TODO: support custom project files
 	var image = Image.load_from_file(path)
 	image.generate_mipmaps()
-	create_project(path.get_file(), image.get_size(), image)
+	create_project(path.get_file(), image)
+
+func dim_main_window() -> void:
+	var tree = get_tree()
+	var tween = tree.create_tween()
+	var target = tree.current_scene
+	get_viewport().gui_disable_input = true
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(target, "modulate", Color(0.6, 0.6, 0.6, 1), 0.5)
+
+func undim_main_window() -> void:
+	var tree = get_tree()
+	var tween = tree.create_tween()
+	var target = tree.current_scene
+	get_viewport().gui_disable_input = false
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(target, "modulate", Color(1,1,1,1), 0.5)

@@ -8,18 +8,12 @@ func center_scroll_bars() -> void:
 	var maxX = max(0, innerSize.x - containerSize.x)
 	var maxY = max(0, innerSize.y - containerSize.y)
 	
-	#print(maxX, " ", innerRect.size, " ", containerRect.size)
-	#print(maxY)
-	
-	
 	scroll_horizontal = floor(maxX / 2)
 	scroll_vertical = floor(maxY / 2)
-	
-	#print("scrolling area centered")
 
 func _on_resize() -> void:
 	await get_tree().process_frame
-	var newDimensions = get_rect().size
+	var newDimensions = get_size()
 	margin.add_theme_constant_override("margin_left", newDimensions.x / 2)
 	margin.add_theme_constant_override("margin_right", newDimensions.x / 2)
 	margin.add_theme_constant_override("margin_top", newDimensions.y / 2)

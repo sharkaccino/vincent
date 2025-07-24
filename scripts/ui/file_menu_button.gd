@@ -2,6 +2,7 @@ extends MenuButton
 
 func _on_id_pressed(id) -> void:
 	print(id)
+	if (id == 0): $NewProjectWindow.popup()
 	if (id == 1): $OpenFileDialog.visible = true
 	# TODO: only use 3rd option when file location is NOT set
 	if (id == 3 || id == 4): $SaveFileDialog.visible = true
