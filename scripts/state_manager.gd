@@ -76,21 +76,3 @@ func load_project_file(path: String) -> void:
 	var image = Image.load_from_file(path)
 	image.generate_mipmaps()
 	create_project(path.get_file(), image)
-
-func dim_main_window() -> void:
-	var tree = get_tree()
-	var tween = tree.create_tween()
-	var target = tree.current_scene
-	get_viewport().gui_disable_input = true
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(target, "modulate", Color(0.6, 0.6, 0.6, 1), 0.5)
-
-func undim_main_window() -> void:
-	var tree = get_tree()
-	var tween = tree.create_tween()
-	var target = tree.current_scene
-	get_viewport().gui_disable_input = false
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(target, "modulate", Color(1,1,1,1), 0.5)

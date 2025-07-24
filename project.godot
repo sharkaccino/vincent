@@ -28,6 +28,7 @@ driver/driver="Dummy"
 [autoload]
 
 StateManager="*res://scripts/state_manager.gd"
+PopupManager="*res://scripts/popup_manager.gd"
 
 [display]
 

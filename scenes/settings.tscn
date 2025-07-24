@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://hj01gxjv8yb"]
+
+[ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_5p8wc"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_r6d6q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_r6d6q")
+script = ExtResource("1_5p8wc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Search..."
+
+[node name="Tree" type="Tree" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp0rq0uhntafg"]
+[gd_scene load_steps=3 format=3 uid="uid://dp0rq0uhntafg"]
 
 [ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_fxmqd"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ offset_right = 500.0
 offset_bottom = 300.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_fxmqd")
 script = ExtResource("1_7ku5c")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

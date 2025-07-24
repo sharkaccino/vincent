@@ -1,10 +1,10 @@
 extends Window
 
-var scene_template = preload("res://scenes/new_image.tscn")
-var popup_contents = scene_template.instantiate()
+var scene_template
+var popup_contents
 
 func _on_open() -> void:
-	StateManager.dim_main_window()
+	PopupManager.dim_main_window()
 	
 	size = popup_contents.get_size()
 	
@@ -17,7 +17,7 @@ func _on_open() -> void:
 
 func _on_close() -> void:
 	hide()
-	StateManager.undim_main_window()
+	PopupManager.undim_main_window()
 	
 	# reset popup contents
 	popup_contents.queue_free()
@@ -25,6 +25,12 @@ func _on_close() -> void:
 	add_child(popup_contents)
 
 func _ready() -> void:
+	var target = get_meta("target_scene")
+	if target.length() == 0: return
+	
+	scene_template = load(target)
+	popup_contents = scene_template.instantiate()
 	add_child(popup_contents)
+	
 	about_to_popup.connect(_on_open)
 	close_requested.connect(_on_close)
