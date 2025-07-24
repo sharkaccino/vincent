@@ -1,28 +1,30 @@
 extends Window
 
-var scene = preload("res://scenes/new_image.tscn")
+var scene_template = preload("res://scenes/new_image.tscn")
+var popup_contents = scene_template.instantiate()
 
 func _on_open() -> void:
 	StateManager.dim_main_window()
 	
+	size = popup_contents.get_size()
+	
 	# set starting position of popup to center of main window
 	var main_window = get_tree().get_root()
+	@warning_ignore_start("integer_division")
 	position.x = main_window.position.x + (main_window.size.x / 2) - (size.x / 2)
 	position.y = main_window.position.y + (main_window.size.y / 2) - (size.y / 2)
+	@warning_ignore_restore("integer_division")
 
 func _on_close() -> void:
 	hide()
 	StateManager.undim_main_window()
 	
-	# completely empty the contents of the popup
-	for child in get_children():
-		child.queue_free()
-	
-	# add brand new instance of contents
-	# effectively resets everything, especially inputs
-	add_child(scene.instantiate())
+	# reset popup contents
+	popup_contents.queue_free()
+	popup_contents = scene_template.instantiate()
+	add_child(popup_contents)
 
 func _ready() -> void:
-	add_child(scene.instantiate())
+	add_child(popup_contents)
 	about_to_popup.connect(_on_open)
 	close_requested.connect(_on_close)
