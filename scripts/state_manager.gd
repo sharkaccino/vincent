@@ -54,7 +54,6 @@ func create_project(projectName: String, base_image: Image) -> void:
 	project_added.emit(new_project_id)
 
 func remove_project(target_project_id: int) -> void:
-	var last_project_id = 0
 	for i in projects.size():
 		var project = projects[i]
 		if project.id == target_project_id:
@@ -62,11 +61,12 @@ func remove_project(target_project_id: int) -> void:
 			projects_changed.emit()
 			project_removed.emit(project.id)
 			
-			if i == projects.size() && last_project_id != 0:
-				set_active_project(last_project_id)
-			
+			if target_project_id == active_project_id and projects.size() != 0:
+				if i == projects.size():
+					set_active_project(projects[i-1].id)
+				else:
+					set_active_project(projects[i].id)
 			break
-		last_project_id = project.id
 
 func load_project_file(path: String) -> void:
 	# TODO: support custom project files
