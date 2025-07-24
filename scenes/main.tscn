@@ -126,7 +126,6 @@ item_0/id = 0
 [node name="NewProjectWindow" type="Window" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
 disable_3d = true
 title = "Create Image"
-initial_position = 2
 size = Vector2i(500, 300)
 visible = false
 unresizable = true
@@ -331,4 +330,3 @@ script = ExtResource("16_jbj1t")
 
 [connection signal="resized" from="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport" to="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin" method="_on_editor_viewport_resized"]
 [connection signal="resized" from="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin" to="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport" method="_on_canvas_margin_resized"]
-[connection signal="resized" from="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin/Canvas" to="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport" method="_on_canvas_resized"]
