@@ -24,6 +24,7 @@ func _on_resize() -> void:
 	center_scroll_bars()
 	
 func _on_active_project_changed(_a) -> void:
+	await get_tree().process_frame
 	center_scroll_bars()
 
 func _ready() -> void:
@@ -31,5 +32,4 @@ func _ready() -> void:
 	StateManager.active_project_changed.connect(_on_active_project_changed)
 
 func _on_contents_resized() -> void:
-	await get_tree().process_frame
 	center_scroll_bars()

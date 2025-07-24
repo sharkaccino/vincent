@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp0rq0uhntafg"]
+[gd_scene load_steps=4 format=3 uid="uid://dp0rq0uhntafg"]
 
 [ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_fxmqd"]
+[ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image/cancel_button.gd" id="3_8qgn5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,21 +14,70 @@ size_flags_vertical = 3
 theme = ExtResource("1_fxmqd")
 script = ExtResource("1_7ku5c")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "width"
+size_flags_vertical = 3
 
-[node name="LineEdit2" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-placeholder_text = "height"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+button_mask = 3
+text = "Keep Aspect Ratio"
+flat = true
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Width:"
+
+[node name="WidthInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "pixels"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Height:"
+
+[node name="HeightInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "pixels"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "OK"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Cancel"
+script = ExtResource("3_8qgn5")

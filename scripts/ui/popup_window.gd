@@ -3,7 +3,7 @@ extends Window
 var scene_template
 var popup_contents
 
-func _on_open() -> void:
+func _on_about_to_popup() -> void:
 	PopupManager.dim_main_window()
 	
 	size = popup_contents.get_size()
@@ -15,14 +15,20 @@ func _on_open() -> void:
 	position.y = main_window.position.y + (main_window.size.y / 2) - (size.y / 2)
 	@warning_ignore_restore("integer_division")
 
-func _on_close() -> void:
-	hide()
+func close() -> void:
 	PopupManager.undim_main_window()
 	
 	# reset popup contents
 	popup_contents.queue_free()
 	popup_contents = scene_template.instantiate()
 	add_child(popup_contents)
+
+func _on_visibility_changed() -> void:
+	if not visible:
+		close()
+
+func _on_close_requested() -> void:
+	hide()
 
 func _ready() -> void:
 	var target = get_meta("target_scene")
@@ -32,5 +38,6 @@ func _ready() -> void:
 	popup_contents = scene_template.instantiate()
 	add_child(popup_contents)
 	
-	about_to_popup.connect(_on_open)
-	close_requested.connect(_on_close)
+	about_to_popup.connect(_on_about_to_popup)
+	visibility_changed.connect(_on_visibility_changed)
+	close_requested.connect(_on_close_requested)
