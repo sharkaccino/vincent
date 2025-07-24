@@ -9,5 +9,6 @@ func _on_project_removed(_i) -> void:
 		texture = null
 
 func _ready() -> void:
+	custom_minimum_size = Vector2(0, 0)
 	StateManager.active_project_changed.connect(_on_active_project_changed)
 	StateManager.project_removed.connect(_on_project_removed)

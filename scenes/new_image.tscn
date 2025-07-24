@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dp0rq0uhntafg"]
 
-[ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
+[ext_resource type="Script" uid="uid://b5siv70y7sbga" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_fxmqd"]
 [ext_resource type="Script" uid="uid://bw1lscoaenrao" path="res://scripts/ui/new_image/keep_aspect_ratio_checkbox.gd" id="3_1pgju"]
 [ext_resource type="Script" uid="uid://bmahoe85l5s65" path="res://scripts/ui/new_image/width_input.gd" id="3_4i1q4"]
@@ -31,18 +31,23 @@ shader_parameter/Color2 = Color(0.9, 0.9, 0.9, 1)
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 400.0
-offset_bottom = 300.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_fxmqd")
 script = ExtResource("1_7ku5c")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -119.5
+offset_right = 170.5
+offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
@@ -61,7 +66,6 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 theme_override_constants/separation = 8
 
 [node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -146,6 +150,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(150, 171)
@@ -157,6 +162,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "ratio_text"
+horizontal_alignment = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
@@ -194,6 +200,7 @@ stretch_mode = 1
 
 [node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 1

@@ -32,6 +32,7 @@ func on_dimensions_changed(_a) -> void:
 	else:
 		visible = false
 		debounce = false
+		
 		if current_tween != null:
 			current_tween.kill()
 			self["theme_override_colors/font_color"] = base_color
