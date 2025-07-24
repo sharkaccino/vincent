@@ -32,10 +32,7 @@ func set_active_project(project_id: int) -> void:
 	active_project_id = project_id
 	active_project_changed.emit(project_id)
 
-func create_project(
-	projectName: String = "Untitled Project", 
-	base_image: Image = Image.create_empty(800, 600, false, Image.FORMAT_RGBAF)
-	) -> void:
+func create_project(projectName: String, base_image: Image) -> void:
 	var new_project_id = get_new_project_id()
 	projects.append({
 		"id": new_project_id,

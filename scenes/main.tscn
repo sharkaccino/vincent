@@ -281,12 +281,12 @@ layout_mode = 2
 script = ExtResource("13_muem4")
 
 [node name="Canvas" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
+z_index = 1
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
 
 [node name="CanvasBackground" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MainContainer/EditorViewport/CanvasMargin"]
-z_index = -1
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 2
 texture = SubResource("Texture2DRD_choun")

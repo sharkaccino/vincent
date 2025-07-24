@@ -1,13 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp0rq0uhntafg"]
+[gd_scene load_steps=15 format=3 uid="uid://dp0rq0uhntafg"]
 
 [ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_fxmqd"]
+[ext_resource type="Script" uid="uid://bw1lscoaenrao" path="res://scripts/ui/new_image/keep_aspect_ratio_checkbox.gd" id="3_1pgju"]
+[ext_resource type="Script" uid="uid://bmahoe85l5s65" path="res://scripts/ui/new_image/width_input.gd" id="3_4i1q4"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image/cancel_button.gd" id="3_8qgn5"]
+[ext_resource type="Shader" uid="uid://lybc8kl440kd" path="res://shaders/checkerboard.tres" id="3_f0gsn"]
+[ext_resource type="Script" uid="uid://57wuyve0arig" path="res://scripts/ui/new_image/preview_box_container.gd" id="3_laxsb"]
+[ext_resource type="Script" uid="uid://6jr08noik71a" path="res://scripts/ui/new_image/height_input.gd" id="5_vimlo"]
+[ext_resource type="Script" uid="uid://caleo7mrr6btg" path="res://scripts/ui/new_image/swap_orientation_button.gd" id="6_426vg"]
+[ext_resource type="Script" uid="uid://iho3oap8wihm" path="res://scripts/ui/new_image/warning_label.gd" id="8_xnmkt"]
+[ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image/confirm_button.gd" id="9_kugo5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qgn5"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.24, 0.24, 1)
+corner_detail = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_laxsb"]
+shader = ExtResource("3_f0gsn")
+shader_parameter/Color1 = Color(1, 1, 1, 1)
+shader_parameter/Color2 = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_4i1q4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 500.0
+offset_right = 400.0
 offset_bottom = 300.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -21,10 +45,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -32,18 +56,34 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 8
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 button_mask = 3
 text = "Keep Aspect Ratio"
 flat = true
+script = ExtResource("3_1pgju")
+metadata/target_ratio = 0.0
+
+[node name="TargetRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_fxmqd")
+theme_type_variation = &"TargetRatioLabel"
+text = "target_ratio"
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/v_separation = 8
 columns = 3
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -51,8 +91,15 @@ layout_mode = 2
 text = "Width:"
 
 [node name="WidthInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1000.0
+value = 800.0
+rounded = true
 alignment = 1
+script = ExtResource("3_4i1q4")
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -63,21 +110,112 @@ layout_mode = 2
 text = "Height:"
 
 [node name="HeightInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1000.0
+value = 600.0
+rounded = true
 alignment = 1
+script = ExtResource("5_vimlo")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "pixels"
 
+[node name="SwapOrientationButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Swap Orientation"
+script = ExtResource("6_426vg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Background Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(150, 171)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ratio_text"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 0
+alignment_vertical = 0
+
+[node name="PreviewBoxContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment_vertical = 0
+script = ExtResource("3_laxsb")
+
+[node name="PreviewBox" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
+z_index = 1
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qgn5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBox"]
+layout_mode = 2
+theme_type_variation = &"NewImagePreviewLabel"
+text = "PREVIEW"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviewBoxBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
+material = SubResource("ShaderMaterial_laxsb")
+layout_mode = 2
+texture = SubResource("Texture2DRD_4i1q4")
+stretch_mode = 1
+
+[node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+text = "WARNING: Lengths greater than 16384 pixels are not supported by most devices. You may encounter issues!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("8_xnmkt")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 text = "OK"
+script = ExtResource("9_kugo5")
 
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 text = "Cancel"
 script = ExtResource("3_8qgn5")
