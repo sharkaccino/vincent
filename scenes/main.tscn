@@ -280,12 +280,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LeftToolColumn" type="CenterContainer" parent="PanelContainer/VBoxContainer/MainContainer"]
+[node name="LeftToolColumn" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MainContainer/LeftToolColumn"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MainContainer/LeftToolColumn"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "tool column L"
+text = "LEFT TOOL COLUMN"
+scroll_active = false
 
 [node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/MainContainer"]
 layout_mode = 2
@@ -324,12 +330,17 @@ custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
 
-[node name="RightToolColumn" type="CenterContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
+[node name="RightToolColumn" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/RightToolColumn"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/RightToolColumn"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "tool column R"
+text = "RIGHT TOOL COLUMN"
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
