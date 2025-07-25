@@ -1,4 +1,11 @@
-[gd_resource type="Theme" load_steps=27 format=3 uid="uid://n486m4af3wkh"]
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://n486m4af3wkh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljo17"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_686jy"]
 content_margin_left = 4.0
@@ -76,10 +83,10 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkt2a"]
 content_margin_top = 6.0
 bg_color = Color(0, 0, 0, 0.196078)
-corner_radius_top_left = 9999
-corner_radius_top_right = 9999
-corner_radius_bottom_right = 9999
-corner_radius_bottom_left = 9999
+corner_radius_top_right = 5
+corner_radius_bottom_right = 1
+corner_detail = 1
+expand_margin_right = 5.0
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_4l3u0"]
 
@@ -140,11 +147,17 @@ corner_detail = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p3sy"]
 content_margin_left = 6.0
 bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 5
+corner_detail = 1
+expand_margin_bottom = 5.0
 
 [resource]
 default_font_size = 12
 AppVersionLabel/base_type = &"Label"
 AppVersionLabel/colors/font_color = Color(1, 1, 1, 0.501961)
+BigScroll/base_type = &"ScrollContainer"
+BigScroll/styles/panel = SubResource("StyleBoxFlat_ljo17")
 Button/styles/focus = SubResource("StyleBoxFlat_686jy")
 Button/styles/hover = SubResource("StyleBoxFlat_lx1ce")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_8qt6r")
