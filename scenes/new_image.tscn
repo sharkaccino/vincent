@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp0rq0uhntafg"]
+[gd_scene load_steps=16 format=3 uid="uid://dp0rq0uhntafg"]
 
 [ext_resource type="Script" uid="uid://b5siv70y7sbga" path="res://scripts/ui/new_image/new_image_root.gd" id="1_7ku5c"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_fxmqd"]
@@ -27,6 +27,14 @@ shader_parameter/Color1 = Color(1, 1, 1, 1)
 shader_parameter/Color2 = Color(0.9, 0.9, 0.9, 1)
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_4i1q4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_426vg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.16, 0.16, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -67,20 +75,20 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
+alignment = 1
 
 [node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 button_mask = 3
 text = "Keep Aspect Ratio"
-flat = true
 script = ExtResource("3_1pgju")
 metadata/target_ratio = 0.0
 
 [node name="TargetRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_fxmqd")
+size_flags_vertical = 1
 theme_type_variation = &"TargetRatioLabel"
 text = "target_ratio"
 horizontal_alignment = 1
@@ -158,27 +166,19 @@ layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "ratio_text"
-horizontal_alignment = 1
-
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 stretch_mode = 0
-alignment_vertical = 0
+alignment_vertical = 2
 
 [node name="PreviewBoxContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-alignment_vertical = 0
 script = ExtResource("3_laxsb")
 
 [node name="PreviewBox" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
 z_index = 1
-clip_contents = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qgn5")
 
@@ -197,6 +197,22 @@ material = SubResource("ShaderMaterial_laxsb")
 layout_mode = 2
 texture = SubResource("Texture2DRD_4i1q4")
 stretch_mode = 1
+
+[node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBoxBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+text = "ratio_text"
+horizontal_alignment = 1
+
+[node name="PreviewBoxBoundary" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer2/AspectRatioContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_426vg")
 
 [node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

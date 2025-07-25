@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://hj01gxjv8yb"]
 
-[ext_resource type="Script" uid="uid://uwbimksk8kqw" path="res://scripts/ui/new_image/new_image_root.gd" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://b5siv70y7sbga" path="res://scripts/ui/new_image/new_image_root.gd" id="1_5p8wc"]
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_r6d6q"]
 
 [node name="Control" type="Control"]
