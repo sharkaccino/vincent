@@ -21,8 +21,8 @@ A simple, modern, cross-platform image editor.
 | Basic brush and eraser tools | 🔴 |
 | Basic selection tools | 🔴 |
 | Basic flood tools | 🔴 |
-| Basic configuration/options menu | 🔴 |
-| Sidebars and UI panels | 🔴 |
+| Basic configuration/options menu | 🔵 |
+| Sidebars and UI panels | 🔵 |
 | Multi-project state management | 🔵 |
 | Image layers | 🔴 |
 | Infinite undo/redo history | 🔴 |
