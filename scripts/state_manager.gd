@@ -25,7 +25,7 @@ func set_active_project(project_id: int) -> void:
 	assert(found, "Attempted to set active project to non-existant ID: %s (Project.session_ids: %s)" % [project_id, Project.session_ids])
 	
 	active_project_id = project_id
-	active_project_changed.emit(project_id)
+	active_project_changed.emit()
 
 func create_project(project_name: String, base_image: Image) -> void:
 	var new_project: Project = Project.new(base_image, project_name)
@@ -56,3 +56,6 @@ func load_project_file(path: String) -> void:
 	var image = Image.load_from_file(path)
 	image.generate_mipmaps()
 	create_project(path.get_file(), image)
+
+func get_active_project():
+	return get_project_data(active_project_id)
