@@ -19,14 +19,22 @@
 [ext_resource type="Script" uid="uid://gp1rec5y5rgm" path="res://scripts/ui/canvas_margin.gd" id="13_muem4"]
 [ext_resource type="Script" uid="uid://c52jo6ikpq7n6" path="res://scripts/ui/app_version_text.gd" id="16_jbj1t"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+shader = ExtResource("9_ya4ey")
+shader_parameter/Color1 = Color(1, 1, 1, 1)
+shader_parameter/Color2 = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_choun"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
 bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-shadow_color = Color(0, 0, 0, 0.25098)
-shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 8
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
@@ -39,13 +47,6 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
-shader = ExtResource("9_ya4ey")
-shader_parameter/Color1 = Color(1, 1, 1, 1)
-shader_parameter/Color2 = Color(0.8, 0.8, 0.8, 1)
-
-[sub_resource type="Texture2DRD" id="Texture2DRD_choun"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkv2x"]
 font_size = 12
@@ -313,8 +314,22 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("13_muem4")
 
-[node name="CanvasShadow" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="CanvasBackground" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 2
+texture = SubResource("Texture2DRD_choun")
+stretch_mode = 1
+
+[node name="CanvasShadow" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasBackground"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
@@ -323,23 +338,17 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="CanvasBackground" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
-material = SubResource("ShaderMaterial_eb6dy")
-layout_mode = 2
-texture = SubResource("Texture2DRD_choun")
-stretch_mode = 1
-
 [node name="Canvas" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="_center_crosshair_x" type="HSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="_center_crosshair_y" type="VSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
 layout_mode = 2
 mouse_filter = 2
 
