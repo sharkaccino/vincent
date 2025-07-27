@@ -1,5 +1,7 @@
 extends ScrollContainer
 
+# TODO: fix scrolling becoming offset when window is repeatedly resized
+
 @onready var margin = get_node("%CanvasMargin")
 
 var fix_left = 12

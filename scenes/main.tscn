@@ -68,7 +68,6 @@ unique_name_in_owner = true
 disable_3d = true
 visible = false
 unresizable = true
-force_native = true
 content_scale_mode = 1
 script = ExtResource("5_dp3eg")
 metadata/target_scene = ""
