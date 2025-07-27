@@ -1,8 +1,10 @@
 extends TextureRect
 
+# TODO: show the combined output of all layers merged together.
+
 func _on_active_project_changed(project_id) -> void:
 	var current_project = StateManager.get_project_data(project_id)
-	texture = ImageTexture.create_from_image(current_project.test_image_data)
+	texture = ImageTexture.create_from_image(current_project.layers[0].image_data)
 
 func _on_project_removed(_i) -> void:
 	if StateManager.projects.size() == 0:

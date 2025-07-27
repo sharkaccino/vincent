@@ -213,6 +213,7 @@ script = ExtResource("6_85g3d")
 [node name="ProjectTabTemplate" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+mouse_filter = 1
 script = ExtResource("7_trceg")
 metadata/project_id = 0
 
@@ -251,6 +252,7 @@ size_flags_vertical = 4
 
 [node name="ProjectTabName" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "Untitled Project"
 clip_text = true
 text_overrun_behavior = 3
@@ -258,6 +260,7 @@ script = ExtResource("9_muem4")
 
 [node name="ProjectTabResolution" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "800 x 600"
 script = ExtResource("10_dp3eg")
 
@@ -297,38 +300,49 @@ scroll_active = false
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
-[node name="EditorViewport" type="ScrollContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
+[node name="ViewportWrapper" type="PanelContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="EditorViewport" type="ScrollContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+layout_mode = 2
 theme_type_variation = &"BigScroll"
-horizontal_scroll_mode = 2
-vertical_scroll_mode = 2
 script = ExtResource("5_o6xl0")
 
-[node name="CanvasMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport"]
+[node name="CanvasMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("13_muem4")
 
-[node name="CanvasShadow" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin"]
+[node name="CanvasShadow" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
-[node name="CanvasOutline" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin"]
+[node name="CanvasOutline" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="CanvasBackground" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin"]
+[node name="CanvasBackground" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 2
 texture = SubResource("Texture2DRD_choun")
 stretch_mode = 1
 
-[node name="Canvas" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin"]
+[node name="Canvas" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="RightToolColumn" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
@@ -366,6 +380,3 @@ layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "app_version_text"
 script = ExtResource("16_jbj1t")
-
-[connection signal="resized" from="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport" to="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin" method="_on_editor_viewport_resized"]
-[connection signal="resized" from="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport/CanvasMargin" to="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/EditorViewport" method="_on_canvas_margin_resized"]
