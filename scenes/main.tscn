@@ -345,10 +345,12 @@ layout_mode = 2
 script = ExtResource("9_choun")
 
 [node name="_center_crosshair_x" type="HSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
 [node name="_center_crosshair_y" type="VSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
