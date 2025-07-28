@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=28 format=3 uid="uid://n486m4af3wkh"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://n486m4af3wkh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljo17"]
 content_margin_left = 12.0
@@ -109,14 +109,6 @@ border_width_right = 8
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfmka"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 8
-border_width_top = 4
-border_width_right = 8
-border_width_bottom = 4
-border_color = Color(0.8, 0.8, 0.8, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ituia"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 border_width_left = 8
@@ -125,17 +117,27 @@ border_width_right = 8
 border_width_bottom = 4
 border_color = Color(0.2, 0.2, 0.2, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfmka"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 4
+border_width_right = 8
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8p2j"]
 bg_color = Color(0.3, 0.3, 0.3, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxdt4"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4l3u0"]
+color = Color(0.2, 0.2, 0.2, 1)
+thickness = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4l3u0"]
-content_margin_left = 2.0
-content_margin_top = 8.0
-content_margin_right = 2.0
-content_margin_bottom = 8.0
+content_margin_top = 7.0
+content_margin_bottom = 7.0
 bg_color = Color(0.26, 0.26, 0.26, 1)
 border_width_left = 2
 border_width_top = 2
@@ -183,19 +185,25 @@ HSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_f7gwj")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3tkfh")
 MenuButton/font_sizes/font_size = 14
 MenuButton/styles/hover = SubResource("StyleBoxFlat_h8gcx")
+MenuButton/styles/hover_pressed = SubResource("StyleBoxFlat_ituia")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_rfmka")
 MenuButton/styles/pressed = SubResource("StyleBoxFlat_ituia")
 NewImagePreviewLabel/base_type = &"RichTextLabel"
 NewImagePreviewLabel/colors/default_color = Color(0.5, 0.5, 0.5, 0.501961)
 NewImagePreviewLabel/font_sizes/normal_font_size = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_f8p2j")
-PopupMenu/constants/item_end_padding = 15
-PopupMenu/constants/item_start_padding = 15
+PopupMenu/constants/h_separation = 6
+PopupMenu/constants/icon_max_width = 18
+PopupMenu/constants/item_end_padding = 10
+PopupMenu/constants/item_start_padding = 10
 PopupMenu/constants/v_separation = 10
 PopupMenu/font_sizes/font_separator_size = 14
 PopupMenu/font_sizes/font_size = 14
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_uxdt4")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_4l3u0")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_4l3u0")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4l3u0")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_4l3u0")
 TargetRatioLabel/base_type = &"Label"
 TargetRatioLabel/colors/font_color = Color(1, 1, 1, 0.392157)
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3p3sy")
