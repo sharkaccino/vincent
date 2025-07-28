@@ -1,6 +1,6 @@
 class_name Project
 
-static var session_ids = 0
+static var session_ids = -1
 
 class ViewportMetadata:
 	var autocenter: bool = true

@@ -8,12 +8,14 @@ signal project_added
 signal project_removed
 signal active_project_changed
 
-func get_project_data(target_project_id):
+var blank_project = Project.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBAF))
+
+func get_project_data(target_project_id) -> Project:
 	for i in projects.size():
 		var project = projects[i]
 		if project.id == target_project_id:
 			return project
-	return null
+	return blank_project
 
 func set_active_project(project_id: int) -> void:
 	var found = false
@@ -22,9 +24,11 @@ func set_active_project(project_id: int) -> void:
 			found = true
 			break
 	
-	assert(found, "Attempted to set active project to non-existant ID: %s (Project.session_ids: %s)" % [project_id, Project.session_ids])
+	if found:
+		active_project_id = project_id
+	else:
+		active_project_id = 0
 	
-	active_project_id = project_id
 	active_project_changed.emit()
 
 func create_project(project_name: String, base_image: Image) -> void:
@@ -44,11 +48,17 @@ func remove_project(target_project_id: int) -> void:
 			projects_changed.emit()
 			project_removed.emit(project.id)
 			
-			if target_project_id == active_project_id and projects.size() != 0:
-				if i == projects.size():
-					set_active_project(projects[i-1].id)
+			if target_project_id == active_project_id:
+				if projects.size() != 0:
+					if i == projects.size():
+						# switch to previous tab
+						set_active_project(projects[i-1].id)
+					else:
+						# switch to next tab
+						set_active_project(projects[i].id)
 				else:
-					set_active_project(projects[i].id)
+					# no other tabs available
+					set_active_project(0)
 			break
 
 func load_project_file(path: String) -> void:
@@ -57,5 +67,5 @@ func load_project_file(path: String) -> void:
 	image.generate_mipmaps()
 	create_project(path.get_file(), image)
 
-func get_active_project():
+func get_active_project() -> Project:
 	return get_project_data(active_project_id)
