@@ -13,6 +13,13 @@ func _on_id_pressed(id) -> void:
 func _ready() -> void:
 	var popup = get_popup()
 	
+	# shortcut test
+	popup.set_item_accelerator(0, KEY_MASK_CTRL | KEY_N)
+	popup.set_item_accelerator(1, KEY_MASK_CTRL | KEY_O)
+	popup.set_item_accelerator(3, KEY_MASK_CTRL | KEY_S)
+	popup.set_item_accelerator(4, KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_S)
+	popup.set_item_accelerator(5, KEY_MASK_CTRL | KEY_Q)
+	
 	new_project_window = PopupManager.create("res://scenes/new_image.tscn")
 	new_project_window.name = "NewImageDialog"
 	new_project_window.title = "Create Image"
