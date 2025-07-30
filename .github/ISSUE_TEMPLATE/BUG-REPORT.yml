@@ -6,6 +6,18 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+        
+        Before you submit, we **strongly** encourage you to search for your problem on our issue tracker. You may not be the first person to report it. Help us reduce duplicates!
+
+        https://github.com/sharkaccino/vincent/issues
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Which version of Vincent are you using?
+    validations:
+      required: true
 
   - type: textarea
     id: what-happened
@@ -13,14 +25,6 @@ body:
       label: What happened?
       description: |
         Please give as much detail as you can, and include steps to reproduce the problem.
-    validations:
-      required: true
-
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: Which version of Vincent are you using?
     validations:
       required: true
 
