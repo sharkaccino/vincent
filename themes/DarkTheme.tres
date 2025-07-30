@@ -192,6 +192,7 @@ NewImagePreviewLabel/base_type = &"RichTextLabel"
 NewImagePreviewLabel/colors/default_color = Color(0.5, 0.5, 0.5, 0.501961)
 NewImagePreviewLabel/font_sizes/normal_font_size = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_f8p2j")
+PopupMenu/colors/font_disabled_color = Color(0.87, 0.87, 0.87, 0.313726)
 PopupMenu/constants/h_separation = 6
 PopupMenu/constants/icon_max_width = 18
 PopupMenu/constants/item_end_padding = 10
