@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diy5cuaap66hn"
-path="res://.godot/imported/square-plus-2.svg-a93a5d14aaddb86aba731172fff422c1.ctex"
+uid="uid://pyuvmqel1t5c"
+path="res://.godot/imported/caret-down.svg-6ce52f040ceec89b51d2dccd8d739c89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/icons/square-plus-2.svg"
-dest_files=["res://.godot/imported/square-plus-2.svg-a93a5d14aaddb86aba731172fff422c1.ctex"]
+source_file="res://resources/icons/panel_layers/caret-down.svg"
+dest_files=["res://.godot/imported/caret-down.svg-6ce52f040ceec89b51d2dccd8d739c89.ctex"]
 
 [params]
 
