@@ -14,11 +14,19 @@ func _ready() -> void:
 	var popup = get_popup()
 	
 	# shortcut test
-	popup.set_item_accelerator(0, KEY_MASK_CTRL | KEY_N)
-	popup.set_item_accelerator(1, KEY_MASK_CTRL | KEY_O)
-	popup.set_item_accelerator(3, KEY_MASK_CTRL | KEY_S)
-	popup.set_item_accelerator(4, KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_S)
-	popup.set_item_accelerator(5, KEY_MASK_CTRL | KEY_Q)
+	
+	# for some reason this spews out tons of warnings
+	# if you dont ignore "int_as_enum_without_match"
+	# *and* cast each accelerator to a Key type.
+	# none of this is mentioned in the docs. yay
+	
+	@warning_ignore_start("int_as_enum_without_match")
+	popup.set_item_accelerator(0, (KEY_MASK_CTRL | KEY_N) as Key)
+	popup.set_item_accelerator(1, (KEY_MASK_CTRL | KEY_O) as Key)
+	popup.set_item_accelerator(3, (KEY_MASK_CTRL | KEY_S) as Key)
+	popup.set_item_accelerator(4, (KEY_MASK_CTRL | KEY_MASK_SHIFT | KEY_S) as Key)
+	popup.set_item_accelerator(5, (KEY_MASK_CTRL | KEY_Q) as Key)
+	@warning_ignore_restore("int_as_enum_without_match")
 	
 	new_project_window = PopupManager.create("res://scenes/new_image.tscn")
 	new_project_window.name = "NewImageDialog"
