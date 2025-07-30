@@ -9,7 +9,7 @@ func _notification(what: int) -> void:
 				return
 			visible = true
 
-func _get_drag_data(at_position: Vector2) -> int:
+func _get_drag_data(_a) -> int:
 	# set up preview node
 	# root_center lets the node to appear to be dragged 
 	# by its center rather than the top-left
