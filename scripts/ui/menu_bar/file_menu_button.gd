@@ -36,6 +36,8 @@ func _ready() -> void:
 	# TODO: populate with recently opened files
 	var recentPopup = PopupMenu.new()
 	recentPopup.set_name("RecentFilesSubmenu")
+	recentPopup.add_item("No recent files found.")
+	recentPopup.set_item_disabled(0, true)
 	
 	popup.set_item_submenu_node(2, recentPopup)
 	popup.id_pressed.connect(_on_id_pressed)
