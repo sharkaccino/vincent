@@ -40,6 +40,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
 shader = ExtResource("9_ya4ey")
+shader_parameter/use_screen_uv = true
 shader_parameter/grid_size = 4.0
 shader_parameter/color_a = Color(1, 1, 1, 1)
 shader_parameter/color_b = Color(0.8, 0.8, 0.8, 1)
