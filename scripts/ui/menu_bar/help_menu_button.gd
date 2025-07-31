@@ -1,7 +1,7 @@
 extends MenuButton
 
 func _on_id_pressed(id) -> void:
-	if (id == 0): OS.shell_open("https://github.com/sharkaccino/vincent")
+	if (id == 0): OS.shell_open("https://github.com/sharkaccino/vincent/issues")
 
 func _ready() -> void:
 	var popup = get_popup()

@@ -28,7 +28,7 @@ func _ready() -> void:
 	popup.set_item_accelerator(5, (KEY_MASK_CTRL | KEY_Q) as Key)
 	@warning_ignore_restore("int_as_enum_without_match")
 	
-	new_project_window = PopupManager.create("res://scenes/new_image.tscn")
+	new_project_window = PopupManager.create("res://scenes/new_image_dialog.tscn")
 	new_project_window.name = "NewImageDialog"
 	new_project_window.title = "Create Image"
 	add_child(new_project_window)

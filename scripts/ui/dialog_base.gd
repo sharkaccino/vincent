@@ -6,5 +6,6 @@ func update_size() -> void:
 	size = wrapper.size
 
 func _ready() -> void:
-	update_size()
-	wrapper.resized.connect(update_size)
+	if get_window().unresizable:
+		update_size()
+		wrapper.resized.connect(update_size)

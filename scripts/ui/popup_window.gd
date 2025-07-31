@@ -1,7 +1,7 @@
 extends Window
 
 var scene_template
-var popup_contents
+var popup_contents: Control
 
 func match_window_size() -> void:
 	print("window size matched")
@@ -11,7 +11,8 @@ func _on_about_to_popup() -> void:
 	PopupManager.dim_main_window()
 	
 	match_window_size()
-	popup_contents.resized.connect(match_window_size)
+	if unresizable:
+		popup_contents.resized.connect(match_window_size)
 	
 	# set starting position of popup to center of main window
 	var main_window = get_tree().get_root()

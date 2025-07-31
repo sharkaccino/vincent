@@ -95,6 +95,7 @@ color = Color(0.5, 0.5, 0.5, 1)
 vertical = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tkfh"]
+content_margin_left = 8.0
 bg_color = Color(0.1, 0.1, 0.1, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -207,5 +208,12 @@ PopupMenu/styles/panel = SubResource("StyleBoxFlat_4l3u0")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_4l3u0")
 TargetRatioLabel/base_type = &"Label"
 TargetRatioLabel/colors/font_color = Color(1, 1, 1, 0.392157)
+Tree/colors/parent_hl_line_color = Color(0.701961, 0.701961, 0.701961, 1)
+Tree/constants/draw_guides = 0
+Tree/constants/draw_relationship_lines = 1
+Tree/constants/inner_item_margin_left = 7
+Tree/constants/parent_hl_line_width = 2
+Tree/constants/relationship_line_width = 2
+Tree/constants/v_separation = 4
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3p3sy")
 VSeparator/constants/separation = 1
