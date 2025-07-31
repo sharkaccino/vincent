@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://7nuyswdmfbq7" path="res://scripts/ui/project_tabs/project_tab_thumbnail.gd" id="8_jbj1t"]
 [ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scripts/ui/canvas.gd" id="9_choun"]
 [ext_resource type="Script" uid="uid://c05pkvbgupg1s" path="res://scripts/ui/project_tabs/project_tab_name.gd" id="9_muem4"]
-[ext_resource type="Shader" uid="uid://lybc8kl440kd" path="res://shaders/checkerboard.tres" id="9_ya4ey"]
+[ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cgyo7g5hgjfml" path="res://resources/icons/arrow-back-up.svg" id="10_2wyq8"]
 [ext_resource type="Script" uid="uid://dcxiqumwjdw47" path="res://scripts/ui/project_tabs/project_tab_resolution.gd" id="10_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://bp605ja0em8rq" path="res://resources/icons/arrow-forward-up.svg" id="11_vxglm"]
@@ -40,8 +40,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
 shader = ExtResource("9_ya4ey")
-shader_parameter/Color1 = Color(1, 1, 1, 1)
-shader_parameter/Color2 = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/grid_size = 4.0
+shader_parameter/color_a = Color(1, 1, 1, 1)
+shader_parameter/color_b = Color(0.8, 0.8, 0.8, 1)
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_choun"]
 

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://6jr08noik71a" path="res://scripts/ui/new_image_dialog/height_input.gd" id="5_qnoot"]
 [ext_resource type="Script" uid="uid://caleo7mrr6btg" path="res://scripts/ui/new_image_dialog/swap_orientation_button.gd" id="6_j27eg"]
 [ext_resource type="Script" uid="uid://57wuyve0arig" path="res://scripts/ui/new_image_dialog/preview_box_container.gd" id="7_jpc14"]
-[ext_resource type="Shader" uid="uid://lybc8kl440kd" path="res://shaders/checkerboard.tres" id="8_00ytc"]
+[ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="8_00ytc"]
 [ext_resource type="Script" uid="uid://iho3oap8wihm" path="res://scripts/ui/new_image_dialog/warning_label.gd" id="9_1ld8p"]
 [ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image_dialog/confirm_button.gd" id="10_v2k65"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image_dialog/cancel_button.gd" id="11_aopu8"]
@@ -23,8 +23,9 @@ corner_detail = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_laxsb"]
 shader = ExtResource("8_00ytc")
-shader_parameter/Color1 = Color(1, 1, 1, 1)
-shader_parameter/Color2 = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/grid_size = 4.0
+shader_parameter/color_a = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/color_b = Color(1, 1, 1, 1)
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_4i1q4"]
 
