@@ -36,6 +36,8 @@ func set_active_project(project_id: int) -> void:
 	else:
 		active_project_id = 0
 	
+	print(active_project_id)
+	
 	active_project_changed.emit()
 
 func create_project(project_name: String, base_image: Image) -> void:

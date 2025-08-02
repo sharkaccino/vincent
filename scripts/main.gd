@@ -1,4 +1,4 @@
-extends Control;
+extends PanelContainer;
 
 func on_file_drop(files) -> void:
 	print(files)

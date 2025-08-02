@@ -11,6 +11,7 @@ class ViewportMetadata:
 class LayerEffect:
 	var custom_name: String
 	var id: String
+	var enabled: bool = true
 	var options: Variant
 
 class Layer:

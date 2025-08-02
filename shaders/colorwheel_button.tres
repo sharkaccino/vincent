@@ -27,7 +27,7 @@ linked_parent_graph_frame = 15
 op_type = 0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_j3cx5"]
-size = Vector2(984, 507)
+size = Vector2(984, 362)
 title = "Center UV"
 attached_nodes = PackedInt32Array(12, 14, 13, 2)
 
@@ -117,7 +117,7 @@ void fragment() {
 
 
 // FloatConstant:3
-	float n_out3p0 = 3.141593;
+	float n_out3p0 = 3.141590;
 
 
 // FloatOp:10
@@ -187,7 +187,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-116.666, -257.784)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1120, 40)

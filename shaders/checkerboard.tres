@@ -68,7 +68,7 @@ title = "screen uv"
 attached_nodes = PackedInt32Array(14, 6, 19, 31, 12)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_gd17x"]
-size = Vector2(844, 364)
+size = Vector2(844, 322)
 title = "texture uv"
 attached_nodes = PackedInt32Array(29, 24, 23, 21, 22)
 
@@ -214,7 +214,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-372.517, -202.401)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1840, -120)

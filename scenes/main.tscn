@@ -74,8 +74,7 @@ expand_margin_bottom = 1.0
 font_size = 12
 font_color = Color(1, 1, 1, 0.482353)
 
-[node name="Control" type="Control"]
-layout_mode = 3
+[node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,19 +94,11 @@ content_scale_mode = 1
 script = ExtResource("5_dp3eg")
 metadata/target_scene = ""
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
@@ -115,18 +106,18 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="TopBar" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="MainToolBar" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar"]
+[node name="MainToolBar" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
 layout_mode = 2
 
-[node name="MenuBar" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("4_vxglm")
 
-[node name="FileMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "File"
@@ -152,7 +143,7 @@ popup/item_5/icon = ExtResource("7_y6deb")
 popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
-[node name="OpenFileDialog" type="FileDialog" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
 title = "Open a File"
 ok_button_text = "Open"
 file_mode = 0
@@ -161,13 +152,13 @@ filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
 script = ExtResource("4_tipki")
 
-[node name="SaveFileDialog" type="FileDialog" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
 auto_translate_mode = 1
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
 
-[node name="EditMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "Edit
@@ -186,7 +177,7 @@ popup/item_2/icon = ExtResource("12_2f3dj")
 popup/item_2/id = 2
 script = ExtResource("6_0ld40")
 
-[node name="ViewMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "View"
@@ -194,15 +185,19 @@ flat = false
 switch_on_hover = true
 script = ExtResource("15_qkpxi")
 
-[node name="ImageMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "Image"
 flat = false
 switch_on_hover = true
+item_count = 1
+popup/item_0/text = "Statistics..."
+popup/item_0/icon = ExtResource("17_5q0nq")
+popup/item_0/id = 0
 script = ExtResource("16_j8jky")
 
-[node name="LayersMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "Layers"
@@ -210,7 +205,7 @@ flat = false
 switch_on_hover = true
 script = ExtResource("17_kmb1v")
 
-[node name="EffectsMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "Effects"
@@ -218,7 +213,7 @@ flat = false
 switch_on_hover = true
 script = ExtResource("18_fuf3a")
 
-[node name="HelpMenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
 layout_mode = 2
 button_mask = 3
 text = "Help"
@@ -233,35 +228,35 @@ popup/item_1/icon = ExtResource("17_5q0nq")
 popup/item_1/id = 1
 script = ExtResource("4_tefeu")
 
-[node name="FavoritesBar" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
+[node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ProjectTabScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar"]
+[node name="ProjectTabScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 vertical_scroll_mode = 0
 script = ExtResource("22_kmb1v")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectTabCarousel" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer"]
+[node name="ProjectTabCarousel" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_constants/separation = 2
 script = ExtResource("6_85g3d")
 
-[node name="ProjectTabTemplate" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
+[node name="ProjectTabTemplate" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 script = ExtResource("7_trceg")
 metadata/project_id = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -274,27 +269,27 @@ grow_vertical = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="ProjectTabThumbnail" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer"]
+[node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer"]
 texture_filter = 3
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("8_jbj1t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="ProjectTabName" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ProjectTabName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Untitled Project"
@@ -302,30 +297,30 @@ clip_text = true
 text_overrun_behavior = 3
 script = ExtResource("9_muem4")
 
-[node name="ProjectTabResolution" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ProjectTabResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "800 x 600"
 script = ExtResource("10_dp3eg")
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 stretch_mode = 0
 
-[node name="CloseProjectButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer2"]
+[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer2"]
 layout_mode = 2
 icon = ExtResource("22_yq6so")
 flat = true
 script = ExtResource("7_eb6dy")
 
-[node name="ProjectTabSpacerTemplate" type="Panel" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
+[node name="ProjectTabSpacerTemplate" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
 z_index = 4096
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vxglm")
 script = ExtResource("24_fv21b")
 
-[node name="ProjectTabSpacerHitBox" type="Panel" parent="PanelContainer/VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabSpacerTemplate"]
+[node name="ProjectTabSpacerHitBox" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabSpacerTemplate"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -336,52 +331,52 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vxglm")
 script = ExtResource("23_2f3dj")
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="MainContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer"]
+[node name="MainContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LeftToolColumn" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer"]
+[node name="LeftToolColumn" type="MarginContainer" parent="VBoxContainer/MainContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MainContainer/LeftToolColumn"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MainContainer/LeftToolColumn"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "LEFT TOOL COLUMN"
 scroll_active = false
 
-[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/MainContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer"]
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
-[node name="ViewportWrapper" type="PanelContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
+[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EditorViewport" type="ScrollContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
 layout_mode = 2
 theme_type_variation = &"BigScroll"
 script = ExtResource("5_o6xl0")
 
-[node name="CanvasMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport"]
+[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("13_muem4")
 
-[node name="CanvasBackground" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 2
 texture = SubResource("Texture2DRD_choun")
 stretch_mode = 1
 
-[node name="CanvasShadow" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasBackground"]
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasBackground"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -394,59 +389,59 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
-[node name="CanvasOutline" type="Panel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="Canvas" type="TextureRect" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("9_choun")
 
-[node name="_center_crosshair_x" type="HSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="_center_crosshair_y" type="VSeparator" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RightToolColumn" type="MarginContainer" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer"]
+[node name="RightToolColumn" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MainContainer/HSplitContainer/RightToolColumn"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "RIGHT TOOL COLUMN"
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="StatusBar" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="InfoText" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/StatusBar"]
+[node name="InfoText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_jkv2x")
 
-[node name="AppVersionText" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/StatusBar"]
+[node name="AppVersionText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
 layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "app_version_text"
