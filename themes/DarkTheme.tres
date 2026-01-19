@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://n486m4af3wkh"]
+[gd_resource type="Theme" load_steps=34 format=3 uid="uid://n486m4af3wkh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljo17"]
 content_margin_left = 12.0
@@ -88,10 +88,13 @@ corner_radius_bottom_right = 1
 corner_detail = 1
 expand_margin_right = 5.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lx1ce"]
+color = Color(0.2, 0.2, 0.2, 1)
+
 [sub_resource type="Texture2DRD" id="Texture2DRD_4l3u0"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_f7gwj"]
-color = Color(0.5, 0.5, 0.5, 1)
+color = Color(0.2, 0.2, 0.2, 1)
 vertical = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tkfh"]
@@ -147,6 +150,8 @@ border_width_bottom = 2
 border_color = Color(0.2, 0.2, 0.2, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p3sy"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkt2a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p3sy"]
@@ -156,6 +161,11 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 5
 corner_detail = 1
 expand_margin_bottom = 5.0
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_f7gwj"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_686jy"]
+color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [resource]
 default_font_size = 12
@@ -184,8 +194,9 @@ ColorPicker/constants/sv_height = 200
 ColorPicker/constants/sv_width = 200
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_jkt2a")
 HSeparator/constants/separation = 1
+HSeparator/styles/separator = SubResource("StyleBoxLine_lx1ce")
 HSplitContainer/constants/autohide = 0
-HSplitContainer/constants/minimum_grab_thickness = 15
+HSplitContainer/constants/minimum_grab_thickness = 9
 HSplitContainer/constants/separation = 1
 HSplitContainer/icons/grabber = SubResource("Texture2DRD_4l3u0")
 HSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_f7gwj")
@@ -214,6 +225,8 @@ PopupMenu/styles/panel = SubResource("StyleBoxFlat_4l3u0")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_4l3u0")
 TargetRatioLabel/base_type = &"Label"
 TargetRatioLabel/colors/font_color = Color(1, 1, 1, 0.392157)
+ToolColumn/base_type = &"PanelContainer"
+ToolColumn/styles/panel = SubResource("StyleBoxEmpty_3p3sy")
 Tree/colors/parent_hl_line_color = Color(0.701961, 0.701961, 0.701961, 1)
 Tree/constants/draw_guides = 0
 Tree/constants/draw_relationship_lines = 1
@@ -224,3 +237,8 @@ Tree/constants/v_separation = 4
 Tree/styles/focus = SubResource("StyleBoxEmpty_jkt2a")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3p3sy")
 VSeparator/constants/separation = 1
+VSplitContainer/constants/autohide = 0
+VSplitContainer/constants/minimum_grab_thickness = 9
+VSplitContainer/constants/separation = 1
+VSplitContainer/icons/grabber = SubResource("Texture2DRD_f7gwj")
+VSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_686jy")
