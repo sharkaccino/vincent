@@ -27,7 +27,7 @@ linked_parent_graph_frame = 15
 op_type = 0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_j3cx5"]
-size = Vector2(984, 362)
+size = Vector2(984, 507)
 title = "Center UV"
 attached_nodes = PackedInt32Array(12, 14, 13, 2)
 
@@ -61,7 +61,7 @@ default_input_values = [0, 0.0, 1, 2.0]
 default_input_values = [0, 1.0, 1, 1.0, 2, 1.0]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_lm7n7"]
-default_input_values = [0, 0.0, 1, 0.15]
+default_input_values = [0, 0.0, 1, 0.3]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_updcf"]
 constant = 3.14159
@@ -171,7 +171,7 @@ void fragment() {
 
 
 // FloatOp:25
-	float n_in25p1 = 0.15000;
+	float n_in25p1 = 0.30000;
 	float n_out25p0 = n_out23p0 + n_in25p1;
 
 
@@ -189,6 +189,7 @@ void fragment() {
 "
 mode = 1
 flags/light_only = false
+nodes/vertex/0/position = Vector2(400, 140)
 nodes/fragment/0/position = Vector2(1120, 40)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_l1sh4")
 nodes/fragment/2/position = Vector2(-1980, 140)
