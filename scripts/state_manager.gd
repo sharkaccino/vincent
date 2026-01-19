@@ -15,7 +15,7 @@ signal project_removed
 signal active_project_changed
 signal drag_announced
 
-var blank_project = Project.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBAF))
+var blank_project = Project.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
 func get_project_data(target_project_id) -> Project:
 	for i in projects.size():
