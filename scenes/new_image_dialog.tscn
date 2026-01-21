@@ -72,6 +72,7 @@ theme_override_constants/separation = 8
 [node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 button_mask = 3
 text = "Keep Aspect Ratio"
 script = ExtResource("3_beosn")
@@ -133,6 +134,7 @@ text = "pixels"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+focus_mode = 0
 text = "Swap Orientation"
 script = ExtResource("6_j27eg")
 
@@ -160,6 +162,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 mouse_filter = 1
 button_mask = 3
 
@@ -196,6 +199,7 @@ offset_bottom = 479.0
 [node name="AlphaChannelToggle" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 button_pressed = true
 text = "Use Alpha Channel"
 
@@ -272,11 +276,13 @@ alignment = 1
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+focus_mode = 0
 text = "OK"
 script = ExtResource("10_v2k65")
 
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+focus_mode = 0
 text = "Cancel"
 script = ExtResource("11_aopu8")

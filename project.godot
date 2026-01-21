@@ -13,6 +13,7 @@ config_version=5
 config/name="Vincent"
 config/description="Simple, modern, cross-platform image editor."
 config/version="0.1.0_prealpha"
+config/tags=PackedStringArray("application")
 run/main_scene="uid://qubiww5n0s3j"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=120
@@ -29,6 +30,7 @@ driver/driver="Dummy"
 
 StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
+Enums="*res://scripts/enums.gd"
 
 [display]
 

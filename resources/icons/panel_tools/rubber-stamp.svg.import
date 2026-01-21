@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqyh81cs2lmtl"
-path="res://.godot/imported/copy.svg-7b472dd09ecf1f0dd0e5543095d98be4.ctex"
+uid="uid://c7hmjkmu5p7g6"
+path="res://.godot/imported/rubber-stamp.svg-f3a2f56660e34256fd6cc4be04338c8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/icons/panel_layers/copy.svg"
-dest_files=["res://.godot/imported/copy.svg-7b472dd09ecf1f0dd0e5543095d98be4.ctex"]
+source_file="res://resources/icons/panel_tools/rubber-stamp.svg"
+dest_files=["res://.godot/imported/rubber-stamp.svg-f3a2f56660e34256fd6cc4be04338c8b.ctex"]
 
 [params]
 

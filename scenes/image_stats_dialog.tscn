@@ -56,5 +56,6 @@ script = ExtResource("4_eid2e")
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+focus_mode = 0
 text = "Close"
 script = ExtResource("5_qdlp3")

@@ -60,9 +60,9 @@ func _input(event: InputEvent) -> void:
 		else:
 			reset_triggers()
 
-func on_drag_announce(type: StateManager.DragType) -> void:
+func on_drag_announce(type: Enums.DragType) -> void:
 	dragging = true
-	is_project_tab = type == StateManager.DragType.PROJECT_TAB
+	is_project_tab = type == Enums.DragType.PROJECT_TAB
 
 func on_scrolled() -> void:
 	viewport.update_mouse_cursor_state()

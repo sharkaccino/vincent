@@ -27,7 +27,7 @@ func _get_drag_data(_a) -> int:
 	
 	visible = false
 	
-	StateManager.announce_drag(StateManager.DragType.PROJECT_TAB, { "index": get_index() })
+	StateManager.announce_drag(Enums.DragType.PROJECT_TAB, { "index": get_index() })
 	
 	return project_id
 

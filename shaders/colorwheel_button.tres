@@ -27,7 +27,7 @@ linked_parent_graph_frame = 15
 op_type = 0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_j3cx5"]
-size = Vector2(984, 507)
+size = Vector2(984, 507.0001)
 title = "Center UV"
 attached_nodes = PackedInt32Array(12, 14, 13, 2)
 
@@ -218,17 +218,17 @@ nodes/fragment/15/position = Vector2(-2020, -100)
 nodes/fragment/16/node = SubResource("VisualShaderNodeVectorCompose_syj84")
 nodes/fragment/16/position = Vector2(260, -140)
 nodes/fragment/18/node = SubResource("VisualShaderNodeVectorDecompose_ugtmn")
-nodes/fragment/18/position = Vector2(-720, 420)
+nodes/fragment/18/position = Vector2(-860, 440)
 nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_mouam")
-nodes/fragment/19/position = Vector2(-380, 360)
+nodes/fragment/19/position = Vector2(-520, 380)
 nodes/fragment/20/node = SubResource("VisualShaderNodeFloatOp_y7e27")
-nodes/fragment/20/position = Vector2(-380, 540)
+nodes/fragment/20/position = Vector2(-520, 560)
 nodes/fragment/21/node = SubResource("VisualShaderNodeFloatConstant_25mib")
-nodes/fragment/21/position = Vector2(-720, 620)
+nodes/fragment/21/position = Vector2(-860, 640)
 nodes/fragment/23/node = SubResource("VisualShaderNodeFloatOp_o03v6")
-nodes/fragment/23/position = Vector2(-60, 400)
+nodes/fragment/23/position = Vector2(-200, 420)
 nodes/fragment/24/node = SubResource("VisualShaderNodeSmoothStep_l30fm")
 nodes/fragment/24/position = Vector2(620, 320)
 nodes/fragment/25/node = SubResource("VisualShaderNodeFloatOp_lm7n7")
-nodes/fragment/25/position = Vector2(260, 520)
+nodes/fragment/25/position = Vector2(340, 560)
 nodes/fragment/connections = PackedInt32Array(7, 0, 8, 0, 7, 1, 8, 1, 8, 0, 9, 0, 3, 0, 10, 0, 10, 0, 9, 1, 9, 0, 11, 0, 2, 0, 12, 1, 2, 0, 13, 1, 12, 0, 14, 0, 13, 0, 14, 1, 16, 0, 4, 0, 14, 0, 7, 0, 18, 0, 19, 0, 18, 1, 20, 0, 21, 0, 20, 1, 21, 0, 19, 1, 19, 0, 23, 0, 20, 0, 23, 1, 14, 0, 18, 0, 4, 0, 0, 0, 23, 0, 25, 0, 23, 0, 24, 0, 25, 0, 24, 1, 24, 0, 0, 1, 11, 0, 16, 0, 23, 0, 16, 1)

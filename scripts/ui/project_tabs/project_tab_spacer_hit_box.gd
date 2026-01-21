@@ -4,7 +4,7 @@ extends Panel
 
 func is_valid() -> bool:
 	var dragging = StateManager.dragging
-	var is_project_tab = StateManager.current_drag_type == StateManager.DragType.PROJECT_TAB
+	var is_project_tab = StateManager.current_drag_type == Enums.DragType.PROJECT_TAB
 	return dragging and is_project_tab
 
 func _can_drop_data(_a, _d) -> bool:

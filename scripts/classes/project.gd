@@ -1,4 +1,4 @@
-class_name Project
+class_name VincentProject
 
 static var session_ids = -1
 

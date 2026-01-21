@@ -7,7 +7,7 @@ var raw_text: String
 func refresh_data() -> void:
 	clear()
 	
-	var current_project: Project = StateManager.get_active_project()
+	var current_project: VincentProject = StateManager.get_active_project()
 	var root = create_item()
 	
 	if current_project.id == 0:

@@ -50,13 +50,13 @@ func shrink_spacer() -> void:
 	set_tween_target(0)
 
 func on_mouse_leave() -> void:
-	if StateManager.dragging and StateManager.current_drag_type == StateManager.DragType.PROJECT_TAB:
+	if StateManager.dragging and StateManager.current_drag_type == Enums.DragType.PROJECT_TAB:
 		set_tween_target(0)
 
 func handle_begin_drag(type: int) -> void:
 	if name.containsn("template"):
 		return
-	if type == StateManager.DragType.PROJECT_TAB:
+	if type == Enums.DragType.PROJECT_TAB:
 		var data = StateManager.current_drag_data
 		var spacer_index = get_index()
 		if (data.index + 1) == spacer_index:

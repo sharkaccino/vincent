@@ -1,7 +1,5 @@
 extends Node
 
-enum DragType { PROJECT_TAB, TOOL_PANEL }
-
 var projects = []
 var active_project_id = 0
 
@@ -9,15 +7,18 @@ var dragging = false
 var current_drag_type
 var current_drag_data
 
+var active_tool = Enums.ToolType.CURSOR
+
 signal projects_changed
 signal project_added
 signal project_removed
 signal active_project_changed
 signal drag_announced
+signal active_tool_changed
 
-var blank_project = Project.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
+var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
-func get_project_data(target_project_id) -> Project:
+func get_project_data(target_project_id) -> VincentProject:
 	for i in projects.size():
 		var project = projects[i]
 		if project.id == target_project_id:
@@ -41,7 +42,7 @@ func set_active_project(project_id: int) -> void:
 	active_project_changed.emit()
 
 func create_project(project_name: String, base_image: Image) -> void:
-	var new_project: Project = Project.new(base_image, project_name)
+	var new_project: VincentProject = VincentProject.new(base_image, project_name)
 	projects.append(new_project)
 	
 	set_active_project(new_project.id)
@@ -76,7 +77,7 @@ func load_project_file(path: String) -> void:
 	image.generate_mipmaps()
 	create_project(path.get_file(), image)
 
-func get_active_project() -> Project:
+func get_active_project() -> VincentProject:
 	return get_project_data(active_project_id)
 
 func move_project(target_project_id: int, target_position: int) -> void:
@@ -111,13 +112,18 @@ func move_project(target_project_id: int, target_position: int) -> void:
 	
 	projects_changed.emit()
 
-func announce_drag(type: DragType, data: Variant) -> void:
+func announce_drag(type: Enums.DragType, data: Variant) -> void:
 	assert(not dragging, "drag announced while already dragging")
 	current_drag_data = data
 	current_drag_type = type
 	dragging = true
 	drag_announced.emit(type)
-		
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		dragging = false
+
+func set_active_tool(type: Enums.ToolType) -> void:
+	print("set tool: ", type)
+	active_tool = type
+	active_tool_changed.emit(type)

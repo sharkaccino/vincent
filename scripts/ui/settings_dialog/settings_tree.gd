@@ -15,10 +15,12 @@ const tree_struct = {
 		"Plugins"
 	],
 	"Display": [
+		"Interface",
 		"Viewport",
 		"Themes"
 	],
 	"Input": [
+		"Pen Pressure",
 		"Keymapping"
 	],
 	"Advanced": [

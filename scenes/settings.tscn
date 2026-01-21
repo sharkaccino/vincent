@@ -46,11 +46,13 @@ script = ExtResource("3_f4mfi")
 
 [node name="SaveButton" type="Button" parent="HSplitContainer/TreeContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 disabled = true
 text = "Save Changes"
 
 [node name="DiscardButton" type="Button" parent="HSplitContainer/TreeContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 disabled = true
 text = "Discard Changes"
 
