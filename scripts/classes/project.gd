@@ -7,6 +7,7 @@ class ViewportMetadata:
 	var x: float = 0
 	var y: float = 0
 	var zoom: float = 1
+	var rotate: float = 0
 
 class LayerEffect:
 	var custom_name: String

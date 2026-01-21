@@ -31,6 +31,7 @@ driver/driver="Dummy"
 StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
 Enums="*res://scripts/enums.gd"
+Utils="*res://scripts/utils.gd"
 
 [display]
 

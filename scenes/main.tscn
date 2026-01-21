@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=90 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://6u3md3u260ov" path="res://scripts/ui/menu_bar/menu_bar.gd" id="4_vxglm"]
 [ext_resource type="Script" uid="uid://bn7a4d1in5nmi" path="res://scripts/ui/popup_window.gd" id="5_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://c7hpyc6jjllem" path="res://resources/icons/folder-open.svg" id="5_jscy8"]
-[ext_resource type="Script" uid="uid://ctbulxiamq28j" path="res://scripts/ui/viewport.gd" id="5_o6xl0"]
+[ext_resource type="Script" uid="uid://ctbulxiamq28j" path="res://scripts/ui/viewport/viewport.gd" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://be2icase8uahf" path="res://resources/icons/photo-plus.svg" id="5_yq6so"]
 [ext_resource type="Script" uid="uid://c1gncuc1yrjt3" path="res://scripts/ui/menu_bar/edit_menu_button.gd" id="6_0ld40"]
 [ext_resource type="Script" uid="uid://cnhq77r5nch7u" path="res://scripts/ui/project_tabs/project_tab_carousel.gd" id="6_85g3d"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dubijqfe7lnyn" path="res://scripts/ui/project_tabs/project_tab.gd" id="7_trceg"]
 [ext_resource type="Texture2D" uid="uid://oha7la45n617" path="res://resources/icons/power.svg" id="7_y6deb"]
 [ext_resource type="Script" uid="uid://7nuyswdmfbq7" path="res://scripts/ui/project_tabs/project_tab_thumbnail.gd" id="8_jbj1t"]
-[ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scripts/ui/canvas.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scripts/ui/viewport/canvas.gd" id="9_choun"]
 [ext_resource type="Script" uid="uid://c05pkvbgupg1s" path="res://scripts/ui/project_tabs/project_tab_name.gd" id="9_muem4"]
 [ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cgyo7g5hgjfml" path="res://resources/icons/arrow-back-up.svg" id="10_2wyq8"]
@@ -70,6 +70,13 @@
 [ext_resource type="Script" uid="uid://b7lunga0ryjmw" path="res://scripts/ui/panels/tools/tool_zoom.gd" id="62_ih3m7"]
 [ext_resource type="Script" uid="uid://cdgurum8dv0k4" path="res://scripts/ui/panels/tools/tool_text.gd" id="64_11yus"]
 [ext_resource type="Script" uid="uid://bcrocxwln08a1" path="res://scripts/ui/panels/tools/tool_shapes.gd" id="66_b6ruc"]
+[ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
+[ext_resource type="Script" uid="uid://tksro1ugiv0v" path="res://scripts/ui/viewport/channel_mode.gd" id="70_j4bwh"]
+[ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
+[ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
+[ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
+[ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
+[ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
 
@@ -119,6 +126,13 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
+color = Color(0, 1, 0, 1)
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ygd8o"]
+color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkv2x"]
 font_size = 12
@@ -674,38 +688,48 @@ script = ExtResource("66_b6ruc")
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
-[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kmb1v")
 
-[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 layout_mode = 2
-theme_type_variation = &"BigScroll"
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
+scroll_deadzone = 4
 script = ExtResource("5_o6xl0")
 
-[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport"]
+[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="CanvasDecontain" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="CanvasWrapper" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
-[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasDecontain"]
+[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(128, 128)
 
-[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasDecontain/CanvasTransformControl"]
+[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 1
 anchors_preset = 15
@@ -716,7 +740,7 @@ grow_vertical = 2
 texture = SubResource("Texture2DRD_choun")
 stretch_mode = 1
 
-[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasDecontain/CanvasTransformControl/CanvasBackground"]
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasBackground"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -729,7 +753,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
-[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasDecontain/CanvasTransformControl"]
+[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -739,7 +763,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasDecontain/CanvasTransformControl"]
+[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -750,13 +774,107 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("9_choun")
 
-[node name="_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 layout_mode = 2
-mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+text = "print scrollbar values"
+script = ExtResource("70_ksmap")
 
-[node name="_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/ViewportWrapper"]
+[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ksmap")
+
+[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
+
+[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+layout_mode = 2
+text = "View Channel:"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 6
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Only Color"
+popup/item_1/id = 1
+popup/item_2/text = "Red"
+popup/item_2/id = 2
+popup/item_3/text = "Green"
+popup/item_3/id = 3
+popup/item_4/text = "Blue"
+popup/item_4/id = 4
+popup/item_5/text = "Alpha"
+popup/item_5/id = 5
+script = ExtResource("70_j4bwh")
+
+[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+icon = ExtResource("70_a82wo")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("72_ksmap")
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+layout_mode = 2
+min_value = -360.0
+max_value = 360.0
+allow_greater = true
+allow_lesser = true
+suffix = "°"
+select_all_on_focus = true
+script = ExtResource("72_xljpf")
+
+[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+icon = ExtResource("45_0loja")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("73_j4bwh")
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+layout_mode = 2
+min_value = 25.0
+max_value = 3200.0
+step = 25.0
+value = 100.0
+suffix = "%"
+select_all_on_focus = true
+script = ExtResource("71_gdvew")
 
 [node name="RightToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
 unique_name_in_owner = true
