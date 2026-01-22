@@ -17,7 +17,10 @@ func handle_external_change() -> void:
 func check_control_activation() -> void:
 	var project_opened = StateManager.active_project_id != 0
 	editable = project_opened
-	if (!project_opened): value = 100
+	if (!project_opened):
+		# doing this instead of value = 100 incase autofit is enabled
+		get_line_edit().text = "100"
+		apply()
 
 func _ready() -> void:
 	check_control_activation()
