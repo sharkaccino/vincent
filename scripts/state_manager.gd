@@ -136,7 +136,7 @@ func set_active_tool(type: Enums.ToolType) -> void:
 
 func set_zoom_level(new_value: float) -> void:
 	var active_project = get_active_project()
-	var clamped = clamp(new_value / 100, 0.25, 32)
+	var clamped = clamp(new_value / 100, 0.05, 32)
 	if (active_project.viewport.zoom != clamped):
 		active_project.viewport.zoom = clamped
 		zoom_level_changed.emit()

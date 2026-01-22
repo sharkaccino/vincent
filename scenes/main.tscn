@@ -902,9 +902,9 @@ script = ExtResource("73_j4bwh")
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
 layout_mode = 2
-min_value = 25.0
+min_value = 5.0
 max_value = 3200.0
-step = 25.0
+step = 5.0
 value = 100.0
 suffix = "%"
 select_all_on_focus = true
