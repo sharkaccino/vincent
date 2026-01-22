@@ -797,26 +797,40 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 7
+text = "cursor_position"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
 layout_mode = 2
 text = "View Channel:"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
 layout_mode = 2
 focus_mode = 0
 selected = 0
@@ -835,10 +849,10 @@ popup/item_5/text = "Alpha"
 popup/item_5/id = 5
 script = ExtResource("70_j4bwh")
 
-[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 focus_mode = 0
@@ -848,7 +862,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("72_ksmap")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl"]
 layout_mode = 2
 min_value = -360.0
 max_value = 360.0
@@ -859,10 +873,10 @@ custom_arrow_step = 15.0
 select_all_on_focus = true
 script = ExtResource("72_xljpf")
 
-[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer"]
+[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 focus_mode = 0
@@ -872,7 +886,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("73_j4bwh")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
 layout_mode = 2
 min_value = 25.0
 max_value = 3200.0
