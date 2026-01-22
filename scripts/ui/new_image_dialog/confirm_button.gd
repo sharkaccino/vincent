@@ -3,13 +3,12 @@ extends Button
 @onready var width_input = %WidthInput
 @onready var height_input = %HeightInput
 @onready var color_input = %BackgroundColorButton
-@onready var alpha_checkbox = %AlphaChannelToggle
 
 func _on_pressed() -> void:
 	get_window().hide()
 	var width = width_input.value
 	var height = height_input.value
-	var format: Image.Format = Image.FORMAT_RGBA8 if alpha_checkbox.button_pressed else Image.FORMAT_RGB8
+	var format: Image.Format = Image.FORMAT_RGBA8
 	var base_image = Image.create_empty(width, height, false, format)
 
 	base_image.fill(color_input.color)
