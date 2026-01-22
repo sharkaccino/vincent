@@ -1,5 +1,7 @@
 extends Button
 
+var zoom_icon = load("res://resources/icons/panel_tools/zoom.svg")
+var zoom_fit_icon = load("res://resources/icons/zoom-scan.svg")
 @onready var spinbox: SpinBox = get_node("../SpinBox")
 
 func _pressed() -> void:
@@ -7,11 +9,13 @@ func _pressed() -> void:
 	if (active_project.viewport.zoom == 1 && active_project.viewport.autofit == false):
 		StateManager.set_autofit(true)
 		spinbox.get_line_edit().text = "Fit"
+		icon = zoom_fit_icon
 	else:
 		StateManager.set_zoom_level(100)
 		StateManager.set_autofit(false)
 		spinbox.get_line_edit().text = "100"
 		spinbox.apply()
+		icon = zoom_icon
 
 func check_control_activation() -> void:
 	var project_opened = StateManager.active_project_id != 0
