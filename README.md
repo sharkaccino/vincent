@@ -17,16 +17,16 @@ A simple, modern, cross-platform image editor.
 
 | Feature | Status |
 | :-- | :---: |
-| Basic canvas controls | 🔴 |
+| Basic canvas controls | 🔵 |
 | Basic brush and eraser tools | 🔴 |
 | Basic selection tools | 🔴 |
 | Basic flood tools | 🔴 |
 | Basic configuration/options menu | 🔵 |
 | Sidebars and UI panels | 🔵 |
-| Multi-project state management | 🔵 |
-| Image layers | 🔴 |
+| Multi-project state management | 🟢 |
+| Image layers | 🔵 |
 | Infinite undo/redo history | 🔴 |
-| Save/load project files | 🔵 |
+| Save/load project files | 🟡 |
 | Image layer modifiers | 🔴 |
 
 - 🔴 = Not started
