@@ -17,6 +17,10 @@ signal drag_announced
 signal active_tool_changed
 signal zoom_level_changed
 signal autofit_changed
+@warning_ignore("unused_signal")
+signal pointer_move
+@warning_ignore("unused_signal")
+signal view_mode_changed
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 

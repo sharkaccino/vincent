@@ -27,6 +27,7 @@ var name: String
 var size: Vector2i
 var viewport: ViewportMetadata
 var layers: Array[Layer]
+var active_layer_index: int = 0
 
 func _init(base_image: Image, project_name: String = "Untitled"):
 	# set id

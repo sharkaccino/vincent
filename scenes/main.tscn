@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=93 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -70,10 +70,12 @@
 [ext_resource type="Script" uid="uid://b7lunga0ryjmw" path="res://scripts/ui/panels/tools/tool_zoom.gd" id="62_ih3m7"]
 [ext_resource type="Script" uid="uid://cdgurum8dv0k4" path="res://scripts/ui/panels/tools/tool_text.gd" id="64_11yus"]
 [ext_resource type="Script" uid="uid://bcrocxwln08a1" path="res://scripts/ui/panels/tools/tool_shapes.gd" id="66_b6ruc"]
+[ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
 [ext_resource type="Script" uid="uid://tksro1ugiv0v" path="res://scripts/ui/viewport/channel_mode.gd" id="70_j4bwh"]
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
+[ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
@@ -126,6 +128,14 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xaipn"]
+shader = ExtResource("69_2s0kr")
+shader_parameter/single_channel = false
+shader_parameter/red_enabled = true
+shader_parameter/green_enabled = true
+shader_parameter/blue_enabled = true
+shader_parameter/alpha_enabled = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -767,6 +777,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 unique_name_in_owner = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_xaipn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -797,14 +808,17 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 7
-text = "cursor_position"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 8
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+text = "layer: [...]
+pos: [...]"
+script = ExtResource("71_ygd8o")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
 layout_mode = 2

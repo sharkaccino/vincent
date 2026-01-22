@@ -22,3 +22,12 @@ enum ToolType {
 	TEXT,
 	SHAPES
 }
+
+enum ViewMode {
+	ALL_CHANNELS,
+	ONLY_COLOR,
+	RED,
+	GREEN,
+	BLUE,
+	ALPHA
+}

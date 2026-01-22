@@ -1,7 +1,5 @@
 extends ScrollContainer
 
-# TODO: fix scrolling becoming offset when window is repeatedly resized
-
 @onready var margin = get_node("%CanvasMargin")
 @onready var canvas_wrapper = get_node("%CanvasWrapper")
 @onready var canvas_control = get_node("%CanvasTransformControl")
@@ -76,6 +74,12 @@ func on_scrolled() -> void:
 func on_resized() -> void:
 	print("new viewport size: ", get_size())
 	recalc_transforms()
+
+func _input(event: InputEvent) -> void:
+	if (event is not InputEventMouseMotion): return
+	
+	# TODO: get pointer position relative to canvas
+	StateManager.pointer_move.emit(event.position - get_global_rect().position)
 
 func _ready() -> void:
 	margin.visible = false
