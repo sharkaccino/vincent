@@ -13,5 +13,12 @@ func _pressed() -> void:
 	var target_x = viewport.get_size().x + canvas_size_rotated.x - h_bar.size.y
 	var target_y = viewport.get_size().y + canvas_size_rotated.y - v_bar.size.x
 	
+	print("[DEBUG] current X: ", h_bar.value, " current Y: ", v_bar.value)
 	print("[DEBUG] current max X: ", h_bar.max_value, " current max Y: ", v_bar.max_value)
 	print("[DEBUG] target max X: ", target_x, " target max Y: ", target_y)
+	
+	#h_bar.set_deferred("max_value", target_x)
+	#v_bar.set_deferred("max_value", target_y)
+	#
+	#h_bar.set_deferred("value", target_x / 4)
+	#v_bar.set_deferred("value", target_y / 4)
