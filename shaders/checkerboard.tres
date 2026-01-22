@@ -62,12 +62,12 @@ default_input_values = [0, false, 1, Vector2(1, 1), 2, Vector2(0, 0)]
 op_type = 3
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_mcqkg"]
-size = Vector2(864.00006, 364)
+size = Vector2(864, 322)
 title = "screen uv"
 attached_nodes = PackedInt32Array(14, 31, 19, 6, 12)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_gd17x"]
-size = Vector2(843.99994, 364)
+size = Vector2(843.99994, 322)
 title = "texture uv"
 attached_nodes = PackedInt32Array(29, 24, 23, 21, 22)
 

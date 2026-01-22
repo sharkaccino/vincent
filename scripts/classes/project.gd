@@ -3,7 +3,7 @@ class_name VincentProject
 static var session_ids = -1
 
 class ViewportMetadata:
-	var autocenter: bool = true
+	var autofit: bool = true
 	var x: float = 0
 	var y: float = 0
 	var zoom: float = 1

@@ -357,7 +357,7 @@ layout_mode = 2
 stretch_mode = 1
 
 [node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer"]
-texture_filter = 3
+texture_filter = 4
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_bu4jf")
 expand_mode = 2
@@ -721,6 +721,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -765,6 +766,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -775,6 +777,7 @@ expand_mode = 1
 script = ExtResource("9_choun")
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -783,11 +786,13 @@ text = "print scrollbar values"
 script = ExtResource("70_ksmap")
 
 [node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ksmap")
 
 [node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
@@ -850,6 +855,7 @@ max_value = 360.0
 allow_greater = true
 allow_lesser = true
 suffix = "°"
+custom_arrow_step = 15.0
 select_all_on_focus = true
 script = ExtResource("72_xljpf")
 

@@ -16,6 +16,7 @@ signal active_project_changed
 signal drag_announced
 signal active_tool_changed
 signal zoom_level_changed
+signal autofit_changed
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
@@ -132,5 +133,14 @@ func set_active_tool(type: Enums.ToolType) -> void:
 func set_zoom_level(new_value: float) -> void:
 	var active_project = get_active_project()
 	var clamped = clamp(new_value / 100, 0.25, 32)
-	active_project.viewport.zoom = clamped
-	zoom_level_changed.emit()
+	if (active_project.viewport.zoom != clamped):
+		active_project.viewport.zoom = clamped
+		zoom_level_changed.emit()
+
+func set_autofit(new_value: bool) -> void:
+	var active_project = get_active_project()
+	if (active_project.viewport.autofit != new_value):
+		if (new_value == true):
+			set_zoom_level(100)
+		active_project.viewport.autofit = new_value
+		autofit_changed.emit()

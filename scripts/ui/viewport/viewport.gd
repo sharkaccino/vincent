@@ -19,6 +19,9 @@ func center_scroll_bars() -> void:
 	
 	h_bar.set_deferred("value", target_x)
 	v_bar.set_deferred("value", target_y)
+	
+	active_project.viewport.x = target_x
+	active_project.viewport.y = target_y
 
 func recalc_transforms() -> void:
 	if StateManager.active_project_id == 0:
@@ -45,7 +48,7 @@ func recalc_transforms() -> void:
 	margin.add_theme_constant_override("margin_top", (get_size().y / 2) + (yAdd / 2))
 	margin.add_theme_constant_override("margin_bottom", (get_size().y / 2) + (yAdd / 2) - v_bar.size.x)
 	
-	if active_project.viewport.autocenter:
+	if active_project.viewport.autofit:
 		center_scroll_bars()
 	else:
 		h_bar.set_deferred("value", active_project.viewport.x)
@@ -68,7 +71,7 @@ func on_scrolled() -> void:
 	active_project.viewport.x = scroll_horizontal
 	active_project.viewport.y = scroll_vertical
 	
-	active_project.viewport.autocenter = false
+	StateManager.set_autofit(false)
 
 func on_resized() -> void:
 	print("new viewport size: ", get_size())
@@ -82,4 +85,5 @@ func _ready() -> void:
 	
 	draw.connect(recalc_transforms)
 	StateManager.zoom_level_changed.connect(recalc_transforms)
+	StateManager.autofit_changed.connect(recalc_transforms)
 	StateManager.active_project_changed.connect(on_active_project_changed)
