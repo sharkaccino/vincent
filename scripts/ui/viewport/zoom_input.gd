@@ -7,23 +7,38 @@ func _input(event: InputEvent):
 			get_line_edit().release_focus()
 
 func handle_value_change(new_value: float) -> void:
-	print("new zoom: ", new_value)
+	StateManager.set_autofit(false)
 	StateManager.set_zoom_level(new_value)
 	
 func handle_external_change() -> void:
+	if (StateManager.active_project_id == 0): return
 	var active_project = StateManager.get_active_project()
+	
+	# this does not update the disabled state of the up/down buttons
+	# unfortunately, this is an engine-level issue and there doesn't seem
+	# to be an easy way to fix it without recompiling godot itself
+	# see: https://github.com/godotengine/godot/issues/109865
 	set_value_no_signal(active_project.viewport.zoom * 100)
+	
+	if (active_project.viewport.autofit):
+		get_line_edit().set_deferred("text", "Fit")
 
 func check_control_activation() -> void:
 	var project_opened = StateManager.active_project_id != 0
 	editable = project_opened
 	if (!project_opened):
-		# doing this instead of value = 100 incase autofit is enabled
+		# doing this instead of value = 100 in case 
+		# autofit was previously enabled
 		get_line_edit().text = "100"
 		apply()
+
+func handle_project_change() -> void:
+	check_control_activation()
+	handle_external_change()
 
 func _ready() -> void:
 	check_control_activation()
 	value_changed.connect(handle_value_change)
-	StateManager.active_project_changed.connect(check_control_activation)
+	StateManager.active_project_changed.connect(handle_project_change)
 	StateManager.zoom_level_changed.connect(handle_external_change)
+	StateManager.autofit_changed.connect(handle_external_change)
