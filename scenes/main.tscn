@@ -218,9 +218,9 @@ popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
 [node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
-title = "Open a File"
+title = "Open File(s)"
 ok_button_text = "Open"
-file_mode = 0
+file_mode = 1
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
@@ -329,19 +329,19 @@ vertical_scroll_mode = 0
 script = ExtResource("22_kmb1v")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer"]
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ProjectTabCarousel" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/separation = 2
 script = ExtResource("6_85g3d")
 
 [node name="ProjectTabTemplate" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 60)
+custom_minimum_size = Vector2(250, 72)
 layout_mode = 2
 focus_mode = 0
 script = ExtResource("7_trceg")
@@ -367,7 +367,7 @@ layout_mode = 2
 stretch_mode = 1
 
 [node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer"]
-texture_filter = 4
+texture_filter = 1
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_bu4jf")
 expand_mode = 2

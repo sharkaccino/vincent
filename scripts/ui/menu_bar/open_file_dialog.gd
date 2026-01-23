@@ -1,8 +1,10 @@
 extends FileDialog
 
-func _on_file_selected(path) -> void:
-	StateManager.load_project_file(path)
+func handle_file_selection(files) -> void:
+	print(files)
+	for file: String in files:
+		StateManager.load_project_file(file)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	file_selected.connect(_on_file_selected)
+	files_selected.connect(handle_file_selection)
