@@ -15,6 +15,7 @@ signal project_removed
 signal active_project_changed
 signal drag_announced
 signal active_tool_changed
+signal rotation_changed
 signal zoom_level_changed
 signal autofit_changed
 @warning_ignore("unused_signal")
@@ -140,6 +141,12 @@ func set_zoom_level(new_value: float) -> void:
 	if (active_project.viewport.zoom != clamped):
 		active_project.viewport.zoom = clamped
 		zoom_level_changed.emit()
+		
+func set_rotation(degrees: float) -> void:
+	var active_project = get_active_project()
+	if (active_project.viewport.rotate != degrees):
+		active_project.viewport.rotate = degrees
+		rotation_changed.emit()
 
 func set_autofit(new_value: bool) -> void:
 	var active_project = get_active_project()

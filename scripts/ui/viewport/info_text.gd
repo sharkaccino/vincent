@@ -3,13 +3,20 @@ extends Label
 var layer_name = "?"
 var last_pos = Vector2i(0, 0)
 
-func update(value: Vector2i) -> void:
+func update(value: Vector2) -> void:
 	if (StateManager.active_project_id == 0):
 		visible = false
 		return
 	visible = true
+	
 	var layer_text = str("Layer: ", layer_name)
-	var pos_text = str("Pos: ", value.x, ", ", value.y)
+	
+	# TODO: make this configurable
+	var step = 1
+	var x_rounded = snapped(value.x, step)
+	var y_rounded = snapped(value.y, step)
+	
+	var pos_text = str("Pos: ", x_rounded, ", ", y_rounded)
 	
 	text = str(layer_text, "\n", pos_text)
 	last_pos = value

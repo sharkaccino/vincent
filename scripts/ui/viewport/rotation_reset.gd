@@ -1,8 +1,7 @@
 extends Button
 
 func _pressed() -> void:
-	# TODO: set rotation to 0
-	return
+	StateManager.set_rotation(0)
 
 func check_control_activation() -> void:
 	var project_opened = StateManager.active_project_id != 0

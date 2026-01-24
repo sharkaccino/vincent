@@ -1,13 +1,22 @@
 extends ScrollContainer
 
-@onready var margin = get_node("%CanvasMargin")
-@onready var canvas_wrapper = get_node("%CanvasWrapper")
-@onready var canvas_control = get_node("%CanvasTransformControl")
+@onready var margin: MarginContainer = get_node("%CanvasMargin")
+@onready var canvas_wrapper: Control = get_node("%CanvasWrapper")
+@onready var canvas_control: Control = get_node("%CanvasTransformControl")
+
+func update_mouse_pos() -> void:
+	var active_project = StateManager.get_active_project()
+	var real_pos = canvas_control.get_local_mouse_position()
+	var scaled_pos = real_pos / active_project.viewport.zoom
+	StateManager.pointer_move.emit(scaled_pos)
 
 func center_scroll_bars() -> void:
 	var active_project = StateManager.get_active_project()
 	var canvas_size = active_project.size * active_project.viewport.zoom
-	var canvas_size_rotated = Utils.get_bounding_box_size(canvas_size, active_project.viewport.rotate)
+	var canvas_size_rotated = Utils.get_bounding_box_size(
+		canvas_size, 
+		deg_to_rad(active_project.viewport.rotate)
+	)
 	
 	var target_x = floor((canvas_size_rotated.x / 2)) 
 	var target_y = floor((canvas_size_rotated.y / 2))
@@ -27,12 +36,15 @@ func recalc_transforms() -> void:
 	
 	var active_project = StateManager.get_active_project()
 	var canvas_size = active_project.size * active_project.viewport.zoom
-	var canvas_size_rotated = Utils.get_bounding_box_size(canvas_size, active_project.viewport.rotate)
+	var canvas_size_rotated = Utils.get_bounding_box_size(
+		canvas_size, 
+		deg_to_rad(active_project.viewport.rotate)
+	)
 	
 	canvas_wrapper.custom_minimum_size = canvas_size
 	canvas_control.custom_minimum_size = canvas_size
 	
-	canvas_control.rotation = active_project.viewport.rotate
+	canvas_control.rotation_degrees = active_project.viewport.rotate
 	canvas_control.pivot_offset = canvas_size / 2
 	
 	var xAdd = canvas_size_rotated.x - canvas_size.x
@@ -51,6 +63,8 @@ func recalc_transforms() -> void:
 	else:
 		h_bar.set_deferred("value", active_project.viewport.x)
 		v_bar.set_deferred("value", active_project.viewport.y)
+	
+	update_mouse_pos()
 	
 func on_active_project_changed() -> void:
 	if StateManager.active_project_id == 0:
@@ -77,9 +91,7 @@ func on_resized() -> void:
 
 func _input(event: InputEvent) -> void:
 	if (event is not InputEventMouseMotion): return
-	
-	# TODO: get pointer position relative to canvas
-	StateManager.pointer_move.emit(event.position - get_global_rect().position)
+	update_mouse_pos()
 
 func _ready() -> void:
 	margin.visible = false
@@ -90,4 +102,5 @@ func _ready() -> void:
 	draw.connect(recalc_transforms)
 	StateManager.zoom_level_changed.connect(recalc_transforms)
 	StateManager.autofit_changed.connect(recalc_transforms)
+	StateManager.rotation_changed.connect(recalc_transforms)
 	StateManager.active_project_changed.connect(on_active_project_changed)
