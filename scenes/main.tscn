@@ -787,7 +787,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 unique_name_in_owner = true
-texture_filter = 1
+texture_filter = 4
 material = SubResource("ShaderMaterial_xaipn")
 layout_mode = 1
 anchors_preset = 15
