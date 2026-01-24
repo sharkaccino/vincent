@@ -1,4 +1,6 @@
 extends Button
 
-func _pressed() -> void:
-	StateManager.set_active_tool(Enums.ToolType.RECTANGLE_SELECT)
+@onready var tool_registrar = get_node("%ToolTray")
+
+func _ready() -> void:
+	tool_registrar.register_button(self, Enums.ToolType.RECTANGLE_SELECT)

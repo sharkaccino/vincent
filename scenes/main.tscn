@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=94 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://dqqxfetgk56bq" path="res://resources/icons/panel_tools/pointer.svg" id="33_vc5cj"]
 [ext_resource type="Texture2D" uid="uid://cogstcy5fq4yu" path="res://resources/icons/panel_tools/circle-dashed.svg" id="35_nvyfr"]
 [ext_resource type="Texture2D" uid="uid://drxkaq0cokwnk" path="res://resources/icons/panel_tools/lasso.svg" id="36_ty1g6"]
+[ext_resource type="Script" uid="uid://cw3f5gk7clfte" path="res://scripts/ui/panels/tools/tool_tray.gd" id="36_xaipn"]
 [ext_resource type="Texture2D" uid="uid://cgboxui8jh85i" path="res://resources/icons/panel_tools/wand.svg" id="37_j2jfr"]
 [ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_cursor.gd" id="38_1v6qk"]
 [ext_resource type="Texture2D" uid="uid://cr43853yimtxi" path="res://resources/icons/panel_tools/arrows-move.svg" id="38_bjg73"]
@@ -475,14 +476,16 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2"]
+[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 last_wrap_alignment = 1
+script = ExtResource("36_xaipn")
 
-[node name="ToolCursor" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolCursor" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Cursor Tool"
@@ -498,7 +501,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("38_1v6qk")
 
-[node name="ToolTransform" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolTransform" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Transform Tool"
@@ -512,7 +515,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("40_a82wo")
 
-[node name="ToolPaintbrush" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolPaintbrush" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Paintbrush"
@@ -526,7 +529,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("42_gdvew")
 
-[node name="ToolPencil" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolPencil" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Pencil"
@@ -540,7 +543,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("44_kjtvk")
 
-[node name="ToolEraser" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolEraser" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Eraser"
@@ -554,7 +557,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("46_xrs0c")
 
-[node name="ToolEyedropper" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolEyedropper" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Eyedropper"
@@ -568,7 +571,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("48_xljpf")
 
-[node name="ToolPaintbucket" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolPaintbucket" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Paint Bucket"
@@ -582,7 +585,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("50_j4bwh")
 
-[node name="ToolRectangleSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolRectangleSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Rectangle Select"
@@ -596,7 +599,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("52_ksmap")
 
-[node name="ToolBrushSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolBrushSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Brush Select"
@@ -610,7 +613,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("54_ygd8o")
 
-[node name="ToolLassoSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolLassoSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Lasso Select"
@@ -624,7 +627,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("56_2s0kr")
 
-[node name="ToolMagicWand" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolMagicWand" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Magic Wand"
@@ -638,7 +641,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("58_xaipn")
 
-[node name="ToolPan" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolPan" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Pan"
@@ -652,7 +655,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("60_ndrjj")
 
-[node name="ToolZoom" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolZoom" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Zoom"
@@ -666,7 +669,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("62_ih3m7")
 
-[node name="ToolText" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolText" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Text"
@@ -680,7 +683,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("64_11yus")
 
-[node name="ToolShapes" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/HFlowContainer"]
+[node name="ToolShapes" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Shapes"

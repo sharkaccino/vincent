@@ -133,7 +133,7 @@ func _notification(what: int) -> void:
 func set_active_tool(type: Enums.ToolType) -> void:
 	print("set tool: ", type)
 	active_tool = type
-	active_tool_changed.emit(type)
+	active_tool_changed.emit()
 
 func set_zoom_level(new_value: float) -> void:
 	var active_project = get_active_project()
