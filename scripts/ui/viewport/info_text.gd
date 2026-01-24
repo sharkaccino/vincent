@@ -12,9 +12,12 @@ func update(value: Vector2) -> void:
 	var layer_text = str("Layer: ", layer_name)
 	
 	# TODO: make this configurable
-	var step = 1
-	var x_rounded = snapped(value.x, step)
-	var y_rounded = snapped(value.y, step)
+	#var step = 0.01
+	#var x_rounded = snapped(value.x, step)
+	#var y_rounded = snapped(value.y, step)
+	
+	var x_rounded = floor(value.x)
+	var y_rounded = floor(value.y)
 	
 	var pos_text = str("Pos: ", x_rounded, ", ", y_rounded)
 	
