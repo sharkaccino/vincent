@@ -54,6 +54,7 @@ func create_project(project_name: String, base_image: Image) -> void:
 	var new_project: VincentProject = VincentProject.new(base_image, project_name)
 	projects.append(new_project)
 	
+	# temporarily disabled
 	#set_active_project(new_project.id)
 	
 	projects_changed.emit()
