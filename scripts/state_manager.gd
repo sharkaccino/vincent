@@ -22,6 +22,8 @@ signal autofit_changed
 signal pointer_move
 @warning_ignore("unused_signal")
 signal view_mode_changed
+@warning_ignore("unused_signal")
+signal canvas_updated
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
@@ -52,7 +54,7 @@ func create_project(project_name: String, base_image: Image) -> void:
 	var new_project: VincentProject = VincentProject.new(base_image, project_name)
 	projects.append(new_project)
 	
-	set_active_project(new_project.id)
+	#set_active_project(new_project.id)
 	
 	projects_changed.emit()
 	project_added.emit(new_project.id)

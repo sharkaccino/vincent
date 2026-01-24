@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=97 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -77,6 +77,7 @@
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
 [ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
+[ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/canvas_subviewport.gd" id="72_ih3m7"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
@@ -137,6 +138,11 @@ shader_parameter/red_enabled = true
 shader_parameter/green_enabled = true
 shader_parameter/blue_enabled = true
 shader_parameter/alpha_enabled = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6ruc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_155or"]
+font_size = 30
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -789,6 +795,41 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 script = ExtResource("9_choun")
+
+[node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas"]
+disable_3d = true
+transparent_bg = true
+use_hdr_2d = true
+canvas_item_default_texture_filter = 0
+gui_disable_input = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("72_ih3m7")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b6ruc")
+
+[node name="LayerContent" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer/LayerContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "subviewport test"
+label_settings = SubResource("LabelSettings_155or")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 visible = false

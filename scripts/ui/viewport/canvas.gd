@@ -1,6 +1,6 @@
 extends TextureRect
 
-# TODO: show the combined output of all layers merged together.
+@onready var subviewport = $LayerContentRenderer
 
 func check_filter_mode() -> void:
 	var active_project = StateManager.get_active_project()
@@ -14,12 +14,15 @@ func check_filter_mode() -> void:
 	else:
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
-func on_active_project_changed() -> void:
-	if StateManager.active_project_id == 0:
+func on_canvas_updated() -> void:
+	# TODO: show the combined output of all layers merged together.
+	
+	if (StateManager.active_project_id == 0):
 		texture = null
-	else:
-		var active_project = StateManager.get_active_project()
-		texture = ImageTexture.create_from_image(active_project.layers[0].image_data)
+		return
+	
+	var active_project = StateManager.get_active_project()
+	texture = ImageTexture.create_from_image(active_project.layers[0].image_data)
 
 func update_view_mode(new_value: Enums.ViewMode) -> void:
 	print("view mode updated")
@@ -55,7 +58,6 @@ func update_view_mode(new_value: Enums.ViewMode) -> void:
 			material.set_shader_parameter("blue_enabled", false)
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(0, 0)
 	resized.connect(check_filter_mode)
-	StateManager.active_project_changed.connect(on_active_project_changed)
+	StateManager.canvas_updated.connect(on_canvas_updated)
 	StateManager.view_mode_changed.connect(update_view_mode)
