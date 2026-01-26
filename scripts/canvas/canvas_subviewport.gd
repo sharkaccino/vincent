@@ -16,17 +16,6 @@ func on_canvas_update_request() -> void:
 	
 	var image_data = get_texture().get_image()
 	
-	# fixes subviewport alpha premultiplication
-	for y in image_data.get_size().y:
-		for x in image_data.get_size().x:
-			var color: Color = image_data.get_pixel(x, y)
-			if (color.a != 0):
-				var r = color.r
-				var g = color.g
-				var b = color.b
-				var a = color.a
-				image_data.set_pixel(x, y, Color(r/a, g/a, b/a, a))
-	
 	active_project.layers[layer].image_data = image_data
 	
 	StateManager.canvas_updated.emit()

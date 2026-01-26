@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=106 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -83,6 +83,7 @@
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
+[ext_resource type="Shader" uid="uid://ui831dv7omjy" path="res://shaders/subviewport_layer_content.tres" id="75_63lxy"]
 [ext_resource type="Shader" uid="uid://dorrudyycgkaj" path="res://shaders/paintbrush.tres" id="75_155or"]
 [ext_resource type="Shader" uid="uid://db76mq768lhw2" path="res://shaders/canvas_grid.tres" id="76_155or"]
 [ext_resource type="Script" uid="uid://bfil6iwqcjqdw" path="res://scripts/canvas/virtual_pointer.gd" id="76_vtx2l"]
@@ -144,12 +145,13 @@ shader_parameter/green_enabled = true
 shader_parameter/blue_enabled = true
 shader_parameter/alpha_enabled = true
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6ruc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
+shader = ExtResource("75_63lxy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtx2l"]
 shader = ExtResource("75_155or")
 shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/softness = 1.0
+shader_parameter/softness = 1.0000000475
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63lxy"]
 bg_color = Color(1, 1, 1, 1)
@@ -821,32 +823,32 @@ script = ExtResource("9_choun")
 [node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas"]
 disable_3d = true
 transparent_bg = true
-use_hdr_2d = true
 canvas_item_default_texture_filter = 0
 gui_disable_input = true
+oversampling = false
 size = Vector2i(256, 256)
-render_target_update_mode = 4
+render_target_update_mode = 3
 script = ExtResource("72_ih3m7")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
+[node name="LayerContent" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fjhjs")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_b6ruc")
-
-[node name="LayerContent" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer"]
-unique_name_in_owner = true
-layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 expand_mode = 1
 
-[node name="VirtualPointer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer/LayerContent"]
+[node name="VirtualPointer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
 unique_name_in_owner = true
+layout_mode = 3
 anchors_preset = 0
 script = ExtResource("76_vtx2l")
 
-[node name="PaintbrushPoint" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer/LayerContent/VirtualPointer"]
+[node name="PaintbrushPoint" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/VirtualPointer"]
 material = SubResource("ShaderMaterial_vtx2l")
 layout_mode = 1
 anchors_preset = 8

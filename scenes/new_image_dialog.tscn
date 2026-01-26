@@ -154,7 +154,7 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 button_mask = 3
-color = Color(1, 1, 1, 0)
+color = Color(0, 0, 0, 0)
 script = ExtResource("7_674en")
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton"]

@@ -1,6 +1,5 @@
 extends TextureRect
 
-@onready var subviewport = $LayerContentRenderer
 @onready var canvas_grid = %CanvasGrid
 
 func on_resized() -> void:
