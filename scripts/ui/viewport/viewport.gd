@@ -1,8 +1,9 @@
 extends ScrollContainer
 
-@onready var margin: MarginContainer = get_node("%CanvasMargin")
-@onready var canvas_wrapper: Control = get_node("%CanvasWrapper")
-@onready var canvas_control: Control = get_node("%CanvasTransformControl")
+@onready var margin: MarginContainer = %CanvasMargin
+@onready var canvas_wrapper: Control = %CanvasWrapper
+@onready var canvas_control: Control = %CanvasTransformControl
+@onready var virtual_pointer: Control = %VirtualPointer
 
 func update_mouse_pos() -> void:
 	var active_project = StateManager.get_active_project()
@@ -89,9 +90,22 @@ func on_resized() -> void:
 	print("new viewport size: ", get_size())
 	recalc_transforms()
 
+var is_button_down = false
+
 func _input(event: InputEvent) -> void:
-	if (event is not InputEventMouseMotion): return
-	update_mouse_pos()
+	if (event is InputEventMouseMotion):
+		if (event.relative.is_zero_approx()): return
+		update_mouse_pos()
+		if (is_button_down):
+			StateManager.request_canvas_update()
+	if (event is InputEventMouseButton):
+		if (event.is_pressed() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
+			var evLocal = make_input_local(event)
+			if (get_rect().has_point(evLocal.position)):
+				is_button_down = true
+				StateManager.request_canvas_update()
+		if (event.is_released() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
+			is_button_down = false
 
 func _ready() -> void:
 	margin.visible = false

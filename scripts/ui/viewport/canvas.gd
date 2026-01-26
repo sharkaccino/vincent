@@ -17,7 +17,7 @@ func on_resized() -> void:
 	
 	canvas_grid.material.set_shader_parameter("screen_space_canvas_size", rect.size)
 
-func on_canvas_updated() -> void:
+func update_canvas() -> void:
 	# TODO: show the combined output of all layers merged together.
 	
 	if (StateManager.active_project_id == 0):
@@ -65,6 +65,8 @@ func update_view_mode(new_value: Enums.ViewMode) -> void:
 			material.set_shader_parameter("blue_enabled", false)
 
 func _ready() -> void:
+	texture = null
 	resized.connect(on_resized)
-	StateManager.canvas_updated.connect(on_canvas_updated)
+	StateManager.active_project_changed.connect(update_canvas)
+	StateManager.canvas_updated.connect(update_canvas)
 	StateManager.view_mode_changed.connect(update_view_mode)
