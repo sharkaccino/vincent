@@ -27,7 +27,7 @@ linked_parent_graph_frame = 15
 op_type = 0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_j3cx5"]
-size = Vector2(984, 507.0001)
+size = Vector2(984, 507.00003)
 title = "Center UV"
 attached_nodes = PackedInt32Array(12, 14, 13, 2)
 

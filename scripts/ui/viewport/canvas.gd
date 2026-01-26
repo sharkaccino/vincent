@@ -1,8 +1,9 @@
 extends TextureRect
 
 @onready var subviewport = $LayerContentRenderer
+@onready var canvas_grid = %CanvasGrid
 
-func check_filter_mode() -> void:
+func on_resized() -> void:
 	var active_project = StateManager.get_active_project()
 	
 	var rect = get_rect()
@@ -13,6 +14,8 @@ func check_filter_mode() -> void:
 		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	else:
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	
+	canvas_grid.material.set_shader_parameter("screen_space_canvas_size", rect.size)
 
 func on_canvas_updated() -> void:
 	# TODO: show the combined output of all layers merged together.
@@ -21,7 +24,11 @@ func on_canvas_updated() -> void:
 		texture = null
 		return
 	
+	var rect = get_rect()
+	
 	var active_project = StateManager.get_active_project()
+	canvas_grid.material.set_shader_parameter("canvas_size", active_project.size)
+	canvas_grid.material.set_shader_parameter("screen_space_canvas_size", rect.size)
 	texture = ImageTexture.create_from_image(active_project.layers[0].image_data)
 
 func update_view_mode(new_value: Enums.ViewMode) -> void:
@@ -58,6 +65,6 @@ func update_view_mode(new_value: Enums.ViewMode) -> void:
 			material.set_shader_parameter("blue_enabled", false)
 
 func _ready() -> void:
-	resized.connect(check_filter_mode)
+	resized.connect(on_resized)
 	StateManager.canvas_updated.connect(on_canvas_updated)
 	StateManager.view_mode_changed.connect(update_view_mode)

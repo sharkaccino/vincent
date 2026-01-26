@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene load_steps=104 format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -78,10 +78,13 @@
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
 [ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
+[ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="72_b6ruc"]
 [ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/canvas_subviewport.gd" id="72_ih3m7"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
+[ext_resource type="Shader" uid="uid://dorrudyycgkaj" path="res://shaders/paintbrush.tres" id="75_155or"]
+[ext_resource type="Shader" uid="uid://db76mq768lhw2" path="res://shaders/canvas_grid.tres" id="76_155or"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
 
@@ -142,8 +145,23 @@ shader_parameter/alpha_enabled = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6ruc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_155or"]
-font_size = 30
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtx2l"]
+shader = ExtResource("75_155or")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/softness = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63lxy"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63lxy"]
+shader = ExtResource("76_155or")
+shader_parameter/grid_brightness = 10
+shader_parameter/screen_space_canvas_size = Vector2(1024, 1024)
+shader_parameter/canvas_size = Vector2(256, 256)
+shader_parameter/grid_opacity = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjhjs"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -787,7 +805,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
 unique_name_in_owner = true
-texture_filter = 4
+texture_filter = 1
 material = SubResource("ShaderMaterial_xaipn")
 layout_mode = 1
 anchors_preset = 15
@@ -795,6 +813,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("72_b6ruc")
 expand_mode = 1
 script = ExtResource("9_choun")
 
@@ -821,17 +840,25 @@ unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer/LayerContent"]
+[node name="PaintbrushPoint" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/PanelContainer/LayerContent"]
+material = SubResource("ShaderMaterial_vtx2l")
+layout_mode = 0
+offset_left = 508.0
+offset_top = 239.0
+offset_right = 548.0
+offset_bottom = 279.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_63lxy")
+
+[node name="CanvasGrid" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_63lxy")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "subviewport test"
-label_settings = SubResource("LabelSettings_155or")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjhjs")
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
 visible = false
