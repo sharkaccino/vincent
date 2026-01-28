@@ -8,8 +8,8 @@ func _on_pressed() -> void:
 	get_window().hide()
 	var width = width_input.value
 	var height = height_input.value
-	var format: Image.Format = Image.FORMAT_RGBAF
-	var base_image = Image.create_empty(width, height, false, format)
+	var format: Image.Format = Image.FORMAT_RGBA8
+	var base_image = Image.create_empty(width, height, true, format)
 
 	base_image.fill(color_input.color)
 	

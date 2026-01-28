@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm5hfw0d1ehf5"]
+[gd_scene format=3 uid="uid://bm5hfw0d1ehf5"]
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_eid2e"]
 [ext_resource type="Script" uid="uid://bl0gykxc1hqi6" path="res://scripts/ui/statistics_dialog/stats_tree.gd" id="3_wrpab"]
 [ext_resource type="Script" uid="uid://dr3m5iydle3h6" path="res://scripts/ui/statistics_dialog/copy_button.gd" id="4_eid2e"]
 [ext_resource type="Script" uid="uid://dg03yma4ngsg6" path="res://scripts/ui/statistics_dialog/close_button.gd" id="5_qdlp3"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" unique_id=1263349535]
 custom_minimum_size = Vector2(450, 300)
 offset_right = 80.0
 offset_bottom = 71.0
@@ -14,24 +14,24 @@ size_flags_vertical = 3
 theme = ExtResource("1_eid2e")
 metadata/resizeable = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1809594729]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=108363250]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="StatsTree" type="Tree" parent="MarginContainer/VBoxContainer"]
+[node name="StatsTree" type="Tree" parent="MarginContainer/VBoxContainer" unique_id=2107214559]
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 script = ExtResource("3_wrpab")
 
-[node name="NoProjectLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsTree"]
+[node name="NoProjectLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsTree" unique_id=823594941]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,18 +42,18 @@ text = "No active project."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=803321020]
 layout_mode = 2
 alignment = 1
 
-[node name="CopyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CopyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2001889275]
 visible = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 text = "Copy"
 script = ExtResource("4_eid2e")
 
-[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1896060710]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 focus_mode = 0

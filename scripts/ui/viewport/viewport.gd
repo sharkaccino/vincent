@@ -3,7 +3,6 @@ extends ScrollContainer
 @onready var margin: MarginContainer = %CanvasMargin
 @onready var canvas_wrapper: Control = %CanvasWrapper
 @onready var canvas_control: Control = %CanvasTransformControl
-@onready var virtual_pointer: Control = %VirtualPointer
 
 func update_mouse_pos() -> void:
 	var active_project = StateManager.get_active_project()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dp0rq0uhntafg"]
+[gd_scene format=3 uid="uid://dp0rq0uhntafg"]
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_truuh"]
 [ext_resource type="Script" uid="uid://bw1lscoaenrao" path="res://scripts/ui/new_image_dialog/keep_aspect_ratio_checkbox.gd" id="3_beosn"]
@@ -39,7 +39,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.16, 0.16, 0.16, 1)
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" unique_id=960990901]
 offset_right = 400.0
 offset_bottom = 227.0
 size_flags_horizontal = 3
@@ -47,29 +47,29 @@ size_flags_vertical = 3
 theme = ExtResource("1_truuh")
 metadata/resizeable = false
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=816558429]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=946454088]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=737470240]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1255944116]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="KeepAspectRatioCheckbox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=312449947]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
@@ -78,7 +78,7 @@ text = "Keep Aspect Ratio"
 script = ExtResource("3_beosn")
 metadata/target_ratio = 0.0
 
-[node name="TargetRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TargetRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=349260307]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -87,16 +87,16 @@ theme_type_variation = &"TargetRatioLabel"
 text = "target_ratio"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1645035756]
 layout_mode = 2
 theme_override_constants/v_separation = 8
 columns = 3
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1053602003]
 layout_mode = 2
 text = "Width:"
 
-[node name="WidthInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="WidthInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1885629156]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -108,15 +108,15 @@ rounded = true
 alignment = 1
 script = ExtResource("4_1bnev")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=356093572]
 layout_mode = 2
 text = "pixels"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=755478377]
 layout_mode = 2
 text = "Height:"
 
-[node name="HeightInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="HeightInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=968128707]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -128,11 +128,11 @@ rounded = true
 alignment = 1
 script = ExtResource("5_qnoot")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=634139135]
 layout_mode = 2
 text = "pixels"
 
-[node name="SwapOrientationButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="SwapOrientationButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1355692044]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -140,15 +140,15 @@ focus_mode = 0
 text = "Swap Orientation"
 script = ExtResource("6_j27eg")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2057050427]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1187849785]
 layout_mode = 2
 text = "Background Color:"
 
-[node name="BackgroundColorButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="BackgroundColorButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1653458190]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
@@ -157,7 +157,7 @@ button_mask = 3
 color = Color(0, 0, 0, 0)
 script = ExtResource("7_674en")
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton" unique_id=1050906323]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,7 +168,7 @@ focus_mode = 0
 mouse_filter = 1
 button_mask = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button" unique_id=386286019]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,47 +180,47 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer" unique_id=2079823429]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer/AspectRatioContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer/AspectRatioContainer" unique_id=1408243859]
 material = SubResource("ShaderMaterial_j27eg")
 layout_mode = 2
 texture = SubResource("Texture2DRD_jpc14")
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=770213675]
 visible = false
 layout_mode = 2
 
-[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button"]
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button" unique_id=297549519]
 visible = false
 layout_mode = 0
 offset_right = 230.0
 offset_bottom = 479.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=134144111]
 custom_minimum_size = Vector2(150, 171)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=807799670]
 layout_mode = 2
 size_flags_vertical = 3
 stretch_mode = 0
 alignment_vertical = 2
 
-[node name="PreviewBoxContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer"]
+[node name="PreviewBoxContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer" unique_id=1818470582]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("7_jpc14")
 
-[node name="PreviewBoxBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
+[node name="PreviewBoxBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=1897152613]
 material = SubResource("ShaderMaterial_laxsb")
 layout_mode = 2
 texture = SubResource("Texture2DRD_4i1q4")
 stretch_mode = 1
 
-[node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBoxBackground"]
+[node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBoxBackground" unique_id=2025585222]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -231,13 +231,13 @@ size_flags_vertical = 1
 text = "ratio_text"
 horizontal_alignment = 1
 
-[node name="PreviewBox" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
+[node name="PreviewBox" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=1295368598]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qgn5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBox" unique_id=504251859]
 layout_mode = 2
 theme_type_variation = &"NewImagePreviewLabel"
 text = "PREVIEW"
@@ -247,11 +247,11 @@ shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PreviewBoxBoundary" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer"]
+[node name="PreviewBoxBoundary" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=416741025]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_426vg")
 
-[node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1793737682]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 48)
@@ -264,18 +264,18 @@ vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("9_1ld8p")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1316848301]
 layout_mode = 2
 alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1145468573]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 focus_mode = 0
 text = "OK"
 script = ExtResource("10_v2k65")
 
-[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1910622383]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 focus_mode = 0

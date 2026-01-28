@@ -1,12 +1,6 @@
 [gd_resource type="VisualShader" format=3 uid="uid://ui831dv7omjy"]
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_premul_alpha;
-
-
-
-"
 mode = 1
-modes/blend = 4
+modes/blend = 5
 flags/light_only = false

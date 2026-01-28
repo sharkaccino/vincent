@@ -26,7 +26,7 @@ signal view_mode_changed
 signal canvas_updated
 signal canvas_update_request
 
-var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBAF))
+var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
 func get_project_data(target_project_id) -> VincentProject:
 	for i in projects.size():
@@ -85,7 +85,7 @@ func load_project_file(path: String) -> void:
 	# TODO: support custom project files
 	var image = Image.load_from_file(path)
 	image.generate_mipmaps()
-	image.convert(Image.Format.FORMAT_RGBAF)
+	image.convert(Image.Format.FORMAT_RGBA8)
 	create_project(path.get_file(), image)
 
 func get_active_project() -> VincentProject:

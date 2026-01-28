@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://db76mq768lhw2"]
+[gd_resource type="VisualShader" format=3 uid="uid://db76mq768lhw2"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kk774"]
 default_input_values = [0, 0.0, 1, 255.0]
@@ -68,98 +68,6 @@ default_value_enabled = true
 default_value = 10
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform int grid_brightness : hint_range(0, 255) = 10;
-uniform vec2 screen_space_canvas_size;
-uniform vec2 canvas_size;
-uniform float grid_opacity : hint_range(0.0, 1.0);
-
-
-
-void fragment() {
-// IntParameter:9
-	int n_out9p0 = grid_brightness;
-
-
-// FloatOp:10
-	float n_in10p1 = 255.00000;
-	float n_out10p0 = float(n_out9p0) / n_in10p1;
-
-
-// Vector2Parameter:5
-	vec2 n_out5p0 = screen_space_canvas_size;
-	float n_out5p1 = n_out5p0.r;
-
-
-// Vector2Parameter:15
-	vec2 n_out15p0 = canvas_size;
-	float n_out15p1 = n_out15p0.r;
-
-
-// FloatOp:46
-	float n_out46p0 = n_out5p1 / n_out15p1;
-
-
-// FloatOp:47
-	float n_in47p0 = 1.00000;
-	float n_out47p0 = n_in47p0 / n_out46p0;
-
-
-// Input:22
-	vec2 n_out22p0 = UV;
-
-
-// VectorOp:42
-	vec2 n_out42p0 = n_out22p0 * n_out15p0;
-
-
-// VectorFunc:31
-	vec2 n_out31p0 = fract(n_out42p0);
-	float n_out31p1 = n_out31p0.r;
-	float n_out31p2 = n_out31p0.g;
-
-
-// FloatOp:35
-	float n_out35p0 = min(n_out31p1, n_out31p2);
-
-
-// Step:34
-	float n_out34p0 = step(n_out47p0, n_out35p0);
-
-
-// MultiplyAdd:43
-	float n_in43p1 = -1.00000;
-	float n_in43p2 = 1.00000;
-	float n_out43p0 = (n_out34p0 * n_in43p1) + n_in43p2;
-
-
-// Compare:48
-	float n_in48p1 = 4.00000;
-	bool n_out48p0 = n_out46p0 >= n_in48p1;
-
-
-// FloatOp:49
-	float n_out49p0 = n_out43p0 * (n_out48p0 ? 1.0 : 0.0);
-
-
-// FloatParameter:16
-	float n_out16p0 = grid_opacity;
-
-
-// Mix:20
-	float n_in20p0 = 0.00000;
-	float n_out20p0 = mix(n_in20p0, n_out49p0, n_out16p0);
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out10p0);
-	COLOR.a = n_out20p0;
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(3920, 60)

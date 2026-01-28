@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://qubiww5n0s3j"]
+[gd_scene format=3 uid="uid://qubiww5n0s3j"]
 
 [ext_resource type="Script" uid="uid://hevuvnvmymg5" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cue20qd26btx" path="res://scripts/ui/menu_bar/file_menu_button.gd" id="2_0wfyh"]
@@ -79,14 +79,12 @@
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
 [ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
 [ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="72_b6ruc"]
-[ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/canvas_subviewport.gd" id="72_ih3m7"]
+[ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/layer_content_renderer.gd" id="72_ih3m7"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
-[ext_resource type="Shader" uid="uid://ui831dv7omjy" path="res://shaders/subviewport_layer_content.tres" id="75_63lxy"]
 [ext_resource type="Shader" uid="uid://dorrudyycgkaj" path="res://shaders/paintbrush.tres" id="75_155or"]
 [ext_resource type="Shader" uid="uid://db76mq768lhw2" path="res://shaders/canvas_grid.tres" id="76_155or"]
-[ext_resource type="Script" uid="uid://bfil6iwqcjqdw" path="res://scripts/canvas/virtual_pointer.gd" id="76_vtx2l"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
 
@@ -145,17 +143,6 @@ shader_parameter/green_enabled = true
 shader_parameter/blue_enabled = true
 shader_parameter/alpha_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
-shader = ExtResource("75_63lxy")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtx2l"]
-shader = ExtResource("75_155or")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/softness = 1.0000000475
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63lxy"]
-bg_color = Color(1, 1, 1, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63lxy"]
 shader = ExtResource("76_155or")
 shader_parameter/grid_brightness = 10
@@ -165,6 +152,13 @@ shader_parameter/grid_opacity = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjhjs"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
+shader = ExtResource("75_155or")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/pointer_pos = Vector2(43, 17.21)
+shader_parameter/size = 25.98000118655
+shader_parameter/softness = 1.0000000475
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -177,7 +171,7 @@ color = Color(1, 0, 0, 1)
 font_size = 12
 font_color = Color(1, 1, 1, 0.482353)
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" unique_id=1510838467]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -188,7 +182,7 @@ size_flags_vertical = 3
 theme = ExtResource("4_tbgi4")
 script = ExtResource("1_0wfyh")
 
-[node name="PopupWindowTemplate" type="Window" parent="."]
+[node name="PopupWindowTemplate" type="Window" parent="." unique_id=444904668]
 unique_name_in_owner = true
 disable_3d = true
 visible = false
@@ -197,11 +191,11 @@ content_scale_mode = 1
 script = ExtResource("5_dp3eg")
 metadata/target_scene = ""
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=388876757]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=117725678]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
@@ -209,18 +203,18 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="TopBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2" unique_id=1183369622]
 layout_mode = 2
 
-[node name="MainToolBar" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
+[node name="MainToolBar" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar" unique_id=327562134]
 layout_mode = 2
 
-[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar" unique_id=1069587639]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("4_vxglm")
 
-[node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=171255164]
 layout_mode = 2
 button_mask = 3
 text = "File"
@@ -246,7 +240,7 @@ popup/item_5/icon = ExtResource("7_y6deb")
 popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
-[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton" unique_id=80314602]
 title = "Open File(s)"
 ok_button_text = "Open"
 file_mode = 1
@@ -255,14 +249,14 @@ filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
 script = ExtResource("4_tipki")
 
-[node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton"]
+[node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton" unique_id=1350971158]
 auto_translate_mode = 1
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
 script = ExtResource("11_ih3m7")
 
-[node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=275077302]
 layout_mode = 2
 button_mask = 3
 text = "Edit
@@ -297,7 +291,7 @@ popup/item_8/icon = ExtResource("12_2f3dj")
 popup/item_8/id = 2
 script = ExtResource("6_0ld40")
 
-[node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=354989137]
 layout_mode = 2
 button_mask = 3
 text = "View"
@@ -305,7 +299,7 @@ flat = false
 switch_on_hover = true
 script = ExtResource("15_qkpxi")
 
-[node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=507217571]
 layout_mode = 2
 button_mask = 3
 text = "Image"
@@ -317,7 +311,7 @@ popup/item_0/icon = ExtResource("17_5q0nq")
 popup/item_0/id = 0
 script = ExtResource("16_j8jky")
 
-[node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=335655525]
 layout_mode = 2
 button_mask = 3
 text = "Layers"
@@ -325,7 +319,7 @@ flat = false
 switch_on_hover = true
 script = ExtResource("17_kmb1v")
 
-[node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=13082924]
 layout_mode = 2
 button_mask = 3
 text = "Effects"
@@ -333,7 +327,7 @@ flat = false
 switch_on_hover = true
 script = ExtResource("18_fuf3a")
 
-[node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar"]
+[node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=951641146]
 layout_mode = 2
 button_mask = 3
 text = "Help"
@@ -348,28 +342,28 @@ popup/item_1/icon = ExtResource("17_5q0nq")
 popup/item_1/id = 1
 script = ExtResource("4_tefeu")
 
-[node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar"]
+[node name="FavoritesBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar" unique_id=1341943452]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ProjectTabScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/TopBar"]
+[node name="ProjectTabScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/TopBar" unique_id=1725363369]
 layout_mode = 2
 size_flags_horizontal = 3
 vertical_scroll_mode = 0
 script = ExtResource("22_kmb1v")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer" unique_id=519196207]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectTabCarousel" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer"]
+[node name="ProjectTabCarousel" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer" unique_id=261257384]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 2
 script = ExtResource("6_85g3d")
 
-[node name="ProjectTabTemplate" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
+[node name="ProjectTabTemplate" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel" unique_id=1312062016]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 72)
 layout_mode = 2
@@ -377,7 +371,7 @@ focus_mode = 0
 script = ExtResource("7_trceg")
 metadata/project_id = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate" unique_id=575647821]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,14 +383,14 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer" unique_id=2109594067]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer" unique_id=1632235908]
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer"]
+[node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer" unique_id=1704086170]
 texture_filter = 1
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_bu4jf")
@@ -404,13 +398,13 @@ expand_mode = 2
 stretch_mode = 5
 script = ExtResource("8_jbj1t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer" unique_id=1162052111]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="ProjectTabName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ProjectTabName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2018707817]
 layout_mode = 2
 mouse_filter = 1
 text = "Untitled Project"
@@ -418,7 +412,7 @@ clip_text = true
 text_overrun_behavior = 3
 script = ExtResource("9_muem4")
 
-[node name="ProjectTabResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ProjectTabResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1121033130]
 layout_mode = 2
 mouse_filter = 1
 text = "800 x 600"
@@ -426,17 +420,17 @@ clip_text = true
 text_overrun_behavior = 3
 script = ExtResource("10_dp3eg")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer" unique_id=811326688]
 layout_mode = 2
 theme_override_constants/margin_right = 6
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/MarginContainer" unique_id=1288943452]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 stretch_mode = 0
 
-[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/MarginContainer/AspectRatioContainer2"]
+[node name="CloseProjectButton" type="Button" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/MarginContainer/AspectRatioContainer2" unique_id=972533889]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_dnhof")
@@ -445,13 +439,13 @@ icon = ExtResource("22_yq6so")
 icon_alignment = 1
 script = ExtResource("7_eb6dy")
 
-[node name="ProjectTabSpacerTemplate" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel"]
+[node name="ProjectTabSpacerTemplate" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel" unique_id=1921074875]
 z_index = 4096
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vxglm")
 script = ExtResource("24_fv21b")
 
-[node name="ProjectTabSpacerHitBox" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabSpacerTemplate"]
+[node name="ProjectTabSpacerHitBox" type="Panel" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabSpacerTemplate" unique_id=1388306909]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -462,50 +456,50 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vxglm")
 script = ExtResource("23_2f3dj")
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=847856514]
 layout_mode = 2
 
-[node name="MainContainer" type="HSplitContainer" parent="VBoxContainer"]
+[node name="MainContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=1151133053]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 drag_area_highlight_in_editor = true
 
-[node name="LeftToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer"]
+[node name="LeftToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer" unique_id=540786083]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"ToolColumn"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn" unique_id=1421016654]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=1880970393]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer" unique_id=1262429921]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
 layout_mode = 2
 text = "Tools"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=471042804]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=165018823]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2"]
+[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2" unique_id=1905774421]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -514,7 +508,7 @@ theme_override_constants/v_separation = 6
 last_wrap_alignment = 1
 script = ExtResource("36_xaipn")
 
-[node name="ToolCursor" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolCursor" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=863710925]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Cursor Tool"
@@ -530,7 +524,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("38_1v6qk")
 
-[node name="ToolTransform" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolTransform" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1037516595]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Transform Tool"
@@ -544,7 +538,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("40_a82wo")
 
-[node name="ToolPaintbrush" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolPaintbrush" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=540509489]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Paintbrush"
@@ -558,7 +552,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("42_gdvew")
 
-[node name="ToolPencil" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolPencil" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1563853360]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Pencil"
@@ -572,7 +566,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("44_kjtvk")
 
-[node name="ToolEraser" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolEraser" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=138216566]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Eraser"
@@ -586,7 +580,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("46_xrs0c")
 
-[node name="ToolEyedropper" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolEyedropper" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=971398490]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Eyedropper"
@@ -600,7 +594,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("48_xljpf")
 
-[node name="ToolPaintbucket" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolPaintbucket" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=125190170]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Paint Bucket"
@@ -614,7 +608,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("50_j4bwh")
 
-[node name="ToolRectangleSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolRectangleSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1214833902]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Rectangle Select"
@@ -628,7 +622,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("52_ksmap")
 
-[node name="ToolBrushSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolBrushSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=263845170]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Brush Select"
@@ -642,7 +636,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("54_ygd8o")
 
-[node name="ToolLassoSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolLassoSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=515512176]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Lasso Select"
@@ -656,7 +650,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("56_2s0kr")
 
-[node name="ToolMagicWand" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolMagicWand" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=138511297]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Magic Wand"
@@ -670,7 +664,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("58_xaipn")
 
-[node name="ToolPan" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolPan" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=493789057]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Pan"
@@ -684,7 +678,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("60_ndrjj")
 
-[node name="ToolZoom" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolZoom" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1665409829]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Zoom"
@@ -698,7 +692,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("62_ih3m7")
 
-[node name="ToolText" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolText" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=951959108]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Text"
@@ -712,7 +706,7 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("64_11yus")
 
-[node name="ToolShapes" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray"]
+[node name="ToolShapes" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1097829251]
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Shapes"
@@ -726,40 +720,40 @@ alignment = 0
 icon_alignment = 1
 script = ExtResource("66_b6ruc")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer" unique_id=2018880105]
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer" unique_id=795558414]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1406439072]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kmb1v")
 
-[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1379270821]
 layout_mode = 2
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
 scroll_deadzone = 4
 script = ExtResource("5_o6xl0")
 
-[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport"]
+[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport" unique_id=1821210102]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CanvasWrapper" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin"]
+[node name="CanvasWrapper" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin" unique_id=2086895926]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
-[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper"]
+[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper" unique_id=148939627]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
@@ -772,7 +766,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 
-[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
+[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1786954307]
 material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 1
 anchors_preset = 15
@@ -783,7 +777,7 @@ grow_vertical = 2
 texture = SubResource("Texture2DRD_choun")
 stretch_mode = 1
 
-[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasBackground"]
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasBackground" unique_id=1559239990]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -796,7 +790,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
-[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
+[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=63167911]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -806,7 +800,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl"]
+[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=2098793841]
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_xaipn")
@@ -816,55 +810,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("72_b6ruc")
 expand_mode = 1
 script = ExtResource("9_choun")
 
-[node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas"]
-disable_3d = true
-transparent_bg = true
-canvas_item_default_texture_filter = 0
-gui_disable_input = true
-oversampling = false
-size = Vector2i(256, 256)
-render_target_update_mode = 3
-script = ExtResource("72_ih3m7")
-
-[node name="LayerContent" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_fjhjs")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand_mode = 1
-
-[node name="VirtualPointer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer"]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("76_vtx2l")
-
-[node name="PaintbrushPoint" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer/VirtualPointer"]
-material = SubResource("ShaderMaterial_vtx2l")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_63lxy")
-
-[node name="CanvasGrid" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas"]
+[node name="CanvasGrid" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=1888651295]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_63lxy")
 layout_mode = 1
@@ -875,7 +824,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fjhjs")
 
-[node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=1706108614]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_disable_input = true
+gui_snap_controls_to_pixels = false
+oversampling = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("72_ih3m7")
+
+[node name="LayerContent" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas/LayerContentRenderer" unique_id=1017440039]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fjhjs")
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("72_b6ruc")
+
+[node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
@@ -884,19 +852,19 @@ focus_mode = 0
 text = "print scrollbar values"
 script = ExtResource("70_ksmap")
 
-[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1033896480]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ksmap")
 
-[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=944832440]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper"]
+[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=2052557687]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -908,11 +876,11 @@ text = "layer: [...]
 pos: [...]"
 script = ExtResource("71_ygd8o")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1016688040]
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
+[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer" unique_id=335765538]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
@@ -920,19 +888,19 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar" unique_id=517247880]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
+[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=463915025]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=2050862265]
 layout_mode = 2
 text = "View:"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl"]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=506116122]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_mode = 0
@@ -952,10 +920,10 @@ popup/item_5/text = "Alpha"
 popup/item_5/id = 5
 script = ExtResource("70_j4bwh")
 
-[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
+[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=1553067202]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 focus_mode = 0
@@ -965,7 +933,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("72_ksmap")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=930906433]
 layout_mode = 2
 min_value = -360.0
 max_value = 360.0
@@ -976,10 +944,10 @@ custom_arrow_step = 15.0
 select_all_on_focus = true
 script = ExtResource("72_xljpf")
 
-[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer"]
+[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1437014385]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1310843317]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 focus_mode = 0
@@ -989,7 +957,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("73_j4bwh")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1736966926]
 layout_mode = 2
 min_value = 5.0
 max_value = 3200.0
@@ -1000,39 +968,39 @@ suffix = "%"
 select_all_on_focus = true
 script = ExtResource("71_gdvew")
 
-[node name="RightToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer"]
+[node name="RightToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer" unique_id=1766205380]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"ToolColumn"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn" unique_id=1594494635]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=606369672]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=218053120]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1182187441]
 layout_mode = 2
 
-[node name="InfoText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
+[node name="InfoText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar" unique_id=496281060]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_jkv2x")
 
-[node name="AppVersionText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar"]
+[node name="AppVersionText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar" unique_id=1451198903]
 layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "app_version_text"
