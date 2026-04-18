@@ -41,4 +41,4 @@ If you're here to submit a bug report, please use the [issues page](../../issues
 For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
 
 ## License
-Vincent is an [MIT licensed](LICENSE) open-source project. The only exceptions are the project's branding assets and logos, which are located at [`/resources/vincent`](./resources/vincent). These files are licensed as All Rights Reserved, and are included for reference only.
+Vincent is an [MIT licensed](LICENSE) open-source project. The only exceptions are the project's branding assets and logos, which are located at [`/resources/vincent`](./resources/vincent). These files are NOT free to use, and are included for reference only.

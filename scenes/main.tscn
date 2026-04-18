@@ -82,9 +82,9 @@
 [ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/layer_content_renderer.gd" id="72_ih3m7"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
+[ext_resource type="Script" uid="uid://digqkvosaqbxp" path="res://scripts/ui/viewport/canvas_grid.gd" id="73_155or"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
 [ext_resource type="Shader" uid="uid://dorrudyycgkaj" path="res://shaders/paintbrush.tres" id="75_155or"]
-[ext_resource type="Shader" uid="uid://db76mq768lhw2" path="res://shaders/canvas_grid.tres" id="76_155or"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
 
@@ -142,16 +142,6 @@ shader_parameter/red_enabled = true
 shader_parameter/green_enabled = true
 shader_parameter/blue_enabled = true
 shader_parameter/alpha_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63lxy"]
-shader = ExtResource("76_155or")
-shader_parameter/grid_brightness = 10
-shader_parameter/screen_space_canvas_size = Vector2(1024, 1024)
-shader_parameter/canvas_size = Vector2(256, 256)
-shader_parameter/grid_opacity = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjhjs"]
-bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
 shader = ExtResource("75_155or")
@@ -813,16 +803,14 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("9_choun")
 
-[node name="CanvasGrid" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=1888651295]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_63lxy")
+[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=292443543]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fjhjs")
+script = ExtResource("73_155or")
 
 [node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=1706108614]
 disable_3d = true
