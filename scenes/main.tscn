@@ -130,7 +130,7 @@ shader_parameter/alpha_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
 shader = ExtResource("75_155or")
 shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/pointer_pos = Vector2(0, 0)
+shader_parameter/pointer_pos = Vector2(19.8, 5.685)
 shader_parameter/size = 20.0000009025
 shader_parameter/softness = 1.0000000475
 
@@ -145,14 +145,12 @@ color = Color(1, 0, 0, 1)
 font_size = 12
 font_color = Color(1, 1, 1, 0.482353)
 
-[node name="PanelContainer" type="PanelContainer" unique_id=1510838467]
+[node name="MainWindow" type="PanelContainer" unique_id=1299512938]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = ExtResource("4_tbgi4")
 script = ExtResource("1_0wfyh")
 
@@ -468,10 +466,7 @@ layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=165018823]
 layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_type_variation = &"ToolPanelMargin"
 
 [node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2" unique_id=1905774421]
 unique_name_in_owner = true
