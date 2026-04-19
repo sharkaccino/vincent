@@ -78,7 +78,6 @@
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
 [ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
-[ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="72_b6ruc"]
 [ext_resource type="Script" uid="uid://cndnl73glyjyb" path="res://scripts/canvas/layer_content_renderer.gd" id="72_ih3m7"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
@@ -103,6 +102,17 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmb1v"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 8
+shadow_offset = Vector2(3, 3)
+
 [sub_resource type="Gradient" id="Gradient_vtx2l"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -123,17 +133,6 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/pointer_pos = Vector2(0, 0)
 shader_parameter/size = 20.0000009025
 shader_parameter/softness = 1.0000000475
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-shadow_color = Color(0, 0, 0, 0.196078)
-shadow_size = 8
-shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -741,6 +740,18 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
+
 [node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1786954307]
 layout_mode = 1
 anchors_preset = 15
@@ -783,7 +794,6 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_fjhjs")
 offset_right = 256.0
 offset_bottom = 256.0
-texture = ExtResource("72_b6ruc")
 
 [node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=292443543]
 unique_name_in_owner = true
@@ -795,19 +805,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("73_155or")
-
-[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
 visible = false
@@ -832,13 +829,16 @@ theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=143535653]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
 [node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer" unique_id=2052557687]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_colors/font_shadow_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_constants/paragraph_spacing = 8
@@ -982,8 +982,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_jkv2x")
 
-[node name="AppVersionText" type="Label" parent="VBoxContainer/MarginContainer/StatusBar" unique_id=1451198903]
+[node name="AppVersionLabel" type="Label" parent="VBoxContainer/MarginContainer/StatusBar" unique_id=1451198903]
 layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "app_version_text"
 script = ExtResource("16_jbj1t")
+metadata/prepend_app_name = true

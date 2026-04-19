@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://slcix0nel1fl"]
+
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_uru6g"]
+[ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="2_aw6pp"]
+[ext_resource type="Script" uid="uid://c52jo6ikpq7n6" path="res://scripts/ui/app_version_text.gd" id="3_uru6g"]
+[ext_resource type="Script" uid="uid://dg03yma4ngsg6" path="res://scripts/ui/statistics_dialog/close_button.gd" id="4_3jln4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uru6g"]
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 20
+shadow_color = Color(0.2, 0.2, 0.2, 1)
+shadow_size = 3
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1263349535]
+custom_minimum_size = Vector2(475, 220)
+offset_right = 475.0
+offset_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_uru6g")
+metadata/resizeable = false
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1809594729]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=108363250]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=803321020]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2039986812]
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/AspectRatioContainer" unique_id=294543698]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uru6g")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/AspectRatioContainer" unique_id=559985500]
+texture_filter = 6
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_aw6pp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1533417200]
+layout_mode = 2
+theme_override_constants/separation = -4
+alignment = 1
+
+[node name="AppTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=459866353]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Vincent"
+
+[node name="AppVersionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1861254310]
+layout_mode = 2
+theme_type_variation = &"AppVersionLabel"
+text = "versiontext"
+script = ExtResource("3_uru6g")
+metadata/prepend_app_name = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1765347865]
+layout_mode = 2
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1918656150]
+layout_mode = 2
+text = "A simple, modern, cross-platform image editor."
+
+[node name="HomepageButton" type="LinkButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=142857388]
+layout_mode = 2
+text = "https://github.com/sharkaccino/vincent"
+uri = "https://github.com/sharkaccino/vincent"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=986231292]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1896060710]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+focus_mode = 0
+text = "Close"
+script = ExtResource("4_3jln4")
