@@ -830,13 +830,21 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=2052557687]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=143535653]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer" unique_id=2052557687]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_constants/paragraph_spacing = 8
-theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "layer: [...]
 pos: [...]"
