@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get Revision Hash
         run: 
@@ -27,11 +27,12 @@ jobs:
           echo "$REVISION" > ./commit.txt
       
       - name: Set Up Godot
-        uses: chickensoft-games/setup-godot@v2.1.1
+        uses: chickensoft-games/setup-godot@v2
         with:
-          version: 4.4.0
+          version: 4.6.0
           use-dotnet: false
           include-templates: true
+          cache: true
 
       - name: Compile Application (Windows)
         if: matrix.os == 'windows-latest'
