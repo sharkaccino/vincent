@@ -40,37 +40,10 @@
 [ext_resource type="Script" uid="uid://cgsc4gfrqivqu" path="res://scripts/ui/project_tabs/project_tab_spacer_hit_box.gd" id="23_2f3dj"]
 [ext_resource type="Script" uid="uid://bryq8yorteqgj" path="res://scripts/ui/project_tabs/project_tab_spacer.gd" id="24_fv21b"]
 [ext_resource type="ButtonGroup" uid="uid://81kagm347ypb" path="res://tool_button_group.tres" id="32_bu4jf"]
-[ext_resource type="Texture2D" uid="uid://dqqxfetgk56bq" path="res://resources/icons/panel_tools/pointer.svg" id="33_vc5cj"]
-[ext_resource type="Texture2D" uid="uid://cogstcy5fq4yu" path="res://resources/icons/panel_tools/circle-dashed.svg" id="35_nvyfr"]
-[ext_resource type="Texture2D" uid="uid://drxkaq0cokwnk" path="res://resources/icons/panel_tools/lasso.svg" id="36_ty1g6"]
-[ext_resource type="Script" uid="uid://cw3f5gk7clfte" path="res://scripts/ui/panels/tools/tool_tray.gd" id="36_xaipn"]
-[ext_resource type="Texture2D" uid="uid://cgboxui8jh85i" path="res://resources/icons/panel_tools/wand.svg" id="37_j2jfr"]
-[ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_cursor.gd" id="38_1v6qk"]
-[ext_resource type="Texture2D" uid="uid://cr43853yimtxi" path="res://resources/icons/panel_tools/arrows-move.svg" id="38_bjg73"]
-[ext_resource type="Texture2D" uid="uid://chlpjgi6lgd0a" path="res://resources/icons/panel_tools/color-picker.svg" id="38_bu4jf"]
-[ext_resource type="Texture2D" uid="uid://ctw20e41e7h6" path="res://resources/icons/panel_tools/brush.svg" id="39_bu4jf"]
-[ext_resource type="Script" uid="uid://cvxkr2vfsa8mv" path="res://scripts/ui/panels/tools/tool_transform.gd" id="40_a82wo"]
-[ext_resource type="Texture2D" uid="uid://bgrnnpnnn3sy8" path="res://resources/icons/panel_tools/pencil.svg" id="40_o7ddy"]
-[ext_resource type="Texture2D" uid="uid://b8ptdwgugtdmm" path="res://resources/icons/panel_tools/eraser.svg" id="41_0loja"]
-[ext_resource type="Script" uid="uid://boaklmlbul2ay" path="res://scripts/ui/panels/tools/tool_paintbrush.gd" id="42_gdvew"]
-[ext_resource type="Texture2D" uid="uid://dnk4cqoeak3if" path="res://resources/icons/panel_tools/bucket-droplet.svg" id="42_ids8r"]
-[ext_resource type="Texture2D" uid="uid://oidy3hm0b32t" path="res://resources/icons/panel_tools/marquee-2.svg" id="43_augu2"]
-[ext_resource type="Script" uid="uid://elqi4jwn0gvn" path="res://scripts/ui/panels/tools/tool_pencil.gd" id="44_kjtvk"]
-[ext_resource type="Texture2D" uid="uid://8r4gq8j6mxxu" path="res://resources/icons/panel_tools/hand-stop.svg" id="44_o7ddy"]
+[ext_resource type="Script" uid="uid://cuj5isfepnmm6" path="res://scripts/ui/panels/tools/tools_panel.gd" id="37_augu2"]
+[ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_button.gd" id="38_1v6qk"]
+[ext_resource type="Script" uid="uid://b4jvoreoxwpvs" path="res://scripts/ui/panels/tool_settings/tool_settings_panel.gd" id="40_augu2"]
 [ext_resource type="Texture2D" uid="uid://b4o436yvgbe47" path="res://resources/icons/panel_tools/zoom.svg" id="45_0loja"]
-[ext_resource type="Texture2D" uid="uid://v2rxq5263nhy" path="res://resources/icons/panel_tools/typography.svg" id="46_ids8r"]
-[ext_resource type="Script" uid="uid://bdr11l458ubnj" path="res://scripts/ui/panels/tools/tool_eraser.gd" id="46_xrs0c"]
-[ext_resource type="Texture2D" uid="uid://081pj6fman1p" path="res://resources/icons/panel_tools/triangle-square-circle.svg" id="47_dnhof"]
-[ext_resource type="Script" uid="uid://7jc7uykawdcs" path="res://scripts/ui/panels/tools/tool_eyedropper.gd" id="48_xljpf"]
-[ext_resource type="Script" uid="uid://d12i7e0rlj2yc" path="res://scripts/ui/panels/tools/tool_paintbucket.gd" id="50_j4bwh"]
-[ext_resource type="Script" uid="uid://ehbm7wggfapv" path="res://scripts/ui/panels/tools/tool_rectangle_select.gd" id="52_ksmap"]
-[ext_resource type="Script" uid="uid://bwofe1nmite36" path="res://scripts/ui/panels/tools/tool_brush_select.gd" id="54_ygd8o"]
-[ext_resource type="Script" uid="uid://bjn3fme6xxf38" path="res://scripts/ui/panels/tools/tool_lasso_select.gd" id="56_2s0kr"]
-[ext_resource type="Script" uid="uid://b0fb75tqpi4iu" path="res://scripts/ui/panels/tools/tool_magic_wand.gd" id="58_xaipn"]
-[ext_resource type="Script" uid="uid://00rauqurjdgq" path="res://scripts/ui/panels/tools/tool_pan.gd" id="60_ndrjj"]
-[ext_resource type="Script" uid="uid://b7lunga0ryjmw" path="res://scripts/ui/panels/tools/tool_zoom.gd" id="62_ih3m7"]
-[ext_resource type="Script" uid="uid://cdgurum8dv0k4" path="res://scripts/ui/panels/tools/tool_text.gd" id="64_11yus"]
-[ext_resource type="Script" uid="uid://bcrocxwln08a1" path="res://scripts/ui/panels/tools/tool_shapes.gd" id="66_b6ruc"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
 [ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
@@ -437,47 +410,63 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 drag_area_highlight_in_editor = true
 
-[node name="LeftToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer" unique_id=540786083]
+[node name="LeftToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer" unique_id=1215409375]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_type_variation = &"ToolColumn"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn" unique_id=1421016654]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/LeftToolColumn" unique_id=1902744281]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer" unique_id=1157575487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+
+[node name="ToolsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer" unique_id=821589406]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("37_augu2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel" unique_id=1421016654]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=1880970393]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=1880970393]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer" unique_id=1262429921]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer" unique_id=1262429921]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
 layout_mode = 2
 text = "Tools"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=471042804]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=471042804]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer" unique_id=165018823]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=165018823]
 layout_mode = 2
 theme_type_variation = &"ToolPanelMargin"
 
-[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2" unique_id=1905774421]
+[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer2" unique_id=1905774421]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 last_wrap_alignment = 1
-script = ExtResource("36_xaipn")
 
-[node name="ToolCursor" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=863710925]
+[node name="ToolButtonTemplate" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer2/ToolTray" unique_id=863710925]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 11
 tooltip_text = "Cursor Tool"
@@ -485,209 +474,39 @@ focus_mode = 0
 theme_type_variation = &"FlatToggle"
 theme_override_constants/h_separation = 0
 toggle_mode = true
-button_pressed = true
 action_mode = 0
 button_group = ExtResource("32_bu4jf")
-icon = ExtResource("33_vc5cj")
 alignment = 0
 icon_alignment = 1
 script = ExtResource("38_1v6qk")
+metadata/tool_id = ""
 
-[node name="ToolTransform" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1037516595]
+[node name="ToolSettingsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer" unique_id=2068825470]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Transform Tool"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("38_bjg73")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("40_a82wo")
+size_flags_vertical = 3
+script = ExtResource("40_augu2")
 
-[node name="ToolPaintbrush" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=540509489]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel" unique_id=1809586737]
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Paintbrush"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("39_bu4jf")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("42_gdvew")
+theme_override_constants/separation = 0
 
-[node name="ToolPencil" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1563853360]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer" unique_id=2001139344]
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Pencil"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("40_o7ddy")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("44_kjtvk")
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="ToolEraser" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=138216566]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer/MarginContainer" unique_id=899579538]
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Eraser"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("41_0loja")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("46_xrs0c")
 
-[node name="ToolEyedropper" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=971398490]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2140841286]
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Eyedropper"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("38_bu4jf")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("48_xljpf")
+text = "Tool Settings"
 
-[node name="ToolPaintbucket" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=125190170]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer" unique_id=78403437]
 layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Paint Bucket"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("42_ids8r")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("50_j4bwh")
-
-[node name="ToolRectangleSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1214833902]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Rectangle Select"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("43_augu2")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("52_ksmap")
-
-[node name="ToolBrushSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=263845170]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Brush Select"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("35_nvyfr")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("54_ygd8o")
-
-[node name="ToolLassoSelect" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=515512176]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Lasso Select"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("36_ty1g6")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("56_2s0kr")
-
-[node name="ToolMagicWand" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=138511297]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Magic Wand"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("37_j2jfr")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("58_xaipn")
-
-[node name="ToolPan" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=493789057]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Pan"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("44_o7ddy")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("60_ndrjj")
-
-[node name="ToolZoom" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1665409829]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Zoom"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("45_0loja")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("62_ih3m7")
-
-[node name="ToolText" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=951959108]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Text"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("46_ids8r")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("64_11yus")
-
-[node name="ToolShapes" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/VBoxContainer/MarginContainer2/ToolTray" unique_id=1097829251]
-layout_mode = 2
-size_flags_horizontal = 11
-tooltip_text = "Shapes"
-focus_mode = 0
-theme_type_variation = &"FlatToggle"
-toggle_mode = true
-action_mode = 0
-button_group = ExtResource("32_bu4jf")
-icon = ExtResource("47_dnhof")
-alignment = 0
-icon_alignment = 1
-script = ExtResource("66_b6ruc")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer" unique_id=2018880105]
 layout_mode = 2
@@ -947,7 +766,7 @@ script = ExtResource("71_gdvew")
 
 [node name="RightToolColumn" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer" unique_id=1766205380]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_type_variation = &"ToolColumn"
 

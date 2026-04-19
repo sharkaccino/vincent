@@ -32,6 +32,7 @@ Enums="*res://scripts/enums.gd"
 Utils="*res://scripts/utils.gd"
 StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
+ToolManager="*uid://ceqygovtbubm0"
 PluginManager="*uid://bb6a1l22kac3g"
 
 [display]
