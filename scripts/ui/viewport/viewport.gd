@@ -103,7 +103,13 @@ func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):
 		if (event.is_pressed() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
 			var evLocal = make_input_local(event)
-			if (get_rect().has_point(evLocal.position)):
+			
+			# ignore scrollbar clicks
+			var adjusted_rect = get_rect()
+			adjusted_rect.size.x -= get_v_scroll_bar().size.x
+			adjusted_rect.size.y -= get_h_scroll_bar().size.y
+			
+			if (adjusted_rect.has_point(evLocal.position)):
 				is_button_down = true
 				StateManager.request_canvas_update()
 		if (event.is_released() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
