@@ -28,10 +28,11 @@ driver/driver="Dummy"
 
 [autoload]
 
-StateManager="*res://scripts/state_manager.gd"
-PopupManager="*res://scripts/popup_manager.gd"
 Enums="*res://scripts/enums.gd"
 Utils="*res://scripts/utils.gd"
+StateManager="*res://scripts/state_manager.gd"
+PopupManager="*res://scripts/popup_manager.gd"
+PluginManager="*uid://bb6a1l22kac3g"
 
 [display]
 
@@ -55,4 +56,4 @@ common/snap_controls_to_pixels=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true
-environment/defaults/default_clear_color=Color(0.0605303, 0.0605304, 0.0605303, 1)
+environment/defaults/default_clear_color=Color(0.2, 0.2, 0.2, 1)
