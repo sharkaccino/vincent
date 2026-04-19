@@ -92,15 +92,18 @@ func on_resized() -> void:
 var is_button_down = false
 
 func _input(event: InputEvent) -> void:
-	# temporary
-	if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
-	
 	if (event is InputEventMouseMotion):
 		if (event.relative.is_zero_approx()): return
 		update_mouse_pos()
+		
+		# temporary
+		if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
 		if (is_button_down):
 			StateManager.request_canvas_update()
 	if (event is InputEventMouseButton):
+		# temporary
+		if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
+		
 		if (event.is_pressed() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
 			var evLocal = make_input_local(event)
 			
