@@ -85,6 +85,7 @@
 [ext_resource type="Script" uid="uid://digqkvosaqbxp" path="res://scripts/ui/viewport/canvas_grid.gd" id="73_155or"]
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
 [ext_resource type="Shader" uid="uid://dorrudyycgkaj" path="res://shaders/paintbrush.tres" id="75_155or"]
+[ext_resource type="Script" uid="uid://c0ter083lybka" path="res://scripts/ui/viewport/grid_toggle.gd" id="80_vtx2l"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
 
@@ -785,6 +786,8 @@ offset_bottom = 256.0
 texture = ExtResource("72_b6ruc")
 
 [node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=292443543]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -882,6 +885,14 @@ popup/item_4/id = 4
 popup/item_5/text = "Alpha"
 popup/item_5/id = 5
 script = ExtResource("70_j4bwh")
+
+[node name="GridControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1751616304]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/GridControl" unique_id=154450219]
+layout_mode = 2
+text = "Show Grid"
+script = ExtResource("80_vtx2l")
 
 [node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
 layout_mode = 2
