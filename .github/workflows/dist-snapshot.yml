@@ -48,14 +48,14 @@ jobs:
 
       - name: Upload Windows Snapshot
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-windows-x86_64
           path: build/windows/*
       
       - name: Upload Linux Snapshot
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-linux-x86_64
           path: build/linux/*
