@@ -23,16 +23,14 @@ func _draw() -> void:
 	
 	var lines: PackedVector2Array = []
 	
-	for i in range(canvas_width):
-		if i == 0: continue
+	for i in range(canvas_width + 1):
 		var pos_x = (canvas_pixel_width * i)
 		var start = Vector2(pos_x, 0)
 		var end = Vector2(pos_x, rect.size.y)
 		lines.append(start)
 		lines.append(end)
 	
-	for i in range(canvas_height):
-		if i == 0: continue
+	for i in range(canvas_height + 1):
 		var pos_y = (canvas_pixel_height * i)
 		var start = Vector2(0, pos_y)
 		var end = Vector2(rect.size.x, pos_y)

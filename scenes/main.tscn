@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://7nuyswdmfbq7" path="res://scripts/ui/project_tabs/project_tab_thumbnail.gd" id="8_jbj1t"]
 [ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scripts/ui/viewport/canvas.gd" id="9_choun"]
 [ext_resource type="Script" uid="uid://c05pkvbgupg1s" path="res://scripts/ui/project_tabs/project_tab_name.gd" id="9_muem4"]
-[ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cgyo7g5hgjfml" path="res://resources/icons/arrow-back-up.svg" id="10_2wyq8"]
 [ext_resource type="Script" uid="uid://dcxiqumwjdw47" path="res://scripts/ui/project_tabs/project_tab_resolution.gd" id="10_dp3eg"]
 [ext_resource type="Script" uid="uid://cwidby13yuxlq" path="res://scripts/ui/menu_bar/save_file_dialog.gd" id="11_ih3m7"]
@@ -73,6 +72,7 @@
 [ext_resource type="Script" uid="uid://cdgurum8dv0k4" path="res://scripts/ui/panels/tools/tool_text.gd" id="64_11yus"]
 [ext_resource type="Script" uid="uid://bcrocxwln08a1" path="res://scripts/ui/panels/tools/tool_shapes.gd" id="66_b6ruc"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
+[ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
 [ext_resource type="Script" uid="uid://tksro1ugiv0v" path="res://scripts/ui/viewport/channel_mode.gd" id="70_j4bwh"]
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
@@ -102,38 +102,11 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmb1v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
-shader = ExtResource("9_ya4ey")
-shader_parameter/use_screen_uv = false
-shader_parameter/grid_size = 4.0
-shader_parameter/color_a = Color(1, 1, 1, 1)
-shader_parameter/color_b = Color(0.8, 0.8, 0.8, 1)
+[sub_resource type="Gradient" id="Gradient_vtx2l"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="Texture2DRD" id="Texture2DRD_choun"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-shadow_color = Color(0, 0, 0, 0.196078)
-shadow_size = 8
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_detail = 1
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_63lxy"]
+gradient = SubResource("Gradient_vtx2l")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xaipn"]
 shader = ExtResource("69_2s0kr")
@@ -146,9 +119,20 @@ shader_parameter/alpha_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
 shader = ExtResource("75_155or")
 shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/pointer_pos = Vector2(43, 17.21)
-shader_parameter/size = 25.98000118655
+shader_parameter/pointer_pos = Vector2(0, 0)
+shader_parameter/size = 20.0000009025
 shader_parameter/softness = 1.0000000475
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 8
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ksmap"]
 color = Color(0, 1, 0, 1)
@@ -757,38 +741,16 @@ grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 
 [node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1786954307]
-material = SubResource("ShaderMaterial_eb6dy")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("Texture2DRD_choun")
+texture = SubResource("GradientTexture1D_63lxy")
+expand_mode = 1
 stretch_mode = 1
-
-[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasBackground" unique_id=1559239990]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
-
-[node name="CanvasOutline" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=63167911]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
+script = ExtResource("70_155or")
 
 [node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=2098793841]
 unique_name_in_owner = true
@@ -802,15 +764,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 script = ExtResource("9_choun")
-
-[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=292443543]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("73_155or")
 
 [node name="LayerContentRenderer" type="SubViewport" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/Canvas" unique_id=1706108614]
 disable_3d = true
@@ -830,6 +783,28 @@ material = SubResource("ShaderMaterial_fjhjs")
 offset_right = 256.0
 offset_bottom = 256.0
 texture = ExtResource("72_b6ruc")
+
+[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=292443543]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("73_155or")
+
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
 visible = false
