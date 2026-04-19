@@ -92,6 +92,9 @@ func on_resized() -> void:
 var is_button_down = false
 
 func _input(event: InputEvent) -> void:
+	# temporary
+	if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
+	
 	if (event is InputEventMouseMotion):
 		if (event.relative.is_zero_approx()): return
 		update_mouse_pos()
