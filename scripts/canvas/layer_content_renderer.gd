@@ -10,15 +10,20 @@ func on_canvas_update_request() -> void:
 	var active_project = StateManager.get_active_project()
 	
 	var layer = active_project.active_layer_index
-	var layer_content_data = active_project.layers[layer].image_data
+	var layer_content_data: Image = active_project.layers[layer].image_data
 	layer_content.texture.update(layer_content_data)
 	layer_content.material.set_shader_parameter("pointer_pos", last_pointer_pos)
 	
 	await RenderingServer.frame_post_draw
 	
-	var image_data = get_texture().get_image()
-	image_data.generate_mipmaps()
-	active_project.layers[layer].image_data = image_data
+	var viewport_data = get_texture().get_image()
+	var img_size = layer_content_data.get_size()
+	layer_content_data.blend_rect(
+		viewport_data, 
+		Rect2i(0, 0, img_size.x, img_size.y), 
+		Vector2i(0, 0)
+	)
+	layer_content_data.generate_mipmaps()
 	
 	StateManager.canvas_updated.emit()
 
