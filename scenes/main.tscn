@@ -516,6 +516,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_kmb1v")
 
 [node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1379270821]
 layout_mode = 2
+mouse_filter = 2
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
 scroll_deadzone = 4
@@ -745,6 +746,21 @@ theme_type_variation = &"ToolColumn"
 
 [node name="TEMPToolColumnPlaceholder" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn" unique_id=623007878]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn/TEMPToolColumnPlaceholder" unique_id=1502233475]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToolPanelMargin"
+
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn/TEMPToolColumnPlaceholder/MarginContainer" unique_id=753358605]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+text = "dev notes:
+
+zoom in/out with scroll wheel, pan with middle mouse
+
+note: zooming does not yet take into account the current viewport/cursor position, sorry"
+autowrap_mode = 3
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=606369672]
 layout_mode = 2

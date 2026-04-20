@@ -4,6 +4,11 @@ extends ScrollContainer
 @onready var canvas_wrapper: Control = %CanvasWrapper
 @onready var canvas_control: Control = %CanvasTransformControl
 
+var pan_starting_pos_h = 0
+var pan_starting_pos_v = 0
+var pan_starting_pos_cursor = Vector2.ZERO
+var is_panning = false
+
 func get_relative_mouse_pos() -> Vector2:
 	var active_project = StateManager.get_active_project()
 	var real_pos = canvas_control.get_local_mouse_position()
@@ -94,24 +99,84 @@ func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
 		if (event.relative.is_zero_approx()): return
 		StateManager.pointer_move.emit(get_relative_mouse_pos())
+		
+		if (is_panning):
+			var active_project = StateManager.get_active_project()
+			StateManager.set_autofit(false)
+			
+			var cursor_diff = make_input_local(event).position - pan_starting_pos_cursor
+			
+			active_project.viewport.x = pan_starting_pos_h - cursor_diff.x
+			active_project.viewport.y = pan_starting_pos_v - cursor_diff.y
+			recalc_transforms()
 	if (event is InputEventMouseButton):
+		if event.button_index == MouseButton.MOUSE_BUTTON_MIDDLE:
+			if event.is_pressed():
+				pan_starting_pos_h = scroll_horizontal
+				pan_starting_pos_v = scroll_vertical
+				pan_starting_pos_cursor = make_input_local(event).position
+				is_panning = true
+				print("begin pan")
+			if event.is_released():
+				is_panning = false
+		
+		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
+			if event.is_released():
+				StateManager.set_autofit(false)
+				var active_project = StateManager.get_active_project()
+				var current_level = active_project.viewport.zoom * 100
+				var step = 25
+				
+				if current_level < 100:
+					step = 10
+				if current_level < 50:
+					step = 5
+				if current_level >= 300:
+					step = 50
+				if current_level >= 500:
+					step = 100
+				if current_level >= 1000:
+					step = 200
+				
+				var final_level = snapped(current_level + step, step)
+				StateManager.set_zoom_level(final_level)
+		
+		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
+			if event.is_released():
+				StateManager.set_autofit(false)
+				var active_project = StateManager.get_active_project()
+				var current_level = active_project.viewport.zoom * 100
+				var step = 25
+				
+				if current_level <= 100:
+					step = 10
+				if current_level <= 50:
+					step = 5
+				if current_level > 300:
+					step = 50
+				if current_level > 500:
+					step = 100
+				if current_level > 1000:
+					step = 200
+				
+				var final_level = snapped(current_level - step, step)
+				StateManager.set_zoom_level(final_level)
+				
 		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
-		
-		if is_m1 == false && is_m2 == false: return
-		
-		if event.is_pressed():
-			var evLocal = make_input_local(event)
-			
-			# ignore scrollbar clicks
-			var adjusted_rect = get_rect()
-			adjusted_rect.size.x -= get_v_scroll_bar().size.x
-			adjusted_rect.size.y -= get_h_scroll_bar().size.y
-			
-			if (adjusted_rect.has_point(evLocal.position)):
-				StateManager.pointer_down.emit(event.button_index)
-		if event.is_released():
-			StateManager.pointer_up.emit(event.button_index)
+		if is_m1 || is_m2:
+			if event.is_pressed():
+				var evLocal = make_input_local(event)
+				
+				# ignore scrollbar clicks
+				var adjusted_rect = get_rect()
+				adjusted_rect.size.x -= get_v_scroll_bar().size.x
+				adjusted_rect.size.y -= get_h_scroll_bar().size.y
+				
+				if (adjusted_rect.has_point(evLocal.position)):
+					StateManager.pointer_down.emit(event.button_index)
+			if event.is_released():
+				StateManager.pointer_up.emit(event.button_index)
 
 func _ready() -> void:
 	margin.visible = false
