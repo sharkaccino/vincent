@@ -4,11 +4,10 @@ extends ScrollContainer
 @onready var canvas_wrapper: Control = %CanvasWrapper
 @onready var canvas_control: Control = %CanvasTransformControl
 
-func update_mouse_pos() -> void:
+func get_relative_mouse_pos() -> Vector2:
 	var active_project = StateManager.get_active_project()
 	var real_pos = canvas_control.get_local_mouse_position()
-	var scaled_pos = real_pos / active_project.viewport.zoom
-	StateManager.pointer_move.emit(scaled_pos)
+	return real_pos / active_project.viewport.zoom
 
 func center_scroll_bars() -> void:
 	var active_project = StateManager.get_active_project()
@@ -64,7 +63,7 @@ func recalc_transforms() -> void:
 		h_bar.set_deferred("value", active_project.viewport.x)
 		v_bar.set_deferred("value", active_project.viewport.y)
 	
-	update_mouse_pos()
+	StateManager.pointer_move.emit(get_relative_mouse_pos())
 	
 func on_active_project_changed() -> void:
 	if StateManager.active_project_id == 0:
@@ -94,17 +93,14 @@ var is_button_down = false
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
 		if (event.relative.is_zero_approx()): return
-		update_mouse_pos()
-		
-		# temporary
-		if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
-		if (is_button_down):
-			StateManager.request_canvas_update()
+		StateManager.pointer_move.emit(get_relative_mouse_pos())
 	if (event is InputEventMouseButton):
-		# temporary
-		if (StateManager.active_tool != Enums.ToolType.PAINTBRUSH): return
+		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
+		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
 		
-		if (event.is_pressed() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
+		if is_m1 == false && is_m2 == false: return
+		
+		if event.is_pressed():
 			var evLocal = make_input_local(event)
 			
 			# ignore scrollbar clicks
@@ -113,10 +109,9 @@ func _input(event: InputEvent) -> void:
 			adjusted_rect.size.y -= get_h_scroll_bar().size.y
 			
 			if (adjusted_rect.has_point(evLocal.position)):
-				is_button_down = true
-				StateManager.request_canvas_update()
-		if (event.is_released() && event.button_index == MouseButton.MOUSE_BUTTON_LEFT):
-			is_button_down = false
+				StateManager.pointer_down.emit(event.button_index)
+		if event.is_released():
+			StateManager.pointer_up.emit(event.button_index)
 
 func _ready() -> void:
 	margin.visible = false

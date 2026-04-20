@@ -7,24 +7,24 @@ var dragging = false
 var current_drag_type
 var current_drag_data
 
-var active_tool = Enums.ToolType.CURSOR
-
 signal projects_changed
 signal project_added
 signal project_removed
 signal active_project_changed
 signal drag_announced
-signal active_tool_changed
 signal rotation_changed
 signal zoom_level_changed
 signal autofit_changed
 @warning_ignore("unused_signal")
+signal pointer_down
+@warning_ignore("unused_signal")
 signal pointer_move
+@warning_ignore("unused_signal")
+signal pointer_up
 @warning_ignore("unused_signal")
 signal view_mode_changed
 @warning_ignore("unused_signal")
 signal canvas_updated
-signal canvas_update_request
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
@@ -134,11 +134,6 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		dragging = false
 
-func set_active_tool(type: Enums.ToolType) -> void:
-	print("set tool: ", type)
-	active_tool = type
-	active_tool_changed.emit()
-
 func set_zoom_level(new_value: float) -> void:
 	var active_project = get_active_project()
 	var clamped = clamp(new_value / 100, 0.05, 32)
@@ -159,6 +154,3 @@ func set_autofit(new_value: bool) -> void:
 			set_zoom_level(100)
 		active_project.viewport.autofit = new_value
 		autofit_changed.emit()
-
-func request_canvas_update() -> void:
-	canvas_update_request.emit()
