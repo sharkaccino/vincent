@@ -11,8 +11,6 @@ func update_canvas() -> void:
 	texture = ImageTexture.create_from_image(active_project.layers[0].image_data)
 
 func update_view_mode(new_value: Enums.ViewMode) -> void:
-	print("view mode updated")
-	
 	# default values
 	material.set_shader_parameter("single_channel", false)
 	material.set_shader_parameter("red_enabled", true)

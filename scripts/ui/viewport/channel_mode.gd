@@ -7,7 +7,9 @@ func handle_item_selection(index: int) -> void:
 func check_control_activation() -> void:
 	var project_opened = StateManager.active_project_id != 0
 	disabled = !project_opened
-	if (!project_opened): selected = 0
+	if (!project_opened): 
+		selected = Enums.ViewMode.ALL_CHANNELS
+		StateManager.view_mode_changed.emit(selected)
 
 func _ready() -> void:
 	item_selected.connect(handle_item_selection)
