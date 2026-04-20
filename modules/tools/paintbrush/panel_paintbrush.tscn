@@ -6,7 +6,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6drm3"]
 shader = ExtResource("3_8stvs")
-shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/size = 20
 shader_parameter/softness = 1.0000000475
 
@@ -112,7 +111,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 1000.0
-value = 30.0
+value = 20.0
 suffix = "%"
 select_all_on_focus = true
 

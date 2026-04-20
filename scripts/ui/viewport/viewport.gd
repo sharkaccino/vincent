@@ -116,7 +116,6 @@ func _input(event: InputEvent) -> void:
 				pan_starting_pos_v = scroll_vertical
 				pan_starting_pos_cursor = make_input_local(event).position
 				is_panning = true
-				print("begin pan")
 			if event.is_released():
 				is_panning = false
 		
