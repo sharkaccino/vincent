@@ -15,6 +15,8 @@ config/description="Simple, modern, cross-platform image editor."
 config/version="0.2.0_prealpha"
 config/tags=PackedStringArray("application")
 run/main_scene="uid://qubiww5n0s3j"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="vincent"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=120
 run/low_processor_mode=true
@@ -30,6 +32,7 @@ driver/driver="Dummy"
 
 Enums="*res://scripts/enums.gd"
 Utils="*res://scripts/utils.gd"
+ConfigManager="*uid://6wqg7flfqe3j"
 StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
 ToolManager="*uid://ceqygovtbubm0"
