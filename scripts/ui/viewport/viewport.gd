@@ -96,6 +96,19 @@ func on_resized() -> void:
 var is_button_down = false
 
 func _input(event: InputEvent) -> void:
+	var is_within_viewport = false
+	var localized = make_input_local(event)
+	
+	if "position" in localized:
+		# ignore scrollbar clicks
+		var adjusted_rect = get_rect()
+		adjusted_rect.size.x -= get_v_scroll_bar().size.x
+		adjusted_rect.size.y -= get_h_scroll_bar().size.y
+		adjusted_rect = adjusted_rect.abs()
+		
+		if adjusted_rect.has_point(localized.position): 
+			is_within_viewport = true
+		
 	if (event is InputEventMouseMotion):
 		if (event.relative.is_zero_approx()): return
 		StateManager.pointer_move.emit(get_relative_mouse_pos())
@@ -111,7 +124,7 @@ func _input(event: InputEvent) -> void:
 			recalc_transforms()
 	if (event is InputEventMouseButton):
 		if event.button_index == MouseButton.MOUSE_BUTTON_MIDDLE:
-			if event.is_pressed():
+			if event.is_pressed() && is_within_viewport:
 				pan_starting_pos_h = scroll_horizontal
 				pan_starting_pos_v = scroll_vertical
 				pan_starting_pos_cursor = make_input_local(event).position
@@ -120,7 +133,7 @@ func _input(event: InputEvent) -> void:
 				is_panning = false
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
-			if event.is_released():
+			if event.is_released() && is_within_viewport:
 				StateManager.set_autofit(false)
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
@@ -141,7 +154,7 @@ func _input(event: InputEvent) -> void:
 				StateManager.set_zoom_level(final_level)
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
-			if event.is_released():
+			if event.is_released() && is_within_viewport:
 				StateManager.set_autofit(false)
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
@@ -164,18 +177,18 @@ func _input(event: InputEvent) -> void:
 		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
 		if is_m1 || is_m2:
-			if event.is_pressed():
-				var evLocal = make_input_local(event)
-				
-				# ignore scrollbar clicks
-				var adjusted_rect = get_rect()
-				adjusted_rect.size.x -= get_v_scroll_bar().size.x
-				adjusted_rect.size.y -= get_h_scroll_bar().size.y
-				
-				if (adjusted_rect.has_point(evLocal.position)):
-					StateManager.pointer_down.emit(event.button_index)
+			if event.is_pressed() && is_within_viewport:
+				StateManager.pointer_down.emit(event.button_index)
 			if event.is_released():
 				StateManager.pointer_up.emit(event.button_index)
+				var active_project = StateManager.get_active_project()
+				var layer = active_project.active_layer_index
+				var layer_content_data: Image = active_project.layers[layer].image_data
+				
+				if layer_content_data.has_mipmaps() == false:
+					await RenderingServer.frame_post_draw
+					layer_content_data.generate_mipmaps()
+					StateManager.canvas_updated.emit()
 
 func _ready() -> void:
 	margin.visible = false

@@ -1,5 +1,17 @@
 extends TextureRect
 
+func on_resized() -> void:
+	var active_project = StateManager.get_active_project()
+	
+	var rect = get_rect()
+	var width_check = rect.size.x < active_project.size.x
+	var height_check = rect.size.y < active_project.size.y
+	
+	if width_check || height_check:
+		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	else:
+		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+
 func update_canvas() -> void:
 	# TODO: show the combined output of all layers merged together.
 	
@@ -43,6 +55,7 @@ func update_view_mode(new_value: Enums.ViewMode) -> void:
 
 func _ready() -> void:
 	texture = null
+	resized.connect(on_resized)
 	StateManager.active_project_changed.connect(update_canvas)
 	StateManager.canvas_updated.connect(update_canvas)
 	StateManager.view_mode_changed.connect(update_view_mode)

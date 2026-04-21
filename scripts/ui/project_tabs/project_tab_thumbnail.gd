@@ -8,7 +8,10 @@ func update_thumbnail() -> void:
 	var connected_project = StateManager.get_project_data(project_id)
 	if (connected_project.id == 0): return
 	
-	texture = ImageTexture.create_from_image(connected_project.layers[0].image_data)
+	var image_data: Image = connected_project.layers[0].image_data
+	
+	if image_data.has_mipmaps():
+		texture = ImageTexture.create_from_image(image_data)
 
 func check_filter_mode() -> void:
 	var connected_project = StateManager.get_project_data(project_id)
