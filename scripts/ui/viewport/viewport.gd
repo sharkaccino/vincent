@@ -9,6 +9,9 @@ var pan_starting_pos_v = 0
 var pan_starting_pos_cursor = Vector2.ZERO
 var is_panning = false
 
+# TODO: make this configurable
+var autofit_margin = 15
+
 func get_relative_mouse_pos() -> Vector2:
 	var active_project = StateManager.get_active_project()
 	var real_pos = canvas_control.get_local_mouse_position()
@@ -38,7 +41,14 @@ func recalc_transforms() -> void:
 	if StateManager.active_project_id == 0:
 		return
 	
+	var viewport_size = get_rect().size
 	var active_project = StateManager.get_active_project()
+	
+	if active_project.viewport.autofit:
+		var h_ratio = (viewport_size.x - (autofit_margin * 2)) / active_project.size.x
+		var v_ratio = (viewport_size.y - (autofit_margin * 2)) / active_project.size.y
+		active_project.viewport.zoom = min(h_ratio, v_ratio, 1.0)
+	
 	var canvas_size = active_project.size * active_project.viewport.zoom
 	var canvas_size_rotated = Utils.get_bounding_box_size(
 		canvas_size, 
@@ -57,10 +67,10 @@ func recalc_transforms() -> void:
 	var h_bar = get_h_scroll_bar()
 	var v_bar = get_v_scroll_bar()
 	
-	margin.add_theme_constant_override("margin_left", (get_size().x / 2) + (xAdd / 2))
-	margin.add_theme_constant_override("margin_right", (get_size().x / 2) + (xAdd / 2) - h_bar.size.y)
-	margin.add_theme_constant_override("margin_top", (get_size().y / 2) + (yAdd / 2))
-	margin.add_theme_constant_override("margin_bottom", (get_size().y / 2) + (yAdd / 2) - v_bar.size.x)
+	margin.add_theme_constant_override("margin_left", (viewport_size.x / 2) + (xAdd / 2))
+	margin.add_theme_constant_override("margin_right", (viewport_size.x / 2) + (xAdd / 2) - h_bar.size.y)
+	margin.add_theme_constant_override("margin_top", (viewport_size.y / 2) + (yAdd / 2))
+	margin.add_theme_constant_override("margin_bottom", (viewport_size.y / 2) + (yAdd / 2) - v_bar.size.x)
 	
 	if active_project.viewport.autofit:
 		center_scroll_bars()
@@ -90,7 +100,6 @@ func on_scrolled() -> void:
 	StateManager.set_autofit(false)
 
 func on_resized() -> void:
-	print("new viewport size: ", get_size())
 	recalc_transforms()
 
 var is_button_down = false

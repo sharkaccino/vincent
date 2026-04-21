@@ -139,6 +139,7 @@ func set_zoom_level(new_value: float) -> void:
 	var clamped = clamp(new_value / 100, 0.05, 32)
 	if (active_project.viewport.zoom != clamped):
 		active_project.viewport.zoom = clamped
+		set_autofit(false)
 		zoom_level_changed.emit()
 		
 func set_rotation(degrees: float) -> void:
@@ -150,7 +151,5 @@ func set_rotation(degrees: float) -> void:
 func set_autofit(new_value: bool) -> void:
 	var active_project = get_active_project()
 	if (active_project.viewport.autofit != new_value):
-		if (new_value == true):
-			set_zoom_level(100)
 		active_project.viewport.autofit = new_value
 		autofit_changed.emit()

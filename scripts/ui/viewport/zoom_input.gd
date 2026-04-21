@@ -17,7 +17,7 @@ func handle_external_change() -> void:
 	var active_project = StateManager.get_active_project()
 	var line_edit = get_line_edit()
 	
-	value = active_project.viewport.zoom * 100
+	set_value_no_signal(active_project.viewport.zoom * 100)
 	
 	if (active_project.viewport.autofit):
 		line_edit.set_deferred("text", "Fit")
