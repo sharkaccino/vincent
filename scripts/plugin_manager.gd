@@ -39,13 +39,37 @@ func validate_metadata(metadata: Dictionary, builtin: bool = false) -> Error:
 		return typeof(item) == TYPE_FLOAT
 		
 	if "compatibility" not in metadata:
-		printerr("Missing metadata property \"compatibility\" in plugin \"", metadata.id, "\"")
+		printerr("Missing metadata property \"compatibility\" for plugin \"", metadata.id, "\"")
 		return Error.ERR_INVALID_DATA
 	elif typeof(metadata.compatibility) != TYPE_ARRAY || metadata.compatibility.all(is_number) == false:
-		printerr("Invalid metadata property \"compatibility\" in plugin \"", metadata.id, "\"")
+		printerr("Invalid metadata property \"compatibility\" for plugin \"", metadata.id, "\"")
 		return Error.ERR_INVALID_DATA
 	
-	# TODO: name, version, description, url, categories
+	if "name" in metadata && typeof(metadata.name) != TYPE_STRING:
+		printerr("Invalid metadata property \"name\" for plugin \"", metadata.id, "\"")
+		return Error.ERR_INVALID_DATA
+	
+	if "version" in metadata && typeof(metadata.version) != TYPE_STRING:
+		printerr("Invalid metadata property \"version\" for plugin \"", metadata.id, "\"")
+		return Error.ERR_INVALID_DATA
+	
+	if "description" in metadata && typeof(metadata.description) != TYPE_STRING:
+		printerr("Invalid metadata property \"description\" for plugin \"", metadata.id, "\"")
+		return Error.ERR_INVALID_DATA
+		
+	if "url" in metadata && typeof(metadata.url) != TYPE_STRING:
+		printerr("Invalid metadata property \"url\" for plugin \"", metadata.id, "\"")
+		return Error.ERR_INVALID_DATA
+	
+	if "categories" in metadata:
+		if typeof(metadata.categories) != TYPE_ARRAY:
+			printerr("Invalid metadata property \"categories\" for plugin \"", metadata.id, "\"")
+			return Error.ERR_INVALID_DATA
+		else:
+			for i in range(metadata.categories.size()):
+				if typeof(metadata.categories[i]) != TYPE_STRING:
+					printerr("Invalid item at index ", i, " in metadata property \"categories\" for plugin \"", metadata.id, "\"")
+					return Error.ERR_INVALID_DATA
 	
 	return Error.OK
 
