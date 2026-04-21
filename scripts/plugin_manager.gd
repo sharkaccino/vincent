@@ -1,18 +1,22 @@
 extends Node
 
-var effects_dir = ResourceLoader.list_directory("res://modules/effects")
-var filetypes_dir = ResourceLoader.list_directory("res://modules/filetypes")
-var tools_dir = ResourceLoader.list_directory("res://modules/tools")
+const effects_dir = "res://modules/effects"
+const filetypes_dir = "res://modules/filetypes"
+const tools_dir = "res://modules/tools"
+const user_plugins_dir = "user://plugins"
 
-var id_regex = RegEx.create_from_string("^[a-z0-9-_]+:[a-z0-9-_]+$")
+const id_regex = "^[a-z0-9-_]+:[a-z0-9-_]+$"
 
-var reserved_namespaces = [
+const reserved_namespaces = [
 	"builtin",
 	"internal",
 	"default",
 	"standard",
 	"vincent"
 ]
+
+# JSON numbers are read as floats
+const current_plugin_format = 1.0
 
 func validate_metadata(metadata: Dictionary, builtin: bool = false) -> Error:
 	if "id" not in metadata:
@@ -21,7 +25,7 @@ func validate_metadata(metadata: Dictionary, builtin: bool = false) -> Error:
 	elif typeof(metadata.id) != TYPE_STRING:
 		# id property is not a string
 		return Error.ERR_SKIP
-	elif id_regex.search(metadata.id) == null:
+	elif RegEx.create_from_string(id_regex).search(metadata.id) == null:
 		# id property does not match required format
 		return Error.ERR_SKIP
 	elif builtin == false:
@@ -45,7 +49,15 @@ func validate_metadata(metadata: Dictionary, builtin: bool = false) -> Error:
 	
 	return Error.OK
 
-func load_plugin(plugin_path: String, builtin: bool = false) -> void:
+func _load_plugin(plugin_path: String) -> void:
+	var builtin = false
+	if plugin_path.begins_with("res://"):
+		builtin = true
+	
+	if ConfigManager.get_config().plugins.enabled == false: 
+		if builtin == false:
+			return
+	
 	if DirAccess.dir_exists_absolute(plugin_path) == false:
 		printerr("Path does not exist: \"", plugin_path ,"\"")
 		return
@@ -72,6 +84,8 @@ func load_plugin(plugin_path: String, builtin: bool = false) -> void:
 			push_warning("Could not load plugin at \"", plugin_path, "\". (invalid ID: namespace is prohibited)")
 		elif result == Error.ERR_INVALID_DATA:
 			push_warning("Could not load plugin at \"", plugin_path, "\". (invalid metadata)")
+		elif metadata.data.compatibility.has(current_plugin_format) == false:
+			push_warning("Could not load plugin at \"", plugin_path, "\". (incompatible with current app version)")
 		else:
 			var script = load(init_script_path)
 			var plugin_node = Node.new()
@@ -80,16 +94,24 @@ func load_plugin(plugin_path: String, builtin: bool = false) -> void:
 			get_tree().root.add_child.call_deferred(plugin_node)
 
 func _ready() -> void:
-	var builtin_plugins = []
+	var plugins_dir = ProjectSettings.globalize_path(user_plugins_dir)
+	var found_plugins = []
 	
-	for path in effects_dir:
-		builtin_plugins.append(str("res://modules/effects/", path))
+	for path in ResourceLoader.list_directory(effects_dir):
+		found_plugins.append(str("res://modules/effects/", path))
 	
-	for path in filetypes_dir:
-		builtin_plugins.append(str("res://modules/filetypes/", path))
+	for path in ResourceLoader.list_directory(filetypes_dir):
+		found_plugins.append(str("res://modules/filetypes/", path))
 	
-	for path in tools_dir:
-		builtin_plugins.append(str("res://modules/tools/", path))
+	for path in ResourceLoader.list_directory(tools_dir):
+		found_plugins.append(str("res://modules/tools/", path))
 	
-	for plugin_path in builtin_plugins:
-		load_plugin(plugin_path, true)
+	if DirAccess.dir_exists_absolute(plugins_dir):
+		if ConfigManager.get_config().plugins.enabled:
+			for path in DirAccess.get_directories_at(plugins_dir):
+				found_plugins.append(str(plugins_dir, "/", path))
+	else:
+		DirAccess.make_dir_recursive_absolute(plugins_dir)
+	
+	for plugin_path in found_plugins:
+		_load_plugin(plugin_path)

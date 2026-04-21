@@ -1,7 +1,7 @@
 extends Node
 
 const _config_path_relative = "user://config.json"
-var config_path = ProjectSettings.globalize_path(_config_path_relative)
+var _config_path = ProjectSettings.globalize_path(_config_path_relative)
 const _default_config_path = "res://resources/default_config.json"
 const _default_config: JSON = preload(_default_config_path)
 
@@ -10,7 +10,7 @@ signal config_updated
 var _current_config = _default_config.data
 
 func update_config(new_data: Dictionary) -> Error:
-	var file = FileAccess.open(config_path, FileAccess.WRITE)
+	var file = FileAccess.open(_config_path, FileAccess.WRITE)
 	
 	if file == null:
 		return FileAccess.get_open_error()
@@ -24,8 +24,8 @@ func get_config() -> Dictionary:
 	return _current_config
 
 func _ready() -> void:
-	if FileAccess.file_exists(config_path):
-		var json_string = FileAccess.get_file_as_string(config_path)
+	if FileAccess.file_exists(_config_path):
+		var json_string = FileAccess.get_file_as_string(_config_path)
 		var json = JSON.parse_string(json_string)
 		
 		if json == null:
@@ -34,7 +34,7 @@ func _ready() -> void:
 			_current_config = json
 			print("loaded config: ", json)
 	else:
-		var file = FileAccess.open(config_path, FileAccess.WRITE)
+		var file = FileAccess.open(_config_path, FileAccess.WRITE)
 		
 		if file == null:
 			push_error(FileAccess.get_open_error())
