@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5gpucm6uajws"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_o8px2"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_o8px2"]
 [ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://modules/tools/paintbrush/paintbrush.gd" id="2_efoo5"]
 [ext_resource type="Shader" uid="uid://c3d800unhk3co" path="res://modules/tools/paintbrush/paintbrush.tres" id="3_8stvs"]
 

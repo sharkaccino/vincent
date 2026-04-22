@@ -133,6 +133,13 @@ color = Color(0.2, 0.2, 0.2, 1)
 color = Color(0.2, 0.2, 0.2, 1)
 vertical = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh4ox"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xifxs"]
 draw_center = false
 border_width_left = 1
@@ -242,6 +249,18 @@ corner_detail = 1
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_686jy"]
 color = Color(0.501961, 0.501961, 0.501961, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xmwa"]
+bg_color = Color(0.38, 0.29133332, 0.114, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.6666667, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [resource]
 default_font_size = 12
 AppVersionLabel/base_type = &"Label"
@@ -280,6 +299,8 @@ HSplitContainer/constants/minimum_grab_thickness = 9
 HSplitContainer/constants/separation = 1
 HSplitContainer/icons/grabber = SubResource("Texture2DRD_4l3u0")
 HSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_f7gwj")
+InnerPanel/base_type = &"PanelContainer"
+InnerPanel/styles/panel = SubResource("StyleBoxFlat_eh4ox")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_xifxs")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3tkfh")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_m6biw")
@@ -332,3 +353,5 @@ VSplitContainer/constants/minimum_grab_thickness = 9
 VSplitContainer/constants/separation = 1
 VSplitContainer/icons/grabber = SubResource("Texture2DRD_f7gwj")
 VSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_686jy")
+WarningBox/base_type = &"PanelContainer"
+WarningBox/styles/panel = SubResource("StyleBoxFlat_4xmwa")

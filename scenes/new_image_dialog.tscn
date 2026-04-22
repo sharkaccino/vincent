@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dp0rq0uhntafg"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_truuh"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_truuh"]
 [ext_resource type="Script" uid="uid://bw1lscoaenrao" path="res://scripts/ui/new_image_dialog/keep_aspect_ratio_checkbox.gd" id="3_beosn"]
 [ext_resource type="Script" uid="uid://bmahoe85l5s65" path="res://scripts/ui/new_image_dialog/width_input.gd" id="4_1bnev"]
 [ext_resource type="Script" uid="uid://6jr08noik71a" path="res://scripts/ui/new_image_dialog/height_input.gd" id="5_qnoot"]
@@ -187,16 +187,6 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_j27eg")
 layout_mode = 2
 texture = SubResource("Texture2DRD_jpc14")
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=770213675]
-visible = false
-layout_mode = 2
-
-[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button" unique_id=297549519]
-visible = false
-layout_mode = 0
-offset_right = 230.0
-offset_bottom = 479.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=134144111]
 custom_minimum_size = Vector2(150, 171)
