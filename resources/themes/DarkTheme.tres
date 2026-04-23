@@ -220,6 +220,16 @@ border_width_bottom = 2
 border_color = Color(0.2, 0.2, 0.2, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_eh4ox"]
+color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4xmwa"]
+color = Color(0.5, 0.5, 0.5, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7iuv"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 
@@ -299,6 +309,7 @@ HSplitContainer/constants/minimum_grab_thickness = 9
 HSplitContainer/constants/separation = 1
 HSplitContainer/icons/grabber = SubResource("Texture2DRD_4l3u0")
 HSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_f7gwj")
+HeaderMedium/font_sizes/font_size = 20
 InnerPanel/base_type = &"PanelContainer"
 InnerPanel/styles/panel = SubResource("StyleBoxFlat_eh4ox")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_xifxs")
@@ -314,6 +325,9 @@ NewImagePreviewLabel/colors/default_color = Color(0.5, 0.5, 0.5, 0.501961)
 NewImagePreviewLabel/font_sizes/normal_font_size = 20
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_6lxfg")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_f8p2j")
+PlaceholderText/base_type = &"Label"
+PlaceholderText/colors/font_color = Color(1, 1, 1, 0.5019608)
+PlaceholderText/font_sizes/font_size = 14
 PopupMenu/colors/font_disabled_color = Color(0.87, 0.87, 0.87, 0.313726)
 PopupMenu/constants/h_separation = 6
 PopupMenu/constants/icon_max_width = 18
@@ -327,6 +341,12 @@ PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_4l3u0")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_4l3u0")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4l3u0")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_4l3u0")
+SettingsHeaderSeparatorLeft/base_type = &"HSeparator"
+SettingsHeaderSeparatorLeft/styles/separator = SubResource("StyleBoxLine_eh4ox")
+SettingsHeaderSeparatorRight/base_type = &"HSeparator"
+SettingsHeaderSeparatorRight/styles/separator = SubResource("StyleBoxLine_4xmwa")
+SettingsSeparatorContainer/base_type = &"HBoxContainer"
+SettingsSeparatorContainer/constants/separation = 10
 TargetRatioLabel/base_type = &"Label"
 TargetRatioLabel/colors/font_color = Color(1, 1, 1, 0.392157)
 ToolColumn/base_type = &"PanelContainer"

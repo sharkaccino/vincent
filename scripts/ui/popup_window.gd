@@ -4,7 +4,7 @@ var scene_template
 var popup_contents: Control
 
 func match_window_size() -> void:
-	print("window size matched")
+	#print("window size matched")
 	size = popup_contents.get_size()
 
 func reset_contents() -> void:

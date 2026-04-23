@@ -1,18 +1,10 @@
 extends Tree
 
-# TODO: define page IDs via metadata
-# TODO: auto-generate controls for each page
-# TODO: move pre-defined tree structure to its own file
-
-#const pages = {
-	#"_behavior": 
-#}
-
 const tree_struct = {
 	"General": [
 		"Behavior",
 		"Language",
-		"Plugins"
+		"Plug-ins"
 	],
 	"Display": [
 		"Interface",
@@ -29,6 +21,9 @@ const tree_struct = {
 	]
 }
 
+var settings_container: MarginContainer
+var default_selected = false
+
 func iterate(value: Variant, parent: TreeItem) -> void:
 	if typeof(value) == TYPE_DICTIONARY:
 		for key in value.keys():
@@ -39,11 +34,14 @@ func iterate(value: Variant, parent: TreeItem) -> void:
 	if typeof(value) == TYPE_STRING:
 		var entry = create_item(parent)
 		entry.set_text(0, value)
+		if default_selected == false:
+			set_selected(entry, 0)
+			default_selected = true
 	elif typeof(value) == TYPE_ARRAY:
 		for key in value:
 			iterate(key, parent)
 	else:
-		push_warning("Unknown settings tree item type: %s" % type_string(typeof(value)))
+		push_warning("Unknown settings tree item type: ", type_string(typeof(value)))
 
 func build_tree() -> void:
 	var root = create_item()
@@ -55,8 +53,28 @@ func build_tree() -> void:
 		iterate(tree_struct[key], category)
 
 func on_item_select() -> void:
-	print(get_selected().get_index())
+	var category_index = get_selected().get_parent().get_index()
+	var page_index = get_selected().get_index()
+	
+	for node in settings_container.get_children():
+		if node.has_meta("category_index") == false: continue
+		if node.has_meta("page_index") == false: continue
+		
+		if node.get_meta("category_index") != category_index: 
+			node.visible = false
+			continue
+		if node.get_meta("page_index") != page_index: 
+			node.visible = false
+			continue
+		
+		node.visible = true
 
 func _ready() -> void:
-	build_tree()
+	await find_parent("SettingsDialogRoot").ready
+	settings_container = %SettingsContainer/MarginContainer
+	
+	for node in settings_container.get_children():
+		node.visible = false
+		
 	item_selected.connect(on_item_select)
+	build_tree()

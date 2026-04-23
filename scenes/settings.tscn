@@ -4,10 +4,13 @@
 [ext_resource type="Script" uid="uid://vgltcyakjhn5" path="res://scripts/ui/settings_dialog/settings_container.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://dyqrrso1l586y" path="res://scripts/ui/settings_dialog/settings_tree.gd" id="3_f4mfi"]
 [ext_resource type="Texture2D" uid="uid://cpgrmdh212y7g" path="res://resources/icons/alert-triangle.svg" id="4_f4mfi"]
-[ext_resource type="Script" uid="uid://04p64oihij7p" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_settings_page.gd" id="4_gjs24"]
+[ext_resource type="Script" uid="uid://04p64oihij7p" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_list.gd" id="4_gjs24"]
 [ext_resource type="Script" uid="uid://br704f43myrtu" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_directory_button.gd" id="5_es4n0"]
 [ext_resource type="Script" uid="uid://cbev3b148ppqd" path="res://scripts/ui/settings_dialog/plugin_settings/install_plugin.gd" id="5_gis3k"]
+[ext_resource type="Script" uid="uid://c1k7f8oc1twxk" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_support_toggle.gd" id="6_6dbjw"]
+[ext_resource type="Texture2D" uid="uid://cuycjjniheskb" path="res://resources/icons/x.svg" id="6_g5y2q"]
 [ext_resource type="Script" uid="uid://bmqb3dwnii145" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/plugin_list_item.gd" id="7_83j8s"]
+[ext_resource type="Script" uid="uid://0uic5ctnwbt4" path="res://scripts/ui/settings_dialog/dismiss_warning.gd" id="7_k00b3"]
 [ext_resource type="Script" uid="uid://dpff61ny6233k" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/enable_button.gd" id="9_am25x"]
 [ext_resource type="Script" uid="uid://fyx0xu4a20wk" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/icon.gd" id="10_4ppmf"]
 [ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="10_ql1j0"]
@@ -31,11 +34,11 @@ size_flags_vertical = 3
 theme = ExtResource("1_r6d6q")
 metadata/resizeable = true
 
-[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1829057320]
+[node name="SettingsDialogRoot" type="HSplitContainer" parent="." unique_id=1829057320]
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
-[node name="TreeContainer" type="MarginContainer" parent="HSplitContainer" unique_id=1760206834]
+[node name="TreeContainer" type="MarginContainer" parent="SettingsDialogRoot" unique_id=1760206834]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 6
@@ -43,42 +46,43 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TreeContainer" unique_id=1050608387]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/TreeContainer" unique_id=1050608387]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 
-[node name="LineEdit" type="LineEdit" parent="HSplitContainer/TreeContainer/VBoxContainer" unique_id=1044126520]
+[node name="LineEdit" type="LineEdit" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=1044126520]
 layout_mode = 2
 placeholder_text = "Search..."
 emoji_menu_enabled = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Tree" type="Tree" parent="HSplitContainer/TreeContainer/VBoxContainer" unique_id=297622661]
+[node name="Tree" type="Tree" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=297622661]
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 script = ExtResource("3_f4mfi")
 
-[node name="SaveButton" type="Button" parent="HSplitContainer/TreeContainer/VBoxContainer" unique_id=270607284]
+[node name="SaveButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=270607284]
 layout_mode = 2
 focus_mode = 0
 disabled = true
 text = "Save Changes"
 
-[node name="DiscardButton" type="Button" parent="HSplitContainer/TreeContainer/VBoxContainer" unique_id=691215922]
+[node name="DiscardButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=691215922]
 layout_mode = 2
 focus_mode = 0
 disabled = true
 text = "Discard Changes"
 
-[node name="SettingsContainer" type="ScrollContainer" parent="HSplitContainer" unique_id=84366634]
+[node name="SettingsContainer" type="ScrollContainer" parent="SettingsDialogRoot" unique_id=84366634]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_6wm04")
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer" unique_id=1731077224]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer" unique_id=1731077224]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -87,60 +91,73 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="PluginSettings" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer" unique_id=67626226]
+[node name="PluginSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=67626226]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
-script = ExtResource("4_gjs24")
+metadata/category_index = 0
+metadata/page_index = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=2006035864]
+[node name="WarningBanner" type="PanelContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=2006035864]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"WarningBox"
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer" unique_id=1888234066]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner" unique_id=1888234066]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer" unique_id=1158706430]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer" unique_id=1238108438]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer/VBoxContainer" unique_id=1158706430]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer" unique_id=1429273594]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=728338135]
+[node name="TextureRect" type="TextureRect" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=728338135]
 modulate = Color(1, 0.6666667, 0, 1)
 layout_mode = 2
 texture = ExtResource("4_f4mfi")
+stretch_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer" unique_id=1815182433]
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1815182433]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "WARNING: Plug-ins are made by third-party developers, and are not sponsored or endorsed by the Vincent project. This is software capable of running arbitrary code on your system, which can result in irreversible damage, or even stolen personal data. Make sure you trust the author of a plug-in before installing it."
 autowrap_mode = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=1049841568]
+[node name="DismissWarningButton" type="TextureButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=54398891]
+modulate = Color(1, 0.6666667, 0.003921569, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("6_g5y2q")
+script = ExtResource("7_k00b3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=1049841568]
 layout_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=871768757]
+[node name="PluginSupportToggle" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=871768757]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Enable plug-in support"
+script = ExtResource("6_6dbjw")
 
-[node name="Spacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1913701121]
+[node name="Spacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1913701121]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InstallButton" type="Button" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1630325369]
+[node name="InstallButton" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1630325369]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Install a Plug-in..."
 script = ExtResource("5_gis3k")
 
-[node name="FileDialog" type="FileDialog" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2/InstallButton" unique_id=438210165]
+[node name="FileDialog" type="FileDialog" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2/InstallButton" unique_id=438210165]
 oversampling_override = 1.0
 title = "Open a File"
 file_mode = 0
@@ -148,60 +165,61 @@ access = 2
 filters = PackedStringArray("*.zip;ZIP Archive;application/zip,application/x-zip-compressed")
 use_native_dialog = true
 
-[node name="PluginDirectoryButton" type="Button" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1864306765]
+[node name="PluginDirectoryButton" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1864306765]
 layout_mode = 2
 text = "Open Plug-ins Directory"
 script = ExtResource("5_es4n0")
 
-[node name="TextEdit" type="LineEdit" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=512985128]
+[node name="TextEdit" type="LineEdit" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=512985128]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search plug-ins..."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=643841030]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=643841030]
 layout_mode = 2
 
-[node name="LeftSpacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1977387638]
+[node name="LeftSpacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1977387638]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=2071633452]
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=2071633452]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RightSpacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1665315557]
+[node name="RightSpacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1665315557]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 
-[node name="PluginList" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=2071247505]
+[node name="PluginList" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=2071247505]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
+script = ExtResource("4_gjs24")
 
-[node name="PluginItemTemplate" type="PanelContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList" unique_id=1171038761]
-unique_name_in_owner = true
+[node name="PluginItemTemplate" type="PanelContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList" unique_id=1171038761]
 layout_mode = 2
 theme_type_variation = &"InnerPanel"
 script = ExtResource("7_83j8s")
 metadata/id = ""
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate" unique_id=1100446209]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate" unique_id=1100446209]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer" unique_id=1169708160]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer" unique_id=1169708160]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=55247959]
-custom_minimum_size = Vector2(25, 25)
+[node name="Control" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=55247959]
+custom_minimum_size = Vector2(28, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="PluginEnable" type="CheckBox" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/Control" unique_id=754389725]
+[node name="PluginEnable" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/Control" unique_id=754389725]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -212,21 +230,21 @@ size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7kvyq")
 script = ExtResource("9_am25x")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=1399992364]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=1399992364]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=381352649]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=381352649]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PluginIconContainer" type="AspectRatioContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=122554886]
+[node name="PluginIconContainer" type="AspectRatioContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=122554886]
 layout_mode = 2
 stretch_mode = 0
 
-[node name="PluginIcon" type="TextureRect" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PluginIconContainer" unique_id=1588898504]
+[node name="PluginIcon" type="TextureRect" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PluginIconContainer" unique_id=1588898504]
 texture_filter = 4
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -234,11 +252,11 @@ texture = ExtResource("10_ql1j0")
 expand_mode = 1
 script = ExtResource("10_4ppmf")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1017603150]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1017603150]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PluginName" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=958647263]
+[node name="PluginName" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=958647263]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -248,7 +266,7 @@ text = "Plug-in Name"
 autowrap_mode = 3
 script = ExtResource("11_uhhto")
 
-[node name="PluginDescription" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=676614388]
+[node name="PluginDescription" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=676614388]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -257,20 +275,20 @@ text = "Plugin Description"
 autowrap_mode = 3
 script = ExtResource("12_7kvyq")
 
-[node name="Spacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1374469734]
+[node name="Spacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1374469734]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1232450486]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1232450486]
 layout_mode = 2
 
-[node name="PluginVersion" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1895277052]
+[node name="PluginVersion" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1895277052]
 visible = false
 layout_mode = 2
 text = "Plugin Version"
 script = ExtResource("13_ql1j0")
 
-[node name="PluginID" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=277696841]
+[node name="PluginID" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=277696841]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "plugin:id"
@@ -278,17 +296,130 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("14_6dbjw")
 
-[node name="PluginURL" type="LinkButton" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=532133730]
+[node name="PluginURL" type="LinkButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=532133730]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "https://example.com"
 uri = "https://example.com"
 script = ExtResource("15_g5y2q")
 
-[node name="PluginSettingsContainer" type="FoldableContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1551437446]
+[node name="PluginSettingsContainer" type="FoldableContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1551437446]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 folded = true
 title = "Plugin Settings"
 script = ExtResource("16_k00b3")
+
+[node name="BehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1646229877]
+visible = false
+layout_mode = 2
+metadata/category_index = 0
+metadata/page_index = 0
+
+[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=993033112]
+layout_mode = 2
+theme_type_variation = &"PlaceholderText"
+text = "(work in progress)"
+
+[node name="CheckBox" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1432233002]
+layout_mode = 2
+tooltip_text = "When enabled, Vincent will save a list of up to 8 of the most recently opened projects and images. These can then be quickly re-opened by navigating to File > Open Recent"
+disabled = true
+button_pressed = true
+text = "Remember previously opened projects"
+
+[node name="CheckBox2" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1920733195]
+layout_mode = 2
+disabled = true
+text = "Automatically open projects from previous session"
+
+[node name="HeaderNewImageDefaults" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=306951432]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults" unique_id=2052382484]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderSeparatorLeft"
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults" unique_id=1102014800]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "New Image Defaults"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults" unique_id=1658277560]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=729065878]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=376083882]
+layout_mode = 2
+text = "Width:"
+
+[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=1008620319]
+layout_mode = 2
+editable = false
+suffix = "px"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=937849645]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=864268462]
+layout_mode = 2
+text = "Height:"
+
+[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=1873237926]
+layout_mode = 2
+editable = false
+suffix = "px"
+
+[node name="HeaderAutoSave" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=761119701]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave" unique_id=1406667942]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderSeparatorLeft"
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave" unique_id=1590515646]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Auto Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave" unique_id=545982370]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="HeaderEditHistory" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=66255214]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory" unique_id=35988782]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderSeparatorLeft"
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory" unique_id=1799392342]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Edit History"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory" unique_id=872976608]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingsHeaderSeparatorRight"
