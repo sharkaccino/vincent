@@ -1,45 +1,40 @@
 extends Node
 
-const _config_path_relative = "user://config.json"
-var _config_path = ProjectSettings.globalize_path(_config_path_relative)
-const _default_config_path = "res://resources/default_config.json"
-const _default_config: JSON = preload(_default_config_path)
+var _config_path = "user://config.ini"
 
 signal config_updated
 
-var _current_config = _default_config.data
+var _current_config: ConfigFile
 
-func update_config(new_data: Dictionary) -> Error:
-	var file = FileAccess.open(_config_path, FileAccess.WRITE)
-	
-	if file == null:
-		return FileAccess.get_open_error()
-		
-	file.store_string(JSON.stringify(new_data))
-	file.close()
-	config_updated.emit(new_data)
-	return Error.OK
+func update_config(new_data: ConfigFile) -> Error:
+	var result = new_data.save(_config_path)
+	if result == Error.OK:
+		config_updated.emit(new_data)
+	return result
 
-func get_config() -> Dictionary:
+func get_config() -> ConfigFile:
 	return _current_config
 
 func _ready() -> void:
+	_config_path = ProjectSettings.globalize_path(_config_path)
+	
 	if FileAccess.file_exists(_config_path):
-		var json_string = FileAccess.get_file_as_string(_config_path)
-		var json = JSON.parse_string(json_string)
+		var user_config = ConfigFile.new()
+		var result = user_config.load(_config_path)
 		
-		if json == null:
-			push_error("Could not parse configuration file.")
+		if result != Error.OK:
+			push_error("Could not load configuration file: ", error_string(result))
 		else:
-			_current_config = json
-			print("loaded config: ", json)
+			_current_config = user_config
+			print("user config successfully loaded")
 	else:
-		var file = FileAccess.open(_config_path, FileAccess.WRITE)
+		var default_config = ConfigFile.new()
+		default_config.load("res://resources/default_config.ini")
 		
-		if file == null:
-			push_error(FileAccess.get_open_error())
-			return
+		_current_config = default_config
 		
-		file.store_string(JSON.stringify(_default_config.data))
-		file.close()
-		print("default config loaded")
+		var result = default_config.save(_config_path)
+		if result != Error.OK:
+			push_error("Could not write default configuration file: ", error_string(result))
+		else:
+			print("default config loaded")
