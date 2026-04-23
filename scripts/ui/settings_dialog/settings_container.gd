@@ -1,4 +1,4 @@
-extends MarginContainer
+extends ScrollContainer
 
 func update_tree_size_limit() -> void:
 	var window_width = get_window().size.x

@@ -1,8 +1,26 @@
 [gd_scene format=3 uid="uid://hj01gxjv8yb"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://themes/DarkTheme.tres" id="1_r6d6q"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_r6d6q"]
 [ext_resource type="Script" uid="uid://vgltcyakjhn5" path="res://scripts/ui/settings_dialog/settings_container.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://dyqrrso1l586y" path="res://scripts/ui/settings_dialog/settings_tree.gd" id="3_f4mfi"]
+[ext_resource type="Texture2D" uid="uid://cpgrmdh212y7g" path="res://resources/icons/alert-triangle.svg" id="4_f4mfi"]
+[ext_resource type="Script" uid="uid://04p64oihij7p" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_settings_page.gd" id="4_gjs24"]
+[ext_resource type="Script" uid="uid://br704f43myrtu" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_directory_button.gd" id="5_es4n0"]
+[ext_resource type="Script" uid="uid://cbev3b148ppqd" path="res://scripts/ui/settings_dialog/plugin_settings/install_plugin.gd" id="5_gis3k"]
+[ext_resource type="Script" uid="uid://bmqb3dwnii145" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/plugin_list_item.gd" id="7_83j8s"]
+[ext_resource type="Script" uid="uid://dpff61ny6233k" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/enable_button.gd" id="9_am25x"]
+[ext_resource type="Script" uid="uid://fyx0xu4a20wk" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/icon.gd" id="10_4ppmf"]
+[ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="10_ql1j0"]
+[ext_resource type="Script" uid="uid://cbmajlmx1a6eu" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/name.gd" id="11_uhhto"]
+[ext_resource type="Script" uid="uid://dvioylnb5t7tj" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/description.gd" id="12_7kvyq"]
+[ext_resource type="Script" uid="uid://c83m8r3q0q0jf" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/version.gd" id="13_ql1j0"]
+[ext_resource type="Script" uid="uid://df1487fmqx8ne" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/id.gd" id="14_6dbjw"]
+[ext_resource type="Script" uid="uid://c741tnp4ynkju" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/url.gd" id="15_g5y2q"]
+[ext_resource type="Script" uid="uid://tx0r177ehhb5" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/settings_builder.gd" id="16_k00b3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kvyq"]
+content_margin_left = 4.0
+content_margin_right = 2.0
 
 [node name="PanelContainer" type="PanelContainer" unique_id=2098456623]
 custom_minimum_size = Vector2(600, 400)
@@ -18,7 +36,7 @@ layout_mode = 2
 drag_area_highlight_in_editor = true
 
 [node name="TreeContainer" type="MarginContainer" parent="HSplitContainer" unique_id=1760206834]
-custom_minimum_size = Vector2(175, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
@@ -56,6 +74,221 @@ focus_mode = 0
 disabled = true
 text = "Discard Changes"
 
-[node name="SettingsContainer" type="MarginContainer" parent="HSplitContainer" unique_id=1169482566]
+[node name="SettingsContainer" type="ScrollContainer" parent="HSplitContainer" unique_id=84366634]
 layout_mode = 2
 script = ExtResource("3_6wm04")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer" unique_id=1731077224]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PluginSettings" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer" unique_id=67626226]
+layout_mode = 2
+theme_override_constants/separation = 8
+script = ExtResource("4_gjs24")
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=2006035864]
+layout_mode = 2
+theme_type_variation = &"WarningBox"
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer" unique_id=1888234066]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer" unique_id=1158706430]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer" unique_id=1429273594]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=728338135]
+modulate = Color(1, 0.6666667, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_f4mfi")
+
+[node name="Label" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PanelContainer/MarginContainer/HBoxContainer" unique_id=1815182433]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WARNING: Plug-ins are made by third-party developers, and are not sponsored or endorsed by the Vincent project. This is software capable of running arbitrary code on your system, which can result in irreversible damage, or even stolen personal data. Make sure you trust the author of a plug-in before installing it."
+autowrap_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=1049841568]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=871768757]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Enable plug-in support"
+
+[node name="Spacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1913701121]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InstallButton" type="Button" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1630325369]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Install a Plug-in..."
+script = ExtResource("5_gis3k")
+
+[node name="FileDialog" type="FileDialog" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2/InstallButton" unique_id=438210165]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.zip;ZIP Archive;application/zip,application/x-zip-compressed")
+use_native_dialog = true
+
+[node name="PluginDirectoryButton" type="Button" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1864306765]
+layout_mode = 2
+text = "Open Plug-ins Directory"
+script = ExtResource("5_es4n0")
+
+[node name="TextEdit" type="LineEdit" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=512985128]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search plug-ins..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=643841030]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1977387638]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=2071633452]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightSpacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1665315557]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="PluginList" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings" unique_id=2071247505]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PluginItemTemplate" type="PanelContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList" unique_id=1171038761]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"InnerPanel"
+script = ExtResource("7_83j8s")
+metadata/id = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate" unique_id=1100446209]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer" unique_id=1169708160]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=55247959]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PluginEnable" type="CheckBox" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/Control" unique_id=754389725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7kvyq")
+script = ExtResource("9_am25x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer" unique_id=1399992364]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=381352649]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PluginIconContainer" type="AspectRatioContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=122554886]
+layout_mode = 2
+stretch_mode = 0
+
+[node name="PluginIcon" type="TextureRect" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PluginIconContainer" unique_id=1588898504]
+texture_filter = 4
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("10_ql1j0")
+expand_mode = 1
+script = ExtResource("10_4ppmf")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1017603150]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PluginName" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=958647263]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Plug-in Name"
+autowrap_mode = 3
+script = ExtResource("11_uhhto")
+
+[node name="PluginDescription" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=676614388]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Plugin Description"
+autowrap_mode = 3
+script = ExtResource("12_7kvyq")
+
+[node name="Spacer" type="Control" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1374469734]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1232450486]
+layout_mode = 2
+
+[node name="PluginVersion" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1895277052]
+visible = false
+layout_mode = 2
+text = "Plugin Version"
+script = ExtResource("13_ql1j0")
+
+[node name="PluginID" type="Label" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=277696841]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "plugin:id"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("14_6dbjw")
+
+[node name="PluginURL" type="LinkButton" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=532133730]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "https://example.com"
+uri = "https://example.com"
+script = ExtResource("15_g5y2q")
+
+[node name="PluginSettingsContainer" type="FoldableContainer" parent="HSplitContainer/SettingsContainer/MarginContainer/PluginSettings/PluginList/PluginItemTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1551437446]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+folded = true
+title = "Plugin Settings"
+script = ExtResource("16_k00b3")
