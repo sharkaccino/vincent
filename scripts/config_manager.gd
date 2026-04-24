@@ -4,7 +4,9 @@ var _config_path = "user://config.ini"
 
 signal config_updated
 signal volatile_config_updated
+signal restart_required
 
+var needs_restart = false
 var _saved_config: ConfigFile
 var _volatile_config: ConfigFile
 
@@ -13,6 +15,23 @@ func has_changes() -> bool:
 		for key in _saved_config.get_section_keys(section):
 			var saved_value = _saved_config.get_value(section, key)
 			var volatile_value = _volatile_config.get_value(section, key)
+			
+			if typeof(saved_value) != typeof(volatile_value):
+				return true
+			
+			if typeof(saved_value) == TYPE_ARRAY:
+				if saved_value.size() != volatile_value.size():
+					return true
+				
+				for item in saved_value:
+					if volatile_value.has(item) == false:
+						return true
+				
+				for item in volatile_value:
+					if saved_value.has(item) == false:
+						return true
+			
+			# TODO: iterate over dictionaries
 			
 			if saved_value != volatile_value:
 				return true
@@ -25,6 +44,8 @@ func set_volatile_value(section: String, key: String, value: Variant) -> void:
 	else:
 		_volatile_config.set_value(section, key, value)
 		volatile_config_updated.emit()
+		#print("volatile value set")
+		#print(_volatile_config.encode_to_text())
 
 func save_config() -> Error:
 	var result = _volatile_config.save(_config_path)
@@ -51,6 +72,10 @@ func duplicate_config(input_config: ConfigFile) -> ConfigFile:
 	var new_config = ConfigFile.new()
 	new_config.parse(input_config.encode_to_text())
 	return new_config
+
+func set_requires_restart() -> void:
+	needs_restart = true
+	restart_required.emit()
 
 func _ready() -> void:
 	_config_path = ProjectSettings.globalize_path(_config_path)

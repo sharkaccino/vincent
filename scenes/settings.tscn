@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://cuhwxkgcdyvv3" path="res://scripts/ui/settings_dialog/save_discard.gd" id="2_aisiw"]
 [ext_resource type="Script" uid="uid://vgltcyakjhn5" path="res://scripts/ui/settings_dialog/settings_container.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://dyqrrso1l586y" path="res://scripts/ui/settings_dialog/settings_tree.gd" id="3_f4mfi"]
+[ext_resource type="Texture2D" uid="uid://dfyxihcabtonk" path="res://resources/icons/info-circle.svg" id="4_f1e71"]
 [ext_resource type="Texture2D" uid="uid://cpgrmdh212y7g" path="res://resources/icons/alert-triangle.svg" id="4_f4mfi"]
 [ext_resource type="Script" uid="uid://04p64oihij7p" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_list.gd" id="4_gjs24"]
+[ext_resource type="Script" uid="uid://fcgjpspm3wrt" path="res://scripts/ui/settings_dialog/restart_banner.gd" id="4_i24gk"]
 [ext_resource type="Script" uid="uid://br704f43myrtu" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_directory_button.gd" id="5_es4n0"]
 [ext_resource type="Script" uid="uid://cbev3b148ppqd" path="res://scripts/ui/settings_dialog/plugin_settings/install_plugin.gd" id="5_gis3k"]
 [ext_resource type="Script" uid="uid://c1k7f8oc1twxk" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_support_toggle.gd" id="6_6dbjw"]
@@ -21,6 +23,7 @@
 [ext_resource type="Script" uid="uid://df1487fmqx8ne" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/id.gd" id="14_6dbjw"]
 [ext_resource type="Script" uid="uid://c741tnp4ynkju" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/url.gd" id="15_g5y2q"]
 [ext_resource type="Script" uid="uid://tx0r177ehhb5" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/settings_builder.gd" id="16_k00b3"]
+[ext_resource type="Script" uid="uid://dlw2tqa5dngyo" path="res://scripts/ui/settings_dialog/plugin_settings/unloaded_plugins_label.gd" id="23_gcetw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kvyq"]
 content_margin_left = 4.0
@@ -36,6 +39,7 @@ theme = ExtResource("1_r6d6q")
 metadata/resizeable = true
 
 [node name="SettingsDialogRoot" type="HSplitContainer" parent="." unique_id=1829057320]
+unique_name_in_owner = true
 layout_mode = 2
 drag_area_highlight_in_editor = true
 
@@ -66,6 +70,40 @@ layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 script = ExtResource("3_f4mfi")
+
+[node name="RestartBanner" type="PanelContainer" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=1292929645]
+visible = false
+layout_mode = 2
+theme_type_variation = &"InfoBox"
+script = ExtResource("4_i24gk")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsDialogRoot/TreeContainer/VBoxContainer/RestartBanner" unique_id=1247688555]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/TreeContainer/VBoxContainer/RestartBanner/MarginContainer" unique_id=338968398]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/TreeContainer/VBoxContainer/RestartBanner/MarginContainer/VBoxContainer" unique_id=346159739]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="SettingsDialogRoot/TreeContainer/VBoxContainer/RestartBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=368494920]
+modulate = Color(0, 0.7176471, 1, 1)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_f1e71")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/TreeContainer/VBoxContainer/RestartBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1826441923]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "You must restart Vincent for all changes to take effect."
+autowrap_mode = 3
 
 [node name="SaveButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=270607284]
 unique_name_in_owner = true
@@ -163,10 +201,10 @@ script = ExtResource("5_gis3k")
 
 [node name="FileDialog" type="FileDialog" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2/InstallButton" unique_id=438210165]
 oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
+title = "Open File(s)"
+file_mode = 1
 access = 2
-filters = PackedStringArray("*.zip;ZIP Archive;application/zip,application/x-zip-compressed")
+filters = PackedStringArray("*.zip;ZIP Archive", "*.pck;Godot Resource Pack")
 use_native_dialog = true
 
 [node name="PluginDirectoryButton" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1864306765]
@@ -175,12 +213,14 @@ text = "Open Plug-ins Directory"
 script = ExtResource("5_es4n0")
 
 [node name="TextEdit" type="LineEdit" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=512985128]
+visible = false
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search plug-ins..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=643841030]
+visible = false
 layout_mode = 2
 
 [node name="LeftSpacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer" unique_id=1977387638]
@@ -314,6 +354,18 @@ layout_mode = 2
 folded = true
 title = "Plugin Settings"
 script = ExtResource("16_k00b3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=1092496122]
+visible = false
+layout_mode = 2
+
+[node name="UnloadedPluginsLabel" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/VBoxContainer" unique_id=937483693]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+text = "+[x] unloaded plug-ins"
+vertical_alignment = 1
+script = ExtResource("23_gcetw")
 
 [node name="BehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1646229877]
 visible = false

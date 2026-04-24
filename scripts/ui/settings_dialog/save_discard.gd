@@ -20,3 +20,6 @@ func _ready() -> void:
 	ConfigManager.volatile_config_updated.connect(_check_button_state)
 	save_button.pressed.connect(_do_save)
 	discard_button.pressed.connect(_do_discard)
+
+func _exit_tree() -> void:
+	ConfigManager.reset_volatile_config()

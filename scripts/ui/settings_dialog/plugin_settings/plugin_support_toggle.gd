@@ -16,6 +16,7 @@ func _check_fade_state() -> void:
 
 func _on_pressed() -> void:
 	ConfigManager.set_volatile_value("plugins", "enabled", button_pressed)
+	ConfigManager.set_requires_restart()
 	_check_fade_state()
 
 func _ready() -> void:

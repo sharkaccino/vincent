@@ -133,6 +133,18 @@ color = Color(0.2, 0.2, 0.2, 1)
 color = Color(0.2, 0.2, 0.2, 1)
 vertical = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1r6i"]
+bg_color = Color(0.138, 0.25410002, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.7166667, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh4ox"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 corner_radius_top_left = 4
@@ -266,10 +278,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.6666667, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [resource]
 default_font_size = 12
@@ -310,6 +322,8 @@ HSplitContainer/constants/separation = 1
 HSplitContainer/icons/grabber = SubResource("Texture2DRD_4l3u0")
 HSplitContainer/styles/split_bar_background = SubResource("StyleBoxLine_f7gwj")
 HeaderMedium/font_sizes/font_size = 20
+InfoBox/base_type = &"PanelContainer"
+InfoBox/styles/panel = SubResource("StyleBoxFlat_n1r6i")
 InnerPanel/base_type = &"PanelContainer"
 InnerPanel/styles/panel = SubResource("StyleBoxFlat_eh4ox")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_xifxs")

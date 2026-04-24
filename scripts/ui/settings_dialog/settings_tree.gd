@@ -1,5 +1,7 @@
 extends Tree
 
+@onready var root_node = %SettingsDialogRoot
+
 const tree_struct = {
 	"General": [
 		"Behavior",
@@ -70,7 +72,7 @@ func on_item_select() -> void:
 		node.visible = true
 
 func _ready() -> void:
-	await find_parent("SettingsDialogRoot").ready
+	await root_node.ready
 	settings_container = %SettingsContainer/MarginContainer
 	
 	for node in settings_container.get_children():

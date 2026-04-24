@@ -17,6 +17,7 @@ const reserved_namespaces = [
 ]
 
 var registered_plugins = []
+var unregistered_plugin_count = 0
 
 const current_plugin_format = 1
 
@@ -84,7 +85,7 @@ func get_value_or_null(metadata, property) -> Variant:
 	if typeof(val) == TYPE_STRING && val == "": return null
 	else: return val
 
-func _register_plugin(plugin_path: String) -> void:
+func _register_plugin(plugin_path: String) -> bool:
 	var builtin = false
 	if plugin_path.begins_with("res://plugins/_builtin/"):
 		builtin = true
@@ -93,11 +94,11 @@ func _register_plugin(plugin_path: String) -> void:
 		
 	if ConfigManager.get_value("plugins", "enabled") == false: 
 		if builtin == false:
-			return
+			return false
 			
 	if DirAccess.dir_exists_absolute(plugin_path) == false:
 		printerr("Path does not exist: \"", plugin_path ,"\"")
-		return
+		return false
 	
 	var metadata_path = str(plugin_path, "/metadata.ini")
 	var init_script_path = str(plugin_path, "/init.gd")
@@ -106,32 +107,38 @@ func _register_plugin(plugin_path: String) -> void:
 	
 	if metadata_exists == false:
 		push_warning("Could not register plug-in at \"", plugin_path, "\". (missing metadata)")
+		return false
 	elif init_script_exists == false:
 		push_warning("Could not register plug-in at \"", plugin_path, "\". (missing init script)")
+		return false
 	else:
 		var metadata: ConfigFile = ConfigFile.new()
 		var load_result = metadata.load(metadata_path)
 		
 		if load_result != Error.OK:
 			push_error("Could not load plug-in at \"", plugin_path, "\". (failed to load ConfigFile: ", error_string(load_result), ")")
-			return
+			return false
 		
 		var result = validate_metadata(metadata, builtin)
-		
 		var plugin_id = metadata.get_value("plugin_metadata", "id")
 		
 		if result == Error.ERR_SKIP:
 			push_warning("Could not register plug-in at \"", plugin_path, "\". (missing or invalid ID)")
+			return false
 		elif result == Error.ERR_UNAUTHORIZED:
 			push_warning("Could not register plug-in at \"", plugin_path, "\". (invalid ID: namespace is prohibited)")
+			return false
 		elif result == Error.ERR_INVALID_DATA:
 			push_warning("Could not register plug-in at \"", plugin_path, "\". (invalid metadata)")
+			return false
 		elif metadata.get_value("plugin_metadata", "compatibility").has(current_plugin_format) == false:
 			push_warning("Could not register plug-in at \"", plugin_path, "\". (incompatible with current app version)")
+			return false
 		else:
 			for registered in registered_plugins:
 				if registered.id == plugin_id:
 					push_warning("Could not register plug-in at \"", plugin_path, "\". (id already taken by plugin at \"", registered.path, "\")")
+					return false
 			
 			if get_value_or_null(metadata, "name") == null:
 				metadata.set_value("plugin_metadata", "name", plugin_id)
@@ -145,10 +152,12 @@ func _register_plugin(plugin_path: String) -> void:
 			
 			if builtin:
 				_load_plugin(plugin_id)
+			
+			return true
 
 func _load_plugin(plugin_id: String) -> void:
 	var found_plugin = get_plugin(plugin_id)
-	if "path" not in found_plugin: return
+	if "path" not in found_plugin: return # should never happen
 	
 	var script = load(str(found_plugin.path, "/init.gd"))
 	var plugin_node = Node.new()
@@ -172,15 +181,12 @@ func _ready() -> void:
 		found_plugins.append(str(tools_dir, "/", path))
 	
 	if DirAccess.dir_exists_absolute(plugins_dir):
-		if ConfigManager.get_value("plugins", "enabled") == true:
-			# get unpacked plugins
-			for path in DirAccess.get_directories_at(plugins_dir):
-				found_plugins.append(str(plugins_dir, "/", path))
-			
-			# get packed plugins
-			for file in DirAccess.get_files_at(plugins_dir):
+		for file in DirAccess.get_files_at(plugins_dir):
+			if ConfigManager.get_value("plugins", "enabled") == true:
 				if file.ends_with(".zip") || file.ends_with(".pck"):
 					ProjectSettings.load_resource_pack(str(plugins_dir, "/", file), false)
+			else:
+				unregistered_plugin_count += 1
 	else:
 		DirAccess.make_dir_recursive_absolute(plugins_dir)
 	
@@ -189,12 +195,16 @@ func _ready() -> void:
 		found_plugins.append(str(plugin_dev_dir, "/", path))
 	
 	for plugin_path: String in found_plugins:
-		_register_plugin(plugin_path)
+		var success = _register_plugin(plugin_path)
+		if success == false: 
+			unregistered_plugin_count += 1
 		
 	print("registered plugins: ", registered_plugins.size())
 	
 	for registered in registered_plugins:
+		# built-in plugins are already loaded
 		if registered.path.begins_with("res://plugins/_builtin/"): continue
+		
 		var allow_list = ConfigManager.get_value("plugins", "allow_list")
-		if allow_list.has(registered):
+		if allow_list.has(registered.id):
 			_load_plugin(registered.metadata.get_value("plugin_metadata", "id"))
