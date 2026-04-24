@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://cuycjjniheskb" path="res://resources/icons/x.svg" id="22_yq6so"]
 [ext_resource type="Script" uid="uid://cgsc4gfrqivqu" path="res://scripts/ui/project_tabs/project_tab_spacer_hit_box.gd" id="23_2f3dj"]
 [ext_resource type="Script" uid="uid://bryq8yorteqgj" path="res://scripts/ui/project_tabs/project_tab_spacer.gd" id="24_fv21b"]
-[ext_resource type="ButtonGroup" uid="uid://81kagm347ypb" path="res://tool_button_group.tres" id="32_bu4jf"]
+[ext_resource type="ButtonGroup" uid="uid://81kagm347ypb" path="res://resources/tool_button_group.tres" id="32_bu4jf"]
 [ext_resource type="Script" uid="uid://cuj5isfepnmm6" path="res://scripts/ui/panels/tools/tools_panel.gd" id="37_augu2"]
 [ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_button.gd" id="38_1v6qk"]
 [ext_resource type="Script" uid="uid://b4jvoreoxwpvs" path="res://scripts/ui/panels/tool_settings/tool_settings_panel.gd" id="40_augu2"]
