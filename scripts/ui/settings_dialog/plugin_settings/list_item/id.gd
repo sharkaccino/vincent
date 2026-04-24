@@ -17,6 +17,9 @@ func _ready() -> void:
 		text = "(built-in)"
 	else:
 		text = plugin_id
+		
+	var url = PluginManager.get_value_or_null(plugin.metadata, "url")
+	var version = PluginManager.get_value_or_null(plugin.metadata, "version")
 
-	if "url" not in plugin.metadata && "version" not in plugin.metadata:
+	if url == null && version == null:
 		size_flags_vertical = Control.SIZE_EXPAND_FILL

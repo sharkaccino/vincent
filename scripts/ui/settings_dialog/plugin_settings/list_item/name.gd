@@ -11,4 +11,4 @@ func _ready() -> void:
 		printerr("Could not get plugin data for id: \"", plugin_id, "\"")
 		return
 	
-	text = plugin.metadata.name
+	text = plugin.metadata.get_value("plugin_metadata", "name")

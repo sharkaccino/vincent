@@ -12,9 +12,16 @@ func _ready() -> void:
 		printerr("Could not get plugin data for id: \"", plugin_id, "\"")
 		return
 	
-	if "icon" in plugin.metadata:
-		var img_path = ProjectSettings.globalize_path(plugin.metadata.icon)
-		var img = Image.load_from_file(img_path)
+	var icon_filename = PluginManager.get_value_or_null(plugin.metadata, "icon")
+	
+	if icon_filename != null:
+		var full_path = str(plugin.path, "/", icon_filename)
+		var exists = ResourceLoader.exists(full_path)
+		if exists == false:
+			container.queue_free()
+			return
+			
+		var img = Image.load_from_file(full_path)
 		img.generate_mipmaps()
 		texture = ImageTexture.create_from_image(img)
 	else:

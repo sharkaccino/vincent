@@ -18,69 +18,71 @@ const reserved_namespaces = [
 
 var registered_plugins = []
 
-# JSON numbers are read as floats
-const current_plugin_format = 1.0
+const current_plugin_format = 1
 
-func validate_metadata(metadata: Dictionary, builtin: bool = false) -> Error:
-	if "id" not in metadata:
-		# id property does not exist
+func validate_metadata(metadata: ConfigFile, builtin: bool = false) -> Error:
+	var is_int = func(item):
+		return typeof(item) == TYPE_INT
+	
+	var plugin_id = get_value_or_null(metadata, "id")
+	var plugin_compatibility = get_value_or_null(metadata, "compatibility")
+	
+	var optional_test_basic = func(property: String) -> bool:
+		var val = get_value_or_null(metadata, property)
+		if val == null: return false
+		
+		var result = typeof(val) != TYPE_STRING
+		if result:
+			printerr("Invalid metadata property \"", property, "\" for plug-in \"", plugin_id, "\"")
+			return result
+		return result
+	
+	
+	if typeof(plugin_id) != TYPE_STRING:
+		# id property is null or not a string
 		return Error.ERR_SKIP
-	elif typeof(metadata.id) != TYPE_STRING:
-		# id property is not a string
-		return Error.ERR_SKIP
-	elif RegEx.create_from_string(id_regex).search(metadata.id) == null:
+	elif RegEx.create_from_string(id_regex).search(plugin_id) == null:
 		# id property does not match required format
 		return Error.ERR_SKIP
 	elif builtin == false:
-		var tool_namespace = metadata.id.split(":")[0]
+		var tool_namespace = plugin_id.split(":")[0]
 		if reserved_namespaces.has(tool_namespace):
 			return Error.ERR_UNAUTHORIZED
-	
-	var is_number = func(item):
-		# JSON numbers are parsed as floats
-		# https://docs.godotengine.org/en/stable/classes/class_json.html
-		return typeof(item) == TYPE_FLOAT
 		
-	if "compatibility" not in metadata:
-		printerr("Missing metadata property \"compatibility\" for plugin \"", metadata.id, "\"")
+	if plugin_compatibility == null:
+		printerr("Missing metadata property \"compatibility\" for plug-in \"", plugin_id, "\"")
 		return Error.ERR_INVALID_DATA
-	elif typeof(metadata.compatibility) != TYPE_ARRAY || metadata.compatibility.all(is_number) == false:
-		printerr("Invalid metadata property \"compatibility\" for plugin \"", metadata.id, "\"")
-		return Error.ERR_INVALID_DATA
-	
-	if "name" in metadata && typeof(metadata.name) != TYPE_STRING:
-		printerr("Invalid metadata property \"name\" for plugin \"", metadata.id, "\"")
+	elif typeof(plugin_compatibility) != TYPE_ARRAY || plugin_compatibility.all(is_int) == false:
+		printerr("Invalid metadata property \"compatibility\" for plug-in \"", plugin_id, "\"")
 		return Error.ERR_INVALID_DATA
 	
-	if "version" in metadata && typeof(metadata.version) != TYPE_STRING:
-		printerr("Invalid metadata property \"version\" for plugin \"", metadata.id, "\"")
+	if optional_test_basic.call("name"):
 		return Error.ERR_INVALID_DATA
 	
-	if "description" in metadata && typeof(metadata.description) != TYPE_STRING:
-		printerr("Invalid metadata property \"description\" for plugin \"", metadata.id, "\"")
-		return Error.ERR_INVALID_DATA
-		
-	if "url" in metadata && typeof(metadata.url) != TYPE_STRING:
-		printerr("Invalid metadata property \"url\" for plugin \"", metadata.id, "\"")
+	if optional_test_basic.call("version"):
 		return Error.ERR_INVALID_DATA
 	
-	if "categories" in metadata:
-		if typeof(metadata.categories) != TYPE_ARRAY:
-			printerr("Invalid metadata property \"categories\" for plugin \"", metadata.id, "\"")
-			return Error.ERR_INVALID_DATA
-		else:
-			for i in range(metadata.categories.size()):
-				if typeof(metadata.categories[i]) != TYPE_STRING:
-					printerr("Invalid item at index ", i, " in metadata property \"categories\" for plugin \"", metadata.id, "\"")
-					return Error.ERR_INVALID_DATA
+	if optional_test_basic.call("description"):
+		return Error.ERR_INVALID_DATA
+	
+	if optional_test_basic.call("url"):
+		return Error.ERR_INVALID_DATA
+	
+	if optional_test_basic.call("icon"):
+		return Error.ERR_INVALID_DATA
 	
 	return Error.OK
 
 func get_plugin(plugin_id: String) -> Dictionary:
 	for plugin in registered_plugins:
-		if plugin.metadata.id == plugin_id:
+		if plugin.metadata.get_value("plugin_metadata", "id") == plugin_id:
 			return plugin
 	return {}
+
+func get_value_or_null(metadata, property) -> Variant:
+	var val = metadata.get_value("plugin_metadata", property, "")
+	if typeof(val) == TYPE_STRING && val == "": return null
+	else: return val
 
 func _register_plugin(plugin_path: String) -> void:
 	var builtin = false
@@ -97,48 +99,64 @@ func _register_plugin(plugin_path: String) -> void:
 		printerr("Path does not exist: \"", plugin_path ,"\"")
 		return
 	
-	var metadata_path = str(plugin_path, "/metadata.json")
+	var metadata_path = str(plugin_path, "/metadata.ini")
 	var init_script_path = str(plugin_path, "/init.gd")
-	var metadata_exists = ResourceLoader.exists(metadata_path)
+	var metadata_exists = FileAccess.file_exists(metadata_path)
 	var init_script_exists = ResourceLoader.exists(init_script_path)
 	
 	if metadata_exists == false:
-		push_warning("Could not register plugin at \"", plugin_path, "\". (missing metadata)")
+		push_warning("Could not register plug-in at \"", plugin_path, "\". (missing metadata)")
 	elif init_script_exists == false:
-		push_warning("Could not register plugin at \"", plugin_path, "\". (missing init script)")
+		push_warning("Could not register plug-in at \"", plugin_path, "\". (missing init script)")
 	else:
-		var metadata: JSON = load(metadata_path)
-		var result = validate_metadata(metadata.data, builtin)
+		var metadata: ConfigFile = ConfigFile.new()
+		var load_result = metadata.load(metadata_path)
+		
+		if load_result != Error.OK:
+			push_error("Could not load plug-in at \"", plugin_path, "\". (failed to load ConfigFile: ", error_string(load_result), ")")
+			return
+		
+		var result = validate_metadata(metadata, builtin)
+		
+		var plugin_id = metadata.get_value("plugin_metadata", "id")
 		
 		if result == Error.ERR_SKIP:
-			push_warning("Could not register plugin at \"", plugin_path, "\". (missing or invalid ID)")
+			push_warning("Could not register plug-in at \"", plugin_path, "\". (missing or invalid ID)")
 		elif result == Error.ERR_UNAUTHORIZED:
-			push_warning("Could not register plugin at \"", plugin_path, "\". (invalid ID: namespace is prohibited)")
+			push_warning("Could not register plug-in at \"", plugin_path, "\". (invalid ID: namespace is prohibited)")
 		elif result == Error.ERR_INVALID_DATA:
-			push_warning("Could not register plugin at \"", plugin_path, "\". (invalid metadata)")
-		elif metadata.data.compatibility.has(current_plugin_format) == false:
-			push_warning("Could not register plugin at \"", plugin_path, "\". (incompatible with current app version)")
+			push_warning("Could not register plug-in at \"", plugin_path, "\". (invalid metadata)")
+		elif metadata.get_value("plugin_metadata", "compatibility").has(current_plugin_format) == false:
+			push_warning("Could not register plug-in at \"", plugin_path, "\". (incompatible with current app version)")
 		else:
-			if "name" not in metadata.data:
-				metadata.data.name = metadata.data.id
+			for registered in registered_plugins:
+				if registered.id == plugin_id:
+					push_warning("Could not register plug-in at \"", plugin_path, "\". (id already taken by plugin at \"", registered.path, "\")")
+			
+			if get_value_or_null(metadata, "name") == null:
+				metadata.set_value("plugin_metadata", "name", plugin_id)
 				
 			registered_plugins.append({
+				"id": plugin_id,
 				"path": plugin_path,
-				"metadata": metadata.data,
+				"metadata": metadata,
 				"builtin": builtin
 			})
 			
 			if builtin:
-				_load_plugin(metadata.data.id)
+				_load_plugin(plugin_id)
 
 func _load_plugin(plugin_id: String) -> void:
 	var found_plugin = get_plugin(plugin_id)
+	if "path" not in found_plugin: return
+	
 	var script = load(str(found_plugin.path, "/init.gd"))
 	var plugin_node = Node.new()
-	plugin_node.name = found_plugin.metadata.id
+	plugin_node.name = found_plugin.metadata.get_value("plugin_metadata", "id")
+	plugin_node.set_meta("path", found_plugin.path)
 	plugin_node.set_script(script)
 	get_tree().root.add_child.call_deferred(plugin_node)
-	print("plugin loaded: ", plugin_id)
+	print("plug-in loaded: ", plugin_id)
 
 func _ready() -> void:
 	var plugins_dir = ProjectSettings.globalize_path(user_plugins_dir)
@@ -153,16 +171,22 @@ func _ready() -> void:
 	for path in ResourceLoader.list_directory(tools_dir):
 		found_plugins.append(str(tools_dir, "/", path))
 	
+	if DirAccess.dir_exists_absolute(plugins_dir):
+		if ConfigManager.get_config().get_value("plugins", "enabled") == true:
+			# get unpacked plugins
+			for path in DirAccess.get_directories_at(plugins_dir):
+				found_plugins.append(str(plugins_dir, "/", path))
+			
+			# get packed plugins
+			for file in DirAccess.get_files_at(plugins_dir):
+				if file.ends_with(".zip") || file.ends_with(".pck"):
+					ProjectSettings.load_resource_pack(str(plugins_dir, "/", file), false)
+	else:
+		DirAccess.make_dir_recursive_absolute(plugins_dir)
+	
 	for path in ResourceLoader.list_directory(plugin_dev_dir):
 		if path == "_builtin/": continue
 		found_plugins.append(str(plugin_dev_dir, "/", path))
-	
-	if DirAccess.dir_exists_absolute(plugins_dir):
-		if ConfigManager.get_config().get_value("plugins", "enabled") == true:
-			for path in DirAccess.get_directories_at(plugins_dir):
-				found_plugins.append(str(plugins_dir, "/", path))
-	else:
-		DirAccess.make_dir_recursive_absolute(plugins_dir)
 	
 	for plugin_path: String in found_plugins:
 		_register_plugin(plugin_path)
@@ -173,4 +197,4 @@ func _ready() -> void:
 		if registered.path.begins_with("res://plugins/_builtin/"): continue
 		var allow_list = ConfigManager.get_config().get_value("plugins", "allow_list")
 		if allow_list.has(registered):
-			_load_plugin(registered.metadata.id)
+			_load_plugin(registered.metadata.get_value("plugin_metadata", "id"))

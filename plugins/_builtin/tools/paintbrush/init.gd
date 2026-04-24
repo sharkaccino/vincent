@@ -1,8 +1,11 @@
 extends Node
 
-var metadata = preload("./metadata.json")
-var icon_path = preload("res://resources/icons/panel_tools/brush.svg")
-var panel = preload("./panel_paintbrush.tscn")
+var metadata = ConfigFile.new()
+const icon_path = preload("res://resources/icons/panel_tools/brush.svg")
+const panel = preload("./panel_paintbrush.tscn")
 
 func _ready() -> void:
-	ToolManager.register(metadata.data.id, icon_path, panel)
+	var config_path = str(get_meta("path"), "/metadata.ini")
+	metadata.load(config_path)
+	var plugin_id = metadata.get_value("plugin_metadata", "id")
+	ToolManager.register(plugin_id, icon_path, panel)

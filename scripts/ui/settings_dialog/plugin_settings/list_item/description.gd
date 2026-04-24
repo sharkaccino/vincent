@@ -11,7 +11,9 @@ func _ready() -> void:
 		printerr("Could not get plugin data for id: \"", plugin_id, "\"")
 		return
 	
-	if "description" in plugin.metadata:
-		text = plugin.metadata.description
+	var new_text = PluginManager.get_value_or_null(plugin.metadata, "description")
+	
+	if new_text != null:
+		text = new_text
 	else:
 		queue_free()
