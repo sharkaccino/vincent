@@ -91,7 +91,7 @@ func _register_plugin(plugin_path: String) -> void:
 	
 	plugin_path = plugin_path.trim_suffix("/")
 		
-	if ConfigManager.get_config().get_value("plugins", "enabled") == false: 
+	if ConfigManager.get_value("plugins", "enabled") == false: 
 		if builtin == false:
 			return
 			
@@ -172,7 +172,7 @@ func _ready() -> void:
 		found_plugins.append(str(tools_dir, "/", path))
 	
 	if DirAccess.dir_exists_absolute(plugins_dir):
-		if ConfigManager.get_config().get_value("plugins", "enabled") == true:
+		if ConfigManager.get_value("plugins", "enabled") == true:
 			# get unpacked plugins
 			for path in DirAccess.get_directories_at(plugins_dir):
 				found_plugins.append(str(plugins_dir, "/", path))
@@ -195,6 +195,6 @@ func _ready() -> void:
 	
 	for registered in registered_plugins:
 		if registered.path.begins_with("res://plugins/_builtin/"): continue
-		var allow_list = ConfigManager.get_config().get_value("plugins", "allow_list")
+		var allow_list = ConfigManager.get_value("plugins", "allow_list")
 		if allow_list.has(registered):
 			_load_plugin(registered.metadata.get_value("plugin_metadata", "id"))

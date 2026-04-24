@@ -3,17 +3,54 @@ extends Node
 var _config_path = "user://config.ini"
 
 signal config_updated
+signal volatile_config_updated
 
-var _current_config: ConfigFile
+var _saved_config: ConfigFile
+var _volatile_config: ConfigFile
 
-func update_config(new_data: ConfigFile) -> Error:
-	var result = new_data.save(_config_path)
+func has_changes() -> bool:
+	for section in _saved_config.get_sections():
+		for key in _saved_config.get_section_keys(section):
+			var saved_value = _saved_config.get_value(section, key)
+			var volatile_value = _volatile_config.get_value(section, key)
+			
+			if saved_value != volatile_value:
+				return true
+	return false
+
+func set_volatile_value(section: String, key: String, value: Variant) -> void:
+	var exist_check = _volatile_config.get_value(section, key, "")
+	if typeof(exist_check) == TYPE_STRING && exist_check == "":
+		printerr("Attempted to set config value for nonexistant key \"", key, "\" in section \"", section, "\"")
+	else:
+		_volatile_config.set_value(section, key, value)
+		volatile_config_updated.emit()
+
+func save_config() -> Error:
+	var result = _volatile_config.save(_config_path)
 	if result == Error.OK:
-		config_updated.emit(new_data)
+		_saved_config = duplicate_config(_volatile_config)
+		
+		config_updated.emit(_saved_config)
 	return result
 
-func get_config() -> ConfigFile:
-	return _current_config
+func reset_volatile_config() -> void:
+	_volatile_config = duplicate_config(_saved_config)
+	volatile_config_updated.emit()
+
+func get_full_config() -> ConfigFile:
+	return _saved_config
+
+func get_value(section: String, key: String, default: Variant = null) -> Variant:
+	return _saved_config.get_value(section, key, default)
+
+func get_volatile_value(section: String, key: String, default: Variant = null) -> Variant:
+	return _volatile_config.get_value(section, key, default)
+
+func duplicate_config(input_config: ConfigFile) -> ConfigFile:
+	var new_config = ConfigFile.new()
+	new_config.parse(input_config.encode_to_text())
+	return new_config
 
 func _ready() -> void:
 	_config_path = ProjectSettings.globalize_path(_config_path)
@@ -25,13 +62,15 @@ func _ready() -> void:
 		if result != Error.OK:
 			push_error("Could not load configuration file: ", error_string(result))
 		else:
-			_current_config = user_config
+			_saved_config = user_config
+			_volatile_config = duplicate_config(user_config)
 			print("user config successfully loaded")
 	else:
 		var default_config = ConfigFile.new()
 		default_config.load("res://resources/default_config.ini")
 		
-		_current_config = default_config
+		_saved_config = default_config
+		_volatile_config = duplicate_config(default_config)
 		
 		var result = default_config.save(_config_path)
 		if result != Error.OK:

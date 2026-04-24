@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hj01gxjv8yb"]
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_r6d6q"]
+[ext_resource type="Script" uid="uid://cuhwxkgcdyvv3" path="res://scripts/ui/settings_dialog/save_discard.gd" id="2_aisiw"]
 [ext_resource type="Script" uid="uid://vgltcyakjhn5" path="res://scripts/ui/settings_dialog/settings_container.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://dyqrrso1l586y" path="res://scripts/ui/settings_dialog/settings_tree.gd" id="3_f4mfi"]
 [ext_resource type="Texture2D" uid="uid://cpgrmdh212y7g" path="res://resources/icons/alert-triangle.svg" id="4_f4mfi"]
@@ -51,6 +52,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 6
+script = ExtResource("2_aisiw")
 
 [node name="LineEdit" type="LineEdit" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=1044126520]
 layout_mode = 2
@@ -66,12 +68,14 @@ hide_root = true
 script = ExtResource("3_f4mfi")
 
 [node name="SaveButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=270607284]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 disabled = true
 text = "Save Changes"
 
 [node name="DiscardButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=691215922]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 disabled = true
