@@ -17,17 +17,18 @@ A simple, modern, cross-platform image editor.
 
 | Feature | Status |
 | :-- | :---: |
-| Basic canvas controls | 🔵 |
-| Basic brush and eraser tools | 🔵 |
+| Basic canvas controls | 🟢 |
+| Basic brush and eraser tools | 🟡 |
 | Basic selection tools | 🔴 |
 | Basic flood tools | 🔴 |
 | Basic configuration/options menu | 🔵 |
 | Sidebars and UI panels | 🔵 |
 | Multi-project state management | 🟢 |
 | Image layers | 🟡 |
-| Infinite undo/redo history | 🔴 |
+| Layer effects | 🔴 |
+| Edit history (undo/redo) | 🔴 |
 | Save/load project files | 🟡 |
-| Image layer modifiers | 🔴 |
+| Plug-in Support | 🟢 |
 
 - 🔴 = Not started
 - 🔵 = In progress
