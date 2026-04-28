@@ -757,9 +757,7 @@ custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 text = "dev notes:
 
-zoom in/out with scroll wheel, pan with middle mouse
-
-note: zooming does not yet take into account the current viewport/cursor position, sorry"
+zoom in/out with scroll wheel, pan with middle mouse"
 autowrap_mode = 3
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=606369672]

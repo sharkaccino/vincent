@@ -60,22 +60,19 @@ func recalc_transforms() -> void:
 		deg_to_rad(active_project.viewport.rotate)
 	)
 	
-	canvas_wrapper.custom_minimum_size = canvas_size
+	canvas_wrapper.custom_minimum_size = canvas_size_rotated
 	canvas_control.custom_minimum_size = canvas_size
 	
 	canvas_control.rotation_degrees = active_project.viewport.rotate
 	canvas_control.pivot_offset = canvas_size / 2
 	
-	var xAdd = canvas_size_rotated.x - canvas_size.x
-	var yAdd = canvas_size_rotated.y - canvas_size.y
-	
 	var h_bar = get_h_scroll_bar()
 	var v_bar = get_v_scroll_bar()
 	
-	margin.add_theme_constant_override("margin_left", (viewport_size.x / 2) + (xAdd / 2))
-	margin.add_theme_constant_override("margin_right", (viewport_size.x / 2) + (xAdd / 2) - h_bar.size.y)
-	margin.add_theme_constant_override("margin_top", (viewport_size.y / 2) + (yAdd / 2))
-	margin.add_theme_constant_override("margin_bottom", (viewport_size.y / 2) + (yAdd / 2) - v_bar.size.x)
+	margin.add_theme_constant_override("margin_left", (viewport_size.x / 2))
+	margin.add_theme_constant_override("margin_right", (viewport_size.x / 2) - h_bar.size.y)
+	margin.add_theme_constant_override("margin_top", (viewport_size.y / 2))
+	margin.add_theme_constant_override("margin_bottom", (viewport_size.y / 2) - v_bar.size.x)
 	
 	if active_project.viewport.autofit:
 		center_scroll_bars()
@@ -97,6 +94,8 @@ func on_scrolled() -> void:
 	if StateManager.active_project_id == 0:
 		return
 	
+	print("scroll: ", scroll_horizontal, ", ", scroll_vertical)
+	
 	var active_project = StateManager.get_active_project()
 	
 	active_project.viewport.x = scroll_horizontal
@@ -104,10 +103,17 @@ func on_scrolled() -> void:
 	
 	StateManager.set_autofit(false)
 
-func on_resized() -> void:
+func _zoom_level_changed() -> void:
+	if is_panning:
+		var active_project = StateManager.get_active_project()
+		pan_starting_pos_h = active_project.viewport.x
+		pan_starting_pos_v = active_project.viewport.y
+		pan_starting_pos_cursor = get_local_mouse_position()
+		
 	recalc_transforms()
 
 var is_button_down = false
+	
 
 func _input(event: InputEvent) -> void:
 	var is_within_viewport = false
@@ -131,7 +137,7 @@ func _input(event: InputEvent) -> void:
 			var active_project = StateManager.get_active_project()
 			StateManager.set_autofit(false)
 			
-			var cursor_diff = make_input_local(event).position - pan_starting_pos_cursor
+			var cursor_diff = localized.position - pan_starting_pos_cursor
 			
 			active_project.viewport.x = pan_starting_pos_h - cursor_diff.x
 			active_project.viewport.y = pan_starting_pos_v - cursor_diff.y
@@ -165,7 +171,7 @@ func _input(event: InputEvent) -> void:
 					step = 200
 				
 				var final_level = snapped(current_level + step, step)
-				StateManager.set_zoom_level(final_level)
+				StateManager.set_zoom_level(final_level, canvas_wrapper.get_local_mouse_position())
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
 			if event.is_released() && is_within_viewport:
@@ -186,7 +192,7 @@ func _input(event: InputEvent) -> void:
 					step = 200
 				
 				var final_level = snapped(current_level - step, step)
-				StateManager.set_zoom_level(final_level)
+				StateManager.set_zoom_level(final_level, canvas_wrapper.get_local_mouse_position())
 				
 		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
@@ -211,7 +217,8 @@ func _ready() -> void:
 	get_v_scroll_bar().scrolling.connect(on_scrolled)
 	
 	draw.connect(recalc_transforms)
-	StateManager.zoom_level_changed.connect(recalc_transforms)
+	StateManager.zoom_level_changed.connect(_zoom_level_changed)
 	StateManager.autofit_changed.connect(recalc_transforms)
 	StateManager.rotation_changed.connect(recalc_transforms)
+	StateManager.canvas_position_changed.connect(recalc_transforms)
 	StateManager.active_project_changed.connect(on_active_project_changed)

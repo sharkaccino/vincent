@@ -14,6 +14,7 @@ signal active_project_changed
 signal drag_announced
 signal rotation_changed
 signal zoom_level_changed
+signal canvas_position_changed
 signal autofit_changed
 @warning_ignore("unused_signal")
 signal pointer_down
@@ -134,12 +135,35 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		dragging = false
 
-func set_zoom_level(new_value: float) -> void:
+func set_viewport_position(new_pos: Vector2) -> void:
 	var active_project = get_active_project()
-	var clamped = clamp(new_value / 100, 0.05, 32)
-	if (active_project.viewport.zoom != clamped):
-		active_project.viewport.zoom = clamped
+	var zoom = active_project.viewport.zoom
+	
+	active_project.viewport.x = clampf(new_pos.x, 0, active_project.size.x * zoom)
+	active_project.viewport.y = clampf(new_pos.y, 0, active_project.size.y * zoom)
+	
+	canvas_position_changed.emit()
+
+func set_zoom_level(new_value: float, to_pos: Variant = null) -> void:
+	var active_project = get_active_project()
+	var new_zoom = clampf(new_value / 100, 0.05, 32)
+	
+	if active_project.viewport.zoom != new_zoom:
+		var old_zoom = active_project.viewport.zoom
+		active_project.viewport.zoom = new_zoom
 		set_autofit(false)
+		
+		var zoom_change_ratio = (new_zoom / old_zoom)
+		var offset = Vector2(0, 0)
+		var old_pos = Vector2(
+			active_project.viewport.x,
+			active_project.viewport.y
+		)
+		
+		if typeof(to_pos) == TYPE_VECTOR2:
+			offset = (old_pos - to_pos) * ((new_zoom - old_zoom) / old_zoom)
+			
+		set_viewport_position((old_pos * zoom_change_ratio) - offset)
 		zoom_level_changed.emit()
 		
 func set_rotation(degrees: float) -> void:
