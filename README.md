@@ -42,4 +42,13 @@ If you're here to submit a bug report, please use the [issues page](../../issues
 For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
 
 ## License
-Vincent is an [MIT licensed](LICENSE) open-source project. The only exceptions are the project's branding assets and logos, which are located at [`/resources/vincent`](./resources/vincent). These files are NOT free to use, and are included for reference only.
+Vincent is a [GPLv3 licensed](LICENSE) open-source project, with the following exceptions:
+
+### `/resources/vincent`
+Vincent's branding assets and logos are NOT free to use, and are included for reference only.
+
+### `/resources/fonts`
+Included fonts have their own licenses, which you can find in their respective directories.
+
+### `/resources/icons`
+Vincent uses [Tabler icons](https://tabler.io/icons), which are [MIT licensed.](/resources/icons/LICENSE)

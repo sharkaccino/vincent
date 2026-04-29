@@ -3,9 +3,9 @@
 <ol>
   <li>
     <b>Try to keep your code clean and readable.</b>
-    <br><br>
+    <br/>
     At the very least, comment your work as much as possible. Making code easy to follow is crucial for me and fellow developers. As a general rule of thumb:
-    <br><br>
+    <br/><br/>
     <ul>
       <li>
         If you think your future self might not be able to read it, it needs a comment.
@@ -20,16 +20,16 @@
         If your logic is convoluted, explain each step in a comment.
       </li>
     </ul>
-    <br>
+    <br/>
   </li>
 
   <li>
     <b>Avoid adding third-party dependencies to the project.</b>
-    <br><br>
+    <br/>
     Dependencies add a potential point of failure, and a somewhat unknown variable to the project's stability and security. Certain dependencies may also needlessly bloat the project size, which is very undesirable for end-users. This is why we try to use as little dependencies as possible. 
-    <br><br> 
+    <br/><br/> 
     If your contribution requires adding a new dependency, please make sure you do your research before proposing it in a pull request. Ask yourself questions like:
-    <br><br>
+    <br/><br/>
     <ul>
       <li>
         Is the dependency actively maintained?
@@ -44,21 +44,21 @@
         Can vanilla Godot features provide similar functionality?
       </li>
     </ul>
-    <br>
+    <br/>
   </li>
 
   <li>
     <b>Avoid pushing large amounts of work in individual commits.</b>
-    <br><br>
+    <br/>
     Understanding what was changed helps everyone involved with keeping track of your progress, and also helps to find bugs if/when they appear. Try to work on bits and pieces at a time, and commit them separately.
-    <br><br>
+    <br/><br/>
   </li>
 
   <li>
     <b>Try to keep commit messages/descriptions clear, relevant, and concise.</b>
-    <br><br> 
+    <br/>
     As a general rule of thumb:
-    <br><br>
+    <br/><br/>
     <table>
       <tr>
         <th> ✅ DO </th>
@@ -77,6 +77,12 @@
         <td> <code>this. makes me suffer</code> </td>
       </tr>
     </table>
-    <br>
+    <br/>
+  </li>
+
+  <li>
+    <b>Usage of LLM/"AI" tools (such as ChatGPT, Claude, GitHub Copilot, etc) is prohibited.</b>
+    <br/>
+    This is a software project made by humans, for humans. I do not have the time or energy to sift through dozens of pages of barely functional code that not even the PR author understands. Please show that you care about this project as much as I do by writing lines of code yourself.
   </li>
 </ol>

@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="2_aw6pp"]
 [ext_resource type="Script" uid="uid://c52jo6ikpq7n6" path="res://scripts/ui/app_version_text.gd" id="3_uru6g"]
 [ext_resource type="Script" uid="uid://dg03yma4ngsg6" path="res://scripts/ui/statistics_dialog/close_button.gd" id="4_3jln4"]
+[ext_resource type="Script" uid="uid://dcawwjb0mp0en" path="res://scripts/ui/about_dialog/license_container.gd" id="4_6g3q5"]
+[ext_resource type="FontFile" uid="uid://j1hyspd3qkg2" path="res://resources/fonts/mono/SourceCodePro-Regular.ttf" id="5_3jln4"]
+[ext_resource type="Script" uid="uid://p7igpc3x372l" path="res://scripts/ui/about_dialog/show_license.gd" id="5_mfboy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uru6g"]
 bg_color = Color(1, 1, 1, 0)
@@ -16,7 +19,7 @@ shadow_color = Color(0.2, 0.2, 0.2, 1)
 shadow_size = 3
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1263349535]
-custom_minimum_size = Vector2(475, 220)
+custom_minimum_size = Vector2(550, 300)
 offset_right = 475.0
 offset_bottom = 220.0
 size_flags_horizontal = 3
@@ -31,68 +34,127 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=108363250]
+[node name="ContentWrapper" type="VBoxContainer" parent="MarginContainer" unique_id=108363250]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=803321020]
+[node name="Control" type="Control" parent="MarginContainer/ContentWrapper" unique_id=1831090791]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 20
+
+[node name="AboutContainer" type="HBoxContainer" parent="MarginContainer/ContentWrapper/Control" unique_id=803321020]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 48
 alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2039986812]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/ContentWrapper/Control/AboutContainer" unique_id=2039986812]
 layout_mode = 2
 stretch_mode = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/AspectRatioContainer" unique_id=294543698]
+[node name="Panel" type="Panel" parent="MarginContainer/ContentWrapper/Control/AboutContainer/AspectRatioContainer" unique_id=294543698]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uru6g")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/AspectRatioContainer" unique_id=559985500]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ContentWrapper/Control/AboutContainer/AspectRatioContainer" unique_id=559985500]
 texture_filter = 6
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("2_aw6pp")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1533417200]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ContentWrapper/Control/AboutContainer" unique_id=1533417200]
 layout_mode = 2
-theme_override_constants/separation = -4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="AppTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=459866353]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ContentWrapper/Control/AboutContainer/VBoxContainer" unique_id=1909197269]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AppTitle" type="Label" parent="MarginContainer/ContentWrapper/Control/AboutContainer/VBoxContainer/HBoxContainer" unique_id=459866353]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Vincent"
 
-[node name="AppVersionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1861254310]
+[node name="AppVersionLabel" type="Label" parent="MarginContainer/ContentWrapper/Control/AboutContainer/VBoxContainer/HBoxContainer" unique_id=1861254310]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "versiontext"
+vertical_alignment = 2
 script = ExtResource("3_uru6g")
 metadata/prepend_app_name = false
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1765347865]
+[node name="CopyrightLabel" type="Label" parent="MarginContainer/ContentWrapper/Control/AboutContainer/VBoxContainer" unique_id=74975851]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_bottom = 18
+text = "© 2026 sharkaccino"
+metadata/prepend_app_name = false
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1918656150]
-layout_mode = 2
-text = "A simple, modern, cross-platform image editor."
-
-[node name="HomepageButton" type="LinkButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=142857388]
+[node name="HomepageButton" type="LinkButton" parent="MarginContainer/ContentWrapper/Control/AboutContainer/VBoxContainer" unique_id=142857388]
 layout_mode = 2
 text = "https://github.com/sharkaccino/vincent"
 uri = "https://github.com/sharkaccino/vincent"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=986231292]
+[node name="LicenseContainer" type="PanelContainer" parent="MarginContainer/ContentWrapper/Control" unique_id=683990680]
+unique_name_in_owner = true
+visible = false
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"InnerPanel"
+script = ExtResource("4_6g3q5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ContentWrapper/Control/LicenseContainer" unique_id=304045411]
+layout_mode = 2
+scroll_hint_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ContentWrapper/Control/LicenseContainer/ScrollContainer" unique_id=1466494299]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ContentWrapper/Control/LicenseContainer/ScrollContainer/MarginContainer" unique_id=1594505743]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_3jln4")
+text = "license_text_placeholder"
+fit_content = true
+scroll_active = false
+context_menu_enabled = true
+threaded = true
+selection_enabled = true
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/ContentWrapper" unique_id=1932902586]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Show License"
+alignment = 2
+script = ExtResource("5_mfboy")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ContentWrapper" unique_id=986231292]
 layout_mode = 2
 alignment = 1
 
-[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1896060710]
+[node name="CloseButton" type="Button" parent="MarginContainer/ContentWrapper/HBoxContainer2" unique_id=1896060710]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 focus_mode = 0

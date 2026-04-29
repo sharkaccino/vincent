@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Vincent"
-config/description="Simple, modern, cross-platform image editor."
+config/description="Digital art and image editing software project."
 config/version="0.2.0_prealpha"
 config/tags=PackedStringArray("application")
 run/main_scene="uid://qubiww5n0s3j"
