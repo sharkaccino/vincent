@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://j1hyspd3qkg2"
-path="res://.godot/imported/SourceCodePro-Regular.ttf-48e8083b9314192d4b68cc6416302a02.fontdata"
+uid="uid://bb8yedp2xat08"
+path="res://.godot/imported/SourceCodePro-Medium.ttf-43a9f0da93d22e78260e5bba6084b6bd.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/mono/SourceCodePro-Regular.ttf"
-dest_files=["res://.godot/imported/SourceCodePro-Regular.ttf-48e8083b9314192d4b68cc6416302a02.fontdata"]
+source_file="res://resources/fonts/mono/SourceCodePro-Medium.ttf"
+dest_files=["res://.godot/imported/SourceCodePro-Medium.ttf-43a9f0da93d22e78260e5bba6084b6bd.fontdata"]
 
 [params]
 

@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://slcix0nel1fl"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_uru6g"]
 [ext_resource type="Texture2D" uid="uid://tsr3qvb2uqet" path="res://resources/vincent/icon.png" id="2_aw6pp"]
 [ext_resource type="Script" uid="uid://c52jo6ikpq7n6" path="res://scripts/ui/app_version_text.gd" id="3_uru6g"]
+[ext_resource type="FontFile" uid="uid://bb8yedp2xat08" path="res://resources/fonts/mono/SourceCodePro-Medium.ttf" id="4_0ieg5"]
 [ext_resource type="Script" uid="uid://dg03yma4ngsg6" path="res://scripts/ui/statistics_dialog/close_button.gd" id="4_3jln4"]
 [ext_resource type="Script" uid="uid://dcawwjb0mp0en" path="res://scripts/ui/about_dialog/license_container.gd" id="4_6g3q5"]
-[ext_resource type="FontFile" uid="uid://j1hyspd3qkg2" path="res://resources/fonts/mono/SourceCodePro-Regular.ttf" id="5_3jln4"]
-[ext_resource type="Script" uid="uid://p7igpc3x372l" path="res://scripts/ui/about_dialog/show_license.gd" id="5_mfboy"]
+[ext_resource type="Script" uid="uid://p7igpc3x372l" path="res://scripts/ui/about_dialog/toggle_license.gd" id="5_mfboy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uru6g"]
 bg_color = Color(1, 1, 1, 0)
@@ -19,13 +18,12 @@ shadow_color = Color(0.2, 0.2, 0.2, 1)
 shadow_size = 3
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1263349535]
-custom_minimum_size = Vector2(550, 300)
-offset_right = 475.0
-offset_bottom = 220.0
+custom_minimum_size = Vector2(500, 264)
+offset_right = 500.0
+offset_bottom = 264.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_uru6g")
-metadata/resizeable = false
+metadata/resizeable = true
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1809594729]
 layout_mode = 2
@@ -37,7 +35,7 @@ theme_override_constants/margin_bottom = 8
 [node name="ContentWrapper" type="VBoxContainer" parent="MarginContainer" unique_id=108363250]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
 [node name="Control" type="Control" parent="MarginContainer/ContentWrapper" unique_id=1831090791]
 layout_mode = 2
@@ -45,10 +43,9 @@ size_flags_vertical = 3
 
 [node name="AboutContainer" type="HBoxContainer" parent="MarginContainer/ContentWrapper/Control" unique_id=803321020]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -126,33 +123,37 @@ scroll_hint_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ContentWrapper/Control/LicenseContainer/ScrollContainer/MarginContainer" unique_id=1594505743]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_3jln4")
-text = "license_text_placeholder"
+theme_override_fonts/normal_font = ExtResource("4_0ieg5")
+text = "Vincent is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (version 3 or later) as published by the Free Software Foundation.
+
+Vincent is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Vincent. If not, see: https://www.gnu.org/licenses/"
 fit_content = true
 scroll_active = false
 context_menu_enabled = true
 threaded = true
 selection_enabled = true
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/ContentWrapper" unique_id=1932902586]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Show License"
-alignment = 2
-script = ExtResource("5_mfboy")
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ContentWrapper" unique_id=986231292]
 layout_mode = 2
 alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/ContentWrapper/HBoxContainer2" unique_id=281661801]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Show License"
+script = ExtResource("5_mfboy")
 
 [node name="CloseButton" type="Button" parent="MarginContainer/ContentWrapper/HBoxContainer2" unique_id=1896060710]
 custom_minimum_size = Vector2(64, 32)

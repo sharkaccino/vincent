@@ -54,6 +54,8 @@ project/assembly_name="Vincent"
 [gui]
 
 common/snap_controls_to_pixels=false
+theme/custom="uid://n486m4af3wkh"
+theme/custom_font="uid://cbfq16it13oy6"
 
 [rendering]
 

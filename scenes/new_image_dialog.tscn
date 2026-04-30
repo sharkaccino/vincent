@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dp0rq0uhntafg"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_truuh"]
 [ext_resource type="Script" uid="uid://bw1lscoaenrao" path="res://scripts/ui/new_image_dialog/keep_aspect_ratio_checkbox.gd" id="3_beosn"]
 [ext_resource type="Script" uid="uid://bmahoe85l5s65" path="res://scripts/ui/new_image_dialog/width_input.gd" id="4_1bnev"]
 [ext_resource type="Script" uid="uid://6jr08noik71a" path="res://scripts/ui/new_image_dialog/height_input.gd" id="5_qnoot"]
@@ -44,7 +43,6 @@ offset_right = 400.0
 offset_bottom = 227.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_truuh")
 metadata/resizeable = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=816558429]
