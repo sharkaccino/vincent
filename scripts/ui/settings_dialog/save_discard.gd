@@ -22,4 +22,5 @@ func _ready() -> void:
 	discard_button.pressed.connect(_do_discard)
 
 func _exit_tree() -> void:
-	ConfigManager.reset_volatile_config()
+	if ConfigManager.has_changes():
+		ConfigManager.reset_volatile_config()

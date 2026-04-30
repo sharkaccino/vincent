@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://c741tnp4ynkju" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/url.gd" id="15_g5y2q"]
 [ext_resource type="Script" uid="uid://tx0r177ehhb5" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/settings_builder.gd" id="16_k00b3"]
 [ext_resource type="Script" uid="uid://dlw2tqa5dngyo" path="res://scripts/ui/settings_dialog/plugin_settings/unloaded_plugins_label.gd" id="23_gcetw"]
+[ext_resource type="Script" uid="uid://n7n0eyyvcd5d" path="res://scripts/ui/settings_dialog/interface_settings/font_selector.gd" id="24_i24gk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kvyq"]
 content_margin_left = 4.0
@@ -131,6 +132,143 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
+[node name="BehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1646229877]
+layout_mode = 2
+metadata/category_index = 0
+metadata/page_index = 0
+
+[node name="HeaderBehaviorSettings" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1551676373]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings" unique_id=1832908667]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings/HBoxContainer" unique_id=668978175]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Behavior Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings/HBoxContainer" unique_id=2126042916]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="CheckBox" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1432233002]
+layout_mode = 2
+tooltip_text = "When enabled, Vincent will save a list of up to 8 of the most recently opened projects and images. These can then be quickly re-opened by navigating to File > Open Recent"
+disabled = true
+button_pressed = true
+text = "Remember previously opened projects"
+
+[node name="CheckBox2" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1920733195]
+layout_mode = 2
+disabled = true
+text = "Automatically open projects from previous session"
+
+[node name="HeaderNewImageDefaults" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1171154728]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults" unique_id=629375726]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults/HBoxContainer" unique_id=1451079278]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "New Image Defaults"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults/HBoxContainer" unique_id=1921625312]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=729065878]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=376083882]
+layout_mode = 2
+text = "Width:"
+
+[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=1008620319]
+layout_mode = 2
+editable = false
+suffix = "px"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=937849645]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=864268462]
+layout_mode = 2
+text = "Height:"
+
+[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=1873237926]
+layout_mode = 2
+editable = false
+suffix = "px"
+
+[node name="HeaderAutoSave" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=46313547]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave" unique_id=309824450]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave/HBoxContainer" unique_id=884142108]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Auto-Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave/HBoxContainer" unique_id=279219304]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="HeaderEditHistory" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=810125574]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory" unique_id=1701811642]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory/HBoxContainer" unique_id=273896321]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Edit History"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory/HBoxContainer" unique_id=1313279338]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=993033112]
+layout_mode = 2
+size_flags_vertical = 10
+theme_type_variation = &"PlaceholderText"
+text = "(work in progress)"
+horizontal_alignment = 1
+
 [node name="PluginSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=67626226]
 unique_name_in_owner = true
 visible = false
@@ -138,6 +276,29 @@ layout_mode = 2
 theme_override_constants/separation = 8
 metadata/category_index = 0
 metadata/page_index = 2
+
+[node name="Header" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=478746454]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/Header" unique_id=317954520]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/Header/HBoxContainer" unique_id=776134234]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Plug-in Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/Header/HBoxContainer" unique_id=1436013527]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
 
 [node name="WarningBanner" type="PanelContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=2006035864]
 unique_name_in_owner = true
@@ -366,143 +527,12 @@ text = "+[x] unloaded plug-ins"
 vertical_alignment = 1
 script = ExtResource("23_gcetw")
 
-[node name="BehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1646229877]
+[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=1173622064]
 layout_mode = 2
-metadata/category_index = 0
-metadata/page_index = 0
-
-[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=993033112]
-layout_mode = 2
+size_flags_vertical = 10
 theme_type_variation = &"PlaceholderText"
 text = "(work in progress)"
-
-[node name="HeaderBehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1598004676]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings" unique_id=1832908667]
-layout_mode = 2
-theme_type_variation = &"SettingsSeparatorContainer"
-alignment = 1
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings/HBoxContainer" unique_id=668978175]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Behavior Settings"
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings/HBoxContainer" unique_id=2126042916]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_type_variation = &"SettingsHeaderSeparatorRight"
-
-[node name="CheckBox" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1432233002]
-layout_mode = 2
-tooltip_text = "When enabled, Vincent will save a list of up to 8 of the most recently opened projects and images. These can then be quickly re-opened by navigating to File > Open Recent"
-disabled = true
-button_pressed = true
-text = "Remember previously opened projects"
-
-[node name="CheckBox2" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1920733195]
-layout_mode = 2
-disabled = true
-text = "Automatically open projects from previous session"
-
-[node name="HeaderNewImageDefaults" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1971207701]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults" unique_id=629375726]
-layout_mode = 2
-theme_type_variation = &"SettingsSeparatorContainer"
-alignment = 1
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults/HBoxContainer" unique_id=1451079278]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "New Image Defaults"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults/HBoxContainer" unique_id=1921625312]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_type_variation = &"SettingsHeaderSeparatorRight"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=729065878]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=376083882]
-layout_mode = 2
-text = "Width:"
-
-[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer" unique_id=1008620319]
-layout_mode = 2
-editable = false
-suffix = "px"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=937849645]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=864268462]
-layout_mode = 2
-text = "Height:"
-
-[node name="SpinBox" type="SpinBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HBoxContainer2" unique_id=1873237926]
-layout_mode = 2
-editable = false
-suffix = "px"
-
-[node name="HeaderAutoSave" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=996274523]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave" unique_id=309824450]
-layout_mode = 2
-theme_type_variation = &"SettingsSeparatorContainer"
-alignment = 1
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave/HBoxContainer" unique_id=884142108]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Auto-Save"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave/HBoxContainer" unique_id=279219304]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_type_variation = &"SettingsHeaderSeparatorRight"
-
-[node name="HeaderEditHistory" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1095446878]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory" unique_id=1701811642]
-layout_mode = 2
-theme_type_variation = &"SettingsSeparatorContainer"
-alignment = 1
-
-[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory/HBoxContainer" unique_id=273896321]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Edit History"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory/HBoxContainer" unique_id=1313279338]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_type_variation = &"SettingsHeaderSeparatorRight"
 
 [node name="InterfaceSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1738970013]
 visible = false
@@ -510,9 +540,10 @@ layout_mode = 2
 metadata/category_index = 1
 metadata/page_index = 0
 
-[node name="Header" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings" unique_id=1307725733]
-custom_minimum_size = Vector2(0, 32)
+[node name="Header" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings" unique_id=494372438]
 layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+theme_override_constants/margin_top = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/Header" unique_id=937916155]
 layout_mode = 2
@@ -521,7 +552,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/Header/HBoxContainer" unique_id=1338993943]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"HeaderLarge"
 text = "Interface Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -537,10 +568,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/HBoxContainer" unique_id=1920905105]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Font:"
 
-[node name="OptionButton" type="OptionButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/HBoxContainer" unique_id=366892120]
+[node name="FontSelector" type="OptionButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/HBoxContainer" unique_id=366892120]
 layout_mode = 2
+size_flags_horizontal = 3
 selected = 0
 item_count = 3
 popup/item_0/text = "Inter Display (Default)"
@@ -549,3 +582,11 @@ popup/item_1/text = "Atkinson Hyperlegible Next"
 popup/item_1/id = 1
 popup/item_2/text = "Source Code Pro"
 popup/item_2/id = 2
+script = ExtResource("24_i24gk")
+
+[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings" unique_id=1619389676]
+layout_mode = 2
+size_flags_vertical = 10
+theme_type_variation = &"PlaceholderText"
+text = "(work in progress)"
+horizontal_alignment = 1
