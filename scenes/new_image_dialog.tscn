@@ -4,18 +4,13 @@
 [ext_resource type="Script" uid="uid://bmahoe85l5s65" path="res://scripts/ui/new_image_dialog/width_input.gd" id="4_1bnev"]
 [ext_resource type="Script" uid="uid://6jr08noik71a" path="res://scripts/ui/new_image_dialog/height_input.gd" id="5_qnoot"]
 [ext_resource type="Script" uid="uid://caleo7mrr6btg" path="res://scripts/ui/new_image_dialog/swap_orientation_button.gd" id="6_j27eg"]
+[ext_resource type="Texture2D" uid="uid://hcokj6jognr4" path="res://resources/colorwheel.png" id="6_truuh"]
 [ext_resource type="Script" uid="uid://gueo2843qfig" path="res://scripts/ui/new_image_dialog/bg_color_picker.gd" id="7_674en"]
 [ext_resource type="Script" uid="uid://57wuyve0arig" path="res://scripts/ui/new_image_dialog/preview_box_container.gd" id="7_jpc14"]
 [ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="8_00ytc"]
-[ext_resource type="Shader" uid="uid://cipauykqujqw7" path="res://shaders/colorwheel_button.tres" id="8_beosn"]
 [ext_resource type="Script" uid="uid://iho3oap8wihm" path="res://scripts/ui/new_image_dialog/warning_label.gd" id="9_1ld8p"]
 [ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image_dialog/confirm_button.gd" id="10_v2k65"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image_dialog/cancel_button.gd" id="11_aopu8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j27eg"]
-shader = ExtResource("8_beosn")
-
-[sub_resource type="Texture2DRD" id="Texture2DRD_jpc14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_laxsb"]
 shader = ExtResource("8_00ytc")
@@ -178,13 +173,11 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer" unique_id=2079823429]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer" unique_id=1408243859]
+texture_filter = 4
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BackgroundColorButton/Button/MarginContainer/AspectRatioContainer" unique_id=1408243859]
-material = SubResource("ShaderMaterial_j27eg")
-layout_mode = 2
-texture = SubResource("Texture2DRD_jpc14")
+texture = ExtResource("6_truuh")
+expand_mode = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=134144111]
 custom_minimum_size = Vector2(150, 171)
