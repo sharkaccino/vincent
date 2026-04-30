@@ -12,7 +12,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: Assign to Project
-        uses: actions/add-to-github-projects@v1.0.2
+        uses: actions/add-to-project@v1.0.2
         with:
           project: https://github.com/users/sharkaccino/projects/5
           github-token: ${{ secrets.ISSUE_ORGANIZATION }}
