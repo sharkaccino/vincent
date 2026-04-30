@@ -14,7 +14,7 @@ jobs:
       - name: Assign to Project
         uses: actions/add-to-project@v1.0.2
         with:
-          project: https://github.com/users/sharkaccino/projects/5
+          project-url: https://github.com/users/sharkaccino/projects/5
           github-token: ${{ secrets.ISSUE_ORGANIZATION }}
       - name: Add Triage Label
         if: success() || failure()
