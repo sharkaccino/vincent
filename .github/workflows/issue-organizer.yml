@@ -7,7 +7,7 @@ permissions:
   issues: write
   contents: read
 env:
-  GITHUB_TOKEN: ${{ secrets.ISSUE_ORGANIZATION }}
+  MY_GITHUB_TOKEN: ${{ secrets.ISSUE_ORGANIZATION }}
 
 jobs:
   assign-label-and-project:
