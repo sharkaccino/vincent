@@ -58,6 +58,7 @@ theme_override_constants/separation = 6
 script = ExtResource("2_aisiw")
 
 [node name="LineEdit" type="LineEdit" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=1044126520]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 placeholder_text = "Search..."
 emoji_menu_enabled = false
