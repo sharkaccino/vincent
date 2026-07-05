@@ -30,13 +30,13 @@ func _ready() -> void:
 	
 	new_project_window = PopupManager.create("res://scenes/new_image_dialog.tscn")
 	new_project_window.name = "NewImageDialog"
-	new_project_window.title = "Create Image"
+	new_project_window.title = "WINDOW_NEW_IMAGE"
 	add_child(new_project_window)
 	
 	# TODO: populate with recently opened files
 	var recentPopup = PopupMenu.new()
 	recentPopup.set_name("RecentFilesSubmenu")
-	recentPopup.add_item("No recent files found.")
+	recentPopup.add_item("FILE_MENU_RECENT_FILES_NOT_FOUND")
 	recentPopup.set_item_disabled(0, true)
 	
 	popup.set_item_submenu_node(2, recentPopup)

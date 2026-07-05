@@ -1,6 +1,9 @@
-extends Label
+extends VBoxContainer
 
-var layer_name = "?"
+@onready var node_layer_name = $ActiveLayerName
+@onready var node_pointer_pos = $PointerPosition
+
+var current_layer_name = "?"
 var last_pos = Vector2i(0, 0)
 
 func update(value: Vector2) -> void:
@@ -9,7 +12,9 @@ func update(value: Vector2) -> void:
 		return
 	visible = true
 	
-	var layer_text = str("Layer: ", layer_name)
+	node_layer_name.text = tr("INFO_WGT_LAYER_NAME").format({
+		layer_name = current_layer_name
+	})
 	
 	# TODO: make this configurable
 	#var step = 0.1
@@ -19,16 +24,18 @@ func update(value: Vector2) -> void:
 	var x_rounded = int(floor(value.x))
 	var y_rounded = int(floor(value.y))
 	
-	var pos_text = str("Pos: ", x_rounded, ", ", y_rounded)
+	node_pointer_pos.text = tr("INFO_WGT_POSITION").format({
+		x = x_rounded,
+		y = y_rounded
+	})
 	
-	text = str(layer_text, "\n", pos_text)
 	last_pos = value
 
 func update_layer_name() -> void:
 	var active_project = StateManager.get_active_project()
 	var layer_index = active_project.active_layer_index
 	var active_layer: VincentProject.Layer = active_project.layers[layer_index]
-	layer_name = active_layer.name
+	current_layer_name = active_layer.name
 	update(last_pos)
 
 func _ready() -> void:

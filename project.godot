@@ -17,7 +17,7 @@ config/tags=PackedStringArray("application")
 run/main_scene="uid://qubiww5n0s3j"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="vincent"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=120
 run/low_processor_mode=true
 boot_splash/show_image=false
@@ -37,6 +37,7 @@ StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
 ToolManager="*uid://ceqygovtbubm0"
 PluginManager="*uid://bb6a1l22kac3g"
+LocaleCoverageTester="*uid://c4w2m1d3335na"
 
 [display]
 
@@ -56,6 +57,18 @@ project/assembly_name="Vincent"
 common/snap_controls_to_pixels=false
 theme/custom="uid://n486m4af3wkh"
 theme/custom_font="uid://cbfq16it13oy6"
+
+[importer_defaults]
+
+csv_translation={
+&"compress": 0
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://locale/de_DE.de_DE.translation", "res://locale/en_US.en_US.translation")
+locale/fallback="en_US"
+locale/locale_filter_mode=0
 
 [rendering]
 

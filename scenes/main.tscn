@@ -43,13 +43,16 @@
 [ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_button.gd" id="38_1v6qk"]
 [ext_resource type="Script" uid="uid://b4jvoreoxwpvs" path="res://scripts/ui/panels/tool_settings/tool_settings_panel.gd" id="40_augu2"]
 [ext_resource type="Texture2D" uid="uid://b4o436yvgbe47" path="res://resources/icons/panel_tools/zoom.svg" id="45_0loja"]
+[ext_resource type="Texture2D" uid="uid://cf2n1wmws2l3f" path="res://resources/icons/grid-3x3.svg" id="48_augu2"]
+[ext_resource type="Texture2D" uid="uid://d374fgwmrjyv2" path="res://resources/icons/flip-horizontal.svg" id="49_1v6qk"]
+[ext_resource type="Texture2D" uid="uid://c8td4riyxa3j3" path="res://resources/icons/flip-vertical.svg" id="50_augu2"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
 [ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
 [ext_resource type="Script" uid="uid://tksro1ugiv0v" path="res://scripts/ui/viewport/channel_mode.gd" id="70_j4bwh"]
 [ext_resource type="Script" uid="uid://m2m3x631urmq" path="res://scripts/ui/debug/debug_viewport_scrollbars.gd" id="70_ksmap"]
 [ext_resource type="Script" uid="uid://biuxas7jktyqj" path="res://scripts/ui/viewport/zoom_input.gd" id="71_gdvew"]
-[ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_text.gd" id="71_ygd8o"]
+[ext_resource type="Script" uid="uid://bridbowvqepv7" path="res://scripts/ui/viewport/info_widget.gd" id="71_ygd8o"]
 [ext_resource type="Script" uid="uid://ch5ahlj7ylm83" path="res://scripts/ui/viewport/rotation_reset.gd" id="72_ksmap"]
 [ext_resource type="Script" uid="uid://cv1k5mfpm7464" path="res://scripts/ui/viewport/rotation_input.gd" id="72_xljpf"]
 [ext_resource type="Script" uid="uid://digqkvosaqbxp" path="res://scripts/ui/viewport/canvas_grid.gd" id="73_155or"]
@@ -151,32 +154,33 @@ script = ExtResource("4_vxglm")
 [node name="FileMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=171255164]
 layout_mode = 2
 button_mask = 3
-text = "File"
+text = "TOOLBAR_MENU_FILE"
 flat = false
 expand_icon = true
 switch_on_hover = true
 item_count = 6
-popup/item_0/text = "New..."
+popup/item_0/text = "FILE_MENU_OPTION_NEW"
 popup/item_0/icon = ExtResource("5_yq6so")
 popup/item_0/id = 0
-popup/item_1/text = "Open..."
+popup/item_1/text = "FILE_MENU_OPTION_OPEN"
 popup/item_1/icon = ExtResource("5_jscy8")
 popup/item_1/id = 1
-popup/item_2/text = "Open Recent"
+popup/item_2/text = "FILE_MENU_OPTION_OPEN_RECENT"
 popup/item_2/id = 2
-popup/item_3/text = "Save"
+popup/item_3/text = "FILE_MENU_OPTION_SAVE"
 popup/item_3/icon = ExtResource("6_pm3ni")
 popup/item_3/id = 3
-popup/item_4/text = "Save As..."
+popup/item_4/text = "FILE_MENU_OPTION_SAVE_AS"
 popup/item_4/id = 4
-popup/item_5/text = "Exit"
+popup/item_5/text = "FILE_MENU_OPTION_EXIT"
 popup/item_5/icon = ExtResource("7_y6deb")
 popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
 [node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton" unique_id=80314602]
-title = "Open File(s)"
-ok_button_text = "Open"
+title = "WINDOW_OPEN_FILE"
+ok_button_text = "GENERIC_OPEN"
+cancel_button_text = "GENERIC_CANCEL"
 file_mode = 1
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
@@ -185,6 +189,9 @@ script = ExtResource("4_tipki")
 
 [node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton" unique_id=1350971158]
 auto_translate_mode = 1
+title = "WINDOW_SAVE_FILE"
+ok_button_text = "GENERIC_SAVE"
+cancel_button_text = "GENERIC_CANCEL"
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.webp")
 use_native_dialog = true
@@ -193,34 +200,33 @@ script = ExtResource("11_ih3m7")
 [node name="EditMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=275077302]
 layout_mode = 2
 button_mask = 3
-text = "Edit
-"
+text = "TOOLBAR_MENU_EDIT"
 flat = false
 switch_on_hover = true
 item_count = 9
-popup/item_0/text = "Undo"
+popup/item_0/text = "EDIT_MENU_OPTION_UNDO"
 popup/item_0/icon = ExtResource("10_2wyq8")
 popup/item_0/id = 0
-popup/item_1/text = "Redo"
+popup/item_1/text = "EDIT_MENU_OPTION_REDO"
 popup/item_1/icon = ExtResource("11_vxglm")
 popup/item_1/id = 1
-popup/item_2/text = "Undo History"
+popup/item_2/text = "EDIT_MENU_OPTION_HISTORY"
 popup/item_2/icon = ExtResource("13_dnhof")
 popup/item_2/id = 8
 popup/item_3/id = 3
 popup/item_3/separator = true
-popup/item_4/text = "Cut"
+popup/item_4/text = "EDIT_MENU_OPTION_CUT"
 popup/item_4/icon = ExtResource("13_ids8r")
 popup/item_4/id = 4
-popup/item_5/text = "Copy"
+popup/item_5/text = "EDIT_MENU_OPTION_COPY"
 popup/item_5/icon = ExtResource("14_dnhof")
 popup/item_5/id = 5
-popup/item_6/text = "Paste"
+popup/item_6/text = "EDIT_MENU_OPTION_PASTE"
 popup/item_6/icon = ExtResource("15_1v6qk")
 popup/item_6/id = 6
 popup/item_7/id = 7
 popup/item_7/separator = true
-popup/item_8/text = "Settings..."
+popup/item_8/text = "EDIT_MENU_OPTION_SETTINGS"
 popup/item_8/icon = ExtResource("12_2f3dj")
 popup/item_8/id = 2
 script = ExtResource("6_0ld40")
@@ -228,7 +234,7 @@ script = ExtResource("6_0ld40")
 [node name="ViewMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=354989137]
 layout_mode = 2
 button_mask = 3
-text = "View"
+text = "TOOLBAR_MENU_VIEW"
 flat = false
 switch_on_hover = true
 script = ExtResource("15_qkpxi")
@@ -236,11 +242,11 @@ script = ExtResource("15_qkpxi")
 [node name="ImageMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=507217571]
 layout_mode = 2
 button_mask = 3
-text = "Image"
+text = "TOOLBAR_MENU_IMAGE"
 flat = false
 switch_on_hover = true
 item_count = 1
-popup/item_0/text = "Statistics..."
+popup/item_0/text = "IMAGE_MENU_STATISTICS"
 popup/item_0/icon = ExtResource("17_5q0nq")
 popup/item_0/id = 0
 script = ExtResource("16_j8jky")
@@ -248,7 +254,7 @@ script = ExtResource("16_j8jky")
 [node name="LayersMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=335655525]
 layout_mode = 2
 button_mask = 3
-text = "Layers"
+text = "TOOLBAR_MENU_LAYERS"
 flat = false
 switch_on_hover = true
 script = ExtResource("17_kmb1v")
@@ -256,7 +262,7 @@ script = ExtResource("17_kmb1v")
 [node name="EffectsMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=13082924]
 layout_mode = 2
 button_mask = 3
-text = "Effects"
+text = "TOOLBAR_MENU_EFFECTS"
 flat = false
 switch_on_hover = true
 script = ExtResource("18_fuf3a")
@@ -264,14 +270,14 @@ script = ExtResource("18_fuf3a")
 [node name="HelpMenuButton" type="MenuButton" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar" unique_id=951641146]
 layout_mode = 2
 button_mask = 3
-text = "Help"
+text = "TOOLBAR_MENU_HELP"
 flat = false
 switch_on_hover = true
 item_count = 2
-popup/item_0/text = "Report a Bug"
+popup/item_0/text = "HELP_MENU_BUG_REPORT"
 popup/item_0/icon = ExtResource("20_bu4jf")
 popup/item_0/id = 0
-popup/item_1/text = "About Vincent..."
+popup/item_1/text = "HELP_MENU_ABOUT"
 popup/item_1/icon = ExtResource("17_5q0nq")
 popup/item_1/id = 1
 script = ExtResource("4_tefeu")
@@ -341,12 +347,13 @@ size_flags_vertical = 4
 [node name="ProjectTabName" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2018707817]
 layout_mode = 2
 mouse_filter = 1
-text = "Untitled Project"
+text = "DEFAULT_PROJECT_NAME"
 clip_text = true
 text_overrun_behavior = 3
 script = ExtResource("9_muem4")
 
 [node name="ProjectTabResolution" type="Label" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1121033130]
+auto_translate_mode = 2
 layout_mode = 2
 mouse_filter = 1
 text = "800 x 600"
@@ -436,7 +443,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
 layout_mode = 2
-text = "Tools"
+text = "PANEL_TOOLS"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=471042804]
 layout_mode = 2
@@ -492,7 +499,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2140841286]
 layout_mode = 2
-text = "Tool Settings"
+text = "PANEL_TOOL_SETTINGS"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer" unique_id=78403437]
 layout_mode = 2
@@ -621,7 +628,11 @@ mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="InfoText" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer" unique_id=2052557687]
+[node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer" unique_id=38757493]
+layout_mode = 2
+script = ExtResource("71_ygd8o")
+
+[node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer/InfoWidget" unique_id=2052557687]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -632,9 +643,20 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
-text = "layer: [...]
-pos: [...]"
-script = ExtResource("71_ygd8o")
+text = "INFO_WGT_LAYER_NAME"
+
+[node name="PointerPosition" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer/InfoWidget" unique_id=945342055]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/paragraph_spacing = 8
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 10
+text = "INFO_WGT_POSITION"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1016688040]
 layout_mode = 2
@@ -654,11 +676,6 @@ theme_override_constants/separation = 16
 
 [node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=463915025]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=2050862265]
-layout_mode = 2
-text = "View:"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=506116122]
 custom_minimum_size = Vector2(80, 0)
@@ -680,19 +697,46 @@ popup/item_5/text = "Alpha"
 popup/item_5/id = 5
 script = ExtResource("70_j4bwh")
 
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=279156429]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("48_augu2")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("80_vtx2l")
+
 [node name="GridControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1751616304]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/GridControl" unique_id=154450219]
+[node name="Spacer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=617042878]
 layout_mode = 2
-text = "Show Grid"
-script = ExtResource("80_vtx2l")
+size_flags_horizontal = 3
+
+[node name="FlipControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=207462045]
+layout_mode = 2
+
+[node name="FlipHorizontal" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=437474897]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("49_1v6qk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="FlipVertical" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=234485948]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("50_augu2")
+icon_alignment = 1
+expand_icon = true
 
 [node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=1553067202]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 focus_mode = 0
 action_mode = 0
@@ -716,7 +760,7 @@ script = ExtResource("72_xljpf")
 layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1310843317]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 focus_mode = 0
 action_mode = 0
@@ -751,6 +795,7 @@ size_flags_vertical = 0
 theme_type_variation = &"ToolPanelMargin"
 
 [node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/RightToolColumn/TEMPToolColumnPlaceholder/MarginContainer" unique_id=753358605]
+auto_translate_mode = 2
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 text = "dev notes:
@@ -778,6 +823,7 @@ size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_jkv2x")
 
 [node name="AppVersionLabel" type="Label" parent="VBoxContainer/MarginContainer/StatusBar" unique_id=1451198903]
+auto_translate_mode = 2
 layout_mode = 2
 theme_type_variation = &"AppVersionLabel"
 text = "app_version_text"

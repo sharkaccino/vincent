@@ -1,4 +1,4 @@
-extends CheckButton
+extends Button
 
 @onready var canvas_grid = %CanvasGrid
 

@@ -1,0 +1,93 @@
+keys,de_DE
+WINDOW_NEW_IMAGE,Bild erstellen
+WINDOW_OPEN_FILE,Datei(en) öffnen
+WINDOW_SAVE_FILE,Datei speichern
+WINDOW_SETTINGS,Einstellungen
+WINDOW_STATISTICS,Bild Statistiken
+WINDOW_ABOUT,Über
+TOOLBAR_MENU_FILE,Datei
+FILE_MENU_OPTION_NEW,Neu...
+FILE_MENU_OPTION_OPEN,Öffnen...
+FILE_MENU_OPTION_OPEN_RECENT,Zuletzt geöffnet
+FILE_MENU_RECENT_FILES_NOT_FOUND,Keine zuletzt geöffneten Dateien gefunden
+FILE_MENU_OPTION_SAVE,Speichern
+FILE_MENU_OPTION_SAVE_AS,Speichern unter...
+FILE_MENU_OPTION_EXIT,Verlassen
+TOOLBAR_MENU_EDIT,Bearbeiten
+EDIT_MENU_OPTION_UNDO,Rückgängig
+EDIT_MENU_OPTION_REDO,Wiederherstellen
+EDIT_MENU_OPTION_HISTORY,Bearbeitungsverlauf
+EDIT_MENU_OPTION_CUT,Ausschneiden
+EDIT_MENU_OPTION_COPY,Kopieren
+EDIT_MENU_OPTION_PASTE,Einfügen
+EDIT_MENU_OPTION_SETTINGS,Einstellungen...
+TOOLBAR_MENU_VIEW,Anzeigen
+TOOLBAR_MENU_IMAGE,Bild
+IMAGE_MENU_STATISTICS,Statistiken...
+TOOLBAR_MENU_LAYERS,Ebenen
+TOOLBAR_MENU_EFFECTS,Effekte
+TOOLBAR_MENU_HELP,Hilfe
+HELP_MENU_BUG_REPORT,Problem Melden
+HELP_MENU_ABOUT,Über...
+DEFAULT_PROJECT_NAME,Unbenanntes Projekt
+INFO_WGT_LAYER_NAME,Ebene: {layer_name}
+INFO_WGT_POSITION,"Position: {x}, {y}"
+PANEL_TOOLS,Werkzeuge
+PANEL_TOOL_SETTINGS,Werkzeug Einstellungen
+PANEL_COLORS,Farben
+PANEL_LAYERS,Ebenen
+PANEL_LAYER_SETTINGS,Ebenen Einstellungen
+PANEL_HISTORY,Verlauf
+GENERIC_PLACEHOLDER_SEARCH,Suche...
+GENERIC_WIP,(in Arbeit)
+GENERIC_DEFAULT,Standard
+GENERIC_OK,OK
+GENERIC_COPY,Kopieren
+GENERIC_CANCEL,Abbrechen
+GENERIC_CLOSE,Schließen
+NEW_IMAGE_KEEP_RATIO,Seitenverhältnis behalten
+NEW_IMAGE_TARGET_RATIO,Ziel Verhältnis: {ratio}
+NEW_IMAGE_WIDTH,Breite:
+NEW_IMAGE_HEIGHT,Höhe:
+NEW_IMAGE_PIXELS,Pixel
+NEW_IMAGE_SWAP_ORIENTATION,Ausrichtung umkehren
+NEW_IMAGE_PREVIEW,VORSCHAU
+NEW_IMAGE_BG_COLOR,Hintergrund Farbe:
+NEW_IMAGE_LARGE_CANVAS_WARNING,WARNUNG: Längen über 16384 Pixel werden von den meisten Geräten nicht unterstützt. Es könnten Probleme auftreten
+SETTINGS_SAVE,Änderungen speichern
+SETTINGS_DISCARD,Änderungen verwefen
+SETTINGS_TREE_CATEGORY_GENERAL,Allgemein
+SETTINGS_TREE_PAGE_BEHAVIOR,Verhalten
+SETTINGS_TREE_PAGE_LANGUAGE,Sprache
+SETTINGS_TREE_PAGE_PLUGINS,Plug-ins
+SETTINGS_TREE_CATEGORY_DISPLAY,Anzeige
+SETTINGS_TREE_PAGE_INTERFACE,Benutzeroberfläche
+SETTINGS_TREE_PAGE_VIEWPORT,Ansichtsfenster
+SETTINGS_TREE_PAGE_THEMES,Designs
+SETTINGS_TREE_CATEGORY_INPUT,Eingabe
+SETTINGS_TREE_PAGE_PEN,Stiftdruck
+SETTINGS_TREE_PAGE_KEYMAP,Tastenbelegung
+SETTINGS_TREE_CATEGORY_ADVANCED,Erweitert
+SETTINGS_TREE_PAGE_DEBUG,Debug
+SETTINGS_TREE_PAGE_EXPERIMENTAL,Experimentell
+SETTINGS_BEHAVIOR_PAGE_TITLE,Verhaltens-Einstellungen
+SETTINGS_BEHAVIOR_REMEMBER_OPEN_PROJECTS,Vorher geöffnete Projekte merken
+SETTINGS_BEHAVIOR_AUTO_OPEN_PREVIOUS_PROJECTS,Projekte aus vorherigen Sitzungen automatisch öffnen
+SETTINGS_BEHAVIOR_SECTION_NEW_IMAGE_DEFAULTS,Standards für neue Bilder
+SETTINGS_BEHAVIOR_SECTION_AUTO_SAVE,Automatisch speichern
+SETTINGS_BEHAVIOR_SECTION_EDIT_HISTORY,Bearbeitungsverlauf
+SETTINGS_LANGUAGE_PAGE_TITLE,Sprach-Einstellungen
+SETTINGS_LANGUAGE_FILTER,Sprachen filtern...
+SETTINGS_LANGUAGE_FILTER_NO_MATCHES,Keine passenden Sprachen gefunden.
+SETTINGS_LANGUAGE_COVERAGE,Vollständigkeit: {percentage}%
+SETTINGS_PLUGINS_PAGE_TITLE,Plug-in Einstellungen
+SETTINGS_PLUGINS_WARNING,"WARNUNG: Plug-ins werden von Drittanbietern entwickelt und werden von Vincent weder gesponsert noch empfohlen. Diese Software kann beliebigen code auf deinem System ausführen, was zu irreversiblen Schäden oder sogar zum Diebstahl persönlicher Daten führen kann. Vergewissern Sie sich vor der Installation eines Plug-ins, dass Sie dem Autor vertrauen."
+SETTINGS_PLUGINS_ENABLE,Plug-ins aktivieren
+SETTINGS_PLUGINS_INSTALL,Plug-in installieren...
+SETTINGS_PLUGINS_OPEN_DIR,Plug-in Ordner öffnen
+SETTINGS_INTERFACE_PAGE_TITLE,Benutzeroberflächen-Einstellungen
+SETTINGS_INTERFACE_FONT,Schriftart:
+STATISTICS_NO_PROJECT,kein Aktives Projekt
+ABOUT_SHOW_LICENSE,Lizenz zeigen
+ABOUT_HIDE_LICENSE,Lizenz verstecken
+ABOUT_LICENSE_SUMMARY,"Vincent ist freie Software: Sie können es unter den Bedingungen der GNU General Public License (Version 3 oder höher), wie von der Free Software Foundation veröffentlicht, weitergeben und/oder verändern.\n\nVincent wird mit der Hoffnung verbreitet, dass es nützlich sein wird, jedoch OHNE JEGLICHE GEWÄHRLEISTUNG; auch ohne die stillschweigende Gewährleistung der MARKTGÄNGIGKEIT oder der EIGNUNG FÜR EINEN BESTIMMTEN ZWECK. Weitere Einzelheiten finden Sie in der GNU General Public License.\n\nSie sollten zusammen mit Vincent eine Kopie der GNU General Public License erhalten haben. Falls nicht, besuchen Sie bitte: https://www.gnu.org/licenses/"

@@ -36,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "No active project."
+text = "STATISTICS_NO_PROJECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -45,15 +45,14 @@ layout_mode = 2
 alignment = 1
 
 [node name="CopyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2001889275]
-visible = false
-custom_minimum_size = Vector2(64, 32)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
-text = "Copy"
+text = "GENERIC_COPY"
 script = ExtResource("4_eid2e")
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1896060710]
-custom_minimum_size = Vector2(64, 32)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 focus_mode = 0
-text = "Close"
+text = "GENERIC_CLOSE"
 script = ExtResource("5_qdlp3")

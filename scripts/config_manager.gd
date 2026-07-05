@@ -38,8 +38,8 @@ func has_changes() -> bool:
 	return false
 
 func set_volatile_value(section: String, key: String, value: Variant) -> void:
-	var prechange_check = _volatile_config.get_value(section, key, "")
-	if typeof(prechange_check) == TYPE_STRING && prechange_check == "":
+	var prechange_check = _volatile_config.get_value(section, key, "_null")
+	if typeof(prechange_check) == TYPE_STRING && prechange_check == "_null":
 		printerr("Attempted to set config value for nonexistant key \"", key, "\" in section \"", section, "\"")
 	elif prechange_check == value:
 		return

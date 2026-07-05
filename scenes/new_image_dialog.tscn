@@ -67,7 +67,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 button_mask = 3
-text = "Keep Aspect Ratio"
+text = "NEW_IMAGE_KEEP_RATIO"
 script = ExtResource("3_beosn")
 metadata/target_ratio = 0.0
 
@@ -77,7 +77,7 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"TargetRatioLabel"
-text = "target_ratio"
+text = "NEW_IMAGE_TARGET_RATIO"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1645035756]
@@ -87,7 +87,7 @@ columns = 3
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1053602003]
 layout_mode = 2
-text = "Width:"
+text = "NEW_IMAGE_WIDTH"
 
 [node name="WidthInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1885629156]
 unique_name_in_owner = true
@@ -103,11 +103,11 @@ script = ExtResource("4_1bnev")
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=356093572]
 layout_mode = 2
-text = "pixels"
+text = "NEW_IMAGE_PIXELS"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=755478377]
 layout_mode = 2
-text = "Height:"
+text = "NEW_IMAGE_HEIGHT"
 
 [node name="HeightInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=968128707]
 unique_name_in_owner = true
@@ -123,14 +123,14 @@ script = ExtResource("5_qnoot")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=634139135]
 layout_mode = 2
-text = "pixels"
+text = "NEW_IMAGE_PIXELS"
 
 [node name="SwapOrientationButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1355692044]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 focus_mode = 0
-text = "Swap Orientation"
+text = "NEW_IMAGE_SWAP_ORIENTATION"
 script = ExtResource("6_j27eg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2057050427]
@@ -139,7 +139,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1187849785]
 layout_mode = 2
-text = "Background Color:"
+text = "NEW_IMAGE_BG_COLOR"
 
 [node name="BackgroundColorButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1653458190]
 unique_name_in_owner = true
@@ -221,7 +221,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8qgn5")
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBox" unique_id=504251859]
 layout_mode = 2
 theme_type_variation = &"NewImagePreviewLabel"
-text = "PREVIEW"
+text = "NEW_IMAGE_PREVIEW"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -234,12 +234,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_426vg")
 
 [node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1793737682]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
-text = "WARNING: Lengths greater than 16384 pixels are not supported by most devices. You may encounter issues!"
+text = "NEW_IMAGE_LARGE_CANVAS_WARNING"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -250,15 +249,15 @@ layout_mode = 2
 alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1145468573]
-custom_minimum_size = Vector2(64, 32)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 focus_mode = 0
-text = "OK"
+text = "GENERIC_OK"
 script = ExtResource("10_v2k65")
 
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1910622383]
-custom_minimum_size = Vector2(64, 32)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 focus_mode = 0
-text = "Cancel"
+text = "GENERIC_CANCEL"
 script = ExtResource("11_aopu8")

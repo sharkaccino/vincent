@@ -13,7 +13,9 @@ func update_target_ratio() -> void:
 	var ratio_as_str = str(rounded)
 	var ratio_clean = float_cleaner.sub(ratio_as_str, "")
 	
-	target_ratio_label.text = "Target Ratio: %s:1" % ratio_clean
+	target_ratio_label.text = tr("NEW_IMAGE_TARGET_RATIO").format({
+		ratio = ratio_clean
+	})
 
 func on_toggle() -> void:
 	if button_pressed:

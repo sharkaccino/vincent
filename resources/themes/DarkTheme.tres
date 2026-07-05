@@ -72,7 +72,7 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_686jy"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx1ce"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwpnc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfmka"]
 
@@ -232,6 +232,12 @@ border_width_bottom = 2
 border_color = Color(0.2, 0.2, 0.2, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3ind"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_eh4ox"]
 color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 grow_begin = 0.0
@@ -298,7 +304,7 @@ CheckBox/font_sizes/font_size = 13
 CheckBox/styles/focus = SubResource("StyleBoxEmpty_4l3u0")
 CheckBox/styles/hover = SubResource("StyleBoxEmpty_f7gwj")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_686jy")
-CheckBox/styles/normal = SubResource("StyleBoxEmpty_lx1ce")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_kwpnc")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_rfmka")
 CheckButton/font_sizes/font_size = 13
 CheckButton/styles/disabled = SubResource("StyleBoxEmpty_ituia")
@@ -336,6 +342,8 @@ LineEdit/styles/focus = SubResource("StyleBoxFlat_xifxs")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3tkfh")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_m6biw")
 LinkButton/font_sizes/font_size = 13
+LocaleCoverageLabel/base_type = &"Label"
+LocaleCoverageLabel/font_sizes/font_size = 12
 MenuButton/font_sizes/font_size = 13
 MenuButton/styles/hover = SubResource("StyleBoxFlat_h8gcx")
 MenuButton/styles/hover_pressed = SubResource("StyleBoxFlat_ituia")
@@ -362,6 +370,8 @@ PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_4l3u0")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_4l3u0")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4l3u0")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_4l3u0")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_w3ind")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kwpnc")
 SettingsHeaderMargins/base_type = &"MarginContainer"
 SettingsHeaderMargins/constants/margin_bottom = 4
 SettingsHeaderMargins/constants/margin_top = 20

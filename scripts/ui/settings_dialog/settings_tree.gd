@@ -3,25 +3,28 @@ extends Tree
 @onready var root_node = %SettingsDialogRoot
 
 const tree_struct = {
-	"General": [
-		"Behavior",
-		"Language",
-		"Plug-ins"
+	"SETTINGS_TREE_CATEGORY_GENERAL": [
+		"SETTINGS_TREE_PAGE_BEHAVIOR",
+		"SETTINGS_TREE_PAGE_LANGUAGE",
+		"SETTINGS_TREE_PAGE_PLUGINS"
 	],
-	"Display": [
-		"Interface",
-		"Viewport",
-		"Themes"
+	"SETTINGS_TREE_CATEGORY_DISPLAY": [
+		"SETTINGS_TREE_PAGE_INTERFACE",
+		"SETTINGS_TREE_PAGE_VIEWPORT",
+		"SETTINGS_TREE_PAGE_THEMES"
 	],
-	"Input": [
-		"Pen Pressure",
-		"Keymapping"
+	"SETTINGS_TREE_CATEGORY_INPUT": [
+		"SETTINGS_TREE_PAGE_PEN",
+		"SETTINGS_TREE_PAGE_KEYMAP"
 	],
-	"Advanced": [
-		"Debug",
-		"Experimental"
+	"SETTINGS_TREE_CATEGORY_ADVANCED": [
+		"SETTINGS_TREE_PAGE_DEBUG",
+		"SETTINGS_TREE_PAGE_EXPERIMENTAL"
 	]
 }
+
+var current_category = 0
+var current_page = 0
 
 var settings_container: MarginContainer
 var default_selected = false
@@ -70,6 +73,9 @@ func on_item_select() -> void:
 			continue
 		
 		node.visible = true
+	
+	current_category = category_index
+	current_page = page_index
 
 func _ready() -> void:
 	await root_node.ready

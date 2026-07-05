@@ -69,6 +69,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ContentWrapper/Control/AboutContainer" unique_id=1533417200]
+auto_translate_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
@@ -133,11 +134,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_0ieg5")
-text = "Vincent is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (version 3 or later) as published by the Free Software Foundation.
-
-Vincent is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with Vincent. If not, see: https://www.gnu.org/licenses/"
+text = "ABOUT_LICENSE_SUMMARY"
 fit_content = true
 scroll_active = false
 context_menu_enabled = true
@@ -152,12 +149,12 @@ alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Show License"
+text = "ABOUT_SHOW_LICENSE"
 script = ExtResource("5_mfboy")
 
 [node name="CloseButton" type="Button" parent="MarginContainer/ContentWrapper/HBoxContainer2" unique_id=1896060710]
-custom_minimum_size = Vector2(64, 32)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 focus_mode = 0
-text = "Close"
+text = "GENERIC_CLOSE"
 script = ExtResource("4_3jln4")

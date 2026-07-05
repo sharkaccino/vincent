@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	settings_window = PopupManager.create("res://scenes/settings.tscn")
 	settings_window.name = "SettingsDialog"
-	settings_window.title = "Settings"
+	settings_window.title = "WINDOW_SETTINGS"
 	add_child(settings_window)
 
 	popup.id_pressed.connect(_on_id_pressed)

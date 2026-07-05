@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	stats_window = PopupManager.create("res://scenes/image_stats_dialog.tscn")
 	stats_window.name = "StatsDialog"
-	stats_window.title = "Image Statistics"
+	stats_window.title = "WINDOW_STATISTICS"
 	add_child(stats_window)
 	
 	popup.id_pressed.connect(_on_id_pressed)

@@ -12,5 +12,5 @@ func _ready() -> void:
 	
 	about_window = PopupManager.create("res://scenes/about_dialog.tscn")
 	about_window.name = "AboutDialog"
-	about_window.title = "About"
+	about_window.title = "WINDOW_ABOUT"
 	add_child(about_window)

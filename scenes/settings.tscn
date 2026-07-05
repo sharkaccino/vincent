@@ -9,8 +9,12 @@
 [ext_resource type="Script" uid="uid://fcgjpspm3wrt" path="res://scripts/ui/settings_dialog/restart_banner.gd" id="4_i24gk"]
 [ext_resource type="Script" uid="uid://br704f43myrtu" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_directory_button.gd" id="5_es4n0"]
 [ext_resource type="Script" uid="uid://cbev3b148ppqd" path="res://scripts/ui/settings_dialog/plugin_settings/install_plugin.gd" id="5_gis3k"]
+[ext_resource type="ButtonGroup" uid="uid://dd66xerf7a347" path="res://resources/locale_button_group.tres" id="6_3gwh8"]
 [ext_resource type="Script" uid="uid://c1k7f8oc1twxk" path="res://scripts/ui/settings_dialog/plugin_settings/plugin_support_toggle.gd" id="6_6dbjw"]
 [ext_resource type="Texture2D" uid="uid://cuycjjniheskb" path="res://resources/icons/x.svg" id="6_g5y2q"]
+[ext_resource type="Script" uid="uid://bhp2xmq08x60o" path="res://scripts/ui/settings_dialog/language_settings/locale_filter.gd" id="6_nilcw"]
+[ext_resource type="Script" uid="uid://jppm6at7pt2c" path="res://scripts/ui/settings_dialog/language_settings/locale_item.gd" id="6_q4e06"]
+[ext_resource type="Script" uid="uid://bj51gnfw8tn4w" path="res://scripts/ui/settings_dialog/language_settings/locale_list.gd" id="6_w3ind"]
 [ext_resource type="Script" uid="uid://bmqb3dwnii145" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/plugin_list_item.gd" id="7_83j8s"]
 [ext_resource type="Script" uid="uid://0uic5ctnwbt4" path="res://scripts/ui/settings_dialog/dismiss_warning.gd" id="7_k00b3"]
 [ext_resource type="Script" uid="uid://dpff61ny6233k" path="res://scripts/ui/settings_dialog/plugin_settings/list_item/enable_button.gd" id="9_am25x"]
@@ -43,7 +47,7 @@ layout_mode = 2
 drag_area_highlight_in_editor = true
 
 [node name="TreeContainer" type="MarginContainer" parent="SettingsDialogRoot" unique_id=1760206834]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
@@ -60,7 +64,7 @@ script = ExtResource("2_aisiw")
 [node name="LineEdit" type="LineEdit" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=1044126520]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-placeholder_text = "Search..."
+placeholder_text = "GENERIC_PLACEHOLDER_SEARCH"
 emoji_menu_enabled = false
 caret_blink = true
 caret_blink_interval = 0.5
@@ -110,14 +114,14 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 disabled = true
-text = "Save Changes"
+text = "SETTINGS_SAVE"
 
 [node name="DiscardButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=691215922]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 disabled = true
-text = "Discard Changes"
+text = "SETTINGS_DISCARD"
 
 [node name="SettingsContainer" type="ScrollContainer" parent="SettingsDialogRoot" unique_id=84366634]
 unique_name_in_owner = true
@@ -134,6 +138,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="BehaviorSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1646229877]
+visible = false
 layout_mode = 2
 metadata/category_index = 0
 metadata/page_index = 0
@@ -151,7 +156,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderBehaviorSettings/HBoxContainer" unique_id=668978175]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Behavior Settings"
+text = "SETTINGS_BEHAVIOR_PAGE_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -166,12 +171,12 @@ layout_mode = 2
 tooltip_text = "When enabled, Vincent will save a list of up to 8 of the most recently opened projects and images. These can then be quickly re-opened by navigating to File > Open Recent"
 disabled = true
 button_pressed = true
-text = "Remember previously opened projects"
+text = "SETTINGS_BEHAVIOR_REMEMBER_OPEN_PROJECTS"
 
 [node name="CheckBox2" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1920733195]
 layout_mode = 2
 disabled = true
-text = "Automatically open projects from previous session"
+text = "SETTINGS_BEHAVIOR_AUTO_OPEN_PREVIOUS_PROJECTS"
 
 [node name="HeaderNewImageDefaults" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=1171154728]
 layout_mode = 2
@@ -185,7 +190,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderNewImageDefaults/HBoxContainer" unique_id=1451079278]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
-text = "New Image Defaults"
+text = "SETTINGS_BEHAVIOR_SECTION_NEW_IMAGE_DEFAULTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -231,7 +236,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderAutoSave/HBoxContainer" unique_id=884142108]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
-text = "Auto-Save"
+text = "SETTINGS_BEHAVIOR_SECTION_AUTO_SAVE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -253,7 +258,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings/HeaderEditHistory/HBoxContainer" unique_id=273896321]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
-text = "Edit History"
+text = "SETTINGS_BEHAVIOR_SECTION_EDIT_HISTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,11 +268,117 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_type_variation = &"SettingsHeaderSeparatorRight"
 
-[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/BehaviorSettings" unique_id=993033112]
+[node name="LanguageSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=759890600]
 layout_mode = 2
-size_flags_vertical = 10
-theme_type_variation = &"PlaceholderText"
-text = "(work in progress)"
+metadata/category_index = 0
+metadata/page_index = 1
+
+[node name="HeaderLanguageSettings" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings" unique_id=993513475]
+layout_mode = 2
+theme_type_variation = &"SettingsHeaderMargins"
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/HeaderLanguageSettings" unique_id=2001630812]
+layout_mode = 2
+theme_type_variation = &"SettingsSeparatorContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/HeaderLanguageSettings/HBoxContainer" unique_id=1453544012]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "SETTINGS_LANGUAGE_PAGE_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/HeaderLanguageSettings/HBoxContainer" unique_id=260923426]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"SettingsHeaderSeparatorRight"
+
+[node name="LocaleFilter" type="LineEdit" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings" unique_id=312545237]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+placeholder_text = "SETTINGS_LANGUAGE_FILTER"
+script = ExtResource("6_nilcw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings" unique_id=1658298492]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer" unique_id=564598026]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LocaleList" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer" unique_id=614295613]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("6_w3ind")
+
+[node name="LocaleItemTemplate" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList" unique_id=2026292109]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"InnerPanel"
+script = ExtResource("6_q4e06")
+metadata/Locale = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate" unique_id=588849201]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate/MarginContainer" unique_id=2128901277]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CheckBox" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate/MarginContainer/HBoxContainer" unique_id=958358054]
+layout_mode = 2
+offset_transform_position = Vector2(-34.365, 0)
+mouse_filter = 2
+button_group = ExtResource("6_3gwh8")
+
+[node name="LocaleNameLabel" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate/MarginContainer/HBoxContainer" unique_id=1394296336]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "locale_name"
+
+[node name="CoverageLabel" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate/MarginContainer/HBoxContainer" unique_id=555030221]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+text = "SETTINGS_LANGUAGE_COVERAGE"
+
+[node name="CoverageBar" type="ProgressBar" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer/LocaleList/LocaleItemTemplate/MarginContainer/HBoxContainer" unique_id=1285111742]
+modulate = Color(1, 1, 0.33999997, 1)
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 2
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="NoMatchesLabel" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/LanguageSettings/ScrollContainer/HBoxContainer" unique_id=1375494886]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_type_variation = &"HeaderMedium"
+text = "SETTINGS_LANGUAGE_FILTER_NO_MATCHES"
 horizontal_alignment = 1
 
 [node name="PluginSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=67626226]
@@ -291,7 +402,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/Header/HBoxContainer" unique_id=776134234]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Plug-in Settings"
+text = "SETTINGS_PLUGINS_PAGE_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -330,7 +441,7 @@ stretch_mode = 2
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "WARNING: Plug-ins are made by third-party developers, and are not sponsored or endorsed by the Vincent project. This is software capable of running arbitrary code on your system, which can result in irreversible damage, or even stolen personal data. Make sure you trust the author of a plug-in before installing it."
+text = "SETTINGS_PLUGINS_WARNING"
 autowrap_mode = 3
 
 [node name="DismissWarningButton" type="TextureButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/WarningBanner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=54398891]
@@ -347,7 +458,7 @@ layout_mode = 2
 [node name="PluginSupportToggle" type="CheckBox" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=871768757]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Enable plug-in support"
+text = "SETTINGS_PLUGINS_ENABLE"
 script = ExtResource("6_6dbjw")
 
 [node name="Spacer" type="Control" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1913701121]
@@ -357,7 +468,7 @@ size_flags_horizontal = 3
 [node name="InstallButton" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1630325369]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Install a Plug-in..."
+text = "SETTINGS_PLUGINS_INSTALL"
 script = ExtResource("5_gis3k")
 
 [node name="FileDialog" type="FileDialog" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2/InstallButton" unique_id=438210165]
@@ -370,7 +481,7 @@ use_native_dialog = true
 
 [node name="PluginDirectoryButton" type="Button" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings/HBoxContainer2" unique_id=1864306765]
 layout_mode = 2
-text = "Open Plug-ins Directory"
+text = "SETTINGS_PLUGINS_OPEN_DIR"
 script = ExtResource("5_es4n0")
 
 [node name="TextEdit" type="LineEdit" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=512985128]
@@ -528,13 +639,6 @@ text = "+[x] unloaded plug-ins"
 vertical_alignment = 1
 script = ExtResource("23_gcetw")
 
-[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/PluginSettings" unique_id=1173622064]
-layout_mode = 2
-size_flags_vertical = 10
-theme_type_variation = &"PlaceholderText"
-text = "(work in progress)"
-horizontal_alignment = 1
-
 [node name="InterfaceSettings" type="VBoxContainer" parent="SettingsDialogRoot/SettingsContainer/MarginContainer" unique_id=1738970013]
 visible = false
 layout_mode = 2
@@ -554,7 +658,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/Header/HBoxContainer" unique_id=1338993943]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Interface Settings"
+text = "SETTINGS_INTERFACE_PAGE_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -570,7 +674,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/HBoxContainer" unique_id=1920905105]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Font:"
+text = "SETTINGS_INTERFACE_FONT"
 
 [node name="FontSelector" type="OptionButton" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings/HBoxContainer" unique_id=366892120]
 layout_mode = 2
@@ -584,10 +688,3 @@ popup/item_1/id = 1
 popup/item_2/text = "Source Code Pro"
 popup/item_2/id = 2
 script = ExtResource("24_i24gk")
-
-[node name="Placeholder" type="Label" parent="SettingsDialogRoot/SettingsContainer/MarginContainer/InterfaceSettings" unique_id=1619389676]
-layout_mode = 2
-size_flags_vertical = 10
-theme_type_variation = &"PlaceholderText"
-text = "(work in progress)"
-horizontal_alignment = 1

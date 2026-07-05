@@ -1,0 +1,95 @@
+keys,en_US
+WINDOW_NEW_IMAGE,Create Image
+WINDOW_OPEN_FILE,Open File(s)
+WINDOW_SAVE_FILE,Save File
+WINDOW_SETTINGS,Settings
+WINDOW_STATISTICS,Image Statistics
+WINDOW_ABOUT,About
+TOOLBAR_MENU_FILE,File
+FILE_MENU_OPTION_NEW,New...
+FILE_MENU_OPTION_OPEN,Open...
+FILE_MENU_OPTION_OPEN_RECENT,Open Recent
+FILE_MENU_RECENT_FILES_NOT_FOUND,No recent files found.
+FILE_MENU_OPTION_SAVE,Save
+FILE_MENU_OPTION_SAVE_AS,Save As...
+FILE_MENU_OPTION_EXIT,Exit
+TOOLBAR_MENU_EDIT,Edit
+EDIT_MENU_OPTION_UNDO,Undo
+EDIT_MENU_OPTION_REDO,Redo
+EDIT_MENU_OPTION_HISTORY,Edit History
+EDIT_MENU_OPTION_CUT,Cut
+EDIT_MENU_OPTION_COPY,Copy
+EDIT_MENU_OPTION_PASTE,Paste
+EDIT_MENU_OPTION_SETTINGS,Settings...
+TOOLBAR_MENU_VIEW,View
+TOOLBAR_MENU_IMAGE,Image
+IMAGE_MENU_STATISTICS,Statistics...
+TOOLBAR_MENU_LAYERS,Layers
+TOOLBAR_MENU_EFFECTS,Effects
+TOOLBAR_MENU_HELP,Help
+HELP_MENU_BUG_REPORT,Report a Bug
+HELP_MENU_ABOUT,About...
+DEFAULT_PROJECT_NAME,Untitled Project
+INFO_WGT_LAYER_NAME,Layer: {layer_name}
+INFO_WGT_POSITION,"Position: {x}, {y}"
+PANEL_TOOLS,Tools
+PANEL_TOOL_SETTINGS,Tool Settings
+PANEL_COLORS,Colors
+PANEL_LAYERS,Layers
+PANEL_LAYER_SETTINGS,Layer Settings
+PANEL_HISTORY,History
+GENERIC_PLACEHOLDER_SEARCH,Search...
+GENERIC_WIP,(work in progress)
+GENERIC_DEFAULT,Default
+GENERIC_OPEN,Open
+GENERIC_SAVE,Save
+GENERIC_OK,OK
+GENERIC_COPY,Copy
+GENERIC_CANCEL,Cancel
+GENERIC_CLOSE,Close
+NEW_IMAGE_KEEP_RATIO,Keep Aspect Ratio
+NEW_IMAGE_TARGET_RATIO,Target Ratio: {ratio}
+NEW_IMAGE_WIDTH,Width:
+NEW_IMAGE_HEIGHT,Height:
+NEW_IMAGE_PIXELS,pixels
+NEW_IMAGE_SWAP_ORIENTATION,Swap Orientation
+NEW_IMAGE_PREVIEW,PREVIEW
+NEW_IMAGE_BG_COLOR,Background Color:
+NEW_IMAGE_LARGE_CANVAS_WARNING,"WARNING: Lengths greater than 16384 pixels are not supported by most devices. You may encounter issues!"
+SETTINGS_SAVE,Save Changes
+SETTINGS_DISCARD,Discard Changes
+SETTINGS_TREE_CATEGORY_GENERAL,General
+SETTINGS_TREE_PAGE_BEHAVIOR,Behavior
+SETTINGS_TREE_PAGE_LANGUAGE,Language
+SETTINGS_TREE_PAGE_PLUGINS,Plug-ins
+SETTINGS_TREE_CATEGORY_DISPLAY,Display
+SETTINGS_TREE_PAGE_INTERFACE,Interface
+SETTINGS_TREE_PAGE_VIEWPORT,Viewport
+SETTINGS_TREE_PAGE_THEMES,Themes
+SETTINGS_TREE_CATEGORY_INPUT,Input
+SETTINGS_TREE_PAGE_PEN,Pen Pressure
+SETTINGS_TREE_PAGE_KEYMAP,Keymapping
+SETTINGS_TREE_CATEGORY_ADVANCED,Advanced
+SETTINGS_TREE_PAGE_DEBUG,Debug
+SETTINGS_TREE_PAGE_EXPERIMENTAL,Experimental
+SETTINGS_BEHAVIOR_PAGE_TITLE,Behavior Settings
+SETTINGS_BEHAVIOR_REMEMBER_OPEN_PROJECTS,Remember previously opened projects
+SETTINGS_BEHAVIOR_AUTO_OPEN_PREVIOUS_PROJECTS,Automatically open projects from previous session
+SETTINGS_BEHAVIOR_SECTION_NEW_IMAGE_DEFAULTS,New Image Defaults
+SETTINGS_BEHAVIOR_SECTION_AUTO_SAVE,Auto-Save
+SETTINGS_BEHAVIOR_SECTION_EDIT_HISTORY,Edit History
+SETTINGS_LANGUAGE_PAGE_TITLE,Language Settings
+SETTINGS_LANGUAGE_FILTER,Filter languages...
+SETTINGS_LANGUAGE_FILTER_NO_MATCHES,No matching languages found.
+SETTINGS_LANGUAGE_COVERAGE,Coverage: {percentage}%
+SETTINGS_PLUGINS_PAGE_TITLE,Plug-in Settings
+SETTINGS_PLUGINS_WARNING,"WARNING: Plug-ins are made by third-party developers, and are not sponsored or endorsed by the Vincent project. This is software capable of running arbitrary code on your system, which can result in irreversible damage, or even stolen personal data. Make sure you trust the author of a plug-in before installing it."
+SETTINGS_PLUGINS_ENABLE,Enable plug-in support
+SETTINGS_PLUGINS_INSTALL,Install a Plug-in...
+SETTINGS_PLUGINS_OPEN_DIR,Open Plug-ins Directory
+SETTINGS_INTERFACE_PAGE_TITLE,Interface Settings
+SETTINGS_INTERFACE_FONT,Font:
+STATISTICS_NO_PROJECT,No active project
+ABOUT_SHOW_LICENSE,Show License
+ABOUT_HIDE_LICENSE,Hide License
+ABOUT_LICENSE_SUMMARY,"Vincent is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (version 3 or later) as published by the Free Software Foundation.\n\nVincent is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with Vincent. If not, see: https://www.gnu.org/licenses/"
