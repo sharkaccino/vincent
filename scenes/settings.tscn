@@ -106,7 +106,7 @@ stretch_mode = 2
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "You must restart Vincent for all changes to take effect."
+text = "SETTINGS_RESTART_REQUIRED"
 autowrap_mode = 3
 
 [node name="SaveButton" type="Button" parent="SettingsDialogRoot/TreeContainer/VBoxContainer" unique_id=270607284]

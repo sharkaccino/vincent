@@ -178,7 +178,7 @@ popup/item_5/id = 5
 script = ExtResource("2_0wfyh")
 
 [node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/MarginContainer2/TopBar/MainToolBar/MenuBar/FileMenuButton" unique_id=80314602]
-title = "WINDOW_OPEN_FILE"
+title = "Open File(s)"
 ok_button_text = "GENERIC_OPEN"
 cancel_button_text = "GENERIC_CANCEL"
 file_mode = 1

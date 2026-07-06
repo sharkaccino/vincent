@@ -74,6 +74,7 @@ func duplicate_config(input_config: ConfigFile) -> ConfigFile:
 	new_config.parse(input_config.encode_to_text())
 	return new_config
 
+# TODO: make this fire only after changes are saved
 func set_requires_restart() -> void:
 	needs_restart = true
 	restart_required.emit()

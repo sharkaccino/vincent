@@ -20,8 +20,8 @@ func handle_external_change() -> void:
 	set_value_no_signal(active_project.viewport.zoom * 100)
 	
 	if (active_project.viewport.autofit):
-		line_edit.set_deferred("text", "Fit")
-	elif (line_edit.text == "Fit"):
+		line_edit.set_deferred("text", tr("VIEWPORT_ZOOM_FIT"))
+	elif (line_edit.text == tr("VIEWPORT_ZOOM_FIT")):
 		apply()
 
 func check_control_activation() -> void:
