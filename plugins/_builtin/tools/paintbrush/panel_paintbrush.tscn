@@ -12,6 +12,13 @@ theme = ExtResource("1_o8px2")
 script = ExtResource("2_efoo5")
 metadata/tool_id = ""
 
+[node name="PaintbrushRD" type="TextureRect" parent="." unique_id=1109743755]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = SubResource("Texture2DRD_cpxhb")
+expand_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
 layout_mode = 2
 theme_type_variation = &"ToolPanelMargin"
@@ -117,15 +124,3 @@ popup/item_2/text = "Subtract"
 popup/item_2/id = 2
 popup/item_3/text = "Multiply"
 popup/item_3/id = 3
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer" unique_id=640544708]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PaintbrushRD" type="TextureRect" parent="MarginContainer/VBoxContainer/AspectRatioContainer" unique_id=1109743755]
-unique_name_in_owner = true
-layout_mode = 2
-texture = SubResource("Texture2DRD_cpxhb")
-expand_mode = 2
-stretch_mode = 5

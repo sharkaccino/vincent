@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://cuj5isfepnmm6" path="res://scripts/ui/panels/tools/tools_panel.gd" id="37_augu2"]
 [ext_resource type="Script" uid="uid://8e3dcnkgxguy" path="res://scripts/ui/panels/tools/tool_button.gd" id="38_1v6qk"]
 [ext_resource type="Script" uid="uid://b4jvoreoxwpvs" path="res://scripts/ui/panels/tool_settings/tool_settings_panel.gd" id="40_augu2"]
+[ext_resource type="Script" uid="uid://b85bbnwxpi2qy" path="res://scripts/ui/viewport/canvas_content_container.gd" id="43_tm6hj"]
 [ext_resource type="Texture2D" uid="uid://b4o436yvgbe47" path="res://resources/icons/panel_tools/zoom.svg" id="45_0loja"]
 [ext_resource type="Texture2D" uid="uid://cf2n1wmws2l3f" path="res://resources/icons/grid-3x3.svg" id="48_augu2"]
 [ext_resource type="Texture2D" uid="uid://d374fgwmrjyv2" path="res://resources/icons/flip-horizontal.svg" id="49_1v6qk"]
@@ -92,7 +93,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_63lxy"]
 gradient = SubResource("Gradient_vtx2l")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xaipn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bly1"]
 shader = ExtResource("69_2s0kr")
 shader_parameter/single_channel = false
 shader_parameter/red_enabled = true
@@ -575,10 +576,20 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("70_155or")
 
-[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=2098793841]
+[node name="CanvasContentContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1327676211]
 unique_name_in_owner = true
-texture_filter = 1
-material = SubResource("ShaderMaterial_xaipn")
+material = SubResource("ShaderMaterial_6bly1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("43_tm6hj")
+
+[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasContentContainer" unique_id=2098793841]
+unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -588,7 +599,16 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("9_choun")
 
-[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=292443543]
+[node name="CanvasOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=504652751]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasOverlayContainer" unique_id=292443543]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

@@ -80,6 +80,9 @@ func _on_pointer_down(button_index: MouseButton) -> void:
 	if ToolManager.active_tool != get_meta("tool_id"): return
 	if StateManager.active_project_id == 0: return
 	
+	rd_output.visible = true
+	StateManager.canvas.visible = false
+	
 	var active_project = StateManager.get_active_project()
 	var layer_index = active_project.active_layer_index
 	var layer: VincentProject.Layer = active_project.layers[layer_index]
@@ -175,6 +178,7 @@ func _on_pointer_up(_button_index: MouseButton) -> void:
 	var layer: VincentProject.Layer = active_project.layers[layer_index]
 	
 	drawing = false
+	StateManager.canvas.visible = true
 	
 	var image_data = rd.texture_get_data(rd_texture, 0)
 	
@@ -196,5 +200,9 @@ func _ready() -> void:
 	StateManager.pointer_move.connect(_on_pointer_move)
 	StateManager.pointer_down.connect(_on_pointer_down)
 	StateManager.pointer_up.connect(_on_pointer_up)
+	
+	remove_child(rd_output)
+	StateManager.add_canvas_content_node(rd_output)
+	rd_output.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
 	#blend_mode_input.item_selected.connect(_update_brush_settings)

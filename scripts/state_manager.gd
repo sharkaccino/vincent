@@ -7,6 +7,10 @@ var dragging = false
 var current_drag_type
 var current_drag_data
 
+var canvas
+var canvas_content_container
+var canvas_overlay_container
+
 signal projects_changed
 signal project_added
 signal project_removed
@@ -177,3 +181,9 @@ func set_autofit(new_value: bool) -> void:
 	if (active_project.viewport.autofit != new_value):
 		active_project.viewport.autofit = new_value
 		autofit_changed.emit()
+
+func add_canvas_content_node(node: Node) -> void:
+	canvas_content_container.add_child(node)
+
+func add_canvas_overlay(node: Node) -> void:
+	canvas_overlay_container.add_child(node)

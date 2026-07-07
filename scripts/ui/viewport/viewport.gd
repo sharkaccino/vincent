@@ -210,6 +210,9 @@ func _input(event: InputEvent) -> void:
 					StateManager.canvas_updated.emit()
 
 func _ready() -> void:
+	StateManager.canvas_content_container = %CanvasContentContainer
+	StateManager.canvas_overlay_container = %CanvasOverlayContainer
+	
 	margin.visible = false
 	
 	get_h_scroll_bar().scrolling.connect(on_scrolled)

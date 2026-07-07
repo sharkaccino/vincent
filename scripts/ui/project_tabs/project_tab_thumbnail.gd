@@ -5,7 +5,6 @@ extends TextureRect
 func update_thumbnail() -> void:
 	if (project_id == 0): return
 	if (StateManager.active_project_id != project_id): return
-	print("update thumbnail:", StateManager.active_project_id)
 	
 	# TODO: show the combined output of all layers merged together.
 	var connected_project = StateManager.get_project_data(project_id)

@@ -2,18 +2,6 @@ extends TextureRect
 
 var current_project_id = 0
 
-func on_resized() -> void:
-	var active_project = StateManager.get_active_project()
-	
-	var rect = get_rect()
-	var width_check = rect.size.x < active_project.size.x
-	var height_check = rect.size.y < active_project.size.y
-	
-	if width_check || height_check:
-		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	else:
-		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-
 func update_canvas() -> void:
 	# TODO: show the combined output of all layers merged together.
 	var project_id = StateManager.active_project_id
@@ -32,39 +20,8 @@ func update_canvas() -> void:
 	
 	current_project_id = project_id
 
-func update_view_mode(new_value: Enums.ViewMode) -> void:
-	# default values
-	material.set_shader_parameter("single_channel", false)
-	material.set_shader_parameter("red_enabled", true)
-	material.set_shader_parameter("green_enabled", true)
-	material.set_shader_parameter("blue_enabled", true)
-	material.set_shader_parameter("alpha_enabled", true)
-	match (new_value):
-		Enums.ViewMode.ONLY_COLOR:
-			material.set_shader_parameter("alpha_enabled", false)
-		Enums.ViewMode.RED:
-			material.set_shader_parameter("single_channel", true)
-			material.set_shader_parameter("green_enabled", false)
-			material.set_shader_parameter("blue_enabled", false)
-			material.set_shader_parameter("alpha_enabled", false)
-		Enums.ViewMode.GREEN:
-			material.set_shader_parameter("single_channel", true)
-			material.set_shader_parameter("red_enabled", false)
-			material.set_shader_parameter("blue_enabled", false)
-			material.set_shader_parameter("alpha_enabled", false)
-		Enums.ViewMode.BLUE:
-			material.set_shader_parameter("single_channel", true)
-			material.set_shader_parameter("red_enabled", false)
-			material.set_shader_parameter("green_enabled", false)
-			material.set_shader_parameter("alpha_enabled", false)
-		Enums.ViewMode.ALPHA:
-			material.set_shader_parameter("single_channel", true)
-			material.set_shader_parameter("red_enabled", false)
-			material.set_shader_parameter("green_enabled", false)
-			material.set_shader_parameter("blue_enabled", false)
-
 func _ready() -> void:
-	resized.connect(on_resized)
+	StateManager.canvas = self
+	
 	StateManager.active_project_changed.connect(update_canvas)
 	StateManager.canvas_updated.connect(update_canvas)
-	StateManager.view_mode_changed.connect(update_view_mode)
