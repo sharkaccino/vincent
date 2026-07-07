@@ -3,15 +3,16 @@ extends TextureRect
 @onready var project_id = get_node("../../../..").get_meta("project_id")
 
 func update_thumbnail() -> void:
+	if (project_id == 0): return
+	if (StateManager.active_project_id != project_id): return
+	print("update thumbnail:", StateManager.active_project_id)
+	
 	# TODO: show the combined output of all layers merged together.
-	
 	var connected_project = StateManager.get_project_data(project_id)
-	if (connected_project.id == 0): return
+	var image_data: Image = connected_project.layers[0].image
 	
-	var image_data: Image = connected_project.layers[0].image_data
-	
-	if image_data.has_mipmaps():
-		texture = ImageTexture.create_from_image(image_data)
+	# TODO: use set_image() when canvas resolution is changed
+	texture.update(image_data)
 
 func check_filter_mode() -> void:
 	var connected_project = StateManager.get_project_data(project_id)
@@ -30,6 +31,9 @@ func check_filter_mode() -> void:
 func _ready() -> void:
 	var connected_project = StateManager.get_project_data(project_id)
 	if connected_project.id == 0: return
+	
+	var image_data: Image = connected_project.layers[0].image
+	texture = ImageTexture.create_from_image(image_data)
 	
 	await get_tree().process_frame
 	

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dcycascgi3r2b"
+path="res://.godot/imported/brush.glsl-c57e8503114b53bdce3f64cd8df3c907.res"
+
+[deps]
+
+source_file="res://plugins/_builtin/tools/paintbrush/brush.glsl"
+dest_files=["res://.godot/imported/brush.glsl-c57e8503114b53bdce3f64cd8df3c907.res"]
+
+[params]
+

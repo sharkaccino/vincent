@@ -114,7 +114,6 @@ func _zoom_level_changed() -> void:
 
 var is_button_down = false
 	
-
 func _input(event: InputEvent) -> void:
 	var is_within_viewport = false
 	var localized = make_input_local(event)
@@ -203,7 +202,7 @@ func _input(event: InputEvent) -> void:
 				StateManager.pointer_up.emit(event.button_index)
 				var active_project = StateManager.get_active_project()
 				var layer = active_project.active_layer_index
-				var layer_content_data: Image = active_project.layers[layer].image_data
+				var layer_content_data: Image = active_project.layers[layer].image
 				
 				if layer_content_data.has_mipmaps() == false:
 					await RenderingServer.frame_post_draw

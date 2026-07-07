@@ -47,7 +47,7 @@ func refresh_data() -> void:
 			layers_visible += 1
 		if layer.locked:
 			layers_locked += 1
-		if layer.image_data.is_invisible():
+		if layer.image.is_invisible():
 			empty_layers += 1
 		
 		for effect in layer.effects:

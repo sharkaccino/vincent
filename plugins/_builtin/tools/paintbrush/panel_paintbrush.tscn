@@ -1,16 +1,9 @@
 [gd_scene format=3 uid="uid://b5gpucm6uajws"]
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_o8px2"]
-[ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://plugins/tools/paintbrush/paintbrush.gd" id="2_efoo5"]
-[ext_resource type="Shader" uid="uid://c3d800unhk3co" path="res://plugins/tools/paintbrush/paintbrush.tres" id="3_8stvs"]
+[ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://plugins/_builtin/tools/paintbrush/paintbrush.gd" id="2_efoo5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6drm3"]
-shader = ExtResource("3_8stvs")
-shader_parameter/size = 20
-shader_parameter/softness = 1.0000000475
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cqm1"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="Texture2DRD" id="Texture2DRD_cpxhb"]
 
 [node name="PaintbrushSettings" type="PanelContainer" unique_id=443640056]
 offset_right = 185.0
@@ -18,21 +11,6 @@ offset_bottom = 169.0
 theme = ExtResource("1_o8px2")
 script = ExtResource("2_efoo5")
 metadata/tool_id = ""
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=784622943]
-disable_3d = true
-transparent_bg = true
-gui_disable_input = true
-gui_snap_controls_to_pixels = false
-render_target_update_mode = 3
-
-[node name="TemplateStamp" type="Panel" parent="SubViewport" unique_id=891717795]
-unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_6drm3")
-offset_right = 185.0
-offset_bottom = 169.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1cqm1")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
 layout_mode = 2
@@ -55,6 +33,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+color = Color(1, 0, 0, 1)
 
 [node name="SizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1440091302]
 layout_mode = 2
@@ -138,3 +117,15 @@ popup/item_2/text = "Subtract"
 popup/item_2/id = 2
 popup/item_3/text = "Multiply"
 popup/item_3/id = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer" unique_id=640544708]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PaintbrushRD" type="TextureRect" parent="MarginContainer/VBoxContainer/AspectRatioContainer" unique_id=1109743755]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("Texture2DRD_cpxhb")
+expand_mode = 2
+stretch_mode = 5

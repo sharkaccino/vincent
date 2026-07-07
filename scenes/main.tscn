@@ -59,7 +59,7 @@
 [ext_resource type="Script" uid="uid://yp3g5wn7uexo" path="res://scripts/ui/viewport/zoom_reset.gd" id="73_j4bwh"]
 [ext_resource type="Script" uid="uid://c0ter083lybka" path="res://scripts/ui/viewport/grid_toggle.gd" id="80_vtx2l"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu4jf"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_augu2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnhof"]
 draw_center = false
@@ -333,7 +333,7 @@ stretch_mode = 1
 [node name="ProjectTabThumbnail" type="TextureRect" parent="VBoxContainer/MarginContainer2/TopBar/ProjectTabScrollContainer/MarginContainer/ProjectTabCarousel/ProjectTabTemplate/MarginContainer/HBoxContainer/AspectRatioContainer" unique_id=1704086170]
 texture_filter = 1
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_bu4jf")
+texture = SubResource("PlaceholderTexture2D_augu2")
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("8_jbj1t")

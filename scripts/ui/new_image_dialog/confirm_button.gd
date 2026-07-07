@@ -8,12 +8,10 @@ func _on_pressed() -> void:
 	get_window().hide()
 	var width = width_input.value
 	var height = height_input.value
-	var format: Image.Format = Image.FORMAT_RGBA8
-	var base_image = Image.create_empty(width, height, true, format)
-
+	var base_image = Image.create_empty(width, height, true, Image.FORMAT_RGBAF)
 	base_image.fill(color_input.color)
 	
-	StateManager.create_project("Untitled Project", base_image)
+	StateManager.create_project(tr("DEFAULT_PROJECT_NAME"), base_image)
 	
 func _ready() -> void:
 	pressed.connect(_on_pressed)

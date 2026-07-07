@@ -1,5 +1,7 @@
 extends TextureRect
 
+var current_project_id = 0
+
 func on_resized() -> void:
 	var active_project = StateManager.get_active_project()
 	
@@ -14,13 +16,21 @@ func on_resized() -> void:
 
 func update_canvas() -> void:
 	# TODO: show the combined output of all layers merged together.
-	
-	if (StateManager.active_project_id == 0):
+	var project_id = StateManager.active_project_id
+	if (project_id == 0):
 		texture = null
 		return
-	
+		
 	var active_project = StateManager.get_active_project()
-	texture = ImageTexture.create_from_image(active_project.layers[0].image_data)
+	
+	if (texture == null):
+		texture = ImageTexture.create_from_image(active_project.layers[0].image)
+	elif (project_id != current_project_id):
+		texture.set_image(active_project.layers[0].image)
+	else:
+		texture.update(active_project.layers[0].image)
+	
+	current_project_id = project_id
 
 func update_view_mode(new_value: Enums.ViewMode) -> void:
 	# default values
@@ -54,7 +64,6 @@ func update_view_mode(new_value: Enums.ViewMode) -> void:
 			material.set_shader_parameter("blue_enabled", false)
 
 func _ready() -> void:
-	texture = null
 	resized.connect(on_resized)
 	StateManager.active_project_changed.connect(update_canvas)
 	StateManager.canvas_updated.connect(update_canvas)

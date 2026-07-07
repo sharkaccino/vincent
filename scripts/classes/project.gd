@@ -19,7 +19,7 @@ class Layer:
 	var name: String = "Base Image"
 	var visible: bool = true
 	var locked: bool = false
-	var image_data: Image
+	var image: Image
 	var effects: Array[LayerEffect]
 
 var id: int
@@ -45,5 +45,9 @@ func _init(base_image: Image, project_name: String = "Untitled"):
 	
 	# set initial layer
 	var initial_layer = Layer.new()
-	initial_layer.image_data = base_image
+	initial_layer.image = base_image
+	
+	if (initial_layer.image.get_format() != Image.FORMAT_RGBAF):
+		initial_layer.image.convert(Image.FORMAT_RGBAF)
+		
 	layers.append(initial_layer)
