@@ -14,4 +14,4 @@ commit.txt
 
 # Plug-in testing
 /plugins/*
-!/plugins/_builtin/*
+!/plugins/_builtin
