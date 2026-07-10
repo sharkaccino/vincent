@@ -47,7 +47,10 @@ func _init(base_image: Image, project_name: String = "Untitled"):
 	var initial_layer = Layer.new()
 	initial_layer.image = base_image
 	
-	if (initial_layer.image.get_format() != Image.FORMAT_RGBAF):
-		initial_layer.image.convert(Image.FORMAT_RGBAF)
+	if (initial_layer.image.get_format() != Image.FORMAT_RGBA16):
+		initial_layer.image.convert(Image.FORMAT_RGBA16)
+	
+	if (initial_layer.image.has_mipmaps() == false):
+		initial_layer.image.generate_mipmaps()
 		
 	layers.append(initial_layer)

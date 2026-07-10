@@ -423,37 +423,49 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 1
 
-[node name="ToolsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer" unique_id=821589406]
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer" unique_id=34588963]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+
+[node name="ToolsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer" unique_id=821589406]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("37_augu2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel" unique_id=1421016654]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel" unique_id=1421016654]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=1880970393]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer" unique_id=1880970393]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer" unique_id=1262429921]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer/MarginContainer" unique_id=1262429921]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=21863078]
 layout_mode = 2
 text = "PANEL_TOOLS"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=471042804]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer" unique_id=471042804]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer" unique_id=165018823]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer" unique_id=1581495346]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer/ScrollContainer" unique_id=165018823]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_type_variation = &"ToolPanelMargin"
 
-[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer2" unique_id=1905774421]
+[node name="ToolTray" type="HFlowContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer/ScrollContainer/MarginContainer2" unique_id=1905774421]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -461,7 +473,7 @@ theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 last_wrap_alignment = 1
 
-[node name="ToolButtonTemplate" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolsPanel/VBoxContainer/MarginContainer2/ToolTray" unique_id=863710925]
+[node name="ToolButtonTemplate" type="Button" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolsPanel/VBoxContainer/ScrollContainer/MarginContainer2/ToolTray" unique_id=863710925]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -478,31 +490,31 @@ icon_alignment = 1
 script = ExtResource("38_1v6qk")
 metadata/tool_id = ""
 
-[node name="ToolSettingsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer" unique_id=2068825470]
+[node name="ToolSettingsPanel" type="PanelContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer" unique_id=2068825470]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("40_augu2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel" unique_id=1809586737]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolSettingsPanel" unique_id=1809586737]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer" unique_id=2001139344]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolSettingsPanel/VBoxContainer" unique_id=2001139344]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer/MarginContainer" unique_id=899579538]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolSettingsPanel/VBoxContainer/MarginContainer" unique_id=899579538]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2140841286]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolSettingsPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2140841286]
 layout_mode = 2
 text = "PANEL_TOOL_SETTINGS"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/ToolSettingsPanel/VBoxContainer" unique_id=78403437]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MainContainer/LeftToolColumn/ScrollContainer/VBoxContainer/VSplitContainer/ToolSettingsPanel/VBoxContainer" unique_id=78403437]
 layout_mode = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer" unique_id=2018880105]

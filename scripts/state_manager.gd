@@ -89,8 +89,6 @@ func remove_project(target_project_id: int) -> void:
 func load_project_file(path: String) -> void:
 	# TODO: support custom project files
 	var image = Image.load_from_file(path)
-	image.generate_mipmaps()
-	image.convert(Image.Format.FORMAT_RGBAF)
 	create_project(path.get_file(), image)
 
 func get_active_project() -> VincentProject:

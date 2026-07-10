@@ -103,7 +103,7 @@ func _on_pointer_down(button_index: MouseButton) -> void:
 	var texture_format := RDTextureFormat.new()
 	texture_format.width = active_project.size.x
 	texture_format.height = active_project.size.y
-	texture_format.format = RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT
+	texture_format.format = RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM
 	texture_format.usage_bits = (
 		RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT +
 		RenderingDevice.TEXTURE_USAGE_STORAGE_BIT +
@@ -186,9 +186,10 @@ func _on_pointer_up(_button_index: MouseButton) -> void:
 		active_project.size.x,
 		active_project.size.y, 
 		false, 
-		Image.FORMAT_RGBAF, 
+		Image.FORMAT_RGBA16, 
 		image_data
 	)
+	
 	layer.image.generate_mipmaps()
 	StateManager.canvas_updated.emit()
 	
