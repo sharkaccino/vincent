@@ -29,7 +29,11 @@ void main() {
   float circle = length(uv - vec2(params.posX, params.posY) - (params.size / 2));
 
   // todo: use size and softness params
-  float smoothed = 1 - smootherstep(0.0, params.size, circle);
+  float smoothed = 1 - smootherstep(
+    params.size - ((params.softness * 2 * params.size) + 1.5),
+    params.size,
+    circle
+  );
 
   if (smoothed == 0) return;
 
