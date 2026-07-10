@@ -44,6 +44,7 @@
 [ext_resource type="Script" uid="uid://b4jvoreoxwpvs" path="res://scripts/ui/panels/tool_settings/tool_settings_panel.gd" id="40_augu2"]
 [ext_resource type="Script" uid="uid://b85bbnwxpi2qy" path="res://scripts/ui/viewport/canvas_content_container.gd" id="43_tm6hj"]
 [ext_resource type="Texture2D" uid="uid://b4o436yvgbe47" path="res://resources/icons/panel_tools/zoom.svg" id="45_0loja"]
+[ext_resource type="Script" uid="uid://bkj08rpeww3b0" path="res://scripts/ui/viewport/viewport_overlay_container.gd" id="47_kf5aa"]
 [ext_resource type="Texture2D" uid="uid://cf2n1wmws2l3f" path="res://resources/icons/grid-3x3.svg" id="48_augu2"]
 [ext_resource type="Texture2D" uid="uid://d374fgwmrjyv2" path="res://resources/icons/flip-horizontal.svg" id="49_1v6qk"]
 [ext_resource type="Texture2D" uid="uid://c8td4riyxa3j3" path="res://resources/icons/flip-vertical.svg" id="50_augu2"]
@@ -652,19 +653,29 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=143535653]
+[node name="ViewportOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1774861839]
+unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("47_kf5aa")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=143535653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer" unique_id=38757493]
+[node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer" unique_id=38757493]
 layout_mode = 2
 script = ExtResource("71_ygd8o")
 
-[node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer/InfoWidget" unique_id=2052557687]
+[node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=2052557687]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -677,7 +688,7 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "INFO_WGT_LAYER_NAME"
 
-[node name="PointerPosition" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/MarginContainer/InfoWidget" unique_id=945342055]
+[node name="PointerPosition" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=945342055]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

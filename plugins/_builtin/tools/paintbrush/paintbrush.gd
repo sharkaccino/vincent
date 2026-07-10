@@ -8,6 +8,9 @@ extends PanelContainer
 @onready var spacing_input = %SpacingInput
 @onready var blend_mode_input = %BlendModeInput
 
+@onready var cursor_container = %PaintbrushCursorContainer
+@onready var virtual_cursor = %PaintbrushCursor
+
 var last_stamp_pos: Vector2
 var drawing = false
 var current_mouse_pos: Vector2
@@ -142,8 +145,9 @@ func _on_pointer_move(mouse_pos: Vector2) -> void:
 	current_mouse_pos = mouse_pos
 	var old_stamp_pos = last_stamp_pos
 	
-	if drawing == false: return
 	if ToolManager.active_tool != get_meta("tool_id"): return
+	
+	if drawing == false: return
 	if StateManager.active_project_id == 0: return
 	
 	var dist = mouse_pos.distance_to(last_stamp_pos)
@@ -197,13 +201,26 @@ func _on_pointer_up(_button_index: MouseButton) -> void:
 	rd.free_rid(rd_texture)
 	rd.free_rid(rd_storage_buffer)
 
+func update_cursor() -> void:
+	var active_project = StateManager.get_active_project()
+	var brush_size = brush_size_input.value * active_project.viewport.zoom
+	virtual_cursor.size = Vector2(brush_size, brush_size) 
+
 func _ready() -> void:
-	StateManager.pointer_move.connect(_on_pointer_move)
-	StateManager.pointer_down.connect(_on_pointer_down)
-	StateManager.pointer_up.connect(_on_pointer_up)
-	
 	remove_child(rd_output)
 	StateManager.add_canvas_content_node(rd_output)
 	rd_output.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
-	#blend_mode_input.item_selected.connect(_update_brush_settings)
+	cursor_container.set_meta("tool_id", get_meta("tool_id"))
+	remove_child(cursor_container)
+	StateManager.add_viewport_overlay(cursor_container)
+	cursor_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	cursor_container.visible = false
+	
+	virtual_cursor.size = Vector2(brush_size_input.value, brush_size_input.value)
+	brush_size_input.value_changed.connect(func(_a): update_cursor())
+	StateManager.zoom_level_changed.connect(update_cursor)
+	
+	StateManager.pointer_move.connect(_on_pointer_move)
+	StateManager.pointer_down.connect(_on_pointer_down)
+	StateManager.pointer_up.connect(_on_pointer_up)

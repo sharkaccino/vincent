@@ -10,6 +10,7 @@ var current_drag_data
 var canvas
 var canvas_content_container
 var canvas_overlay_container
+var viewport_overlay_container
 
 signal projects_changed
 signal project_added
@@ -185,3 +186,6 @@ func add_canvas_content_node(node: Node) -> void:
 
 func add_canvas_overlay(node: Node) -> void:
 	canvas_overlay_container.add_child(node)
+
+func add_viewport_overlay(node: Node) -> void:
+	viewport_overlay_container.add_child(node)
