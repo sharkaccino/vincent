@@ -26,14 +26,15 @@ void main() {
   ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
   vec4 backdrop = imageLoad(image, uv);
 
-  float circle = length(uv - vec2(params.posX, params.posY) - (params.size / 2));
-
-  float size = params.size / 2;
+  vec2 cursor_pos = vec2(params.posX, params.posY);
+  vec2 uv_fixed = vec2(uv) + vec2(0.5, 0.5);
+  float radius = params.size / 2;
+  float circle = length(uv_fixed - cursor_pos - radius);
 
   // todo: use size and softness params
   float smoothed = 1 - smootherstep(
-    size - ((params.softness * 2 * size) + 1.5),
-    size,
+    radius - ((params.softness * radius) + 1.5),
+    radius,
     circle
   );
 
