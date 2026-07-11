@@ -8,12 +8,6 @@ extends PanelContainer
 @onready var spacing_input = %SpacingInput
 @onready var blend_mode_input = %BlendModeInput
 
-@onready var cursor_container = %PaintbrushCursorContainer
-@onready var cursor_ring = %CursorRing
-@onready var ch_large = %CrosshairLarge
-@onready var ch_medium = %CrosshairMedium
-@onready var ch_small = %CrosshairSmall
-
 var last_stamp_pos: Vector2
 var drawing = false
 var current_mouse_pos: Vector2
@@ -204,40 +198,17 @@ func _on_pointer_up(_button_index: MouseButton) -> void:
 	rd.free_rid(rd_texture)
 	rd.free_rid(rd_storage_buffer)
 
-func update_cursor() -> void:
-	var active_project = StateManager.get_active_project()
-	var brush_size: float = brush_size_input.value * active_project.viewport.zoom
-	brush_size = brush_size + 4.0; # ensures cursor does not become too small to see
-	
-	ch_large.visible = false
-	ch_medium.visible = false
-	ch_small.visible = false
-	
-	if (brush_size > 64):
-		ch_large.visible = true
-	elif (brush_size > 32):
-		ch_medium.visible = true
-	elif (brush_size > 16):
-		ch_small.visible = true
-	
-	cursor_ring.size = Vector2(brush_size, brush_size)
-	cursor_ring.offset_transform_position = (cursor_ring.size / 2.0) * -1.0
-	cursor_ring.material.set_shader_parameter("size", brush_size)
-
 func _ready() -> void:
 	remove_child(rd_output)
 	StateManager.add_canvas_content_node(rd_output)
 	rd_output.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
+	var cursor_container = %PaintbrushCursorContainer
 	cursor_container.set_meta("tool_id", get_meta("tool_id"))
 	remove_child(cursor_container)
 	StateManager.add_viewport_overlay(cursor_container)
 	cursor_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	cursor_container.visible = false
-	
-	update_cursor()
-	brush_size_input.value_changed.connect(func(_a): update_cursor())
-	StateManager.zoom_level_changed.connect(update_cursor)
 	
 	StateManager.pointer_move.connect(_on_pointer_move)
 	StateManager.pointer_down.connect(_on_pointer_down)

@@ -8,7 +8,7 @@ func _on_pressed() -> void:
 	get_window().hide()
 	var width = width_input.value
 	var height = height_input.value
-	var base_image = Image.create_empty(width, height, true, Image.FORMAT_RGBA16)
+	var base_image = Image.create_empty(width, height, false, Image.FORMAT_RGBA16)
 	base_image.fill(color_input.color)
 	
 	StateManager.create_project(tr("DEFAULT_PROJECT_NAME"), base_image)

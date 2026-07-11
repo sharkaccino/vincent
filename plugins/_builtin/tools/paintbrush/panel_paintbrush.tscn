@@ -197,9 +197,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 1000.0
-value = 20.0
+value = 10.0
 suffix = "%"
 select_all_on_focus = true
+
+[node name="AccumulateControl" type="CheckButton" parent="MarginContainer/VBoxContainer" unique_id=1750864988]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Accumulate"
 
 [node name="BlendControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=987877348]
 visible = false
