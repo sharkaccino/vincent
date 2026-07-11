@@ -663,6 +663,7 @@ mouse_filter = 2
 script = ExtResource("47_kf5aa")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=143535653]
+z_index = 999
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
