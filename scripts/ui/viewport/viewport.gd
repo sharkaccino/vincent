@@ -94,8 +94,6 @@ func on_scrolled() -> void:
 	if StateManager.active_project_id == 0:
 		return
 	
-	print("scroll: ", scroll_horizontal, ", ", scroll_vertical)
-	
 	var active_project = StateManager.get_active_project()
 	
 	active_project.viewport.x = scroll_horizontal

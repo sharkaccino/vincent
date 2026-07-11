@@ -1,19 +1,29 @@
 extends Panel
 
-@onready var virtual_cursor = %PaintbrushCursor
+@onready var cursor_ring = %CursorRing
+@onready var crosshair = %CursorCrosshair
 
 func update_cursor() -> void:
-	var local_pos = get_local_mouse_position()
+	if visible == false: return
+	var local_pos := get_local_mouse_position()
 		
 	if (Rect2(Vector2(0,0), size).has_point(local_pos) == false): 
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		visible = false
+		cursor_ring.visible = false
+		crosshair.visible = false
+		return
+	
+	if (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED): 
+		cursor_ring.visible = false
+		crosshair.visible = false
 		return
 	
 	if (Input.get_current_cursor_shape() == CursorShape.CURSOR_ARROW):
-		visible = true
+		cursor_ring.visible = true
+		crosshair.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-		virtual_cursor.position = local_pos - (virtual_cursor.size / 2)
+		cursor_ring.position = local_pos
+		crosshair.position = local_pos.round()
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
@@ -22,6 +32,8 @@ func _input(event: InputEvent) -> void:
 
 func on_tool_change(tool_id) -> void:
 	visible = (tool_id == get_meta("tool_id"))
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	update_cursor()
 
 func _ready() -> void:
 	print("ready")

@@ -534,8 +534,11 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kmb1v")
 
 [node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1379270821]
+unique_name_in_owner = true
 layout_mode = 2
+offset_transform_visual_only = false
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
 scroll_deadzone = 4
@@ -656,6 +659,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 [node name="ViewportOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1774861839]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("47_kf5aa")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=143535653]
@@ -673,6 +677,7 @@ theme_override_constants/margin_top = 16
 
 [node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer" unique_id=38757493]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("71_ygd8o")
 
 [node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=2052557687]
