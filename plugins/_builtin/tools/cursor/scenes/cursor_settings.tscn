@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bh824sek8vhoo"]
+
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_jj7vj"]
+
+[node name="CursorSettings" type="PanelContainer" unique_id=443640056]
+offset_right = 185.0
+offset_bottom = 169.0
+theme = ExtResource("1_jj7vj")
+metadata/tool_id = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
+layout_mode = 2
+theme_type_variation = &"ToolPanelMargin"
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=974411292]
+layout_mode = 2
+text = "(selected tool has no settings)"
+autowrap_mode = 2
