@@ -36,6 +36,7 @@ ConfigManager="*uid://6wqg7flfqe3j"
 StateManager="*res://scripts/state_manager.gd"
 PopupManager="*res://scripts/popup_manager.gd"
 ToolManager="*uid://ceqygovtbubm0"
+PanelManager="*uid://bcbehstlwjuwb"
 PluginManager="*uid://bb6a1l22kac3g"
 LocaleCoverageTester="*uid://c4w2m1d3335na"
 

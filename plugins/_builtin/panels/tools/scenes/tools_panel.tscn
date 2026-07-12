@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ba124k8nwsdm7"]
+
+[ext_resource type="Script" uid="uid://mdnapn2re2jp" path="res://plugins/_builtin/panels/tools/scripts/tools_panel.gd" id="1_0y3uo"]
+[ext_resource type="ButtonGroup" uid="uid://81kagm347ypb" path="res://plugins/_builtin/panels/tools/resources/tool_button_group.tres" id="2_0y3uo"]
+[ext_resource type="Script" uid="uid://bose88x8q4wru" path="res://plugins/_builtin/panels/tools/scripts/tool_button.gd" id="3_y25h8"]
+
+[node name="ToolsPanel" type="PanelContainer" unique_id=441539917]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1091.0
+offset_bottom = -537.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0y3uo")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1712397827]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="ToolButtonContainer" type="HFlowContainer" parent="MarginContainer" unique_id=1303850241]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ToolButtonTemplate" type="Button" parent="MarginContainer/ToolButtonContainer" unique_id=1684110496]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"FlatToggle"
+toggle_mode = true
+button_group = ExtResource("2_0y3uo")
+icon_alignment = 1
+script = ExtResource("3_y25h8")
+metadata/tool_id = ""

@@ -12,7 +12,7 @@ var last_stamp_pos: Vector2
 var drawing = false
 var current_mouse_pos: Vector2
 
-const shader_program: RDShaderFile = preload("./brush.glsl")
+const shader_program: RDShaderFile = preload("../resources/brush.glsl")
 
 var rd = RenderingServer.get_rendering_device()
 var rd_texture: RID

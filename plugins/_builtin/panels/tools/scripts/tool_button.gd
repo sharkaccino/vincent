@@ -8,5 +8,4 @@ func _pressed() -> void:
 		ToolManager.set_active_tool(tool_id)
 
 func _ready() -> void:
-	if get_meta("tool_id") == "": 
-		visible = false
+	visible = (get_meta("tool_id") != "")

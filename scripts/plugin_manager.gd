@@ -2,6 +2,7 @@ extends Node
 
 const effects_dir = "res://plugins/_builtin/effects"
 const filetypes_dir = "res://plugins/_builtin/filetypes"
+const panels_dir = "res://plugins/_builtin/panels"
 const tools_dir = "res://plugins/_builtin/tools"
 const plugin_dev_dir = "res://plugins"
 const user_plugins_dir = "user://plugins"
@@ -176,6 +177,9 @@ func _ready() -> void:
 	
 	for path in ResourceLoader.list_directory(filetypes_dir):
 		found_plugins.append(str(filetypes_dir, "/", path))
+	
+	for path in ResourceLoader.list_directory(panels_dir):
+		found_plugins.append(str(panels_dir, "/", path))
 	
 	for path in ResourceLoader.list_directory(tools_dir):
 		found_plugins.append(str(tools_dir, "/", path))

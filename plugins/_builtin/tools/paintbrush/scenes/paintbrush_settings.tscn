@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://b5gpucm6uajws"]
 
-[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_o8px2"]
-[ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://plugins/_builtin/tools/paintbrush/paintbrush.gd" id="2_efoo5"]
-[ext_resource type="Script" uid="uid://duw2irtyswalo" path="res://plugins/_builtin/tools/paintbrush/cursor.gd" id="3_khup6"]
-[ext_resource type="Shader" uid="uid://bvydwfcr5w24w" path="res://plugins/_builtin/tools/paintbrush/cursor.gdshader" id="4_5wcn0"]
-[ext_resource type="Texture2D" uid="uid://cuokc5n77hdim" path="res://plugins/_builtin/tools/paintbrush/texture/crosshair_large.png" id="5_tlfnq"]
-[ext_resource type="Texture2D" uid="uid://cexiq1vs8v1hd" path="res://plugins/_builtin/tools/paintbrush/texture/crosshair_medium.png" id="6_x2s2t"]
-[ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://plugins/_builtin/tools/paintbrush/texture/crosshair_small.png" id="7_747js"]
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_iegue"]
+[ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://plugins/_builtin/tools/paintbrush/scripts/paintbrush.gd" id="2_iegue"]
+[ext_resource type="Script" uid="uid://duw2irtyswalo" path="res://plugins/_builtin/tools/paintbrush/scripts/cursor.gd" id="3_noub0"]
+[ext_resource type="Shader" uid="uid://bvydwfcr5w24w" path="res://plugins/_builtin/tools/paintbrush/resources/cursor.gdshader" id="4_uhi88"]
+[ext_resource type="Texture2D" uid="uid://cuokc5n77hdim" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_large.png" id="5_iegue"]
+[ext_resource type="Texture2D" uid="uid://cexiq1vs8v1hd" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_medium.png" id="6_noub0"]
+[ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_small.png" id="7_ht055"]
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_cpxhb"]
 
@@ -14,7 +14,7 @@
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_khup6"]
-shader = ExtResource("4_5wcn0")
+shader = ExtResource("4_uhi88")
 shader_parameter/size = 64.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li6b7"]
@@ -25,8 +25,8 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="PaintbrushSettings" type="PanelContainer" unique_id=443640056]
 offset_right = 185.0
 offset_bottom = 169.0
-theme = ExtResource("1_o8px2")
-script = ExtResource("2_efoo5")
+theme = ExtResource("1_iegue")
+script = ExtResource("2_iegue")
 metadata/tool_id = ""
 
 [node name="PaintbrushRD" type="TextureRect" parent="." unique_id=1109743755]
@@ -42,7 +42,7 @@ clip_children = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-script = ExtResource("3_khup6")
+script = ExtResource("3_noub0")
 
 [node name="CursorRing" type="Panel" parent="PaintbrushCursorContainer" unique_id=2063873608]
 unique_name_in_owner = true
@@ -84,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_visual_only = false
 mouse_filter = 2
-texture = ExtResource("5_tlfnq")
+texture = ExtResource("5_iegue")
 expand_mode = 1
 stretch_mode = 3
 
@@ -100,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_visual_only = false
 mouse_filter = 2
-texture = ExtResource("6_x2s2t")
+texture = ExtResource("6_noub0")
 expand_mode = 1
 stretch_mode = 3
 
@@ -115,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_visual_only = false
 mouse_filter = 2
-texture = ExtResource("7_747js")
+texture = ExtResource("7_ht055")
 expand_mode = 1
 stretch_mode = 3
 
