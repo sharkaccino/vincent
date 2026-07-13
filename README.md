@@ -18,7 +18,7 @@ A simple, modern, cross-platform image editor.
 | Feature | Status |
 | :-- | :---: |
 | Basic canvas controls | 🟢 |
-| Basic brush and eraser tools | 🟡 |
+| Basic brush and eraser tools | 🔵 |
 | Basic selection tools | 🔴 |
 | Basic flood tools | 🔴 |
 | Basic configuration/options menu | 🔵 |
