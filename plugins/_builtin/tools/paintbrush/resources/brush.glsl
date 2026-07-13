@@ -34,6 +34,49 @@ float smootherstep(float edge0, float edge1, float x) {
 
 void main() {
   ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
+
+  // horizontal affected area check
+  if (params.new_pos_x > last_stamp.x) {
+    // stroke direction: left to right
+    if (uv.x > ceil(params.new_pos_x + (params.new_size / 2))) {
+      return;
+    }
+    
+    if (uv.x < floor(last_stamp.x - (last_stamp.size / 2))) {
+      return;
+    }
+  } else {
+    // stroke direction: right to left
+    if (uv.x < floor(params.new_pos_x - (params.new_size / 2))) {
+      return;
+    } 
+    
+    if (uv.x > ceil(last_stamp.x + (last_stamp.size / 2))) {
+      return;
+    }
+  }
+
+  // vertical affected area check
+  if (params.new_pos_y > last_stamp.y) {
+    // stroke direction: downwards
+    if (uv.y > ceil(params.new_pos_y + (params.new_size / 2))) {
+      return;
+    }
+    
+    if (uv.y < floor(last_stamp.y - (last_stamp.size / 2))) {
+      return;
+    }
+  } else {
+    // stroke direction: upwards
+    if (uv.y < floor(params.new_pos_y - (params.new_size / 2))) {
+      return;
+    }
+    
+    if (uv.y > ceil(last_stamp.y + (last_stamp.size / 2))) {
+      return;
+    }
+  }
+
   vec4 backdrop = imageLoad(image, uv);
 
   vec2 new_cursor_pos = vec2(params.new_pos_x, params.new_pos_y);
@@ -90,15 +133,9 @@ void main() {
     }
   }
 
-  if (gl_WorkGroupID == vec3(0) && gl_LocalInvocationIndex == 0) {
-    // these positions should come out the exact 
-    // same in all workgroups, so let's avoid 
-    // pointlessly writing to the buffer after
-    // the first one finishes.
-    last_stamp.queue_x = update_last_stamp_position.x;
-    last_stamp.queue_y = update_last_stamp_position.y;
-    last_stamp.queue_size = update_last_stamp_size;
-  }
+  last_stamp.queue_x = update_last_stamp_position.x;
+  last_stamp.queue_y = update_last_stamp_position.y;
+  last_stamp.queue_size = update_last_stamp_size;
 
   if (output_color != backdrop) {
     imageStore(image, uv, output_color);
