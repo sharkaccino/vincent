@@ -186,7 +186,10 @@ func _on_pointer_up(_button_index: MouseButton) -> void:
 	drawing = false
 	StateManager.canvas.visible = true
 	
+	var fetch_start = Time.get_ticks_usec()
 	var image_data = rd.texture_get_data(rd_texture, 0)
+	var fetch_end = Time.get_ticks_usec()
+	print("brush stroke bake time: ", (fetch_end - fetch_start) / 1000.0, "ms")
 	
 	layer.image.set_data(
 		active_project.size.x,

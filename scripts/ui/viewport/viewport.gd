@@ -215,7 +215,7 @@ func _ready() -> void:
 	
 	# TODO: make this configurable
 	# this probably lags on slower hardware
-	#Input.use_accumulated_input = false
+	Input.use_accumulated_input = false
 	
 	get_h_scroll_bar().scrolling.connect(on_scrolled)
 	get_v_scroll_bar().scrolling.connect(on_scrolled)
