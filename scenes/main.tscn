@@ -776,8 +776,9 @@ auto_translate_mode = 2
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 text = "dev notes:
+zoom in/out with scroll wheel, pan with middle mouse
 
-zoom in/out with scroll wheel, pan with middle mouse"
+WARNING: there may be a memory leak issue on Windows systems, see github issue #13 for details."
 autowrap_mode = 3
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=606369672]

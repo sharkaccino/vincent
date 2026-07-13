@@ -94,6 +94,9 @@ func _on_pointer_down(button_index: MouseButton) -> void:
 	if ToolManager.active_tool != get_meta("tool_id"): return
 	if StateManager.active_project_id == 0: return
 	
+	# TODO: track which pointer starts drawing and disallow 
+	# other pointer inputs until the first one finishes
+	
 	rd_output.visible = true
 	StateManager.canvas.visible = false
 	
