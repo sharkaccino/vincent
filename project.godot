@@ -73,7 +73,7 @@ locale/locale_filter_mode=0
 
 [rendering]
 
+rendering_device/fallback_to_opengl3=false
 renderer/rendering_method="mobile"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true
 environment/defaults/default_clear_color=Color(0.2, 0.2, 0.2, 1)
