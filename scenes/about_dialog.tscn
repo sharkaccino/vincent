@@ -138,7 +138,6 @@ text = "ABOUT_LICENSE_SUMMARY"
 fit_content = true
 scroll_active = false
 context_menu_enabled = true
-threaded = true
 selection_enabled = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ContentWrapper" unique_id=986231292]
