@@ -5,7 +5,7 @@ var color_a = Color(1, 1, 1)
 var color_b = Color(0.8, 0.8, 0.8)
 
 func _update_texture() -> void:
-	var img = Image.create_empty(grid_size, grid_size, false, Image.FORMAT_RGB8)
+	var img = Image.create_empty(grid_size, grid_size, false, Image.FORMAT_RGBA8)
 	img.fill(color_a)
 	@warning_ignore("integer_division")
 	var block = grid_size / 2
