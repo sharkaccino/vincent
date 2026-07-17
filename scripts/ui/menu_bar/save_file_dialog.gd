@@ -5,7 +5,7 @@ extends FileDialog
 func on_file_selected(path: String) -> void:
 	print("write to: ", path)
 	var active_project = StateManager.get_active_project()
-	var image_data: Image = active_project.layers[0].image
+	var image_data: Image = active_project.layers[0].get_image()
 	image_data.convert(Image.Format.FORMAT_RGBA8)
 	
 	match (path.get_extension()):
