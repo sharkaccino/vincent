@@ -6,6 +6,9 @@ layout(set = 0, binding = 0, std430) readonly buffer parameters {
   float g;
   float b;
   float a;
+  float chunk_size;
+  float new_chunk_x;
+  float new_chunk_y;
   float new_pos_x;
   float new_pos_y;
   float new_size;
@@ -15,9 +18,13 @@ layout(set = 0, binding = 0, std430) readonly buffer parameters {
 
 // !! must be the same as stamp_pos_writer.glsl !!
 layout(set = 0, binding = 1, std430) buffer workspace_mem {
+  float chunk_x;
+  float chunk_y;
   float x;
   float y;
   float size;
+  float queue_chunk_x;
+  float queue_chunk_y;
   float queue_x;
   float queue_y;
   float queue_size;
@@ -34,15 +41,19 @@ float smootherstep(float edge0, float edge1, float x) {
 
 void main() {
   ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
+  vec2 last_stamp_offset = vec2(
+    last_stamp.x + (params.chunk_size * (last_stamp.chunk_x - params.new_chunk_x)),
+    last_stamp.y + (params.chunk_size * (last_stamp.chunk_y - params.new_chunk_y)) 
+  );
 
   // horizontal affected area check
-  if (params.new_pos_x > last_stamp.x) {
+  if (params.new_pos_x > last_stamp_offset.x) {
     // stroke direction: left to right
     if (uv.x > ceil(params.new_pos_x + (params.new_size / 2))) {
       return;
     }
     
-    if (uv.x < floor(last_stamp.x - (last_stamp.size / 2))) {
+    if (uv.x < floor(last_stamp_offset.x - (last_stamp.size / 2))) {
       return;
     }
   } else {
@@ -51,19 +62,19 @@ void main() {
       return;
     } 
     
-    if (uv.x > ceil(last_stamp.x + (last_stamp.size / 2))) {
+    if (uv.x > ceil(last_stamp_offset.x + (last_stamp.size / 2))) {
       return;
     }
   }
 
   // vertical affected area check
-  if (params.new_pos_y > last_stamp.y) {
+  if (params.new_pos_y > last_stamp_offset.y) {
     // stroke direction: downwards
     if (uv.y > ceil(params.new_pos_y + (params.new_size / 2))) {
       return;
     }
     
-    if (uv.y < floor(last_stamp.y - (last_stamp.size / 2))) {
+    if (uv.y < floor(last_stamp_offset.y - (last_stamp.size / 2))) {
       return;
     }
   } else {
@@ -72,7 +83,7 @@ void main() {
       return;
     }
     
-    if (uv.y > ceil(last_stamp.y + (last_stamp.size / 2))) {
+    if (uv.y > ceil(last_stamp_offset.y + (last_stamp.size / 2))) {
       return;
     }
   }
@@ -80,10 +91,9 @@ void main() {
   vec4 backdrop = imageLoad(image, uv);
 
   vec2 new_cursor_pos = vec2(params.new_pos_x, params.new_pos_y);
-  vec2 last_stamp_position = vec2(last_stamp.x, last_stamp.y);
   vec2 uv_fixed = vec2(uv) + vec2(0.5, 0.5);
 
-  float dist = distance(last_stamp_position, new_cursor_pos);
+  float dist = distance(last_stamp_offset, new_cursor_pos);
   float progressed = params.spacing;
 
   // allows initial stamp to be placed
@@ -93,14 +103,14 @@ void main() {
 
   vec4 output_color = backdrop;
 
-  vec2 update_last_stamp_position = last_stamp_position;
+  vec2 update_last_stamp_position = last_stamp_offset;
   float update_last_stamp_size = last_stamp.size;
 
   while (progressed < dist) {
     float mix_amount = progressed / dist;
     progressed += params.spacing;
 
-    vec2 lerp_pos = mix(last_stamp_position, new_cursor_pos, mix_amount);
+    vec2 lerp_pos = mix(last_stamp_offset, new_cursor_pos, mix_amount);
     float lerp_size = mix(last_stamp.size, params.new_size, mix_amount);
 
     update_last_stamp_position = lerp_pos;
@@ -133,6 +143,8 @@ void main() {
     }
   }
 
+  last_stamp.queue_chunk_x = params.new_chunk_x;
+  last_stamp.queue_chunk_y = params.new_chunk_y;
   last_stamp.queue_x = update_last_stamp_position.x;
   last_stamp.queue_y = update_last_stamp_position.y;
   last_stamp.queue_size = update_last_stamp_size;

@@ -18,8 +18,8 @@ const stamp_pos_shader_file: RDShaderFile = preload("../resources/stamp_pos_writ
 var shader_size = 32
 var rd_groups: int
 
-var brush_shader: RID
-var stamp_shader: RID
+var brush_shader = rd.shader_create_from_spirv(brush_shader_file.get_spirv())
+var stamp_shader = rd.shader_create_from_spirv(stamp_pos_shader_file.get_spirv())
 var rd_storage_buffer: RID
 var rd_stamping_buffer: RID
 
@@ -45,6 +45,9 @@ func update_canvas(target_pos: Vector2, target_size: float) -> void:
 		color_input.color.g, 
 		color_input.color.b, 
 		color_input.color.a,
+		VincentProject.chunk_size,
+		target_chunk.x,
+		target_chunk.y,
 		pos_in_chunk.x,
 		pos_in_chunk.y,
 		target_size,
@@ -119,7 +122,6 @@ func on_pointer_down(button_index: MouseButton) -> void:
 	var target_size = brush_size_input.value # TODO: pen pressure support
 	var target_pos = current_mouse_pos
 	
-	var project = StateManager.get_active_project()
 	var target_chunk = Vector2i(
 		floori(target_pos.x / VincentProject.chunk_size),
 		floori(target_pos.y / VincentProject.chunk_size)
@@ -129,27 +131,24 @@ func on_pointer_down(button_index: MouseButton) -> void:
 		VincentProject.chunk_size * target_chunk.y
 	)
 	
-	var input_data = PackedFloat32Array([
-		0.0, 
-		0.0, 
-		0.0, 
-		0.0,
-		0.0,
-		0.0,
-		0.0,
-		0.0,
-		0.0
-	]).to_byte_array()
+	var input_data = PackedFloat32Array()
+	input_data.resize(12)
+	input_data.fill(0.0)
+	input_data = input_data.to_byte_array()
 	
 	rd_storage_buffer = rd.storage_buffer_create(input_data.size(), input_data)
 	
 	var stamping_data = PackedFloat32Array([
+		target_chunk.x,
+		target_chunk.y,
 		pos_in_chunk.x,
 		pos_in_chunk.y,
 		target_size,
+		0.0, # these are all immediately overridden
+		0.0, # in the shader program
 		0.0,
 		0.0,
-		0.0,
+		0.0
 	]).to_byte_array()
 	
 	rd_stamping_buffer = rd.storage_buffer_create(stamping_data.size(), stamping_data)
@@ -187,8 +186,6 @@ func on_tool_change(tool_id) -> void:
 	tool_active = true
 
 func _ready() -> void:
-	brush_shader = rd.shader_create_from_spirv(brush_shader_file.get_spirv())
-	stamp_shader = rd.shader_create_from_spirv(stamp_pos_shader_file.get_spirv())
 	rd_groups = ceili(float(VincentProject.chunk_size) / shader_size)
 	
 	var cursor_container = %PaintbrushCursorContainer
