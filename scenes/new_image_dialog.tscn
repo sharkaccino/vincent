@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://gueo2843qfig" path="res://scripts/ui/new_image_dialog/bg_color_picker.gd" id="7_674en"]
 [ext_resource type="Script" uid="uid://57wuyve0arig" path="res://scripts/ui/new_image_dialog/preview_box_container.gd" id="7_jpc14"]
 [ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="8_00ytc"]
-[ext_resource type="Script" uid="uid://iho3oap8wihm" path="res://scripts/ui/new_image_dialog/warning_label.gd" id="9_1ld8p"]
 [ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image_dialog/confirm_button.gd" id="10_v2k65"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image_dialog/cancel_button.gd" id="11_aopu8"]
 
@@ -99,6 +98,7 @@ max_value = 1000.0
 value = 600.0
 rounded = true
 alignment = 1
+update_on_text_changed = true
 script = ExtResource("4_1bnev")
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=356093572]
@@ -119,6 +119,7 @@ max_value = 1000.0
 value = 400.0
 rounded = true
 alignment = 1
+update_on_text_changed = true
 script = ExtResource("5_qnoot")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=634139135]
@@ -231,18 +232,6 @@ vertical_alignment = 1
 [node name="PreviewBoxBoundary" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=416741025]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_426vg")
-
-[node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1793737682]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
-text = "NEW_IMAGE_LARGE_CANVAS_WARNING"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-script = ExtResource("9_1ld8p")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1316848301]
 layout_mode = 2

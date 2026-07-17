@@ -9,6 +9,8 @@ func on_value_changed(new_value: float) -> void:
 		width_input.set_value_no_signal(round(target_ratio * new_value))
 
 func _ready() -> void:
-	max_value = Image.MAX_HEIGHT
+	# from: https://docs.godotengine.org/en/stable/classes/class_image.html
+	# TODO: use limit reported by RenderingDevice
+	max_value = 16384
 	get_line_edit().context_menu_enabled = false
 	value_changed.connect(on_value_changed)
