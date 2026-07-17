@@ -9,4 +9,4 @@ func on_resize() -> void:
 
 func _ready() -> void:
 	viewport.draw.connect(on_resize)
-	StateManager.viewport_overlay_container = self
+	StateManager._viewport_overlay_container = self

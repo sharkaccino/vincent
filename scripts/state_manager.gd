@@ -7,10 +7,7 @@ var dragging = false
 var current_drag_type
 var current_drag_data
 
-var canvas
-var canvas_content_container
-var canvas_overlay_container
-var viewport_overlay_container
+var _viewport_overlay_container
 
 signal projects_changed
 signal project_added
@@ -29,8 +26,6 @@ signal pointer_move
 signal pointer_up
 @warning_ignore("unused_signal")
 signal view_mode_changed
-@warning_ignore("unused_signal")
-signal canvas_updated
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
@@ -181,11 +176,5 @@ func set_autofit(new_value: bool) -> void:
 		active_project.viewport.autofit = new_value
 		autofit_changed.emit()
 
-func add_canvas_content_node(node: Node) -> void:
-	canvas_content_container.add_child(node)
-
-func add_canvas_overlay(node: Node) -> void:
-	canvas_overlay_container.add_child(node)
-
 func add_viewport_overlay(node: Node) -> void:
-	viewport_overlay_container.add_child(node)
+	_viewport_overlay_container.add_child(node)

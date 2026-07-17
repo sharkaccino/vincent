@@ -8,7 +8,9 @@ func update_thumbnail() -> void:
 	
 	# TODO: show the combined output of all layers merged together.
 	var connected_project = StateManager.get_project_data(project_id)
-	var image_data: Image = connected_project.layers[0].image
+	var image_data: Image = connected_project.layers[0].get_image()
+	
+	await get_tree().process_frame
 	
 	# TODO: use set_image() when canvas resolution is changed
 	texture.update(image_data)
@@ -31,7 +33,8 @@ func _ready() -> void:
 	var connected_project = StateManager.get_project_data(project_id)
 	if connected_project.id == 0: return
 	
-	var image_data: Image = connected_project.layers[0].image
+	# TODO: get combined image
+	var image_data: Image = connected_project.layers[0].get_image()
 	texture = ImageTexture.create_from_image(image_data)
 	
 	await get_tree().process_frame
@@ -39,4 +42,4 @@ func _ready() -> void:
 	check_filter_mode()
 	update_thumbnail()
 	
-	StateManager.canvas_updated.connect(update_thumbnail)
+	CanvasManager.canvas_update.connect(update_thumbnail)

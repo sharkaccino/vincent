@@ -198,24 +198,15 @@ func _input(event: InputEvent) -> void:
 				StateManager.pointer_down.emit(event.button_index)
 			if event.is_released():
 				StateManager.pointer_up.emit(event.button_index)
-				var active_project = StateManager.get_active_project()
-				var layer = active_project.active_layer_index
-				var layer_content_data: Image = active_project.layers[layer].image
-				
-				if layer_content_data.has_mipmaps() == false:
-					await RenderingServer.frame_post_draw
-					layer_content_data.generate_mipmaps()
-					StateManager.canvas_updated.emit()
 
 func _ready() -> void:
-	StateManager.canvas_content_container = %CanvasContentContainer
-	StateManager.canvas_overlay_container = %CanvasOverlayContainer
+	CanvasManager._overlay_container = %CanvasOverlayContainer
 	
 	margin.visible = false
 	
 	# TODO: make this configurable
 	# this probably lags on slower hardware
-	Input.use_accumulated_input = false
+	#Input.use_accumulated_input = false
 	
 	get_h_scroll_bar().scrolling.connect(on_scrolled)
 	get_v_scroll_bar().scrolling.connect(on_scrolled)

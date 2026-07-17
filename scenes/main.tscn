@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://dubijqfe7lnyn" path="res://scripts/ui/project_tabs/project_tab.gd" id="7_trceg"]
 [ext_resource type="Texture2D" uid="uid://oha7la45n617" path="res://resources/icons/power.svg" id="7_y6deb"]
 [ext_resource type="Script" uid="uid://7nuyswdmfbq7" path="res://scripts/ui/project_tabs/project_tab_thumbnail.gd" id="8_jbj1t"]
-[ext_resource type="Script" uid="uid://bbefm6j68ig2b" path="res://scripts/ui/viewport/canvas.gd" id="9_choun"]
 [ext_resource type="Script" uid="uid://c05pkvbgupg1s" path="res://scripts/ui/project_tabs/project_tab_name.gd" id="9_muem4"]
 [ext_resource type="Texture2D" uid="uid://cgyo7g5hgjfml" path="res://resources/icons/arrow-back-up.svg" id="10_2wyq8"]
 [ext_resource type="Script" uid="uid://dcxiqumwjdw47" path="res://scripts/ui/project_tabs/project_tab_resolution.gd" id="10_dp3eg"]
@@ -531,18 +530,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("43_tm6hj")
-
-[node name="Canvas" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasContentContainer" unique_id=2098793841]
-unique_name_in_owner = true
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-script = ExtResource("9_choun")
 
 [node name="CanvasOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=504652751]
 unique_name_in_owner = true

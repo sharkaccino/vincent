@@ -1,5 +1,7 @@
 extends Control
 
+var ci_rid
+
 func update_view_mode(new_value: Enums.ViewMode) -> void:
 	# default values
 	material.set_shader_parameter("single_channel", false)
@@ -35,20 +37,53 @@ func on_resized() -> void:
 	var active_project = StateManager.get_active_project()
 	
 	var rect = get_rect()
-	var width_check = rect.size.x < active_project.size.x
-	var height_check = rect.size.y < active_project.size.y
+	var width_diff = rect.size.x / active_project.size.x
+	var height_diff = rect.size.y / active_project.size.y
 	
-	if width_check || height_check:
-		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	if width_diff < 1.0 || height_diff < 1.0:
+		RenderingServer.canvas_item_set_default_texture_filter(
+			ci_rid, 
+			RenderingServer.CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		)
 	else:
-		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		RenderingServer.canvas_item_set_default_texture_filter(
+			ci_rid, 
+			RenderingServer.CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+		)
+	
+	var xform = Transform2D().scaled(Vector2(width_diff, height_diff))
+	RenderingServer.canvas_item_set_transform(ci_rid, xform)
 
-func on_children_updated() -> void:
-	for child in get_children():
-		if child is CanvasItem:
-			child.use_parent_material = true
+func redraw_chunks() -> void:
+	RenderingServer.canvas_item_clear(ci_rid)
+	var project = StateManager.get_active_project()
+	if (project.id == 0): return
+	
+	for y in range(project.chunks.y):
+		for x in range(project.chunks.x):
+			var index = (project.chunks.x * y) + x
+			var chunk: Texture2DRD = CanvasManager.chunks[index]
+			
+			RenderingServer.canvas_item_add_texture_rect(
+				ci_rid, 
+				Rect2(
+					VincentProject.chunk_size * x,
+					VincentProject.chunk_size * y,
+					chunk.get_width(),
+					chunk.get_height()
+				), 
+				chunk
+			)
+			
+			RenderingServer.canvas_item_reset_physics_interpolation(ci_rid)
+			
+	on_resized() # ensure large canvases are loaded in at the correct scale
 
 func _ready() -> void:
-	resized.connect(on_resized)
+	ci_rid = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(ci_rid, get_canvas_item())
+	RenderingServer.canvas_item_set_material(ci_rid, material)
+	
+	CanvasManager.chunks_rebuilt.connect(redraw_chunks)
 	StateManager.view_mode_changed.connect(update_view_mode)
-	child_order_changed.connect(on_children_updated)
+	resized.connect(on_resized)
