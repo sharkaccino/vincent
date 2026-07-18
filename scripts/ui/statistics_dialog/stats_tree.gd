@@ -42,19 +42,21 @@ func refresh_data() -> void:
 	var active_effects = 0
 	var empty_layers = 0
 	
-	for layer in current_project.layers:
-		if layer.visible:
-			layers_visible += 1
-		if layer.locked:
-			layers_locked += 1
-		if layer.get_image().is_invisible():
-			empty_layers += 1
-		
-		for effect in layer.effects:
-			total_effects += 1
-			
-			if effect.enabled:
-				active_effects += 1
+	# FIXME
+	#for layer in current_project.layers:
+		#var img = await layer.get_image()
+		#if layer.visible:
+			#layers_visible += 1
+		#if layer.locked:
+			#layers_locked += 1
+		#if img.is_invisible():
+			#empty_layers += 1
+		#
+		#for effect in layer.effects:
+			#total_effects += 1
+			#
+			#if effect.enabled:
+				#active_effects += 1
 	
 	var item_visible_layers = create_item(cat_layers)
 	item_visible_layers.set_text(0, "Visible Layers: %s" % layers_visible)

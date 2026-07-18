@@ -25,6 +25,9 @@ class Layer:
 	var effects: Array[LayerEffect]
 	var _size: Vector2i
 	var _chunk_count: Vector2i
+	var _thread := Thread.new()
+	
+	signal compilation_finish
 	
 	func _init(project_size: Vector2i):
 		_size = project_size
@@ -63,8 +66,18 @@ class Layer:
 			r_height -= VincentProject.chunk_size
 		return OK
 	
-	func get_image() -> Image:
-		# TODO: cache the result of this
+	func _compile() -> void:
+		# TODO: putting this function in a separate thread
+		# theoretically would've improved the noticeable delay
+		# when finishing a drawing operation, but it turns out
+		# image manipulation requires synchronization with
+		# RenderingServer, which basically brings us back
+		# to square 1.
+		#
+		# https://docs.godotengine.org/en/stable/tutorials/performance/thread_safe_apis.html#rendering
+		#
+		# maybe we could do something with create_local_rendering_device() instead?
+		
 		var compiled_image = Image.create_empty(
 			_size.x, 
 			_size.y, 
@@ -88,7 +101,16 @@ class Layer:
 						VincentProject.chunk_size * y
 					)
 				)
-		return compiled_image
+		
+		compilation_finish.emit.call_deferred(compiled_image)
+		
+	func get_image() -> Image:
+		# TODO: cache the result of this
+		_thread.start(_compile)
+		var result = await compilation_finish
+		_thread.wait_to_finish()
+		return result
+		
 
 var id: int
 var name: String
