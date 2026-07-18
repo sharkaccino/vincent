@@ -60,27 +60,30 @@ func rebuild_chunks() -> void:
 func bake_chunks(coord_array: Array[Vector2i]) -> void:
 	var project = StateManager.get_active_project()
 	if (project.id == 0): return
-	var finished = [0]
-	var array_size = coord_array.size() # incase the original array gets cleared
 	
+	var finished = 0
 	for coord in coord_array:
 		var index = (project.chunks.x * coord.y) + coord.x
-		rd.texture_get_data_async(chunks[index].texture_rd_rid, 0, func(data) -> void:
-			# TODO: bake only current layer
-			var saved_chunk: Image = project.layers[0].chunks[index]
-			saved_chunk.set_data(
-				saved_chunk.get_width(),
-				saved_chunk.get_height(),
-				false,
-				Image.FORMAT_RGBA16,
-				data
-			)
-			
-			finished[0] += 1
-			
-			if (finished[0] == array_size):
-				canvas_update.emit()
+		
+		# FIXME: the async version of this method
+		# would be more ideal, but my initial 
+		# implementation caused a SIGABRT when
+		# too many chunks were selected.
+		var data = rd.texture_get_data(chunks[index].texture_rd_rid, 0)
+		#print("update chunk at ", index)
+		var saved_chunk: Image = project.layers[0].chunks[index]
+		saved_chunk.set_data(
+			saved_chunk.get_width(),
+			saved_chunk.get_height(),
+			false,
+			Image.FORMAT_RGBA16,
+			data
 		)
+		
+		finished += 1
+		if (finished == coord_array.size()):
+			canvas_update.emit()
+	
 
 func _ready() -> void:
 	StateManager.active_project_changed.connect(rebuild_chunks)
