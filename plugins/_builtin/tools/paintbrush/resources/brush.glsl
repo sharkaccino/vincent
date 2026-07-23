@@ -1,38 +1,38 @@
 #[compute]
 #version 450
 
-layout(set = 0, binding = 0, std430) readonly buffer parameters {
+layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
+
+layout(set = 0, binding = 0, std430) readonly restrict buffer inputdata {
   float r;
   float g;
   float b;
   float a;
   float chunk_size;
+  float oob;
+  float old_chunk_x;
+  float old_chunk_y;
+  float old_x;
+  float old_y;
+  float old_size;
   float new_chunk_x;
   float new_chunk_y;
-  float new_pos_x;
-  float new_pos_y;
+  float new_x;
+  float new_y;
   float new_size;
   float softness;
   float spacing;
 } params;
 
-// !! must be the same as stamp_pos_writer.glsl !!
-layout(set = 0, binding = 1, std430) buffer workspace_mem {
+layout(set = 0, binding = 1, std430) writeonly restrict buffer queuedata {
   float chunk_x;
   float chunk_y;
   float x;
   float y;
   float size;
-  float queue_chunk_x;
-  float queue_chunk_y;
-  float queue_x;
-  float queue_y;
-  float queue_size;
-} last_stamp;
+} queue;
 
-layout(set = 0, binding = 2, rgba32f) uniform image2D image;
-
-layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
+layout(set = 0, binding = 2, rgba16f) uniform image2D image;
 
 float smootherstep(float edge0, float edge1, float x) {
   x = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
@@ -42,55 +42,46 @@ float smootherstep(float edge0, float edge1, float x) {
 void main() {
   ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
   vec2 last_stamp_offset = vec2(
-    last_stamp.x + (params.chunk_size * (last_stamp.chunk_x - params.new_chunk_x)),
-    last_stamp.y + (params.chunk_size * (last_stamp.chunk_y - params.new_chunk_y)) 
+    params.old_x + (params.chunk_size * (params.old_chunk_x - params.new_chunk_x)),
+    params.old_y + (params.chunk_size * (params.old_chunk_y - params.new_chunk_y)) 
   );
 
-  // horizontal affected area check
-  if (params.new_pos_x > last_stamp_offset.x) {
-    // stroke direction: left to right
-    if (uv.x > ceil(params.new_pos_x + (params.new_size / 2))) {
-      return;
-    }
-    
-    if (uv.x < floor(last_stamp_offset.x - (last_stamp.size / 2))) {
-      return;
-    }
-  } else {
-    // stroke direction: right to left
-    if (uv.x < floor(params.new_pos_x - (params.new_size / 2))) {
-      return;
-    } 
-    
-    if (uv.x > ceil(last_stamp_offset.x + (last_stamp.size / 2))) {
-      return;
-    }
-  }
+  // determine affected area for this execution
+  vec2 point_top_left = vec2(
+    floor(min(
+      params.new_x - (params.new_size / 2),
+      last_stamp_offset.x - (params.old_size / 2)
+    )),
+    floor(min(
+      params.new_y - (params.new_size / 2),
+      last_stamp_offset.y - (params.old_size / 2)
+    ))
+  );
 
-  // vertical affected area check
-  if (params.new_pos_y > last_stamp_offset.y) {
-    // stroke direction: downwards
-    if (uv.y > ceil(params.new_pos_y + (params.new_size / 2))) {
-      return;
-    }
-    
-    if (uv.y < floor(last_stamp_offset.y - (last_stamp.size / 2))) {
-      return;
-    }
-  } else {
-    // stroke direction: upwards
-    if (uv.y < floor(params.new_pos_y - (params.new_size / 2))) {
-      return;
-    }
-    
-    if (uv.y > ceil(last_stamp_offset.y + (last_stamp.size / 2))) {
-      return;
-    }
-  }
+  vec2 point_bottom_right = vec2(
+    ceil(max(
+      params.new_x + (params.new_size / 2),
+      last_stamp_offset.x + (params.old_size / 2)
+    )),
+    ceil(max(
+      params.new_y + (params.new_size / 2),
+      last_stamp_offset.y + (params.old_size / 2)
+    ))
+  );
+
+  // stop here if the current pixel is gauranteed to be unaffected
+  // imageStore(image, uv, vec4(vec3(0), 1));
+
+  if (uv.x < point_top_left.x) return;
+  if (uv.y < point_top_left.y) return;
+  if (uv.x > point_bottom_right.x) return;
+  if (uv.y > point_bottom_right.y) return;
+
+  // imageStore(image, uv, vec4(vec3(1), 1));
 
   vec4 backdrop = imageLoad(image, uv);
 
-  vec2 new_cursor_pos = vec2(params.new_pos_x, params.new_pos_y);
+  vec2 new_cursor_pos = vec2(params.new_x, params.new_y);
   vec2 uv_fixed = vec2(uv) + vec2(0.5, 0.5);
 
   float dist = distance(last_stamp_offset, new_cursor_pos);
@@ -104,17 +95,21 @@ void main() {
   vec4 output_color = backdrop;
 
   vec2 update_last_stamp_position = last_stamp_offset;
-  float update_last_stamp_size = last_stamp.size;
+  float update_last_stamp_size = params.old_size;
 
+  // progressively create stamps between previous 
+  // successful stamp position and new cursor position
   while (progressed < dist) {
     float mix_amount = progressed / dist;
     progressed += params.spacing;
 
     vec2 lerp_pos = mix(last_stamp_offset, new_cursor_pos, mix_amount);
-    float lerp_size = mix(last_stamp.size, params.new_size, mix_amount);
+    float lerp_size = mix(params.old_size, params.new_size, mix_amount);
 
     update_last_stamp_position = lerp_pos;
     update_last_stamp_size = lerp_size;
+
+    if (params.oob == 1.0) continue;
 
     float radius = lerp_size / 2;
     float circle = distance(uv_fixed, lerp_pos);
@@ -143,13 +138,26 @@ void main() {
     }
   }
 
-  last_stamp.queue_chunk_x = params.new_chunk_x;
-  last_stamp.queue_chunk_y = params.new_chunk_y;
-  last_stamp.queue_x = update_last_stamp_position.x;
-  last_stamp.queue_y = update_last_stamp_position.y;
-  last_stamp.queue_size = update_last_stamp_size;
+  // TODO: these values only need to be written once.
+  //
+  // these should come out with the same result across 
+  // all workgroups and all texels, so constantly 
+  // writing to the uniform buffer is really unnecessary. 
+  // but we also can't just run this on the first 
+  // gl_LocalInvocationIndex, because the first pixel
+  // is never guaranteed to be processed due to the
+  // affected area checks further up.
+  //
+  // idk if this actually results in a noticeable 
+  // performance degradation, but it might be worth
+  // investigating at some point.
+  queue.chunk_x = params.new_chunk_x;
+  queue.chunk_y = params.new_chunk_y;
+  queue.x = update_last_stamp_position.x;
+  queue.y = update_last_stamp_position.y;
+  queue.size = update_last_stamp_size;
 
-  if (output_color != backdrop) {
+  if (output_color != backdrop && params.oob == 0.0) {
     imageStore(image, uv, output_color);
   }
 }
