@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_e8pgi"]
 [ext_resource type="Script" uid="uid://d4a385f5rq2hw" path="res://plugins/_builtin/tools/eraser/scripts/eraser.gd" id="2_ptauh"]
+[ext_resource type="Script" uid="uid://wdapo1qiurhn" path="res://plugins/_builtin/tools/eraser/scripts/softness_control.gd" id="3_memq7"]
 
 [node name="EraserSettings" type="PanelContainer" unique_id=443640056]
 offset_right = 185.0
@@ -39,17 +40,18 @@ allow_greater = true
 suffix = "px"
 select_all_on_focus = true
 
-[node name="SharpControl" type="CheckButton" parent="MarginContainer/VBoxContainer" unique_id=1750864988]
+[node name="PixelModeControl" type="CheckButton" parent="MarginContainer/VBoxContainer" unique_id=1750864988]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-disabled = true
-text = "Sharp"
+text = "Pixel Mode"
 
 [node name="SoftnessControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=351176900]
 layout_mode = 2
+script = ExtResource("3_memq7")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SoftnessControl" unique_id=893982807]
+[node name="SoftnessLabel" type="Label" parent="MarginContainer/VBoxContainer/SoftnessControl" unique_id=893982807]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Softness"

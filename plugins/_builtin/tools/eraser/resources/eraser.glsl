@@ -16,7 +16,7 @@ layout(set = 0, binding = 0, std430) readonly restrict buffer inputdata {
   float new_x;
   float new_y;
   float new_size;
-  float sharp_mode;
+  float pixel_mode;
   float softness;
   float spacing;
   float shape_mode;
@@ -109,17 +109,28 @@ void main() {
 
     if (params.oob == 1.0) continue;
 
-    float radius = lerp_size / 2;
-    float circle = distance(uv_fixed, lerp_pos);
+    if (params.pixel_mode == 1.0) {
+      if (params.new_size == 1.0) {
+        if (uv != floor(lerp_pos)) continue;
+        output_color.a = 0.0;
+      } else {
+        float radius = lerp_size / 2;
+        float circle = distance(uv_fixed, lerp_pos);
+        if (circle < radius) output_color.a = 0.0;
+      }
+    } else {
+      float radius = lerp_size / 2;
+      float circle = distance(uv_fixed, lerp_pos);
 
-    float smoothed = smootherstep(
-      radius,
-      radius - ((params.softness * radius) + 1.5),
-      circle
-    );
+      float smoothed = smootherstep(
+        radius,
+        radius - ((params.softness * radius) + 1.5),
+        circle
+      );
 
-    if (smoothed == 0.0) continue;
-    output_color.a *= (1.0 - smoothed);
+      if (smoothed == 0.0) continue;
+      output_color.a *= (1.0 - smoothed);
+    }
 
     if (output_color.a == 0.0) {
       output_color.rgb = vec3(0);

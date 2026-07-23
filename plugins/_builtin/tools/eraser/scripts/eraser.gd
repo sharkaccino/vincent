@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var brush_size_input: SpinBox = %BrushSizeInput
 @onready var softness_input = %SoftnessInput
 @onready var spacing_input = %SpacingInput
-@onready var sharp_toggle = %SharpControl
+@onready var pixel_model_toggle = %PixelModeControl
 @onready var shape_input = %ShapeInput
 
 var tool_active = false
@@ -106,7 +106,7 @@ func update_canvas(target_pos: Vector2, target_size: float) -> void:
 				pos_in_chunk.x,
 				pos_in_chunk.y,
 				target_size,
-				1.0 if sharp_toggle.button_pressed else 0.0,
+				1.0 if pixel_model_toggle.button_pressed else 0.0,
 				softness_input.value / 100,
 				brush_size_input.value * (spacing_input.value / 100),
 				float(shape_input.selected)
