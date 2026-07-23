@@ -1,6 +1,6 @@
 class_name VincentProject
 
-static var session_ids: int = -1
+static var session_ids := -1
 #static var chunk_size: int = ProjectSettings.get_setting("rendering/rendering_device/staging_buffer/texture_download_region_size_px")
 static var chunk_size := 256
 
@@ -25,9 +25,6 @@ class Layer:
 	var effects: Array[LayerEffect]
 	var _size: Vector2i
 	var _chunk_count: Vector2i
-	var _thread := Thread.new()
-	
-	signal compilation_finish
 	
 	func _init(project_size: Vector2i):
 		_size = project_size
@@ -65,51 +62,6 @@ class Layer:
 				r_width -= VincentProject.chunk_size
 			r_height -= VincentProject.chunk_size
 		return OK
-	
-	func _compile() -> void:
-		# TODO: putting this function in a separate thread
-		# theoretically would've improved the noticeable delay
-		# when finishing a drawing operation, but it turns out
-		# image manipulation requires synchronization with
-		# RenderingServer, which basically brings us back
-		# to square 1.
-		#
-		# https://docs.godotengine.org/en/stable/tutorials/performance/thread_safe_apis.html#rendering
-		#
-		# maybe we could do something with create_local_rendering_device() instead?
-		
-		var compiled_image = Image.create_empty(
-			_size.x, 
-			_size.y, 
-			false, 
-			Image.FORMAT_RGBA16
-		)
-		
-		for y in range(_chunk_count.y):
-			for x in range(_chunk_count.x):
-				var chunk = chunks[(_chunk_count.x * y) + x]
-				compiled_image.blit_rect(
-					chunk,
-					Rect2i(
-						0,
-						0,
-						VincentProject.chunk_size,
-						VincentProject.chunk_size
-					),
-					Vector2i(
-						VincentProject.chunk_size * x,
-						VincentProject.chunk_size * y
-					)
-				)
-		
-		compilation_finish.emit.call_deferred(compiled_image)
-		
-	func get_image() -> Image:
-		# TODO: cache the result of this
-		_thread.start(_compile)
-		var result = await compilation_finish
-		_thread.wait_to_finish()
-		return result
 		
 
 var id: int
