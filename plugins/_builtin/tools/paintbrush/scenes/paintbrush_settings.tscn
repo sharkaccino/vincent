@@ -2,25 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_iegue"]
 [ext_resource type="Script" uid="uid://dgk1ocg26upn" path="res://plugins/_builtin/tools/paintbrush/scripts/paintbrush.gd" id="2_iegue"]
-[ext_resource type="Script" uid="uid://duw2irtyswalo" path="res://plugins/_builtin/tools/paintbrush/scripts/cursor.gd" id="3_noub0"]
-[ext_resource type="Shader" uid="uid://bvydwfcr5w24w" path="res://plugins/_builtin/tools/paintbrush/resources/cursor.gdshader" id="4_uhi88"]
-[ext_resource type="Texture2D" uid="uid://cuokc5n77hdim" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_large.png" id="5_iegue"]
-[ext_resource type="Texture2D" uid="uid://cexiq1vs8v1hd" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_medium.png" id="6_noub0"]
-[ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://plugins/_builtin/tools/paintbrush/resources/crosshair_small.png" id="7_ht055"]
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_cpxhb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_khup6"]
-shader = ExtResource("4_uhi88")
-shader_parameter/size = 64.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li6b7"]
-bg_color = Color(1, 1, 1, 1)
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 1)
 
 [node name="PaintbrushSettings" type="PanelContainer" unique_id=443640056]
 offset_right = 185.0
@@ -35,89 +18,6 @@ visible = false
 layout_mode = 2
 texture = SubResource("Texture2DRD_cpxhb")
 expand_mode = 1
-
-[node name="PaintbrushCursorContainer" type="Panel" parent="." unique_id=425362764]
-unique_name_in_owner = true
-clip_children = 1
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-script = ExtResource("3_noub0")
-
-[node name="CursorRing" type="Panel" parent="PaintbrushCursorContainer" unique_id=2063873608]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_khup6")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.475
-offset_top = -83.275
-offset_right = -82.475
-offset_bottom = -75.275
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(4, 4)
-offset_transform_enabled = true
-offset_transform_position = Vector2(-4, -4)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_li6b7")
-
-[node name="CursorCrosshair" type="Control" parent="PaintbrushCursorContainer" unique_id=122716099]
-unique_name_in_owner = true
-anchors_preset = 0
-offset_right = 1.0
-offset_bottom = 1.0
-mouse_filter = 2
-
-[node name="CrosshairLarge" type="TextureRect" parent="PaintbrushCursorContainer/CursorCrosshair" unique_id=469595404]
-unique_name_in_owner = true
-visible = false
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-offset_transform_visual_only = false
-mouse_filter = 2
-texture = ExtResource("5_iegue")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="CrosshairMedium" type="TextureRect" parent="PaintbrushCursorContainer/CursorCrosshair" unique_id=1005114762]
-unique_name_in_owner = true
-visible = false
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-offset_transform_visual_only = false
-mouse_filter = 2
-texture = ExtResource("6_noub0")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="CrosshairSmall" type="TextureRect" parent="PaintbrushCursorContainer/CursorCrosshair" unique_id=118328704]
-unique_name_in_owner = true
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-offset_transform_visual_only = false
-mouse_filter = 2
-texture = ExtResource("7_ht055")
-expand_mode = 1
-stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
 layout_mode = 2

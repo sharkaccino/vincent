@@ -41,9 +41,14 @@
 [ext_resource type="Script" uid="uid://ctsicakeb7oem" path="res://scripts/ui/sidebar_panels/panel_template.gd" id="37_augu2"]
 [ext_resource type="Script" uid="uid://b85bbnwxpi2qy" path="res://scripts/ui/viewport/canvas_content_container.gd" id="43_tm6hj"]
 [ext_resource type="Texture2D" uid="uid://b4o436yvgbe47" path="res://resources/icons/panel_tools/zoom.svg" id="45_0loja"]
+[ext_resource type="Script" uid="uid://duw2irtyswalo" path="res://scripts/ui/viewport/basic_brush_cursor.gd" id="46_ro3en"]
 [ext_resource type="Script" uid="uid://bkj08rpeww3b0" path="res://scripts/ui/viewport/viewport_overlay_container.gd" id="47_kf5aa"]
+[ext_resource type="Shader" uid="uid://bvydwfcr5w24w" path="res://resources/cursor.gdshader" id="47_od4ux"]
 [ext_resource type="Texture2D" uid="uid://cf2n1wmws2l3f" path="res://resources/icons/grid-3x3.svg" id="48_augu2"]
+[ext_resource type="Texture2D" uid="uid://cuokc5n77hdim" path="res://resources/crosshair_large.png" id="48_xhfw6"]
+[ext_resource type="Texture2D" uid="uid://cexiq1vs8v1hd" path="res://resources/crosshair_medium.png" id="49_1epgm"]
 [ext_resource type="Texture2D" uid="uid://d374fgwmrjyv2" path="res://resources/icons/flip-horizontal.svg" id="49_1v6qk"]
+[ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://resources/crosshair_small.png" id="50_152kg"]
 [ext_resource type="Texture2D" uid="uid://c8td4riyxa3j3" path="res://resources/icons/flip-vertical.svg" id="50_augu2"]
 [ext_resource type="Script" uid="uid://cwry28y3ipax0" path="res://scripts/ui/sidebar_panels/right_sidebar.gd" id="58_tm6hj"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
@@ -106,6 +111,18 @@ vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ygd8o"]
 color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4e17"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y57op"]
+shader = ExtResource("47_od4ux")
+shader_parameter/size = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlv25"]
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkv2x"]
 font_size = 12
@@ -621,6 +638,91 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "INFO_WGT_POSITION"
+
+[node name="BasicBrushCursorContainer" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=914898415]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4e17")
+script = ExtResource("46_ro3en")
+
+[node name="CursorRing" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=1437127377]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_y57op")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(4, 4)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-4, -4)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mlv25")
+
+[node name="CursorCrosshair" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=945280758]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="CrosshairLarge" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=1870923045]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_visual_only = false
+mouse_filter = 2
+texture = ExtResource("48_xhfw6")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="CrosshairMedium" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=966050920]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_visual_only = false
+mouse_filter = 2
+texture = ExtResource("49_1epgm")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="CrosshairSmall" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=404992429]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_visual_only = false
+mouse_filter = 2
+texture = ExtResource("50_152kg")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1016688040]
 layout_mode = 2

@@ -1,16 +1,16 @@
 extends Panel
 
-@onready var brush_size_input: SpinBox = %BrushSizeInput
 @onready var cursor_ring = %CursorRing
 @onready var crosshair = %CursorCrosshair
 @onready var ch_large = %CrosshairLarge
 @onready var ch_medium = %CrosshairMedium
 @onready var ch_small = %CrosshairSmall
 
+var cur_brush_size = 1.0
+
 func update_cursor_size() -> void:
 	var active_project = StateManager.get_active_project()
-	var brush_size: float = brush_size_input.value * active_project.viewport.zoom
-	brush_size = brush_size + 4.0; # ensures cursor does not become too small to see
+	var brush_size = (cur_brush_size * active_project.viewport.zoom) + 4.0; # +4 ensures cursor does not become too small to see
 	
 	ch_large.visible = false
 	ch_medium.visible = false
@@ -50,13 +50,19 @@ func _input(event: InputEvent) -> void:
 		crosshair.position = local_pos.round()
 		check_cursor_visibility(local_pos)
 
-func on_tool_change(tool_id) -> void:
-	visible = (tool_id == get_meta("tool_id"))
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+func on_tool_change(_tool_id) -> void:
 	check_cursor_visibility(get_local_mouse_position())
 
-func _ready() -> void:
+func on_brush_size_changed(new_size: float) -> void:
+	cur_brush_size = new_size
 	update_cursor_size()
+
+func _ready() -> void:
+	ToolManager.basic_brush_container = self
+	visible = false
+	
 	ToolManager.active_tool_changed.connect(on_tool_change)
+	StateManager.active_project_changed.connect(update_cursor_size)
 	StateManager.zoom_level_changed.connect(update_cursor_size)
-	brush_size_input.value_changed.connect(func(_a): update_cursor_size())
+	StateManager.autofit_zoom_level_changed.connect(update_cursor_size)
+	ToolManager.basic_brush_size_changed.connect(on_brush_size_changed)

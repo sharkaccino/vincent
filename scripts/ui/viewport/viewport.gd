@@ -53,6 +53,7 @@ func recalc_transforms() -> void:
 		var h_ratio = (viewport_size.x - (autofit_margin * 2)) / rotated.x
 		var v_ratio = (viewport_size.y - (autofit_margin * 2)) / rotated.y
 		active_project.viewport.zoom = min(h_ratio, v_ratio, 1.0)
+		StateManager.autofit_zoom_level_changed.emit()
 	
 	var canvas_size = active_project.size * active_project.viewport.zoom
 	var canvas_size_rotated = Utils.get_bounding_box_size(

@@ -233,18 +233,18 @@ func on_tool_change(tool_id) -> void:
 		return
 		
 	tool_active = true
+	ToolManager.set_brush_cursor_size(brush_size_input.value)
+
+func on_brush_size_change(new_value: float) -> void:
+	ToolManager.set_brush_cursor_size(new_value)
 
 func _ready() -> void:
 	rd_groups = ceili(float(VincentProject.chunk_size) / shader_size)
 	
-	var cursor_container = %PaintbrushCursorContainer
-	cursor_container.set_meta("tool_id", get_meta("tool_id"))
-	remove_child(cursor_container)
-	StateManager.add_viewport_overlay(cursor_container)
-	cursor_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	cursor_container.visible = false
+	ToolManager.add_brush_user(get_meta("tool_id"))
 	
 	ToolManager.active_tool_changed.connect(on_tool_change)
 	StateManager.pointer_move.connect(on_pointer_move)
 	StateManager.pointer_down.connect(on_pointer_down)
 	StateManager.pointer_up.connect(on_pointer_up)
+	brush_size_input.value_changed.connect(on_brush_size_change)

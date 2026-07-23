@@ -16,6 +16,8 @@ signal active_project_changed
 signal drag_announced
 signal rotation_changed
 signal zoom_level_changed
+@warning_ignore("unused_signal")
+signal autofit_zoom_level_changed
 signal canvas_position_changed
 signal autofit_changed
 @warning_ignore("unused_signal")
