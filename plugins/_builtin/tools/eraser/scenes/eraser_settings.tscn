@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cndbbeom2j6of"]
+
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_e8pgi"]
+[ext_resource type="Script" uid="uid://d4a385f5rq2hw" path="res://plugins/_builtin/tools/eraser/scripts/eraser.gd" id="2_ptauh"]
+
+[node name="EraserSettings" type="PanelContainer" unique_id=443640056]
+offset_right = 185.0
+offset_bottom = 169.0
+theme = ExtResource("1_e8pgi")
+script = ExtResource("2_ptauh")
+metadata/tool_id = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
+layout_mode = 2
+theme_type_variation = &"ToolPanelMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1977507489]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1440091302]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SizeControl" unique_id=203760152]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Eraser Size"
+
+[node name="BrushSizeInput" type="SpinBox" parent="MarginContainer/VBoxContainer/SizeControl" unique_id=976203545]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 16384.0
+value = 15.0
+rounded = true
+allow_greater = true
+suffix = "px"
+select_all_on_focus = true
+
+[node name="SharpControl" type="CheckButton" parent="MarginContainer/VBoxContainer" unique_id=1750864988]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+disabled = true
+text = "Sharp"
+
+[node name="SoftnessControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=351176900]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SoftnessControl" unique_id=893982807]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Softness"
+
+[node name="SoftnessInput" type="SpinBox" parent="MarginContainer/VBoxContainer/SoftnessControl" unique_id=797557204]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 500.0
+value = 50.0
+rounded = true
+suffix = "%"
+select_all_on_focus = true
+
+[node name="SpacingControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=690008352]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SpacingControl" unique_id=214554967]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spacing"
+
+[node name="SpacingInput" type="SpinBox" parent="MarginContainer/VBoxContainer/SpacingControl" unique_id=898008303]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1000.0
+value = 10.0
+suffix = "%"
+select_all_on_focus = true
+
+[node name="ShapeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=987877348]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ShapeControl" unique_id=280317854]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shape"
+
+[node name="ShapeInput" type="OptionButton" parent="MarginContainer/VBoxContainer/ShapeControl" unique_id=1151765124]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Circle"
+popup/item_0/id = 0
+popup/item_1/text = "Square"
+popup/item_1/id = 1
