@@ -17,7 +17,7 @@ jobs:
           project-url: https://github.com/users/sharkaccino/projects/5
           github-token: ${{ secrets.ISSUE_ORGANIZATION }}
       - name: Add Triage Label
-        if: (success() || failure()) && github.event.issues.labels[0] == null # skip if issue already has labels
+        if: (success() || failure()) && github.event.issue.labels[0] == null # skip if issue already has labels
         uses: github/issue-labeler@v3.4
         with:
           configuration-path: .github/labeler.yml
