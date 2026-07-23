@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://xt66pdkwixfc"]
+
+[ext_resource type="Theme" uid="uid://n486m4af3wkh" path="res://resources/themes/DarkTheme.tres" id="1_eetky"]
+[ext_resource type="Script" uid="uid://diejfapixv12l" path="res://plugins/_builtin/tools/pencil/scripts/pencil.gd" id="2_jxnny"]
+
+[node name="PencilSettings" type="PanelContainer" unique_id=443640056]
+offset_right = 185.0
+offset_bottom = 169.0
+theme = ExtResource("1_eetky")
+script = ExtResource("2_jxnny")
+metadata/tool_id = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1263199386]
+layout_mode = 2
+theme_type_variation = &"ToolPanelMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1977507489]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TEMPColorControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1381475818]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TEMPColorControl" unique_id=69588090]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(temp) Color"
+
+[node name="TEMPColorInput" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/TEMPColorControl" unique_id=539079063]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1440091302]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SizeControl" unique_id=203760152]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pencil Size"
+
+[node name="BrushSizeInput" type="SpinBox" parent="MarginContainer/VBoxContainer/SizeControl" unique_id=976203545]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 16384.0
+value = 1.0
+rounded = true
+allow_greater = true
+suffix = "px"
+select_all_on_focus = true
+
+[node name="SpacingControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=690008352]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SpacingControl" unique_id=214554967]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spacing"
+
+[node name="SpacingInput" type="SpinBox" parent="MarginContainer/VBoxContainer/SpacingControl" unique_id=898008303]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1000.0
+value = 10.0
+suffix = "%"
+select_all_on_focus = true
+
+[node name="AccumulateControl" type="CheckButton" parent="MarginContainer/VBoxContainer" unique_id=1750864988]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Accumulate"
+
+[node name="BlendControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=987877348]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BlendControl" unique_id=280317854]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blend Mode"
+
+[node name="BlendModeInput" type="OptionButton" parent="MarginContainer/VBoxContainer/BlendControl" unique_id=1151765124]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Mix (Default)"
+popup/item_0/id = 0
+popup/item_1/text = "Add"
+popup/item_1/id = 1
+popup/item_2/text = "Subtract"
+popup/item_2/id = 2
+popup/item_3/text = "Multiply"
+popup/item_3/id = 3

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://1jxccd16rvff"
+path="res://.godot/imported/pencil.glsl-d2152390029c406a834d78a8fe266af5.res"
+
+[deps]
+
+source_file="res://plugins/_builtin/tools/pencil/resources/pencil.glsl"
+dest_files=["res://.godot/imported/pencil.glsl-d2152390029c406a834d78a8fe266af5.res"]
+
+[params]
+
