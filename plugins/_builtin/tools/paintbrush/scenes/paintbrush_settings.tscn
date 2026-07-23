@@ -60,6 +60,7 @@ max_value = 16384.0
 value = 15.0
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 suffix = "px"
 select_all_on_focus = true
 
@@ -79,6 +80,7 @@ size_flags_horizontal = 3
 max_value = 500.0
 value = 50.0
 rounded = true
+update_on_text_changed = true
 suffix = "%"
 select_all_on_focus = true
 
@@ -98,6 +100,7 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 1000.0
 value = 10.0
+update_on_text_changed = true
 suffix = "%"
 select_all_on_focus = true
 
