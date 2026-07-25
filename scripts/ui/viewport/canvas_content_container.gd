@@ -40,7 +40,7 @@ func on_resized() -> void:
 	var width_diff = rect.size.x / active_project.size.x
 	var height_diff = rect.size.y / active_project.size.y
 	
-	if width_diff < 1.0 || height_diff < 1.0:
+	if width_diff <= 1.0 || height_diff <= 1.0:
 		RenderingServer.canvas_item_set_default_texture_filter(
 			ci_rid, 
 			RenderingServer.CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
