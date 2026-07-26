@@ -7,6 +7,12 @@ var compiler_shader_file = preload("res://resources/chunk_builder.glsl")
 var compiler_wg_size = 32
 var _compiling = false
 
+# TODO: move these to user config
+var grid_size = 12
+var color_a = Color(1, 1, 1)
+var color_b = Color(0.8, 0.8, 0.8)
+var checkerboard: ImageTexture
+
 signal chunks_rebuilt
 signal chunk_update
 @warning_ignore("unused_signal")
@@ -203,5 +209,22 @@ func get_image() -> Image:
 	var result = await _compilation_finish
 	return result
 
+func get_alpha_checkerboard() -> ImageTexture:
+	return checkerboard
+	
+func build_alpha_checkerboard() -> void:
+	# we're using a texture here instead of a shader
+	# so rotated canvases dont have tons of aliasing
+
+	var img = Image.create_empty(grid_size, grid_size, false, Image.FORMAT_RGBA8)
+	img.fill(color_a)
+	@warning_ignore("integer_division")
+	var block = grid_size / 2
+	img.fill_rect(Rect2i(0, 0, block, block), color_b)
+	img.fill_rect(Rect2i(block, block, block, block), color_b)
+	
+	checkerboard = ImageTexture.create_from_image(img)
+
 func _ready() -> void:
+	build_alpha_checkerboard()
 	StateManager.active_project_changed.connect(rebuild_chunks)
