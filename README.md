@@ -16,9 +16,9 @@ A simple, modern, cross-platform image editor.
 <!-- 🔴🔵🟡🟢  -->
 
 | Feature | Status |
-| :-- | :---: |
+| :-- | :--- |
 | Basic canvas controls | 🟢 |
-| Basic brush and eraser tools | 🔵 |
+| Basic brush and eraser tools | 🟢 |
 | Basic selection tools | 🔴 |
 | Basic flood tools | 🔴 |
 | Basic configuration/options menu | 🔵 |
@@ -27,13 +27,17 @@ A simple, modern, cross-platform image editor.
 | Image layers | 🟡 |
 | Layer effects | 🔴 |
 | Edit history (undo/redo) | 🔴 |
-| Save/load project files | 🟡 |
-| Plug-in Support | 🟢 |
+| Save/load project files | 🟡\* |
+| Plug-in Support | 🔵\*\* |
 
 - 🔴 = Not started
 - 🔵 = In progress
 - 🟡 = On hold
 - 🟢 = Complete
+
+\*basic images can be loaded and saved, but no options for quality, bit depth, etc are presented.
+
+\*\*mostly already functional, just missing some compatibility checks and documentation.
 
 ## Bug Reports & Code Contributions
 
