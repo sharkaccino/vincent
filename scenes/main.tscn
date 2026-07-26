@@ -424,7 +424,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+split_offsets = PackedInt32Array(200, -200)
 drag_area_highlight_in_editor = true
+split_offset = 200
 
 [node name="LeftSidebar" type="VBoxContainer" parent="VBoxContainer/MainContainer" unique_id=1858592438]
 custom_minimum_size = Vector2(200, 0)
@@ -463,22 +465,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MainContainer" unique_id=2018880105]
-layout_mode = 2
-drag_area_highlight_in_editor = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer" unique_id=795558414]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer" unique_id=795558414]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1406439072]
+[node name="ViewportWrapper" type="PanelContainer" parent="VBoxContainer/MainContainer/VBoxContainer" unique_id=1406439072]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kf5aa")
 
-[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1379270821]
+[node name="EditorViewport" type="ScrollContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=1379270821]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_visual_only = false
@@ -489,18 +487,18 @@ vertical_scroll_mode = 2
 scroll_deadzone = 4
 script = ExtResource("5_o6xl0")
 
-[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport" unique_id=1821210102]
+[node name="CanvasMargin" type="MarginContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport" unique_id=1821210102]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CanvasWrapper" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin" unique_id=2086895926]
+[node name="CanvasWrapper" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin" unique_id=2086895926]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
-[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper" unique_id=148939627]
+[node name="CanvasTransformControl" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper" unique_id=148939627]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
@@ -513,7 +511,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 
-[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
+[node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -525,7 +523,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
 
-[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1786954307]
+[node name="CanvasBackground" type="TextureRect" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1786954307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -537,7 +535,7 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("70_155or")
 
-[node name="CanvasContentContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1327676211]
+[node name="CanvasContentContainer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1327676211]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6bly1")
 layout_mode = 1
@@ -548,7 +546,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("43_tm6hj")
 
-[node name="CanvasOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=504652751]
+[node name="CanvasOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=504652751]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -557,7 +555,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasOverlayContainer" unique_id=292443543]
+[node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasOverlayContainer" unique_id=292443543]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -568,7 +566,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("73_155or")
 
-[node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
+[node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
@@ -577,25 +575,25 @@ focus_mode = 0
 text = "print scrollbar values"
 script = ExtResource("70_ksmap")
 
-[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1033896480]
+[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=1033896480]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ksmap")
 
-[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=944832440]
+[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=944832440]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
-[node name="ViewportOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper" unique_id=1774861839]
+[node name="ViewportOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=1774861839]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("47_kf5aa")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=143535653]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=143535653]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,12 +606,12 @@ mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer" unique_id=38757493]
+[node name="InfoWidget" type="VBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer" unique_id=38757493]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("71_ygd8o")
 
-[node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=2052557687]
+[node name="ActiveLayerName" type="Label" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=2052557687]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -626,7 +624,7 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "INFO_WGT_LAYER_NAME"
 
-[node name="PointerPosition" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=945342055]
+[node name="PointerPosition" type="Label" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=945342055]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -639,7 +637,7 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "INFO_WGT_POSITION"
 
-[node name="BasicBrushCursorContainer" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=914898415]
+[node name="BasicBrushCursorContainer" type="Panel" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=914898415]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -651,7 +649,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r4e17")
 script = ExtResource("46_ro3en")
 
-[node name="CursorRing" type="Panel" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=1437127377]
+[node name="CursorRing" type="Panel" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=1437127377]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_y57op")
 layout_mode = 1
@@ -670,14 +668,14 @@ offset_transform_position = Vector2(-4, -4)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mlv25")
 
-[node name="CursorCrosshair" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=945280758]
+[node name="CursorCrosshair" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer" unique_id=945280758]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
 mouse_filter = 2
 
-[node name="CrosshairLarge" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=1870923045]
+[node name="CrosshairLarge" type="TextureRect" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=1870923045]
 unique_name_in_owner = true
 visible = false
 show_behind_parent = true
@@ -693,7 +691,7 @@ texture = ExtResource("48_xhfw6")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="CrosshairMedium" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=966050920]
+[node name="CrosshairMedium" type="TextureRect" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=966050920]
 unique_name_in_owner = true
 visible = false
 show_behind_parent = true
@@ -709,7 +707,7 @@ texture = ExtResource("49_1epgm")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="CrosshairSmall" type="TextureRect" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=404992429]
+[node name="CrosshairSmall" type="TextureRect" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/BasicBrushCursorContainer/CursorCrosshair" unique_id=404992429]
 unique_name_in_owner = true
 show_behind_parent = true
 layout_mode = 1
@@ -724,11 +722,11 @@ texture = ExtResource("50_152kg")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer" unique_id=1016688040]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/VBoxContainer" unique_id=1016688040]
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer" unique_id=335765538]
+[node name="ViewportToolbar" type="MarginContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer" unique_id=335765538]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
@@ -736,14 +734,14 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar" unique_id=517247880]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar" unique_id=517247880]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=463915025]
+[node name="ChannelControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=463915025]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=506116122]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=506116122]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_mode = 0
@@ -763,7 +761,7 @@ popup/item_5/text = "Alpha"
 popup/item_5/id = 5
 script = ExtResource("70_j4bwh")
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=279156429]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ChannelControl" unique_id=279156429]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
@@ -772,17 +770,17 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("80_vtx2l")
 
-[node name="GridControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1751616304]
+[node name="GridControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1751616304]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=617042878]
+[node name="Spacer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=617042878]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FlipControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=207462045]
+[node name="FlipControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=207462045]
 layout_mode = 2
 
-[node name="FlipHorizontal" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=437474897]
+[node name="FlipHorizontal" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=437474897]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
@@ -790,7 +788,7 @@ icon = ExtResource("49_1v6qk")
 icon_alignment = 1
 expand_icon = true
 
-[node name="FlipVertical" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=234485948]
+[node name="FlipVertical" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=234485948]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
@@ -798,10 +796,10 @@ icon = ExtResource("50_augu2")
 icon_alignment = 1
 expand_icon = true
 
-[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
+[node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=1553067202]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=1553067202]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 focus_mode = 0
@@ -811,7 +809,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("72_ksmap")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=930906433]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/RotationControl" unique_id=930906433]
 layout_mode = 2
 min_value = -360.0
 max_value = 360.0
@@ -822,10 +820,10 @@ custom_arrow_step = 15.0
 select_all_on_focus = true
 script = ExtResource("72_xljpf")
 
-[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1437014385]
+[node name="ZoomControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=1437014385]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1310843317]
+[node name="Button" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1310843317]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 focus_mode = 0
@@ -835,7 +833,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("73_j4bwh")
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/HSplitContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1736966926]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/ZoomControl" unique_id=1736966926]
 layout_mode = 2
 min_value = 5.0
 max_value = 3200.0
@@ -846,21 +844,21 @@ suffix = "%"
 select_all_on_focus = true
 script = ExtResource("71_gdvew")
 
-[node name="RightSidebar" type="VBoxContainer" parent="VBoxContainer/MainContainer/HSplitContainer" unique_id=1188547749]
+[node name="RightSidebar" type="VBoxContainer" parent="VBoxContainer/MainContainer" unique_id=1188547749]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_type_variation = &"ToolColumn"
 script = ExtResource("58_tm6hj")
 
-[node name="TEMPToolColumnPlaceholder" type="PanelContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightSidebar" unique_id=623007878]
+[node name="TEMPToolColumnPlaceholder" type="PanelContainer" parent="VBoxContainer/MainContainer/RightSidebar" unique_id=623007878]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/HSplitContainer/RightSidebar/TEMPToolColumnPlaceholder" unique_id=1502233475]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/RightSidebar/TEMPToolColumnPlaceholder" unique_id=1502233475]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"ToolPanelMargin"
 
-[node name="Label" type="Label" parent="VBoxContainer/MainContainer/HSplitContainer/RightSidebar/TEMPToolColumnPlaceholder/MarginContainer" unique_id=753358605]
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/RightSidebar/TEMPToolColumnPlaceholder/MarginContainer" unique_id=753358605]
 auto_translate_mode = 2
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
