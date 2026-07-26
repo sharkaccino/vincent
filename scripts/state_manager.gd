@@ -9,6 +9,9 @@ var current_drag_data
 
 var _viewport_overlay_container
 
+var primary_color := Color(0,0,0,1)
+var secondary_color := Color(1,1,1,1)
+
 signal projects_changed
 signal project_added
 signal project_removed
@@ -28,6 +31,8 @@ signal pointer_move
 signal pointer_up
 @warning_ignore("unused_signal")
 signal view_mode_changed
+signal primary_color_changed
+signal secondary_color_changed
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
@@ -180,3 +185,11 @@ func set_autofit(new_value: bool) -> void:
 
 func add_viewport_overlay(node: Node) -> void:
 	_viewport_overlay_container.add_child(node)
+
+func set_primary_color(new_color: Color) -> void:
+	primary_color = new_color
+	primary_color_changed.emit()
+
+func set_secondary_color(new_color: Color) -> void:
+	secondary_color = new_color
+	secondary_color_changed.emit()
