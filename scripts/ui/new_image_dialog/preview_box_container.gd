@@ -1,8 +1,9 @@
 extends AspectRatioContainer
 
-@onready var width_input = get_node("%WidthInput")
-@onready var height_input = get_node("%HeightInput")
-@onready var ratio_label = get_node("%AspectRatioLabel")
+@onready var width_input = %WidthInput
+@onready var height_input = %HeightInput
+@onready var ratio_label = %AspectRatioLabel
+@onready var bg = $PreviewBoxBackground
 
 var float_cleaner = RegEx.new()
 
@@ -21,5 +22,8 @@ func on_value_changed(_a) -> void:
 func _ready() -> void:
 	float_cleaner.compile("\\.[0]*$")
 	update_ratio()
+	
+	bg.texture = CanvasManager.get_alpha_checkerboard()
+	
 	width_input.value_changed.connect(on_value_changed)
 	height_input.value_changed.connect(on_value_changed)

@@ -7,18 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://hcokj6jognr4" path="res://resources/colorwheel.png" id="6_truuh"]
 [ext_resource type="Script" uid="uid://gueo2843qfig" path="res://scripts/ui/new_image_dialog/bg_color_picker.gd" id="7_674en"]
 [ext_resource type="Script" uid="uid://57wuyve0arig" path="res://scripts/ui/new_image_dialog/preview_box_container.gd" id="7_jpc14"]
-[ext_resource type="Shader" uid="uid://8blvhgqfuaci" path="res://shaders/checkerboard.tres" id="8_00ytc"]
 [ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image_dialog/confirm_button.gd" id="10_v2k65"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image_dialog/cancel_button.gd" id="11_aopu8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_laxsb"]
-shader = ExtResource("8_00ytc")
-shader_parameter/use_screen_uv = true
-shader_parameter/grid_size = 4.0
-shader_parameter/color_a = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/color_b = Color(1, 1, 1, 1)
-
-[sub_resource type="Texture2DRD" id="Texture2DRD_4i1q4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qgn5"]
 bg_color = Color(1, 1, 1, 1)
@@ -197,9 +187,8 @@ layout_mode = 2
 script = ExtResource("7_jpc14")
 
 [node name="PreviewBoxBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=1897152613]
-material = SubResource("ShaderMaterial_laxsb")
 layout_mode = 2
-texture = SubResource("Texture2DRD_4i1q4")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="AspectRatioLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBoxBackground" unique_id=2025585222]
@@ -220,6 +209,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qgn5")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer/PreviewBox" unique_id=504251859]
+modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 theme_type_variation = &"NewImagePreviewLabel"
 text = "NEW_IMAGE_PREVIEW"

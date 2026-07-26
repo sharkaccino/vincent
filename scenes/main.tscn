@@ -51,7 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://resources/crosshair_small.png" id="50_152kg"]
 [ext_resource type="Texture2D" uid="uid://c8td4riyxa3j3" path="res://resources/icons/flip-vertical.svg" id="50_augu2"]
 [ext_resource type="Script" uid="uid://cwry28y3ipax0" path="res://scripts/ui/sidebar_panels/right_sidebar.gd" id="58_tm6hj"]
-[ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://shaders/canvas.tres" id="69_2s0kr"]
+[ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://resources/color_channel_filter.tres" id="69_2s0kr"]
 [ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
 [ext_resource type="Script" uid="uid://tksro1ugiv0v" path="res://scripts/ui/viewport/channel_mode.gd" id="70_j4bwh"]
