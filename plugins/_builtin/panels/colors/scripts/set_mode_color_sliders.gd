@@ -6,3 +6,6 @@ extends Button
 func _pressed() -> void:
 	cw_container.visible = false
 	cs_container.visible = true
+
+func _ready() -> void:
+	cs_container.visible = false

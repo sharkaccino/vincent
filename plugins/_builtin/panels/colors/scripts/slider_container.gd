@@ -402,8 +402,6 @@ func on_spinbox4_changed(new_value: float) -> void:
 	StateManager.set_primary_color(new_color)
 
 func _ready() -> void:
-	visible = false
-	
 	var spinboxes: Array[SpinBox] = [
 		ch1_spinbox,
 		ch2_spinbox,
