@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cq5u55nt1yqqr" path="res://plugins/_builtin/panels/colors/resources/switch.png" id="6_v8uiv"]
 [ext_resource type="Script" uid="uid://b4he0tkdy3rki" path="res://plugins/_builtin/panels/colors/scripts/secondary_color.gd" id="7_eocwg"]
 [ext_resource type="Script" uid="uid://ce231p0fsqy1m" path="res://plugins/_builtin/panels/colors/scripts/checkerboard.gd" id="7_m6vgd"]
+[ext_resource type="Shader" uid="uid://dv3hitg4jkm8s" path="res://plugins/_builtin/panels/colors/resources/triangle.gdshader" id="7_yqnd5"]
 [ext_resource type="Script" uid="uid://ccym33l1rmsku" path="res://plugins/_builtin/panels/colors/scripts/switch_button.gd" id="10_dd680"]
 [ext_resource type="ButtonGroup" uid="uid://blvp2fcxykjp4" path="res://plugins/_builtin/panels/colors/resources/slider_mode_button_group.tres" id="10_eh0mf"]
 [ext_resource type="Script" uid="uid://4r02jy7731k1" path="res://plugins/_builtin/panels/colors/scripts/slider_container.gd" id="10_q2wgs"]
@@ -35,6 +36,9 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_truuh"]
+shader = ExtResource("7_yqnd5")
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_li6b7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
@@ -44,6 +48,9 @@ corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uiv"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_674en"]
+shader = ExtResource("7_yqnd5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k8rw"]
 bg_color = Color(1, 1, 1, 1)
@@ -77,9 +84,9 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eocwg"]
 shader = ExtResource("13_wsbyq")
-shader_parameter/color1 = Vector4(0.5, 1, 0, 1)
-shader_parameter/color2 = Vector4(0, 0, 0, 0)
-shader_parameter/mode = 2
+shader_parameter/color1 = Vector4(0, 0, 0, 1)
+shader_parameter/color2 = Vector4(1, 1, 1, 1)
+shader_parameter/mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k70q2"]
 shader = ExtResource("13_wsbyq")
@@ -165,6 +172,7 @@ script = ExtResource("6_5pwp3")
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/PrimaryContainer" unique_id=2050012905]
 texture_filter = 3
+material = SubResource("ShaderMaterial_truuh")
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_li6b7")
 expand_mode = 1
@@ -174,7 +182,6 @@ script = ExtResource("7_m6vgd")
 [node name="PrimaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/PrimaryContainer" unique_id=268736867]
 unique_name_in_owner = true
 layout_mode = 2
-offset_transform_enabled = true
 offset_transform_position = Vector2(-0.5, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
 
@@ -200,6 +207,7 @@ script = ExtResource("7_eocwg")
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/SecondaryContainer" unique_id=629758008]
 texture_filter = 3
+material = SubResource("ShaderMaterial_674en")
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_li6b7")
 expand_mode = 1

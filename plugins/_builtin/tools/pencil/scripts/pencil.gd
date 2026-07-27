@@ -1,6 +1,5 @@
 extends PanelContainer
 
-@onready var color_input: ColorPickerButton = %TEMPColorInput
 @onready var brush_size_input: SpinBox = %BrushSizeInput
 @onready var spacing_input = %SpacingInput
 @onready var blend_mode_input = %BlendModeInput
@@ -71,6 +70,8 @@ func update_canvas(target_pos: Vector2, target_size: float) -> void:
 	var project := StateManager.get_active_project()
 	var chunk_limit = (project.chunks.x * project.chunks.y) - 1
 	var target_chunk := Vector2i(chunk_top_left.x, chunk_top_left.y)
+	# TODO: use secondary color if drawing started with right-click
+	var current_color := StateManager.primary_color
 	
 	#print(target_chunk)
 	
@@ -93,10 +94,10 @@ func update_canvas(target_pos: Vector2, target_size: float) -> void:
 			if target_chunk.y >= project.chunks.y: chunk_oob = 1.0
 			
 			var input_data := PackedFloat32Array([
-				color_input.color.r, 
-				color_input.color.g, 
-				color_input.color.b, 
-				color_input.color.a,
+				current_color.r, 
+				current_color.g, 
+				current_color.b, 
+				current_color.a,
 				VincentProject.chunk_size,
 				chunk_oob,
 				last_stamp.chunk_x,

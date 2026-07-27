@@ -18,20 +18,6 @@ theme_type_variation = &"ToolPanelMargin"
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TEMPColorControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1381475818]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TEMPColorControl" unique_id=69588090]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "(temp) Color"
-
-[node name="TEMPColorInput" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/TEMPColorControl" unique_id=539079063]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 25)
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="SizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1440091302]
 layout_mode = 2
 

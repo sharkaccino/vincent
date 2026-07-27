@@ -91,11 +91,7 @@ shadow_color = Color(0, 0, 0, 0.196078)
 shadow_size = 8
 shadow_offset = Vector2(3, 3)
 
-[sub_resource type="Gradient" id="Gradient_vtx2l"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_63lxy"]
-gradient = SubResource("Gradient_vtx2l")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tu1r7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6bly1"]
 shader = ExtResource("69_2s0kr")
@@ -117,7 +113,7 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y57op"]
 shader = ExtResource("47_od4ux")
-shader_parameter/size = 64.0
+shader_parameter/size = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlv25"]
 bg_color = Color(1, 1, 1, 1)
@@ -530,9 +526,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_63lxy")
+texture = SubResource("PlaceholderTexture2D_tu1r7")
 expand_mode = 1
-stretch_mode = 1
 script = ExtResource("70_155or")
 
 [node name="CanvasContentContainer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1327676211]
@@ -658,13 +653,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(4, 4)
 offset_transform_enabled = true
-offset_transform_position = Vector2(-4, -4)
+offset_transform_position = Vector2(-8, -8)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mlv25")
 

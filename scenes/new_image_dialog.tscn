@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://b65ttfkkjbo1" path="res://scripts/ui/new_image_dialog/confirm_button.gd" id="10_v2k65"]
 [ext_resource type="Script" uid="uid://fnhnf7q53n2c" path="res://scripts/ui/new_image_dialog/cancel_button.gd" id="11_aopu8"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f1egu"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qgn5"]
 bg_color = Color(1, 1, 1, 1)
 corner_detail = 1
@@ -188,6 +190,7 @@ script = ExtResource("7_jpc14")
 
 [node name="PreviewBoxBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AspectRatioContainer/PreviewBoxContainer" unique_id=1897152613]
 layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_f1egu")
 expand_mode = 1
 stretch_mode = 1
 
