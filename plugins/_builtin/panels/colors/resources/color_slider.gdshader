@@ -37,17 +37,17 @@ void fragment() {
 		// hue
 		if (color1.a == 0.0) discard;
 		float s_offset = 0.5 - (color1.g * 0.5);
-		COLOR = vec4(hsl_to_rgb(vec3(UV.x, color1.g, color1.b * (0.5 + s_offset))), color1.a);
+		COLOR *= vec4(hsl_to_rgb(vec3(UV.x, color1.g, color1.b * (0.5 + s_offset))), color1.a);
 	} else if (mode == 2) {
 		// lightness
 		if (color1.a == 0.0) discard;
 		vec3 col = hsl_to_rgb(vec3(color1.r, color1.g, UV.x));
-		COLOR = vec4(col, color1.a);
+		COLOR *= vec4(col, color1.a);
 	} else {
 		// gradient
 		vec4 col = mix(color1, color2, UV.x);
 		if (col.a == 0.0) discard;
 		//col.rgb /= col.a;
-		COLOR = col;
+		COLOR *= col;
 	}
 }

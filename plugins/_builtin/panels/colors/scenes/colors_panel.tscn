@@ -45,9 +45,6 @@ shader_parameter/color1 = Vector4(0, 0, 0, 0)
 shader_parameter/color2 = Vector4(0, 0, 0, 0)
 shader_parameter/mode = 0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsbyq"]
-bg_color = Color(1, 1, 1, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eocwg"]
 shader = ExtResource("13_wsbyq")
 shader_parameter/color1 = Vector4(0, 0, 0, 1)
@@ -220,8 +217,9 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 20.0
 
 [node name="Slider1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=310501269]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+alignment = 1
 
 [node name="CH1Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=1771609499]
 unique_name_in_owner = true
@@ -230,8 +228,10 @@ layout_mode = 2
 text = "R"
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=1307365027]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_dd680")
 expand_mode = 1
 stretch_mode = 1
@@ -267,6 +267,7 @@ theme_override_styles/panel = ExtResource("5_v8uiv")
 
 [node name="CH1Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=185452842]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 255.0
@@ -275,8 +276,9 @@ custom_arrow_step = 1.0
 custom_arrow_round = true
 
 [node name="Slider2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=725751879]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+alignment = 1
 
 [node name="CH2Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=201923266]
 unique_name_in_owner = true
@@ -285,8 +287,10 @@ layout_mode = 2
 text = "G"
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=164217168]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_dd680")
 expand_mode = 1
 stretch_mode = 1
@@ -302,7 +306,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxann")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 1
 
@@ -322,6 +326,7 @@ theme_override_styles/panel = ExtResource("5_v8uiv")
 
 [node name="CH2Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=49054536]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 255.0
@@ -330,8 +335,9 @@ custom_arrow_step = 1.0
 custom_arrow_round = true
 
 [node name="Slider3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=815224177]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+alignment = 1
 
 [node name="CH3Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1884206827]
 unique_name_in_owner = true
@@ -340,8 +346,10 @@ layout_mode = 2
 text = "B"
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1265689979]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_dd680")
 expand_mode = 1
 stretch_mode = 1
@@ -357,7 +365,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxann")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 2
 
@@ -377,6 +385,7 @@ theme_override_styles/panel = ExtResource("5_v8uiv")
 
 [node name="CH3Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1395503864]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 255.0
@@ -385,8 +394,9 @@ custom_arrow_step = 1.0
 custom_arrow_round = true
 
 [node name="AlphaSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer" unique_id=1392615808]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+alignment = 1
 
 [node name="CH4Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=1933504324]
 unique_name_in_owner = true
@@ -395,8 +405,10 @@ layout_mode = 2
 text = "A"
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=1912730669]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_dd680")
 expand_mode = 1
 stretch_mode = 1
@@ -412,7 +424,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxann")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 3
 
@@ -432,6 +444,7 @@ theme_override_styles/panel = ExtResource("5_v8uiv")
 
 [node name="CH4Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=532292226]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 255.0
