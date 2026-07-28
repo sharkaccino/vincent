@@ -22,6 +22,7 @@ signal zoom_level_changed
 @warning_ignore("unused_signal")
 signal autofit_zoom_level_changed
 signal canvas_position_changed
+signal canvas_flipped
 signal autofit_changed
 @warning_ignore("unused_signal")
 signal pointer_down
@@ -182,6 +183,16 @@ func set_autofit(new_value: bool) -> void:
 	if (active_project.viewport.autofit != new_value):
 		active_project.viewport.autofit = new_value
 		autofit_changed.emit()
+
+func set_flip_horizontal(flip: bool) -> void:
+	var active_project = get_active_project()
+	active_project.viewport.flip_x = flip
+	canvas_flipped.emit()
+
+func set_flip_vertical(flip: bool) -> void:
+	var active_project = get_active_project()
+	active_project.viewport.flip_y = flip
+	canvas_flipped.emit()
 
 func add_viewport_overlay(node: Node) -> void:
 	_viewport_overlay_container.add_child(node)

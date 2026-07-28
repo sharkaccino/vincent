@@ -33,6 +33,9 @@ DEFAULT_PROJECT_NAME,Untitled Project
 DEFAULT_PROJECT_LAYER_NAME,Base Image
 INFO_WGT_LAYER_NAME,Layer: {layer_name}
 INFO_WGT_POSITION,"Position: {x}, {y}"
+INFO_WGT_FLIP_X,"X Flipped"
+INFO_WGT_FLIP_Y,"Y Flipped"
+INFO_WGT_FLIP_BOTH,"X + Y Flipped"
 PANEL_TOOLS,Tools
 PANEL_TOOL_SETTINGS,Tool Settings
 PANEL_COLORS,Colors

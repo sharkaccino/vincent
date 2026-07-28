@@ -1,15 +1,17 @@
 class_name VincentProject
 
 static var session_ids := -1
-#static var chunk_size: int = ProjectSettings.get_setting("rendering/rendering_device/staging_buffer/texture_download_region_size_px")
+# TODO: make this configurable
 static var chunk_size := 256
 
 class ViewportMetadata:
 	var autofit: bool = true
-	var x: float = 0
-	var y: float = 0
-	var zoom: float = 1
-	var rotate: float = 0
+	var x: float = 0.0
+	var y: float = 0.0
+	var zoom: float = 1.0
+	var rotate: float = 0.0
+	var flip_x: bool = false
+	var flip_y: bool = false
 
 class LayerEffect:
 	var custom_name: String

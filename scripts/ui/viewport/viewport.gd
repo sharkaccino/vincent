@@ -4,6 +4,9 @@ extends ScrollContainer
 @onready var canvas_wrapper: Control = %CanvasWrapper
 @onready var canvas_control: Control = %CanvasTransformControl
 
+@onready var canvas_content: Control = %CanvasContentContainer
+@onready var canvas_overlays: Control = %CanvasOverlayContainer
+
 var pan_starting_pos_h = 0
 var pan_starting_pos_v = 0
 var pan_starting_pos_cursor = Vector2.ZERO
@@ -15,7 +18,17 @@ var autofit_margin = 15
 func get_relative_mouse_pos() -> Vector2:
 	var active_project = StateManager.get_active_project()
 	var real_pos = canvas_control.get_local_mouse_position()
-	return real_pos / active_project.viewport.zoom
+	var canvas_size = active_project.size * active_project.viewport.zoom
+	var flip_scale = Vector2(
+		-1.0 if active_project.viewport.flip_x else 1.0,
+		-1.0 if active_project.viewport.flip_y else 1.0
+	)
+	var offset = Vector2(
+		canvas_size.x if active_project.viewport.flip_x else 0.0,
+		canvas_size.y if active_project.viewport.flip_y else 0.0
+	)
+	
+	return ((real_pos * flip_scale) + offset) / active_project.viewport.zoom
 
 func center_scroll_bars() -> void:
 	var active_project = StateManager.get_active_project()
@@ -44,6 +57,16 @@ func recalc_transforms() -> void:
 	var viewport_size = get_rect().size
 	var active_project = StateManager.get_active_project()
 	
+	# apply canvas flip
+	var flip_scale = Vector2(
+		-1.0 if active_project.viewport.flip_x else 1.0,
+		-1.0 if active_project.viewport.flip_y else 1.0
+	)
+	
+	canvas_content.offset_transform_scale = flip_scale
+	canvas_overlays.offset_transform_scale = flip_scale
+	
+	# autofit calculation
 	if active_project.viewport.autofit:
 		var rotated = Utils.get_bounding_box_size(
 			active_project.size, 
@@ -55,6 +78,7 @@ func recalc_transforms() -> void:
 		active_project.viewport.zoom = min(h_ratio, v_ratio, 1.0)
 		StateManager.autofit_zoom_level_changed.emit()
 	
+	# get bounding box of canvas
 	var canvas_size = active_project.size * active_project.viewport.zoom
 	var canvas_size_rotated = Utils.get_bounding_box_size(
 		canvas_size, 
@@ -152,9 +176,9 @@ func _input(event: InputEvent) -> void:
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
 			if event.is_released() && is_within_viewport:
-				StateManager.set_autofit(false)
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
+				var zoom_pos = canvas_wrapper.get_local_mouse_position()
 				var step = 25
 				
 				if current_level < 100:
@@ -167,15 +191,17 @@ func _input(event: InputEvent) -> void:
 					step = 100
 				if current_level >= 1000:
 					step = 200
+					
+				#print(zoom_pos)
 				
 				var final_level = snapped(current_level + step, step)
-				StateManager.set_zoom_level(final_level, canvas_wrapper.get_local_mouse_position())
+				StateManager.set_zoom_level(final_level, zoom_pos)
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
 			if event.is_released() && is_within_viewport:
-				StateManager.set_autofit(false)
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
+				var zoom_pos = canvas_wrapper.get_local_mouse_position()
 				var step = 25
 				
 				if current_level <= 100:
@@ -188,9 +214,11 @@ func _input(event: InputEvent) -> void:
 					step = 100
 				if current_level > 1000:
 					step = 200
+					
+				#print(zoom_pos)
 				
 				var final_level = snapped(current_level - step, step)
-				StateManager.set_zoom_level(final_level, canvas_wrapper.get_local_mouse_position())
+				StateManager.set_zoom_level(final_level, zoom_pos)
 				
 		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
@@ -209,8 +237,9 @@ func _ready() -> void:
 	# this probably lags on slower hardware
 	Input.use_accumulated_input = false
 	
-	get_h_scroll_bar().scrolling.connect(on_scrolled)
-	get_v_scroll_bar().scrolling.connect(on_scrolled)
+	# TODO: only use when scroll zoom is disabled
+	#get_h_scroll_bar().scrolling.connect(on_scrolled)
+	#get_v_scroll_bar().scrolling.connect(on_scrolled)
 	
 	draw.connect(recalc_transforms)
 	StateManager.zoom_level_changed.connect(_zoom_level_changed)
@@ -218,3 +247,4 @@ func _ready() -> void:
 	StateManager.rotation_changed.connect(recalc_transforms)
 	StateManager.canvas_position_changed.connect(recalc_transforms)
 	StateManager.active_project_changed.connect(on_active_project_changed)
+	StateManager.canvas_flipped.connect(recalc_transforms)

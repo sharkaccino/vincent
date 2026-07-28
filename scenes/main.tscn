@@ -50,6 +50,8 @@
 [ext_resource type="Texture2D" uid="uid://d374fgwmrjyv2" path="res://resources/icons/flip-horizontal.svg" id="49_1v6qk"]
 [ext_resource type="Texture2D" uid="uid://25qwkmk7x57b" path="res://resources/crosshair_small.png" id="50_152kg"]
 [ext_resource type="Texture2D" uid="uid://c8td4riyxa3j3" path="res://resources/icons/flip-vertical.svg" id="50_augu2"]
+[ext_resource type="Script" uid="uid://cbpex5eqgm4ce" path="res://scripts/ui/viewport/flip_vertically.gd" id="55_od4ux"]
+[ext_resource type="Script" uid="uid://cdrlkqsaiilkb" path="res://scripts/ui/viewport/flip_horizontally.gd" id="57_xhfw6"]
 [ext_resource type="Script" uid="uid://cwry28y3ipax0" path="res://scripts/ui/sidebar_panels/right_sidebar.gd" id="58_tm6hj"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://resources/color_channel_filter.tres" id="69_2s0kr"]
 [ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
@@ -506,6 +508,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
+offset_transform_enabled = true
+offset_transform_visual_only = false
 
 [node name="CanvasShadow" type="Panel" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1559239990]
 layout_mode = 1
@@ -539,6 +543,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 script = ExtResource("43_tm6hj")
 
 [node name="CanvasOverlayContainer" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=504652751]
@@ -549,6 +554,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 
 [node name="CanvasGrid" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/CanvasOverlayContainer" unique_id=292443543]
 unique_name_in_owner = true
@@ -631,6 +637,19 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 text = "INFO_WGT_POSITION"
+
+[node name="FlipStatus" type="Label" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer/MarginContainer/InfoWidget" unique_id=1108996893]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/paragraph_spacing = 8
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 10
+text = "INFO_WGT_FLIP_BOTH"
 
 [node name="BasicBrushCursorContainer" type="Panel" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/ViewportOverlayContainer" unique_id=914898415]
 clip_children = 1
@@ -775,21 +794,23 @@ size_flags_horizontal = 3
 [node name="FlipControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=207462045]
 layout_mode = 2
 
-[node name="FlipHorizontal" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=437474897]
+[node name="FlipVertically" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=437474897]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
 icon = ExtResource("49_1v6qk")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("55_od4ux")
 
-[node name="FlipVertical" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=234485948]
+[node name="FlipHorizontally" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer/FlipControl" unique_id=234485948]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
 icon = ExtResource("50_augu2")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("57_xhfw6")
 
 [node name="RotationControl" type="HBoxContainer" parent="VBoxContainer/MainContainer/VBoxContainer/ScrollContainer/ViewportToolbar/HBoxContainer" unique_id=2132988409]
 layout_mode = 2
