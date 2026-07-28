@@ -3,12 +3,6 @@ extends LineEdit
 @onready var locale_list = %LocaleList
 @onready var no_matches = %NoMatchesLabel
 
-func _input(event: InputEvent):
-	if (event is InputEventMouseButton and event.is_pressed()):
-		var evLocal = make_input_local(event)
-		if (Rect2(Vector2(0,0), size).has_point(evLocal.position) == false):
-			release_focus()
-
 func on_text_changed(new_text) -> void:
 	var locale_items = locale_list.get_children()
 	for item: Button in locale_items:

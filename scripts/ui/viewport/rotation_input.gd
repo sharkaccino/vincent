@@ -1,11 +1,5 @@
 extends SpinBox
 
-func _input(event: InputEvent):
-	if (event is InputEventMouseButton and event.is_pressed()):
-		var evLocal = make_input_local(event)
-		if (Rect2(Vector2(0,0), size).has_point(evLocal.position) == false):
-			get_line_edit().release_focus()
-
 func handle_value_change(new_value: float) -> void:
 	var active_project = StateManager.get_active_project()
 	if (new_value == active_project.viewport.rotate): return

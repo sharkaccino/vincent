@@ -1,7 +1,8 @@
 extends Window
 
-var scene_template
+var scene_template: PackedScene
 var popup_contents: Control
+var current_focus: Control
 
 func match_window_size() -> void:
 	#print("window size matched")
@@ -34,7 +35,8 @@ func reset_contents() -> void:
 		unresizable = true
 		popup_contents.resized.connect(match_window_size)
 
-func _on_about_to_popup() -> void:
+func on_about_to_popup() -> void:
+	reset_contents()
 	PopupManager.dim_main_window()
 	
 	# set starting position of popup to center of main window
@@ -46,22 +48,37 @@ func _on_about_to_popup() -> void:
 
 func close() -> void:
 	PopupManager.undim_main_window()
-	reset_contents()
 
-func _on_visibility_changed() -> void:
+func _input(event: InputEvent):
+	if (current_focus == null): return
+	
+	if (event is InputEventMouseButton and event.is_pressed()):
+		var local = current_focus.make_input_local(event)
+		if (Rect2(Vector2(0,0), current_focus.size).has_point(local.position) == false):
+			if (current_focus is SpinBox):
+				current_focus.get_line_edit().release_focus()
+			else:
+				current_focus.release_focus()
+			current_focus = null
+
+func on_focus_change(node) -> void:
+	if (node is SpinBox || node is LineEdit):
+		current_focus = node
+
+func on_visibility_changed() -> void:
 	if not visible:
 		close()
 
-func _on_close_requested() -> void:
+func on_close_requested() -> void:
 	hide()
 
 func _ready() -> void:
 	var target = get_meta("target_scene")
 	if target.length() == 0: return
 	
-	scene_template = load(target)
-	reset_contents()
+	scene_template = load(target) as PackedScene
 	
-	about_to_popup.connect(_on_about_to_popup)
-	visibility_changed.connect(_on_visibility_changed)
-	close_requested.connect(_on_close_requested)
+	about_to_popup.connect(on_about_to_popup)
+	visibility_changed.connect(on_visibility_changed)
+	close_requested.connect(on_close_requested)
+	gui_focus_changed.connect(on_focus_change)
