@@ -1,15 +1,12 @@
 [gd_scene format=3 uid="uid://ba7pqe0jfj4q4"]
 
 [ext_resource type="Texture2D" uid="uid://bl1uv5atlc2il" path="res://resources/icons/panel_colors/adjustments-horizontal.svg" id="1_4k8rw"]
-[ext_resource type="Texture2D" uid="uid://cmc88w2qepl8h" path="res://plugins/_builtin/panels/colors/resources/mode_color_wheel.png" id="1_ft2pq"]
 [ext_resource type="Texture2D" uid="uid://dnbiau036rgo8" path="res://plugins/_builtin/panels/colors/resources/hue_ring.png" id="1_kcvc6"]
 [ext_resource type="Shader" uid="uid://c01jdc87de650" path="res://plugins/_builtin/panels/colors/resources/color_picker_square.gdshader" id="1_ncqq7"]
-[ext_resource type="ButtonGroup" uid="uid://dvgahhqk805cp" path="res://plugins/_builtin/panels/colors/resources/color_picker_mode_button_group.tres" id="1_vnbhu"]
 [ext_resource type="Script" uid="uid://cw30p0gxe3alf" path="res://plugins/_builtin/panels/colors/scripts/hue_ring.gd" id="2_d6oew"]
-[ext_resource type="Script" uid="uid://cu3gnivhem8s3" path="res://plugins/_builtin/panels/colors/scripts/set_mode_color_wheel.gd" id="3_k70q2"]
+[ext_resource type="Script" uid="uid://cu3gnivhem8s3" path="res://plugins/_builtin/panels/colors/scripts/set_picker_mode.gd" id="3_k70q2"]
 [ext_resource type="Texture2D" uid="uid://r816s23ar7lv" path="res://plugins/_builtin/panels/colors/resources/reset.png" id="4_qly2k"]
 [ext_resource type="Script" uid="uid://b4vjm81axgvh5" path="res://plugins/_builtin/panels/colors/scripts/color_square.gd" id="4_t4mgj"]
-[ext_resource type="Script" uid="uid://cms8oulp8lvqb" path="res://plugins/_builtin/panels/colors/scripts/set_mode_color_sliders.gd" id="5_lxann"]
 [ext_resource type="StyleBox" uid="uid://bklcketewwe4f" path="res://plugins/_builtin/panels/colors/resources/outline.tres" id="5_v8uiv"]
 [ext_resource type="Script" uid="uid://8tydwctwsrev" path="res://plugins/_builtin/panels/colors/scripts/primary_color.gd" id="6_5pwp3"]
 [ext_resource type="Texture2D" uid="uid://cq5u55nt1yqqr" path="res://plugins/_builtin/panels/colors/resources/switch.png" id="6_v8uiv"]
@@ -23,37 +20,6 @@
 [ext_resource type="Script" uid="uid://dq65rqe1texpe" path="res://plugins/_builtin/panels/colors/scripts/reset_button.gd" id="11_v5h51"]
 [ext_resource type="Shader" uid="uid://basqivsn1e0i5" path="res://plugins/_builtin/panels/colors/resources/color_slider.gdshader" id="13_wsbyq"]
 [ext_resource type="Script" uid="uid://buwvrvss44ciq" path="res://plugins/_builtin/panels/colors/scripts/slider.gd" id="22_k3j80"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvqpi"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_truuh"]
-shader = ExtResource("7_yqnd5")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_li6b7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_right = 999
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uiv"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_674en"]
-shader = ExtResource("7_yqnd5")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k8rw"]
-bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kwpnc"]
 shader = ExtResource("1_ncqq7")
@@ -94,12 +60,44 @@ shader_parameter/color1 = Vector4(0, 0, 0, 0)
 shader_parameter/color2 = Vector4(0, 0, 0, 0)
 shader_parameter/mode = 0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvqpi"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_truuh"]
+shader = ExtResource("7_yqnd5")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_li6b7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 999
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uiv"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_674en"]
+shader = ExtResource("7_yqnd5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k8rw"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="ColorsPanel" type="PanelContainer" unique_id=441539917]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -35.169983
 offset_right = -1060.0
-offset_bottom = -547.33997
+offset_bottom = -428.51498
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -113,178 +111,26 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=95339182]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2121055453]
+[node name="ColorPickerContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1602447123]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=124380895]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=581911260]
-layout_mode = 2
-
-[node name="ColorWheelMode" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1274659347]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-button_pressed = true
-button_group = ExtResource("1_vnbhu")
-icon = ExtResource("1_ft2pq")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_k70q2")
-
-[node name="ColorSlidersMode" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=746009768]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-button_group = ExtResource("1_vnbhu")
-icon = ExtResource("1_4k8rw")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("5_lxann")
-
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1489371032]
-custom_minimum_size = Vector2(70, 64)
-custom_maximum_size = Vector2(70, -1)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2" unique_id=369289879]
-layout_mode = 2
-
-[node name="PrimaryContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control" unique_id=1839060076]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.15
-anchor_right = 0.55
-anchor_bottom = 0.55
-offset_left = 1.0
-offset_top = 1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
-script = ExtResource("6_5pwp3")
-
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/PrimaryContainer" unique_id=2050012905]
-texture_filter = 3
-material = SubResource("ShaderMaterial_truuh")
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_li6b7")
-expand_mode = 1
-stretch_mode = 1
-script = ExtResource("7_m6vgd")
-
-[node name="PrimaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/PrimaryContainer" unique_id=268736867]
-unique_name_in_owner = true
-layout_mode = 2
-offset_transform_position = Vector2(-0.5, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-
-[node name="PrimaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/PrimaryContainer" unique_id=1922936411]
-unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-offset_transform_scale = Vector2(1.001, 1.001)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v8uiv")
-
-[node name="SecondaryContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control" unique_id=1696243144]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.45
-anchor_right = 0.85
-anchor_bottom = 0.85
-offset_right = -1.0
-offset_bottom = -1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
-script = ExtResource("7_eocwg")
-
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/SecondaryContainer" unique_id=629758008]
-texture_filter = 3
-material = SubResource("ShaderMaterial_674en")
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_li6b7")
-expand_mode = 1
-stretch_mode = 1
-script = ExtResource("7_m6vgd")
-
-[node name="SecondaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/SecondaryContainer" unique_id=923407009]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-
-[node name="SecondaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control/SecondaryContainer" unique_id=1803480153]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4k8rw")
-
-[node name="SwitchButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control" unique_id=465942389]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(-2, 2)
-offset_transform_visual_only = false
-texture_normal = ExtResource("6_v8uiv")
-script = ExtResource("10_dd680")
-
-[node name="ResetButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AspectRatioContainer2/Control" unique_id=239588534]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
-offset_right = 20.0
-offset_transform_enabled = true
-offset_transform_position = Vector2(2, -2)
-offset_transform_visual_only = false
-texture_normal = ExtResource("4_qly2k")
-script = ExtResource("11_v5h51")
-
-[node name="HexCode" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=103560140]
-custom_minimum_size = Vector2(64, 25)
-layout_mode = 2
-text = "#000000"
-max_length = 9
-select_all_on_focus = true
-script = ExtResource("10_qcxyl")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=663195325]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorWheelContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=108024888]
+[node name="ColorWheelContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer" unique_id=1642705970]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(120, 120)
+custom_maximum_size = Vector2(-1, 200)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorWheel" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ColorWheelContainer" unique_id=1642705970]
-custom_minimum_size = Vector2(100, 100)
-custom_maximum_size = Vector2(-1, 256)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment_vertical = 0
-
-[node name="HueRing" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ColorWheelContainer/ColorWheel" unique_id=1239448849]
+[node name="HueRing" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/ColorWheelContainer" unique_id=1239448849]
 layout_mode = 2
 texture = ExtResource("1_kcvc6")
 expand_mode = 1
 script = ExtResource("2_d6oew")
 
-[node name="ColorSquare" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ColorWheelContainer/ColorWheel/HueRing" unique_id=68177263]
+[node name="ColorSquare" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/ColorWheelContainer/HueRing" unique_id=68177263]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_kwpnc")
 layout_mode = 1
@@ -300,7 +146,7 @@ offset_transform_visual_only = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_li6b7")
 script = ExtResource("4_t4mgj")
 
-[node name="SatValCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ColorWheelContainer/ColorWheel/HueRing/ColorSquare" unique_id=1429806148]
+[node name="SatValCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/ColorWheelContainer/HueRing/ColorSquare" unique_id=1429806148]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 10.0
@@ -311,7 +157,7 @@ offset_transform_visual_only = false
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="HueCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ColorWheelContainer/ColorWheel/HueRing" unique_id=1543845987]
+[node name="HueCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/ColorWheelContainer/HueRing" unique_id=1543845987]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -330,56 +176,60 @@ offset_transform_visual_only = false
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="SlidersContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=34389734]
+[node name="SlidersContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer" unique_id=34389734]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("10_q2wgs")
 
-[node name="SliderModeSelect" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer" unique_id=225002806]
+[node name="SliderModeSelect" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer" unique_id=225002806]
 layout_mode = 2
+size_flags_horizontal = 8
 
-[node name="RGBMode" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SliderModeSelect" unique_id=327544825]
+[node name="RGBMode" type="Button" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SliderModeSelect" unique_id=327544825]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 button_pressed = true
+action_mode = 0
 button_group = ExtResource("10_eh0mf")
 text = "RGB"
 
-[node name="HSVMode" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SliderModeSelect" unique_id=856089259]
+[node name="HSVMode" type="Button" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SliderModeSelect" unique_id=856089259]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+action_mode = 0
 button_group = ExtResource("10_eh0mf")
 text = "HSV"
 
-[node name="HSLMode" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SliderModeSelect" unique_id=1126333829]
+[node name="HSLMode" type="Button" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SliderModeSelect" unique_id=1126333829]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+action_mode = 0
 button_group = ExtResource("10_eh0mf")
 text = "HSL"
 
-[node name="SlidersList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer" unique_id=1788570124]
+[node name="SlidersList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer" unique_id=1788570124]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 20.0
 
-[node name="Slider1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList" unique_id=310501269]
+[node name="Slider1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=310501269]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="CH1Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider1" unique_id=1771609499]
+[node name="CH1Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=1771609499]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = "R"
 
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider1" unique_id=1307365027]
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=1307365027]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("PlaceholderTexture2D_dd680")
@@ -387,7 +237,7 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
 
-[node name="CH1Slider" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider1/Checkerboard" unique_id=74622618]
+[node name="CH1Slider" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1/Checkerboard" unique_id=74622618]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_lxann")
 layout_mode = 1
@@ -401,7 +251,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lxann")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 0
 
-[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider1/Checkerboard/CH1Slider" unique_id=62912182]
+[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1/Checkerboard/CH1Slider" unique_id=62912182]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
@@ -415,7 +265,7 @@ offset_transform_position = Vector2(-4, 0)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="CH1Value" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider1" unique_id=185452842]
+[node name="CH1Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider1" unique_id=185452842]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -424,17 +274,17 @@ update_on_text_changed = true
 custom_arrow_step = 1.0
 custom_arrow_round = true
 
-[node name="Slider2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList" unique_id=725751879]
+[node name="Slider2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=725751879]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="CH2Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider2" unique_id=201923266]
+[node name="CH2Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=201923266]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = "G"
 
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider2" unique_id=164217168]
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=164217168]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("PlaceholderTexture2D_dd680")
@@ -442,7 +292,7 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
 
-[node name="CH2Slider" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider2/Checkerboard" unique_id=191594522]
+[node name="CH2Slider" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2/Checkerboard" unique_id=191594522]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_5pwp3")
 layout_mode = 1
@@ -456,7 +306,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 1
 
-[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider2/Checkerboard/CH2Slider" unique_id=231843387]
+[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2/Checkerboard/CH2Slider" unique_id=231843387]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
@@ -470,7 +320,7 @@ offset_transform_position = Vector2(-4, 0)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="CH2Value" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider2" unique_id=49054536]
+[node name="CH2Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider2" unique_id=49054536]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -479,17 +329,17 @@ update_on_text_changed = true
 custom_arrow_step = 1.0
 custom_arrow_round = true
 
-[node name="Slider3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList" unique_id=815224177]
+[node name="Slider3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList" unique_id=815224177]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="CH3Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider3" unique_id=1884206827]
+[node name="CH3Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1884206827]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = "B"
 
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider3" unique_id=1265689979]
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1265689979]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("PlaceholderTexture2D_dd680")
@@ -497,7 +347,7 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
 
-[node name="CH3Slider" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider3/Checkerboard" unique_id=742658469]
+[node name="CH3Slider" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3/Checkerboard" unique_id=742658469]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_eocwg")
 layout_mode = 1
@@ -511,7 +361,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 2
 
-[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider3/Checkerboard/CH3Slider" unique_id=1291196081]
+[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3/Checkerboard/CH3Slider" unique_id=1291196081]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
@@ -525,7 +375,7 @@ offset_transform_position = Vector2(-4, 0)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="CH3Value" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider3" unique_id=1395503864]
+[node name="CH3Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/SlidersContainer/SlidersList/Slider3" unique_id=1395503864]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -534,17 +384,17 @@ update_on_text_changed = true
 custom_arrow_step = 1.0
 custom_arrow_round = true
 
-[node name="Slider4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList" unique_id=1392615808]
+[node name="AlphaSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ColorPickerContainer" unique_id=1392615808]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="CH4Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider4" unique_id=1933504324]
+[node name="CH4Label" type="Label" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=1933504324]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = "A"
 
-[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider4" unique_id=1912730669]
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=1912730669]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("PlaceholderTexture2D_dd680")
@@ -552,7 +402,7 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
 
-[node name="CH4Slider" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider4/Checkerboard" unique_id=2112668177]
+[node name="CH4Slider" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider/Checkerboard" unique_id=2112668177]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_k70q2")
 layout_mode = 1
@@ -566,7 +416,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbyq")
 script = ExtResource("22_k3j80")
 metadata/slider_index = 3
 
-[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider4/Checkerboard/CH4Slider" unique_id=1970219169]
+[node name="SliderCursor" type="Panel" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider/Checkerboard/CH4Slider" unique_id=1970219169]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
@@ -580,7 +430,7 @@ offset_transform_position = Vector2(-4, 0)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_v8uiv")
 
-[node name="CH4Value" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SlidersContainer/SlidersList/Slider4" unique_id=532292226]
+[node name="CH4Value" type="SpinBox" parent="MarginContainer/VBoxContainer/ColorPickerContainer/AlphaSlider" unique_id=532292226]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -589,3 +439,137 @@ value = 255.0
 update_on_text_changed = true
 custom_arrow_step = 1.0
 custom_arrow_round = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2121055453]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=369289879]
+custom_minimum_size = Vector2(70, 70)
+custom_maximum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="PrimaryContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1839060076]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.55
+anchor_bottom = 0.55
+offset_left = 1.0
+offset_top = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
+script = ExtResource("6_5pwp3")
+
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=2050012905]
+texture_filter = 3
+material = SubResource("ShaderMaterial_truuh")
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_li6b7")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("7_m6vgd")
+
+[node name="PrimaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=268736867]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_position = Vector2(-0.5, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
+
+[node name="PrimaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=1922936411]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_scale = Vector2(1.001, 1.001)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8uiv")
+
+[node name="SecondaryContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1696243144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.45
+anchor_right = 0.85
+anchor_bottom = 0.85
+offset_right = -1.0
+offset_bottom = -1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
+script = ExtResource("7_eocwg")
+
+[node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=629758008]
+texture_filter = 3
+material = SubResource("ShaderMaterial_674en")
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_li6b7")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("7_m6vgd")
+
+[node name="SecondaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=923407009]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
+
+[node name="SecondaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=1803480153]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k8rw")
+
+[node name="SwitchButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=465942389]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-2, 2)
+offset_transform_visual_only = false
+texture_normal = ExtResource("6_v8uiv")
+script = ExtResource("10_dd680")
+
+[node name="ResetButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=239588534]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 20.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, -2)
+offset_transform_visual_only = false
+texture_normal = ExtResource("4_qly2k")
+script = ExtResource("11_v5h51")
+
+[node name="HexCode" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=103560140]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_vertical = 4
+text = "#000000"
+max_length = 32
+select_all_on_focus = true
+script = ExtResource("10_qcxyl")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer" unique_id=122979776]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=652949173]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ColorPickerMode" type="Button" parent="MarginContainer/Control" unique_id=1274659347]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 3
+action_mode = 0
+icon = ExtResource("1_4k8rw")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_k70q2")

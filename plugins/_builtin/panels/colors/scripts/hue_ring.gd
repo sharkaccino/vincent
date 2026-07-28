@@ -49,9 +49,13 @@ func _gui_input(event: InputEvent) -> void:
 		update_cursor_pos()
 
 func update_color() -> void:
-	# TODO: alpha slider
 	var satval = color_square.value
-	var new_color = Color.from_hsv(hue / 360.0, satval.x, satval.y, 1.0)
+	var new_color = Color.from_hsv(
+		hue / 360.0, 
+		satval.x, 
+		satval.y, 
+		StateManager.primary_color.a
+	)
 	debounce = true
 	StateManager.set_primary_color(new_color)
 

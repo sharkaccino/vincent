@@ -31,10 +31,12 @@ func _gui_input(event: InputEvent) -> void:
 		handle_mouse_input()
 
 func set_value(new_value: float) -> void:
+	if (!is_node_ready()): await ready
 	value = clamp(new_value, 0.0, 1.0)
 	cursor.position.x = (size.x * new_value)
 
 func on_resized() -> void:
+	if (!is_node_ready()): await ready
 	cursor.position.x = (size.x * value)
 
 func _ready() -> void:
