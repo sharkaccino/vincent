@@ -36,7 +36,5 @@ void fragment() {
 	output = mix(output, hue, UV.x);
 	output *= 1.0 - UV.y;
 	
-	COLOR = vec4(output, 1);
-	//COLOR = vec4(center, 0, 1);
-	//COLOR = vec4(1,0,1,1);
+	COLOR *= vec4(output, 1);
 }
