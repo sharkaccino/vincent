@@ -69,24 +69,19 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uiv"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_truuh"]
 shader = ExtResource("7_yqnd5")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_li6b7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwpnc"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_right = 999
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uiv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k8rw"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_674en"]
 shader = ExtResource("7_yqnd5")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k8rw"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="ColorsPanel" type="PanelContainer" unique_id=441539917]
 anchors_preset = 15
@@ -467,14 +462,22 @@ layout_mode = 2
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.15
 anchor_right = 0.55
 anchor_bottom = 0.55
-offset_left = 1.0
-offset_top = 1.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 1.5
+offset_bottom = 1.5
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
 script = ExtResource("6_5pwp3")
+
+[node name="PrimaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=1922936411]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_scale = Vector2(1.001, 1.001)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8uiv")
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=2050012905]
 texture_filter = 3
@@ -485,31 +488,27 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
 
-[node name="PrimaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=268736867]
-unique_name_in_owner = true
-layout_mode = 2
-offset_transform_position = Vector2(-0.5, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-
-[node name="PrimaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/PrimaryContainer" unique_id=1922936411]
-unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-offset_transform_scale = Vector2(1.001, 1.001)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v8uiv")
-
 [node name="SecondaryContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1696243144]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.45
 anchor_top = 0.45
-anchor_right = 0.85
-anchor_bottom = 0.85
-offset_right = -1.0
-offset_bottom = -1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.5
+offset_top = 25.5
+offset_right = 14.0000305
+offset_bottom = 14.0
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-1, -1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvqpi")
 script = ExtResource("7_eocwg")
+
+[node name="SecondaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=1803480153]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k8rw")
 
 [node name="Checkerboard" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=629758008]
 texture_filter = 3
@@ -519,17 +518,6 @@ texture = SubResource("PlaceholderTexture2D_li6b7")
 expand_mode = 1
 stretch_mode = 1
 script = ExtResource("7_m6vgd")
-
-[node name="SecondaryColorAlphaTri" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=923407009]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kwpnc")
-
-[node name="SecondaryColor" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/SecondaryContainer" unique_id=1803480153]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4k8rw")
 
 [node name="SwitchButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=465942389]
 layout_mode = 1
