@@ -175,10 +175,9 @@ func _input(event: InputEvent) -> void:
 				is_panning = false
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
-			if event.is_released() && is_within_viewport:
+			if event.is_pressed() && is_within_viewport:
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
-				var zoom_pos = canvas_wrapper.get_local_mouse_position()
 				var step = 25
 				
 				if current_level < 100:
@@ -191,17 +190,14 @@ func _input(event: InputEvent) -> void:
 					step = 100
 				if current_level >= 1000:
 					step = 200
-					
-				#print(zoom_pos)
 				
 				var final_level = snapped(current_level + step, step)
-				StateManager.set_zoom_level(final_level, zoom_pos)
+				StateManager.set_zoom_level(final_level)
 		
 		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
-			if event.is_released() && is_within_viewport:
+			if event.is_pressed() && is_within_viewport:
 				var active_project = StateManager.get_active_project()
 				var current_level = active_project.viewport.zoom * 100
-				var zoom_pos = canvas_wrapper.get_local_mouse_position()
 				var step = 25
 				
 				if current_level <= 100:
@@ -214,11 +210,9 @@ func _input(event: InputEvent) -> void:
 					step = 100
 				if current_level > 1000:
 					step = 200
-					
-				#print(zoom_pos)
 				
 				var final_level = snapped(current_level - step, step)
-				StateManager.set_zoom_level(final_level, zoom_pos)
+				StateManager.set_zoom_level(final_level)
 				
 		var is_m1 = event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 		var is_m2 = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT

@@ -2,10 +2,6 @@ shader_type canvas_item;
 
 uniform float size;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
 void fragment() {
 	vec2 center = UV * vec2(2) - vec2(1);
 	float circle = length(center);
