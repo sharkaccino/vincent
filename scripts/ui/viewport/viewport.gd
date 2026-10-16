@@ -47,8 +47,10 @@ func center_scroll_bars() -> void:
 	h_bar.set_deferred("value", target_x)
 	v_bar.set_deferred("value", target_y)
 	
-	active_project.viewport.x = target_x
-	active_project.viewport.y = target_y
+	StateManager.set_viewport_position(Vector2(
+		target_x,
+		target_y
+	))
 
 func recalc_transforms() -> void:
 	if StateManager.active_project_id == 0:
@@ -116,6 +118,9 @@ func on_active_project_changed() -> void:
 		recalc_transforms()
 
 func on_scrolled() -> void:
+	# allows scrollbars to continue functioning when 
+	# directly manipulated with mouse cursor
+	
 	if StateManager.active_project_id == 0:
 		return
 	
@@ -125,6 +130,7 @@ func on_scrolled() -> void:
 	active_project.viewport.y = scroll_vertical
 	
 	StateManager.set_autofit(false)
+	StateManager.canvas_position_changed.emit()
 
 func _zoom_level_changed() -> void:
 	if is_panning:
@@ -156,14 +162,13 @@ func _input(event: InputEvent) -> void:
 		StateManager.pointer_move.emit(get_relative_mouse_pos())
 		
 		if (is_panning):
-			var active_project = StateManager.get_active_project()
-			StateManager.set_autofit(false)
-			
 			var cursor_diff = localized.position - pan_starting_pos_cursor
 			
-			active_project.viewport.x = pan_starting_pos_h - cursor_diff.x
-			active_project.viewport.y = pan_starting_pos_v - cursor_diff.y
-			recalc_transforms()
+			StateManager.set_autofit(false)
+			StateManager.set_viewport_position(Vector2(
+				pan_starting_pos_h - cursor_diff.x,
+				pan_starting_pos_v - cursor_diff.y
+			))
 	if (event is InputEventMouseButton):
 		if event.button_index == MouseButton.MOUSE_BUTTON_MIDDLE:
 			if event.is_pressed() && is_within_viewport:
@@ -231,9 +236,10 @@ func _ready() -> void:
 	# this probably lags on slower hardware
 	Input.use_accumulated_input = false
 	
-	# TODO: only use when scroll zoom is disabled
-	#get_h_scroll_bar().scrolling.connect(on_scrolled)
-	#get_v_scroll_bar().scrolling.connect(on_scrolled)
+	# allows scrollbars to continue functioning when 
+	# directly manipulated with mouse cursor
+	get_h_scroll_bar().scrolling.connect(on_scrolled)
+	get_v_scroll_bar().scrolling.connect(on_scrolled)
 	
 	draw.connect(recalc_transforms)
 	StateManager.zoom_level_changed.connect(_zoom_level_changed)

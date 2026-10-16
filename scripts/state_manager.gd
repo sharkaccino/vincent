@@ -145,9 +145,19 @@ func set_viewport_position(new_pos: Vector2) -> void:
 	var active_project = get_active_project()
 	var zoom = active_project.viewport.zoom
 	
-	active_project.viewport.x = clampf(new_pos.x, 0, active_project.size.x * zoom)
-	active_project.viewport.y = clampf(new_pos.y, 0, active_project.size.y * zoom)
+	var new_x = clampf(new_pos.x, 0, active_project.size.x * zoom)
+	var new_y = clampf(new_pos.y, 0, active_project.size.y * zoom)
 	
+	var changed = false
+	if (active_project.viewport.x != new_x):
+		active_project.viewport.x = new_x
+		changed = true
+	
+	if (active_project.viewport.y != new_y):
+		active_project.viewport.y = new_y
+		changed = true
+	
+	if (changed == false): return
 	canvas_position_changed.emit()
 
 func set_zoom_level(new_value: float) -> void:
