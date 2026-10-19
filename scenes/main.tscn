@@ -53,6 +53,7 @@
 [ext_resource type="Script" uid="uid://cbpex5eqgm4ce" path="res://scripts/ui/viewport/flip_vertically.gd" id="55_od4ux"]
 [ext_resource type="Script" uid="uid://cdrlkqsaiilkb" path="res://scripts/ui/viewport/flip_horizontally.gd" id="57_xhfw6"]
 [ext_resource type="Script" uid="uid://cwry28y3ipax0" path="res://scripts/ui/sidebar_panels/right_sidebar.gd" id="58_tm6hj"]
+[ext_resource type="Script" uid="uid://cgvlpc4vpd2aj" path="res://scripts/canvas_visibility.gd" id="65_1epgm"]
 [ext_resource type="Shader" uid="uid://ca7u77kvtlx67" path="res://resources/color_channel_filter.tres" id="69_2s0kr"]
 [ext_resource type="Script" uid="uid://cy0v0yuwv0do4" path="res://scripts/ui/viewport/canvas_background.gd" id="70_155or"]
 [ext_resource type="Texture2D" uid="uid://b2fcoghfakqr6" path="res://resources/icons/rotate-2.svg" id="70_a82wo"]
@@ -566,6 +567,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("73_155or")
+
+[node name="VisibilityPortionTester" type="Control" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl" unique_id=1922597144]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_position_ratio = Vector2(-0.5, -0.5)
+mouse_filter = 2
+script = ExtResource("65_1epgm")
+
+[node name="debug_center_crosshair_y" type="VSeparator" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/VisibilityPortionTester" unique_id=1788583304]
+visible = false
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ksmap")
+
+[node name="debug_center_crosshair_x" type="HSeparator" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper/EditorViewport/CanvasMargin/CanvasWrapper/CanvasTransformControl/VisibilityPortionTester" unique_id=1006608376]
+visible = false
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ygd8o")
 
 [node name="debug_viewport_scrollbars_button" type="Button" parent="VBoxContainer/MainContainer/VBoxContainer/ViewportWrapper" unique_id=282697564]
 visible = false

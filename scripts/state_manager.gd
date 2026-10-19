@@ -12,6 +12,8 @@ var _viewport_overlay_container
 var primary_color := Color(0,0,0,1)
 var secondary_color := Color(1,1,1,1)
 
+var canvas_visible_rect := Rect2(0,0,1,1)
+
 signal projects_changed
 signal project_added
 signal project_removed
@@ -34,6 +36,8 @@ signal pointer_up
 signal view_mode_changed
 signal primary_color_changed
 signal secondary_color_changed
+@warning_ignore("unused_signal")
+signal canvas_visible_rect_changed
 
 var blank_project = VincentProject.new(Image.create_empty(1, 1, false, Image.FORMAT_RGBA8))
 
