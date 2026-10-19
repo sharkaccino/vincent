@@ -34,6 +34,16 @@ func _draw() -> void:
 		ceilf(canvas_height * (rect.size.y / canvas_node.size.y))
 	)
 	
+	# extra padding to eliminate leakage 
+	# around the edges of the viewport
+	var padding = 2
+	rect.position -= Vector2(padding, padding)
+	rect.size += Vector2(padding, padding) * 2
+	
+	# testing only
+	#rect.position += Vector2(10.0, 10.0)
+	#rect.size -= Vector2(20.0, 20.0)
+	
 	if (StateManager.canvas_visible_rect != rect):
 		#print(rect)
 		StateManager.canvas_visible_rect = rect
