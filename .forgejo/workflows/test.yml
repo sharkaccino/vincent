@@ -19,4 +19,7 @@ jobs:
         run: echo ${{ env.FORGEJO_REPOSITORY }}
       
       - name: event json
-        run: echo ${{ toJSON(forgejo.event) }}
+        run: |
+          cat <<'EOF'
+          ${{ toJSON(forgejo.event) }}
+          EOF
