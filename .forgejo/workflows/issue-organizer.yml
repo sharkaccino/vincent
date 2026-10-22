@@ -11,16 +11,15 @@ jobs:
       - name: Add Triage Label
         if: forgejo.event.issue.labels[0] == null # skip if issue already has labels
         shell: bash
-        run: echo "todo"
-        # run: |
-        #   curl -X 'POST' \
-        #   '${{ env.FORGEJO_API_URL }}/repos/${{ env.FORGEJO_REPOSITORY }}/issues/${{ forgejo.event.issue.number }}/labels' \
-        #   -H 'Authorization: ${{ env.FORGEJO_TOKEN }}'
-        #   -H 'accept: application/json' \
-        #   -H 'Content-Type: application/json' \
-        #   -d '{
-        #     "labels": [
-        #       "needs triage"
-        #     ],
-        #     "updated_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-        #   }'
+        run: |
+          curl -X 'POST' \
+          '${{ env.FORGEJO_API_URL }}/repos/${{ env.FORGEJO_REPOSITORY }}/issues/${{ forgejo.event.issue.number }}/labels' \
+          -H 'Authorization: ${{ env.FORGEJO_TOKEN }}'
+          -H 'accept: application/json' \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "labels": [
+              "needs triage"
+            ],
+            "updated_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          }'
