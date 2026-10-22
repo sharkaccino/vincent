@@ -42,7 +42,7 @@ jobs:
       
       - name: Create Archive (Windows)
         if: matrix.os == 'windows'
-        run: zip "vincent-windows-x86_64.zip" "build/windows/*"
+        run: zip -r "vincent-windows-x86_64.zip" "build/windows/*"
 
       - name: Upload Windows Snapshot
         if: matrix.os == 'windows'
@@ -59,7 +59,7 @@ jobs:
       
       - name: Create Archive (Linux)
         if: matrix.os == 'linux'
-        run: zip "vincent-linux-x86_64.zip" "build/linux/*"
+        run: zip -r "vincent-linux-x86_64.zip" "build/linux/*"
       
       - name: Upload Linux Snapshot
         if: matrix.os == 'linux'
