@@ -39,23 +39,31 @@ jobs:
         run: |
           mkdir -p "build/windows"
           godot --headless --export-release "windows x86_64" "build/windows/vincent-windows-x86_64.exe"
-
-      - name: Compile Application (Linux)
-        if: matrix.os == 'linux'
-        run: |
-          mkdir -p "build/linux"
-          godot --headless --export-release "linux x86_64" "build/linux/vincent-linux.x86_64"
+      
+      - name: Create Archive (Windows)
+        if: matrix.os == 'windows'
+        run: 7z a "vincent-windows-x86_64.zip" "build/windows/*"
 
       - name: Upload Windows Snapshot
         if: matrix.os == 'windows'
         uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-windows-x86_64
-          path: build/windows/*
+          path: vincent-windows-x86_64.zip
+
+      - name: Compile Application (Linux)
+        if: matrix.os == 'linux'
+        run: |
+          mkdir -p "build/linux"
+          godot --headless --export-release "linux x86_64" "build/linux/vincent-linux.x86_64"
+      
+      - name: Create Archive (Linux)
+        if: matrix.os == 'linux'
+        run: 7z a "vincent-linux-x86_64.zip" "build/linux/*"
       
       - name: Upload Linux Snapshot
         if: matrix.os == 'linux'
         uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-linux-x86_64
-          path: build/linux/*
+          path: vincent-linux-x86_64.zip
