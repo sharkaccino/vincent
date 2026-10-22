@@ -13,9 +13,6 @@ jobs:
     outputs:
       date:
     steps:
-      - name: Get ISO Date
-        id: date
-        run: echo "DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $FORGEJO_OUTPUT
       - name: Add Triage Label
         if: forgejo.event.issue.labels[0] == null # skip if issue already has labels
         run: |
@@ -27,6 +24,5 @@ jobs:
           -d '{
             "labels": [
               "needs triage"
-            ],
-            "updated_at": "${{ steps.date.outputs.DATE }}"
+            ]
           }'
