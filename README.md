@@ -1,17 +1,22 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/vincent/icon.png" height="150px">
+
 # Vincent
 
-<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/vincent/icon.png" align="right" height="150px">
+### A simple, modern, cross-platform image editor.
 
-A simple, modern, cross-platform image editor.
+[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](/LICENSE) [![Issues](https://codeberg.org/sharkaccino/vincent/badges/issues/open.svg)](/issues) [![Releases](https://codeberg.org/sharkaccino/vincent/badges/release.svg)](/releases)
 
-<a href="../../releases"><img src="https://img.shields.io/github/downloads/sharkaccino/vincent/total?style=for-the-badge" alt="Downloads" /></a>
-<a href="../../actions/workflows/dist-snapshot.yml"><img src="https://img.shields.io/github/actions/workflow/status/sharkaccino/vincent/dist-snapshot.yml?branch=main&label=SNAPSHOT%20BUILDS&style=for-the-badge" alt="Snapshots" /></a>
+[![Bluesky](https://img.shields.io/badge/Bluesky-ffffff?logo=bluesky)](https://bsky.app/profile/vincentproject.bsky.social)
 
-<a href="https://bsky.app/profile/vincentproject.bsky.social"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpublic.api.bsky.app%2Fxrpc%2Fapp.bsky.actor.getProfile%2F%3Factor%3Dvincentproject.bsky.social&query=%24.followersCount&suffix=%20Following&style=for-the-badge&logo=bluesky&label=Bluesky&logoColor=ffffff" alt="Bluesky" /></a>
+</div>
 
 ## Development Status
 
 **This project is a work-in-progress.** Many features WILL be bugged, or outright non-functional at this point in development. **You have been warned!**
+
+[![Snapshot Builds](https://img.shields.io/badge/download%20snapshot%20builds-orange)](/actions?workflow=dist-snapshot.yml)
 
 <!-- 🔴🔵🟡🟢  -->
 

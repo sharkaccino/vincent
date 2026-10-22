@@ -10,12 +10,12 @@ jobs:
       # allow other OS snapshots to build even if one fails
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows, linux]
     defaults:
       run:
         shell: bash
 
-    runs-on: ${{ matrix.os }}
+    runs-on: codeberg-small
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
@@ -27,7 +27,7 @@ jobs:
           echo "$REVISION" > ./commit.txt
       
       - name: Set Up Godot
-        uses: chickensoft-games/setup-godot@v2
+        uses: https://github.com/chickensoft-games/setup-godot@v2
         with:
           version: 4.7.0
           use-dotnet: false
@@ -35,26 +35,26 @@ jobs:
           cache: true
 
       - name: Compile Application (Windows)
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows'
         run: |
           mkdir -p "build/windows"
           godot --headless --export-release "windows x86_64" "build/windows/vincent-windows-x86_64.exe"
 
       - name: Compile Application (Linux)
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'linux'
         run: |
           mkdir -p "build/linux"
           godot --headless --export-release "linux x86_64" "build/linux/vincent-linux.x86_64"
 
       - name: Upload Windows Snapshot
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows'
         uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-windows-x86_64
           path: build/windows/*
       
       - name: Upload Linux Snapshot
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'linux'
         uses: actions/upload-artifact@v7
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-linux-x86_64

@@ -8,7 +8,7 @@ body:
         
         Before you submit, we **strongly** encourage you to search for your problem on our issue tracker. You may not be the first person to report it. Help us reduce duplicates!
 
-        https://github.com/sharkaccino/vincent/issues
+        https://codeberg.org/sharkaccino/vincent/issues
 
   - type: input
     id: version
