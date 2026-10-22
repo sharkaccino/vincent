@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/sharkaccino/vincent/main/resources/vincent/icon.png" height="150px">
+<img src="https://codeberg.org/sharkaccino/vincent/raw/branch/main/resources/vincent/icon.png" height="150px">
 
 # Vincent
 
 ### A simple, modern, cross-platform image editor.
 
-[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](/LICENSE) [![Issues](https://codeberg.org/sharkaccino/vincent/badges/issues/open.svg)](/issues) [![Releases](https://codeberg.org/sharkaccino/vincent/badges/release.svg)](/releases)
+[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](LICENSE) [![Issues](https://codeberg.org/sharkaccino/vincent/badges/issues/open.svg)](../../../issues) [![Releases](https://codeberg.org/sharkaccino/vincent/badges/release.svg)](../../../releases)
 
 [![Bluesky](https://img.shields.io/badge/Bluesky-ffffff?logo=bluesky)](https://bsky.app/profile/vincentproject.bsky.social)
 
@@ -16,7 +16,7 @@
 
 **This project is a work-in-progress.** Many features WILL be bugged, or outright non-functional at this point in development. **You have been warned!**
 
-[![Snapshot Builds](https://img.shields.io/badge/download%20snapshot%20builds-orange)](/actions?workflow=dist-snapshot.yml)
+[![Snapshot Builds](https://img.shields.io/badge/download%20snapshot%20builds-orange)](../../../actions?workflow=dist-snapshot.yml)
 
 <!-- 🔴🔵🟡🟢  -->
 
@@ -46,7 +46,7 @@
 
 ## Bug Reports & Code Contributions
 
-If you're here to submit a bug report, please use the [issues page](../../issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
+If you're here to submit a bug report, please use the [issues page](../../../issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
 
 For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
 
