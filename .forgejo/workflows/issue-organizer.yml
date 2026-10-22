@@ -23,6 +23,6 @@ jobs:
           -H 'Content-Type: application/json' \
           -d '{
             "labels": [
-              "needs triage"
+              "status/needs triage"
             ]
           }'
