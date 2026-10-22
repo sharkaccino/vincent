@@ -14,7 +14,7 @@ jobs:
         run: |
           curl -X 'POST' \
           '${{ env.FORGEJO_API_URL }}/repos/${{ env.FORGEJO_REPOSITORY }}/issues/${{ forgejo.event.issue.number }}/labels' \
-          -H 'Authorization: ${{ env.FORGEJO_TOKEN }}' \
+          -H 'Authorization: token ${{ env.FORGEJO_TOKEN }}' \
           -H 'accept: application/json' \
           -H 'Content-Type: application/json' \
           -d '{
