@@ -7,12 +7,18 @@ on:
 jobs:
   assign-label-and-project:
     runs-on: codeberg-tiny
+    defaults:
+      run:
+        shell: bash
+    outputs:
+      date:
     steps:
+      - name: Get ISO Date
+        id: date
+        run: echo "DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $FORGEJO_OUTPUT
       - name: Add Triage Label
         if: forgejo.event.issue.labels[0] == null # skip if issue already has labels
-        shell: bash
         run: |
-          DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           curl -X 'POST' \
           '${{ env.FORGEJO_API_URL }}/repos/${{ env.FORGEJO_REPOSITORY }}/issues/${{ forgejo.event.issue.number }}/labels' \
           -H 'Authorization: token ${{ env.FORGEJO_TOKEN }}' \
@@ -22,5 +28,5 @@ jobs:
             "labels": [
               "needs triage"
             ],
-            "updated_at": "$DATE"
+            "updated_at": "${{ steps.date.outputs.DATE }}"
           }'
