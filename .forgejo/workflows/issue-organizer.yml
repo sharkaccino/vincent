@@ -5,16 +5,12 @@ on:
       - opened
 
 jobs:
-  assign-label-and-project:
+  assign-triage-label:
     runs-on: codeberg-tiny
-    defaults:
-      run:
-        shell: bash
-    outputs:
-      date:
     steps:
-      - name: Add Triage Label
+      - name: Add Label
         if: forgejo.event.issue.labels[0] == null # skip if issue already has labels
+        shell: bash
         run: |
           curl -X 'POST' \
           '${{ env.FORGEJO_API_URL }}/repos/${{ env.FORGEJO_REPOSITORY }}/issues/${{ forgejo.event.issue.number }}/labels' \
