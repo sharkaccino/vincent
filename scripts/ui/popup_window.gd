@@ -66,7 +66,9 @@ func on_focus_change(node) -> void:
 		current_focus = node
 
 func on_visibility_changed() -> void:
-	if not visible:
+	if visible:
+		grab_focus()
+	else:
 		close()
 
 func on_close_requested() -> void:
