@@ -19,4 +19,4 @@ jobs:
         run: echo ${{ env.FORGEJO_REPOSITORY }}
       
       - name: event json
-        run: echo ${{ forgejo.event }}
+        run: echo ${{ toJSON(forgejo.event) }}
