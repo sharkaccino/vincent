@@ -39,17 +39,13 @@ jobs:
         run: |
           mkdir -p "build/windows"
           godot --headless --export-release "windows x86_64" "build/windows/vincent-windows-x86_64.exe"
-      
-      - name: Create Archive (Windows)
-        if: matrix.os == 'windows'
-        run: zip -r "vincent-windows-x86_64.zip" . -i "build/windows/*"
 
       - name: Upload Windows Snapshot
         if: matrix.os == 'windows'
-        uses: actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v4
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-windows-x86_64
-          path: vincent-windows-x86_64.zip
+          path: build/windows/*
 
       - name: Compile Application (Linux)
         if: matrix.os == 'linux'
@@ -57,13 +53,9 @@ jobs:
           mkdir -p "build/linux"
           godot --headless --export-release "linux x86_64" "build/linux/vincent-linux.x86_64"
       
-      - name: Create Archive (Linux)
-        if: matrix.os == 'linux'
-        run: zip -r "vincent-linux-x86_64.zip" . -i "build/linux/*"
-      
       - name: Upload Linux Snapshot
         if: matrix.os == 'linux'
-        uses: actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v4
         with:
           name: SNAPSHOT-${{ env.SHA_SHORT }}-vincent-linux-x86_64
-          path: vincent-linux-x86_64.zip
+          path: build/linux/*
