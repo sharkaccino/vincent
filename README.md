@@ -12,18 +12,18 @@
 
 </div>
 
-## Notice for GitHub Users
-This project has been moved to Codeberg. You can now find us here: https://codeberg.org/sharkaccino/vincent
-
-If you're a contributor, please update your remote repositories accordingly:
-
-```sh
-# https
-git remote set-url origin https://codeberg.org/sharkaccino/vincent.git
-
-# ssh
-git remote set-url origin ssh://git@codeberg.org/sharkaccino/vincent.git
-```
+> # Notice for GitHub Users
+> This project has been moved to Codeberg. You can now find us here: https://codeberg.org/sharkaccino/vincent
+> 
+> If you're a contributor, please update your remote repositories accordingly:
+> 
+> ```sh
+> # https
+> git remote set-url origin https://codeberg.org/sharkaccino/vincent.git
+> 
+> # ssh
+> git remote set-url origin ssh://git@codeberg.org/sharkaccino/vincent.git
+> ```
 
 ## Development Status
 
