@@ -4,19 +4,32 @@
 
 # Vincent
 
-### A simple, modern, cross-platform image editor.
+### A simple and modern image editor.
 
-[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](LICENSE) [![Issues](https://codeberg.org/sharkaccino/vincent/badges/issues/open.svg)](../../../issues) [![Releases](https://codeberg.org/sharkaccino/vincent/badges/release.svg)](../../../releases)
+[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](LICENSE) [![Issues](https://codeberg.org/sharkaccino/vincent/badges/issues/open.svg)](https://codeberg.org/sharkaccino/vincent/issues) [![Releases](https://codeberg.org/sharkaccino/vincent/badges/release.svg)](https://codeberg.org/sharkaccino/vincent/releases)
 
 [![Bluesky](https://img.shields.io/badge/Bluesky-ffffff?logo=bluesky)](https://bsky.app/profile/vincentproject.bsky.social)
 
 </div>
 
+## Notice for GitHub Users
+This project has been moved to Codeberg. You can now find us here: https://codeberg.org/sharkaccino/vincent
+
+If you're a contributor, please update your remote repositories accordingly:
+
+```sh
+# https
+git remote set-url origin https://codeberg.org/sharkaccino/vincent.git
+
+# ssh
+git remote set-url origin ssh://git@codeberg.org/sharkaccino/vincent.git
+```
+
 ## Development Status
 
 **This project is a work-in-progress.** Many features WILL be bugged, or outright non-functional at this point in development. **You have been warned!**
 
-[![Snapshot Builds](https://img.shields.io/badge/download%20snapshot%20builds-orange)](../../../actions?workflow=dist-snapshot.yml)
+[![Snapshot Builds](https://img.shields.io/badge/download%20snapshot%20builds-orange)](https://codeberg.org/sharkaccino/vincent/actions?workflow=dist-snapshot.yml)
 
 <!-- 🔴🔵🟡🟢  -->
 
@@ -46,7 +59,7 @@
 
 ## Bug Reports & Code Contributions
 
-If you're here to submit a bug report, please use the [issues page](../../../issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
+If you're here to submit a bug report, please use the [issues page](https://codeberg.org/sharkaccino/vincent/issues). Before opening a new issue, **please take the time to search for your issue to make sure nobody else has reported it already.** Help us reduce duplicates!
 
 For those who would like to contribute more directly, check out the [contributing guidelines](CONTRIBUTING.md).
 
@@ -60,4 +73,4 @@ Vincent's branding assets and logos are NOT free to use, and are included for re
 Included fonts have their own licenses, which you can find in their respective directories.
 
 ### `/resources/icons`
-Vincent uses [Tabler icons](https://tabler.io/icons), which are [MIT licensed.](/resources/icons/LICENSE)
+Vincent uses [Tabler icons](https://tabler.io/icons), which are [MIT licensed.](resources/icons/LICENSE)
